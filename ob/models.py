@@ -1,6 +1,9 @@
 from django.db import models
+from django.utils.translation import ugettext as _
 
 from datetime import date
+
+from tjrapid.main.models import *
 
 class Member(models.Model):
 	first_name = models.CharField(_('first name'), max_length=50)
@@ -35,19 +38,23 @@ class Competition(models.Model):
 	start_date = models.DateField(_('start date'))
 	end_date = models.DateField(_('end date'),null=True,blank=True)
 	location = models.CharField(_('location'),max_length=100,blank=True)
-	specification = models.CharField(_('specification'),max_length=200,blank=True)
-	results = models.CharField(_('results'),max_length=200,blank=True)
-	photos = models.URLField(_('photos'),blank=True)
+#	category = models.ForeignKey(Category,verbose_name=_('category'))
+	
+	specification = models.FileField(_('specification'),blank=True)
+	def specification_upload_to(self):
+		return 'upload/%s/%s/' % (self.category.name, _('competitions'))
+		
+#	results = models.CharField(_('results'),max_length=200,blank=True)
+#	photos = models.URLField(_('photos'),blank=True)
 	
 	def is_upcoming(self):
 		return ((self.end_date is None and self.start_date >= date.today()) or (self.end_date is not None and self.end_date >= date.today()))
-		#return ((type(self.end_date) == type(None) 
 	
 	class Meta:
 		ordering = ('-start_date',)
 		verbose_name = _('competition')
 		verbose_name_plural = _('competitions')
-		
+	
 	class Admin:
 		list_display = ('title','start_date','end_date')
 		search_fields = ('title','location')

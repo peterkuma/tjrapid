@@ -92,6 +92,18 @@ ul.compact img {
 	margin-right: 5px;
 	vertical-align: text-top;
 }
+.article {
+	padding: 5px;
+	background-color: #ededed;
+	margin: 10px 0;
+}
+.article h4 {
+	margin: 5px 0;
+}
+.article-info {
+	color: #001800;
+	font-size: 80%;
+}
 #main {
 	background: url("bg.png") repeat-x;
 	width: 800px;
@@ -125,7 +137,7 @@ ul.compact img {
 #header-title h1 {
 	font-family: "Trebuchet MS";
 	font-size: 18pt;
-	color: #daa520;
+	color: black;
 	position: absolute;
 	top: 60px;
 	left: 165px;
@@ -153,7 +165,7 @@ ul.compact img {
 #header-title-main h1 {
 	font-family: "Trebuchet MS";
 	font-size: 28pt;
-	color: #daa520;
+	color: black;
 	position: absolute;
 	top: 40px;
 	left: 195px;
@@ -223,6 +235,9 @@ ul.compact img {
 	border: none;
 	margin: 0;
 	padding: 0;
+}
+#location {
+	margin: 8px 0 0 0;
 }
 #content {
 	font-family: Tahoma, sans-serif;

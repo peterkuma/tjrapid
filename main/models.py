@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils.translation import ugettext as _
+
 from tjrapid import settings
 
 class Language(models.Model):
@@ -35,14 +37,17 @@ class Category(models.Model):
 	def __unicode__(self):
 		return '%s (%s)' % (self.title,self.language.code)
 
-	def path(self):
+	def get_absolute_url(self):
 		path = '/'
 		if self.language.code != settings.LANGUAGE_CODE:
 			path += self.language.code+'/'
 		if self.name != '':
 			path += self.name+'/'
 		return path
-		
+
+	def path(self):
+		return self.get_absolute_url()
+	
 	path.short_description = _('path')
 	
 	class Meta:
