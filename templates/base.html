@@ -36,19 +36,6 @@
 			</div>
 			{% block main %}
 			<div id="content">
-				{% block location %}
-					{% if location %}
-						<div id="location">
-							{% for o in location %}
-								{% if forloop.first %}
-									<a href="{{ o.url }}">{{ o.name }}</a>
-								{% else %}
-									&rsaquo; <a href="{{ o.url }}">{{ o.name }}</a>
-								{% endif %}
-							{% endfor %}
-						</div>
-					{% endif %}
-				{% endblock %}
 				{% block content %}
 					<h3>{{ page.title|escape }}</h3>
 					{{ page.content|textile }}
@@ -56,7 +43,6 @@
 				<div id="footer">
 					<div style="color: grey; margin: 2px">{% if page.modified %}{% trans "Last updated" %}: {{ page.modified|date:"j F Y" }}{% endif %}</div>
 					{% blocktrans %}Office: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689{% endblocktrans %}
-					<div style="color: grey; margin-top: 20px">Administrator: Peter Kuma &lt;peterkuma<i>@</i>waveland.org&gt;; Powered by Django</div>
 				</div>
 			</div>
 			{% endblock %}

@@ -7,7 +7,7 @@
 
 {% block main %}
 	<div id="content-wide">
-		{{ flatpage.content|textile }}
+		{{ page.content|textile }}
 		<div id="oddiely">
 			<ul>
 				<li id="oddiely-cyklo"><a href="/cyklo/">Cyklistika</a></li>
@@ -20,7 +20,6 @@
 		</div>
 		<div id="footer">
 			Sekretariát: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689
-			<div style="color: grey; margin-top: 20px">Administrator: Peter Kuma &lt;peterkuma<i>@</i>waveland.org&gt;; Powered by Django</div>
 		</div>
 	</div>
 {% endblock %}
