@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^forum/(.*)$ site_media/forum/$1 [QSA,L]

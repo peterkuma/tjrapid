@@ -1,0 +1,201 @@
+# Translation to Slovak.
+# Copyright (C) 2007 Peter Kuma
+# This file is distributed under the same license as the tjrapid package.
+# Peter Kuma <peterkuma@waveland.org>, 2007.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: tjrapid 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-10-27 19:40+0100\n"
+"PO-Revision-Date: Y2007-10-07 15:01+0100\n"
+"Last-Translator: Peter Kuma <peterkuma@waveland.org\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ob/models.py:6
+msgid "first name"
+msgstr "krstné meno"
+
+#: ob/models.py:7
+msgid "surname"
+msgstr "priezvisko"
+
+#: ob/models.py:8 main/models.py:50 main/models.py:65
+msgid "category"
+msgstr "kategória"
+
+#: ob/models.py:9
+msgid "e-mail"
+msgstr "e-mail"
+
+#: ob/models.py:19
+msgid "member"
+msgstr "člen"
+
+#: ob/models.py:20
+msgid "members"
+msgstr "členovia"
+
+#: ob/models.py:28 main/models.py:24 main/models.py:58
+msgid "title"
+msgstr "názov"
+
+#: ob/models.py:30 main/models.py:10 main/models.py:26 main/models.py:60
+msgid "name"
+msgstr "meno"
+
+#: ob/models.py:33 main/models.py:29 main/models.py:63
+msgid "Short name that will appear in the URL"
+msgstr "Krátke meno, ktoré sa zobrazí v URL"
+
+#: ob/models.py:35
+msgid "start date"
+msgstr "začiatok"
+
+#: ob/models.py:36
+msgid "end date"
+msgstr "koniec"
+
+#: ob/models.py:37
+msgid "location"
+msgstr "miesto"
+
+#: ob/models.py:38
+msgid "specification"
+msgstr "rozpis"
+
+#: ob/models.py:39
+msgid "results"
+msgstr "výsledky"
+
+#: ob/models.py:40
+msgid "photos"
+msgstr "fotky"
+
+#: ob/models.py:48
+msgid "competition"
+msgstr "pretek"
+
+#: ob/models.py:49
+msgid "competitions"
+msgstr "preteky"
+
+#: main/models.py:6
+msgid "code"
+msgstr "kód"
+
+#: main/models.py:8
+msgid ""
+"All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
+"dirlang.html#langcodes"
+msgstr ""
+"Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
+"dirlang.html#langcodes"
+
+#: main/models.py:17 main/models.py:31
+msgid "language"
+msgstr "jazyk"
+
+#: main/models.py:18
+msgid "languages"
+msgstr "jazyky"
+
+#: main/models.py:32
+msgid "template name"
+msgstr "meno šablóny"
+
+#: main/models.py:33
+msgid "menu"
+msgstr "menu"
+
+#: main/models.py:46 main/models.py:79
+msgid "path"
+msgstr "cesta"
+
+#: main/models.py:51
+msgid "categories"
+msgstr "kategórie"
+
+#: main/models.py:66
+msgid "content"
+msgstr "obsah"
+
+#: main/models.py:67
+msgid "created"
+msgstr "vytvorené"
+
+#: main/models.py:68
+msgid "modified"
+msgstr "upravené"
+
+#: main/models.py:85
+msgid "page"
+msgstr "stránka"
+
+#: main/models.py:86
+msgid "pages"
+msgstr "stránky"
+
+#: templates/ob_competitions.html:3 templates/ob_competitions.html.py:6
+msgid "Our competitions"
+msgstr "Naše preteky"
+
+#: templates/ob_competitions.html:13 templates/ob_competitions.html.py:25
+msgid "Location"
+msgstr "Miesto"
+
+#: templates/ob_competitions.html:16 templates/ob_competitions.html.py:25
+msgid "Specification"
+msgstr "Rozpis"
+
+#: templates/ob_competitions.html:17 templates/ob_competitions.html.py:25
+msgid "Results"
+msgstr "Výsledky"
+
+#: templates/ob_competitions.html:18 templates/ob_competitions.html.py:25
+msgid "Photos"
+msgstr "Fotky"
+
+#: templates/ob_competitions.html:25
+msgid "Title"
+msgstr "Názov"
+
+#: templates/ob_competitions.html:25
+msgid "Start date"
+msgstr "Začiatok"
+
+#: templates/ob_competitions.html:25
+msgid "End date"
+msgstr "Koniec"
+
+#: templates/ob_members.html:3 templates/ob_members.html.py:6
+msgid "Members"
+msgstr "Členovia"
+
+#: templates/ob_members.html:10 templates/ob_members.html.py:21
+msgid "Name"
+msgstr "Meno"
+
+#: templates/ob_members.html:10 templates/ob_members.html.py:21
+msgid "Category"
+msgstr "Kategória"
+
+#: templates/base.html:44
+msgid "Last updated"
+msgstr "Posledná úprava"
+
+#: templates/base.html:45
+msgid "Office: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
+msgstr ""
+"Sekretariát: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
+
+#: templates/ob.html:11
+msgid "Orienteering club"
+msgstr "Oddiel orientačného behu"
+
+#, fuzzy
+#~ msgid "kategoria"
+#~ msgstr "kategórie"

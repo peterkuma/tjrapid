@@ -1,0 +1,21 @@
+{% load markup %}
+{% extends "base.html" %}
+
+{% block header-title %}
+	<div id="header-title">
+		<a href="/">
+			<h2>TJ Rapid</h2>
+			<h1>Oddiel modernej gymnastiky</h1>	
+		</a>
+	</div>
+{% endblock %}
+
+{% block header-extra %}
+	<div id="header-extra-gymnastika"></div>
+{% endblock %}
+
+{% block menu %}
+	<div id="menu-gymnastika" class="menu">
+		{{ category.menu|textile }}
+	</div>
+{% endblock %}

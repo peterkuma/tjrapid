@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load markup %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sk">
+	<head>
+		<title>{% block title %}{{ page.title|escape }}{% endblock %} - TJ Rapid</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link rel="icon" href="/site_media/tjrapid.ico" type="image/ico">
+		<link rel="stylesheet" type="text/css" href="/site_media/base.css" />
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		<div id="main">
+			<div id="header">
+				{% block header-title %}
+					<div id="header-title-main">
+						<a href="/">
+							<h2>Telovýchovná jednota</h2>
+							<h1>Rapid Bratislava</h1>
+						</a>
+					</div>
+				{% endblock %}
+				{% block header-extra %}
+					<div id="header-extra">
+					</div>
+				{% endblock %}
+			</div>
+			{% block menu %}{% endblock %}
+			<div id="search">
+				<form action="http://www.google.com/search" method="get">
+					<input type="text" name="as_q" size="15" />
+					<input type="hidden" name="as_sitesearch" value="www.tjrapid.sk" />
+					<button action="submit" name="search"><img src="/site_media/search.png" /></button>
+				</form>
+			</div>
+			{% block main %}
+			<div id="content">
+				{% block content %}
+					<h3>{{ page.title|escape }}</h3>
+					{{ page.content|textile }}
+				{% endblock %}
+				<div id="footer">
+					<div style="color: grey; margin: 2px">{% if page.modified %}{% trans "Last updated" %}: {{ page.modified|date:"j F Y" }}{% endif %}</div>
+					{% blocktrans %}Office: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689{% endblocktrans %}
+				</div>
+			</div>
+			{% endblock %}
+		</div>
+	</body>
+</html>
