@@ -23,7 +23,7 @@ class Article(models.Model):
 
 	class Meta:
 		get_latest_by = 'published',
-		ordering = ('category','published')
+		ordering = ('category','-published')
 		verbose_name = _('article')
 		verbose_name_plural = _('articles')
 	
