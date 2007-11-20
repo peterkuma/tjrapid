@@ -1,10 +1,11 @@
 {% load i18n %}
+{% load markup %}
 {% extends "ob.html" %}
 {% block title %}{% trans "News" %}{% endblock %}
 
 {% block content %}
 	<h3>{{ article.title|escape }}</h3>
 	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
-	{% if article.head %}<p>{{ article.head }}</p>{% endif %}
-	<p>{{ article.body }}</p>
+	{% if article.head %}<p>{{ article.head|textile }}</p>{% endif %}
+	<p>{{ article.body|textile }}</p>
 {% endblock %}
