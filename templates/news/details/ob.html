@@ -8,4 +8,21 @@
 	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
 	{% if article.head %}<p>{{ article.head|textile }}</p>{% endif %}
 	<p>{{ article.body|textile }}</p>
+	{% if comments %}
+		<h4>{% trans "Comments" %}</h4>
+		<div class="comments">
+			{% for o in comments %}
+				<div class="comment-wrapper">
+					<div class="comment comment-level-{{ o.level }}">
+						<h5>{{ o.comment.subject|escape }}</h5>
+						<div class="comment-info">{{ o.comment.sender|escape }},
+							{{ o.comment.posted|date:"j F Y H:i" }}</div>
+						<pre>{{ o.comment.message|escape }}</pre>
+						<a href="comment/{{ o.comment.id }}/">{% trans "Reply to this comment" %}</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	<a href="comment/">{% trans "Add new comment" %}</a>
 {% endblock %}

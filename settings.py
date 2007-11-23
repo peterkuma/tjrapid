@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Django settings for tjrapid project.
 
 DEBUG = True
@@ -90,3 +91,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.auth',
 )
+

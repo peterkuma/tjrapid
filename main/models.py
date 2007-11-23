@@ -73,7 +73,7 @@ class Page(models.Model):
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 
 	def __unicode__(self):
-		return '%s -- %s' % (self.category.title, self.title)
+		return u'%s -- %s' % (self.category.title, self.title)
 
 	def path(self):
 		if(self.name == ''):

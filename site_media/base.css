@@ -18,6 +18,16 @@ dd {
 	display: inline;
 	margin-left: 5px;
 }
+form .errorlist {
+	list-style: none;
+	margin: 2px 0;
+	padding: 0;
+	color: #d40000;
+	font-weight: bold;
+}
+.form-buttons {
+	margin: 10px 0;
+}
 .pic {
 	border: 1px solid #ccc;
 	padding: 7px;
@@ -103,6 +113,39 @@ ul.compact img {
 .article-info {
 	color: #001800;
 	font-size: 80%;
+}
+.comment {
+	padding: 5px;
+	background-color: #ededed;
+	margin: 10px 0;
+}
+.comment-wrapper {
+	background: url("comment-wrapper.png") repeat-y;
+}
+.comment-level-1 { margin-left: 10px; }
+.comment-level-2 { margin-left: 20px; }
+.comment-level-3 { margin-left: 30px; }
+.comment-level-4 { margin-left: 40px; }
+.comment-level-5 { margin-left: 50px; }
+.comment-level-6 { margin-left: 60px; }
+.comment-level-7 { margin-left: 70px; }
+.comment-level-8 { margin-left: 80px; }
+.comment-level-9 { margin-left: 90px; }
+.comment h5 {
+	font-size: 90%;
+	margin: 0;
+}
+.comment-info {
+	color: #001800;
+	font-size: 80%;
+}
+.comment pre {
+	font-size: 90%;
+}
+.comment-form label {
+	font-weight: bold;
+	display: block;
+	margin: 4px 0;
 }
 #main {
 	background: url("bg.png") repeat-x;

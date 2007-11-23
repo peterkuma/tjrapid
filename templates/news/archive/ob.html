@@ -16,10 +16,20 @@
 			<div class="article-info">{{ a.author|escape }}, {{ a.published|date:"j F Y" }}</div>
 			{% if a.head %}
 				<p>{{ a.head|textile }}</p>
-				<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a>
+				<div class="article-footer">
+					<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a> | 
 			{% else %}
 				<p>{{ a.body|textile }}</p>
+				<div class="article-footer">
 			{% endif %}
+			{% if a.comment_set.count %}
+				<a href="{{ a.get_absolute_url }}">
+{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}		
+				</a>
+			{% else %}
+				<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
+			{% endif %}
+			</div>
 		</div>
 	{% endfor %}
 {% endblock %}
