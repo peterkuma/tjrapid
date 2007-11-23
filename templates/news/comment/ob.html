@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load markup %}
+{% extends "ob.html" %}
+{% block title %}{% trans "News" %}{% endblock %}
+
+{% block content %}
+	{% if reply %}
+		<h3>{% trans "In reply to" %}:</h3>
+		<div class="comment">
+			<h5>{{ reply.subject }}</h5>
+			<div class="comment-info">
+				{{ reply.sender|escape }}, {{ reply.posted|date:"j F Y H:i" }}
+			</div>
+			<pre>{{ reply.message|escape }}</pre>
+		</div>
+	{% endif %}
+	<h4>{% trans "Your comment" %}</h4>
+	{% if comment %}
+		<h5>Preview</h5>
+		<div class="comment">
+			<h5>{{ comment.subject|escape }}</h5>
+			<div class="comment-info">
+				{{ comment.sender|escape }}, {% now "j F Y H:i" %}
+			</div>
+			<pre>{{ comment.message|escape }}</pre>
+		</div>
+	{% endif %}
+	<form class="comment-form" method="post" action="">
+		{{ form }}
+		<div class="form-buttons">
+			<input type="submit" name="preview" value="{% trans "Preview comment" %}" />
+			<input type="submit" name="send" value="{% trans "Send comment" %}" />
+		</div>
+	</form>
+{% endblock %}
