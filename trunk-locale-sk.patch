@@ -1,0 +1,179 @@
+Index: django.po
+===================================================================
+--- django.po	(revision 6708)
++++ django.po	(working copy)
+@@ -14,6 +14,7 @@
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ "X-Generator: KBabel 1.11.4\n"
++"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+ 
+ #: oldforms/__init__.py:369 db/models/fields/__init__.py:152
+ #: db/models/fields/__init__.py:309 db/models/fields/__init__.py:706
+@@ -28,7 +29,8 @@
+ msgid "Ensure your text is less than %s character."
+ msgid_plural "Ensure your text is less than %s characters."
+ msgstr[0] "Uisite sa, že text je kratší ako %s znak."
+-msgstr[1] "Uisite sa, že text je kratší ako %s znakov."
++msgstr[1] "Uisite sa, že text je kratší ako %s znaky."
++msgstr[2] "Uisite sa, že text je kratší ako %s znakov."
+ 
+ #: oldforms/__init__.py:409
+ msgid "Line breaks are not allowed here."
+@@ -146,6 +148,8 @@
+ msgstr[0] "Prosím, vložte platné %(self)s ID. Hodnota %(value)r je neplatná."
+ msgstr[1] ""
+ "Prosím, vložte platné %(self)s ID-čka. Hodnoty %(value)r sú neplatné."
++msgstr[2] ""
++"Prosím, vložte platné %(self)s ID-čka. Hodnoty %(value)r sú neplatné."
+ 
+ #: conf/global_settings.py:38
+ msgid "Arabic"
+@@ -451,6 +455,7 @@
+ msgid_plural "Watch your mouth! The words %s are not allowed here."
+ msgstr[0] "Vyjadrujte sa slušne! Slovo %s tu nie je dovolené použivať."
+ msgstr[1] "Vyjadrujte sa slušne! Slová %s tu nie je dovolené použivať."
++msgstr[2] "Vyjadrujte sa slušne! Slová %s tu nie je dovolené použivať."
+ 
+ #: core/validators.py:280
+ #, python-format
+@@ -510,6 +515,7 @@
+ "Please enter a valid decimal number with at most %s total digits."
+ msgstr[0] "Prosím, vložte platné desatinné číslo. "
+ msgstr[1] "Prosím, vložte platné desatinné čísla. "
++msgstr[2] "Prosím, vložte platné desatinné čísla. "
+ 
+ #: core/validators.py:434
+ #, python-format
+@@ -519,6 +525,7 @@
+ "Please enter a valid decimal number with a whole part of at most %s digits."
+ msgstr[0] "Prosím vlož platné desatinné číslo s najviac %s číslicou. "
+ msgstr[1] "Prosím vlož platné desatinné číslo s najviac %s číslicami."
++msgstr[2] "Prosím vlož platné desatinné číslo s najviac %s číslicami."
+ 
+ #: core/validators.py:437
+ #, python-format
+@@ -529,6 +536,8 @@
+ "Prosím, vložte platné desatinné číslo s najviac %s desatinným miestom. "
+ msgstr[1] ""
+ "Prosím, vložte platné desatinné číslo s najviac %s desatinnými miestamy. "
++msgstr[2] ""
++"Prosím, vložte platné desatinné číslo s najviac %s desatinnými miestamy. "
+ 
+ #: core/validators.py:445
+ msgid "Please enter a valid floating point number."
+@@ -730,6 +739,7 @@
+ msgid_plural "%(value).1f million"
+ msgstr[0] "%(value).1f milión"
+ msgstr[1] "%(value).1f milión"
++msgstr[2] "%(value).1f milión"
+ 
+ #: contrib/humanize/templatetags/humanize.py:50
+ #, python-format
+@@ -737,6 +747,7 @@
+ msgid_plural "%(value).1f billion"
+ msgstr[0] "%(value).1f miliarda"
+ msgstr[1] "%(value).1f miliarda"
++msgstr[2] "%(value).1f miliarda"
+ 
+ #: contrib/humanize/templatetags/humanize.py:53
+ #, python-format
+@@ -744,6 +755,7 @@
+ msgid_plural "%(value).1f trillion"
+ msgstr[0] "%(value).1f bilión"
+ msgstr[1] "%(value).1f bilión"
++msgstr[2] "%(value).1f bilión"
+ 
+ #: contrib/humanize/templatetags/humanize.py:68
+ msgid "one"
+@@ -1030,6 +1042,10 @@
+ "%(text)s"
+ msgstr[1] ""
+ "Tento komentár je od užívateľa, ktorý poslal menej ako  %(count)s "
++"príspevky .\n"
++"%(text)s"
++msgstr[2] ""
++"Tento komentár je od užívateľa, ktorý poslal menej ako  %(count)s "
+ "príspevkov .\n"
+ "%(text)s"
+ 
+@@ -1659,7 +1675,8 @@
+ msgid "1 result"
+ msgid_plural "%(counter)s results"
+ msgstr[0] "1 výsledok"
+-msgstr[1] "%(counter)s výsledkov"
++msgstr[1] "%(counter)s výsledky"
++msgstr[2] "%(counter)s výsledkov"
+ 
+ #: contrib/admin/templates/admin/search_form.html:10
+ #, python-format
+@@ -1736,6 +1753,7 @@
+ msgid_plural "Please correct the errors below."
+ msgstr[0] "Prosím, opravte chybu uvedenú nižšie."
+ msgstr[1] "Prosím, opravte chyby uvedené nižšie."
++msgstr[2] "Prosím, opravte chyby uvedené nižšie."
+ 
+ #: contrib/admin/templates/admin/change_form.html:50
+ msgid "Ordering"
+@@ -3270,36 +3288,42 @@
+ msgid_plural "years"
+ msgstr[0] "rok"
+ msgstr[1] "roky"
++msgstr[2] "rokov"
+ 
+ #: utils/timesince.py:13
+ msgid "month"
+ msgid_plural "months"
+ msgstr[0] "mesiac"
+-msgstr[1] "mesiacov"
++msgstr[1] "mesiace"
++msgstr[2] "mesiacov"
+ 
+ #: utils/timesince.py:14
+ msgid "week"
+ msgid_plural "weeks"
+ msgstr[0] "týždeň"
+-msgstr[1] "týždňov"
++msgstr[1] "týždne"
++msgstr[2] "týždňov"
+ 
+ #: utils/timesince.py:15
+ msgid "day"
+ msgid_plural "days"
+ msgstr[0] "deň"
+ msgstr[1] "dni"
++msgstr[2] "dní"
+ 
+ #: utils/timesince.py:16
+ msgid "hour"
+ msgid_plural "hours"
+ msgstr[0] "hodina"
+-msgstr[1] "hodín"
++msgstr[1] "hodiny"
++msgstr[2] "hodín"
+ 
+ #: utils/timesince.py:17
+ msgid "minute"
+ msgid_plural "minutes"
+ msgstr[0] "minúta"
+ msgstr[1] "minúty"
++msgstr[2] "minút"
+ 
+ #: utils/timesince.py:39
+ #, python-format
+@@ -3363,8 +3387,9 @@
+ #, python-format
+ msgid "%(size)d byte"
+ msgid_plural "%(size)d bytes"
+-msgstr[0] ""
+-msgstr[1] ""
++msgstr[0] "%(size)d bajt"
++msgstr[1] "%(size)d bajty"
++msgstr[2] "%(size)d bajtov"
+ 
+ #: template/defaultfilters.py:516
+ #, python-format
+Index: django.mo
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
