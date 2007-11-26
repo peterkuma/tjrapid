@@ -31,7 +31,7 @@ function loadRichEdit()
 	var a = document.createElement("a");
 	a.href = "#"
 	a.onclick = function() {
-		w = window.open('http://localhost/file-browser/file-browser.php', null, "width=830,height=530");
+		w = window.open('http://www.tjrapid.sk/site_media/file-browser/file-browser.php', null, "width=830,height=530");
 		w.focus();
 		w.onunload = function() { document.getElementsByTagName('body')[0].innerHTML += w.document.getElementById("path").value; };
 	};
