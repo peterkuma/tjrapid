@@ -7,8 +7,8 @@ from tjrapid.main.models import *
 class Article(models.Model):
 	title = models.CharField(_('title'),max_length=100)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
-	head = models.TextField(_('head'),blank=True)
-	body = models.TextField(_('body'),blank=True)
+	head = models.TextField(_('head'),blank=True,help_text='Text is formatted in Textile. See <a href="http://hobix.com/textile/">language reference</a>.')
+	body = models.TextField(_('body'),blank=True,help_text='Text is formatted in Textile. See <a href="http://hobix.com/textile/">language reference</a>.')
 	author = models.CharField(_('author'),max_length=100)
 	published = models.DateTimeField(_('published'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
