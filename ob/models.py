@@ -67,7 +67,6 @@ class Competition(models.Model):
 	def results(self):
 		for ext in ('pdf', 'doc', 'rtf'):
 			path = 'upload/%s/%s/%s_%s.%s' % (self.category.name, _('competitions'), self.name, _('results'), ext)
-			return os.path.join('xxxx'+settings.MEDIA_ROOT, path)
 			if os.path.exists(os.path.join(settings.MEDIA_ROOT, path)):
 				return settings.MEDIA_URL+path
 		return None
