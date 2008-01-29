@@ -188,7 +188,7 @@ msgstr ""
 
 #: templates/base.html:59
 msgid "Administrator"
-msgstr ""
+msgstr "Administrátor"
 
 #: templates/base.html:59
 msgid "Powered by Django"

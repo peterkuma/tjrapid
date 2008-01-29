@@ -2,6 +2,10 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 from datetime import date
+#from os import path
+
+#from tjrapid.models import SmartFileField
+from tjrapid.main.models import Category
 
 class Member(models.Model):
 	first_name = models.CharField(_('first name'), max_length=50)
@@ -36,12 +40,14 @@ class Competition(models.Model):
 	start_date = models.DateField(_('start date'))
 	end_date = models.DateField(_('end date'),null=True,blank=True)
 	location = models.CharField(_('location'),max_length=100,blank=True)
-#	category = models.ForeignKey(Category,verbose_name=_('category'))
+	category = models.ForeignKey(Category,verbose_name=_('category'))
 
-#	specification = models.FileField(_('specification'),blank=True)
-#	def specification_upload_to(self):
-#		return 'upload/%s/%s/' % (self.category.name, _('competitions'))
-
+#	specification = SmartFileField(_('specification'),blank=True)
+#	def get_specification_relative_filename(self):
+#		return 'upload/%s/%s/%s/%s.%s' % (self.category.name,_('competitions'),_('specification'),self.name,self.specification_ext())
+#	def specification_ext(self):
+#		return os.path.splitext(specification)[1]
+#	results = models.FileField(_('results'),blank=True)
 #	results = models.CharField(_('results'),max_length=200,blank=True)
 #	photos = models.CharField(_('photos'),max_length=200,blank=True)
 
