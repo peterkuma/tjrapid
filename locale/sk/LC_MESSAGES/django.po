@@ -2,13 +2,13 @@
 # Copyright (C) 2007 Peter Kuma
 # This file is distributed under the same license as the tjrapid package.
 # Peter Kuma <peterkuma@waveland.org>, 2007.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-22 22:16+0000\n"
+"POT-Creation-Date: 2008-01-29 01:08+0000\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
 "dirlang.html#langcodes"
 
-#: main/models.py:12 main/models.py:28 main/models.py:65 ob/models.py:31
+#: main/models.py:12 main/models.py:28 main/models.py:65 ob/models.py:37
 msgid "name"
 msgstr "meno"
 
@@ -41,11 +41,11 @@ msgstr "jazyk"
 msgid "languages"
 msgstr "jazyky"
 
-#: main/models.py:26 main/models.py:63 news/models.py:8 ob/models.py:29
+#: main/models.py:26 main/models.py:63 news/models.py:8 ob/models.py:35
 msgid "title"
 msgstr "názov"
 
-#: main/models.py:31 main/models.py:68 ob/models.py:34
+#: main/models.py:31 main/models.py:68 ob/models.py:40
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
@@ -61,7 +61,8 @@ msgstr "menu"
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:55 main/models.py:70 news/models.py:9 ob/models.py:9
+#: main/models.py:55 main/models.py:70 news/models.py:9 ob/models.py:15
+#: ob/models.py:45
 msgid "category"
 msgstr "kategória"
 
@@ -137,45 +138,59 @@ msgstr "komentár"
 msgid "comments"
 msgstr "komentáre"
 
-#: ob/models.py:7
+#: news/views.py:66 templates/news/archive/ob.html:4
+#: templates/news/archive/ob.html.py:8 templates/news/comment/ob.html:4
+#: templates/news/commentx/ob.html:4 templates/news/details/ob.html:4
+msgid "News"
+msgstr "Novinky"
+
+#: ob/models.py:13
 msgid "first name"
 msgstr "krstné meno"
 
-#: ob/models.py:8
+#: ob/models.py:14
 msgid "surname"
 msgstr "priezvisko"
 
-#: ob/models.py:10
+#: ob/models.py:16
 msgid "e-mail"
 msgstr "e-mail"
 
-#: ob/models.py:20
+#: ob/models.py:26
 msgid "member"
 msgstr "člen"
 
-#: ob/models.py:21
+#: ob/models.py:27
 msgid "members"
 msgstr "členovia"
 
-#: ob/models.py:36
+#: ob/models.py:42
 msgid "start date"
 msgstr "začiatok"
 
-#: ob/models.py:37
+#: ob/models.py:43
 msgid "end date"
 msgstr "koniec"
 
-#: ob/models.py:38
+#: ob/models.py:44
 msgid "location"
 msgstr "miesto"
 
-#: ob/models.py:53
-msgid "competition"
-msgstr "pretek"
-
-#: ob/models.py:54
+#: ob/models.py:61 ob/models.py:68 ob/models.py:76
 msgid "competitions"
 msgstr "preteky"
+
+#: ob/models.py:61
+msgid "specification"
+msgstr "rozpis"
+
+#: ob/models.py:68
+msgid "results"
+msgstr "vysledky"
+
+#: ob/models.py:75
+msgid "competition"
+msgstr "pretek"
 
 #: templates/base.html:57
 msgid "Last updated"
@@ -242,11 +257,6 @@ msgstr "Meno"
 msgid "Category"
 msgstr "Kategória"
 
-#: templates/news/archive/ob.html:4 templates/news/archive/ob.html.py:8
-#: templates/news/comment/ob.html:4 templates/news/details/ob.html:4
-msgid "News"
-msgstr "Novinky"
-
 #: templates/news/archive/ob.html:20
 msgid "Read more"
 msgstr "Čítať ďalej"
@@ -263,19 +273,19 @@ msgstr[2] "%(count)s komentárov"
 msgid "Add new comment"
 msgstr "Pridať nový komentár"
 
-#: templates/news/comment/ob.html:8
+#: templates/news/comment/ob.html:8 templates/news/commentx/ob.html:8
 msgid "In reply to"
 msgstr "Odpoveď na"
 
-#: templates/news/comment/ob.html:17
+#: templates/news/comment/ob.html:17 templates/news/commentx/ob.html:17
 msgid "Your comment"
 msgstr "Váš komentár"
 
-#: templates/news/comment/ob.html:31
+#: templates/news/comment/ob.html:31 templates/news/commentx/ob.html:31
 msgid "Preview comment"
 msgstr "Náhľad komentára"
 
-#: templates/news/comment/ob.html:32
+#: templates/news/comment/ob.html:32 templates/news/commentx/ob.html:32
 msgid "Send comment"
 msgstr "Poslať komentár"
 
@@ -286,4 +296,3 @@ msgstr "Komentáre"
 #: templates/news/details/ob.html:21
 msgid "Reply to this comment"
 msgstr "Odpovedať na tento komentár"
-

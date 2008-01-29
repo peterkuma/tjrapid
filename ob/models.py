@@ -2,10 +2,12 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 from datetime import date
-#from os import path
+import os
 
-#from tjrapid.models import SmartFileField
+from tjrapid import settings
+
 from tjrapid.main.models import Category
+#from tjrapid.models import SmartFileField
 
 class Member(models.Model):
 	first_name = models.CharField(_('first name'), max_length=50)
@@ -53,7 +55,21 @@ class Competition(models.Model):
 
 	def is_upcoming(self):
 		return ((self.end_date is None and self.start_date >= date.today()) or (self.end_date is not None and self.end_date >= date.today()))
-	
+
+	def specification(self):
+		for ext in ('pdf', 'doc', 'rtf'):
+			path = 'upload/%s/%s/%s_%s.%s' % (self.category.name, _('competitions'), self.name, _('specification'), ext)
+			if os.path.exists(os.path.join(settings.MEDIA_ROOT, path)):
+				return settings.MEDIA_URL+path
+		return None	
+
+	def results(self):
+		for ext in ('pdf', 'doc', 'rtf'):
+			path = 'upload/%s/%s/%s_%s.%s' % (self.category.name, _('competitions'), self.name, _('results'), ext)
+			if os.path.exists(os.path.join(settings.MEDIA_ROOT, path)):
+				return settings.MEDIA_URL+path
+		return None
+
 	class Meta:
 		ordering = ('-start_date',)
 		verbose_name = _('competition')
