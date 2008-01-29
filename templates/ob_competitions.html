@@ -29,9 +29,9 @@
 				<td>{{ c.start_date|date:"j F Y" }}</td>
 				<td>{% if c.end_date %}{{ c.end_date|date:"j F Y" }}{% endif %}</td>
 				<td>{{ c.location }}</td>
-				<td style="text-align: center"><a href="{{ c.specification }}"><img src="/site_media/x-office-document.png" /></a></td>
-				<td style="text-align: center"><a href="{{ c.results }}"><img src="/site_media/text-x-generic.png" /></a></td>
-				<td style="text-align: center"><a href="{{ c.photos }}"><img src="/site_media/image-x-generic.png" /></a></td>
+				<td style="text-align: center">{% if c.specification %}<a href="{{ c.specification }}"><img src="/site_media/x-office-document.png" /></a>{% endif %}</td>
+				<td style="text-align: center">{% if c.results %}<a href="{{ c.results }}"><img src="/site_media/text-x-generic.png" /></a>{% endif %}</td>
+				<td style="text-align: center">{% if c.photos %}<a href="{{ c.photos }}"><img src="/site_media/image-x-generic.png" /></a>{% endif %}</td>
 			</tr>
 		{% endfor %}
 	</table>
