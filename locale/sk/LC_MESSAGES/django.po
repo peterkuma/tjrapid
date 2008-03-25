@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-29 01:08+0000\n"
+"POT-Creation-Date: 2008-03-25 23:12+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -176,7 +176,7 @@ msgstr "koniec"
 msgid "location"
 msgstr "miesto"
 
-#: ob/models.py:61 ob/models.py:68 ob/models.py:76
+#: ob/models.py:61 ob/models.py:68 ob/models.py:75 ob/models.py:83
 msgid "competitions"
 msgstr "preteky"
 
@@ -189,6 +189,10 @@ msgid "results"
 msgstr "vysledky"
 
 #: ob/models.py:75
+msgid "directives"
+msgstr "pokyny"
+
+#: ob/models.py:82
 msgid "competition"
 msgstr "pretek"
 
@@ -217,31 +221,35 @@ msgstr "Oddiel orientačného behu"
 msgid "Our competitions"
 msgstr "Naše preteky"
 
-#: templates/ob_competitions.html:13 templates/ob_competitions.html.py:25
+#: templates/ob_competitions.html:13 templates/ob_competitions.html.py:26
 msgid "Location"
 msgstr "Miesto"
 
-#: templates/ob_competitions.html:16 templates/ob_competitions.html.py:25
+#: templates/ob_competitions.html:16 templates/ob_competitions.html.py:26
 msgid "Specification"
 msgstr "Rozpis"
 
-#: templates/ob_competitions.html:17 templates/ob_competitions.html.py:25
+#: templates/ob_competitions.html:17 templates/ob_competitions.html.py:26
+msgid "Directives"
+msgstr "Pokyny"
+
+#: templates/ob_competitions.html:18 templates/ob_competitions.html.py:26
 msgid "Results"
 msgstr "Výsledky"
 
-#: templates/ob_competitions.html:18 templates/ob_competitions.html.py:25
+#: templates/ob_competitions.html:19 templates/ob_competitions.html.py:26
 msgid "Photos"
 msgstr "Fotky"
 
-#: templates/ob_competitions.html:25
+#: templates/ob_competitions.html:26
 msgid "Title"
 msgstr "Názov"
 
-#: templates/ob_competitions.html:25
+#: templates/ob_competitions.html:26
 msgid "Start date"
 msgstr "Začiatok"
 
-#: templates/ob_competitions.html:25
+#: templates/ob_competitions.html:26
 msgid "End date"
 msgstr "Koniec"
 

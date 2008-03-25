@@ -70,6 +70,13 @@ class Competition(models.Model):
 				return settings.MEDIA_URL+path
 		return None
 
+	def directives(self):
+		for ext in ('pdf', 'doc', 'rtf'):
+			path = 'upload/%s/%s/%s_%s.%s' % (self.category.name, _('competitions'), self.name, _('directives'), ext)
+			if os.path.exists(os.path.join(settings.MEDIA_ROOT, path)):
+				return settings.MEDIA_URL+path
+		return None
+
 	class Meta:
 		ordering = ('-start_date',)
 		verbose_name = _('competition')
