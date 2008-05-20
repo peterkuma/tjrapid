@@ -70,7 +70,7 @@ form .errorlist {
 	text-decoration: none;
 	color: black;
 	font-family: Tahoma;
-	font-size: 10pt;
+	font-size: 9pt;
 }
 .menu a:hover {
 	text-decoration: underline;
@@ -112,7 +112,7 @@ ul.compact img {
 }
 .article-info {
 	color: #001800;
-	font-size: 80%;
+	font-size: 90%;
 }
 .comment {
 	padding: 5px;
@@ -132,15 +132,14 @@ ul.compact img {
 .comment-level-8 { margin-left: 80px; }
 .comment-level-9 { margin-left: 90px; }
 .comment h5 {
-	font-size: 90%;
+	font-size: 95%;
 	margin: 0;
 }
 .comment-info {
 	color: #001800;
-	font-size: 80%;
+	font-size: 90%;
 }
 .comment pre {
-	font-size: 90%;
 }
 .comment-form label {
 	font-weight: bold;
@@ -284,14 +283,14 @@ ul.compact img {
 }
 #content {
 	font-family: Tahoma, sans-serif;
-	font-size: 10pt;
+	font-size: 9pt;
 	padding: 0 20px 20px 160px;
 	border: 1px silver solid;
 	min-height: 400px;
 }
 #content-wide {
 	font-family: Tahoma, sans-serif;
-	font-size: 10pt;
+	font-size: 9pt;
 	padding: 0 20px 20px 20px;
 	border: 1px silver solid;
 }
@@ -299,7 +298,6 @@ ul.compact img {
 	border: 1px solid silver;
 	border-collapse: collapse;
 	background: white;
-	font-size: 90%;
 }
 #content table.standard th {
 	text-align: left;
