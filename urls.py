@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # $Id$
 
 # Copyright (c) 2007, 2008, Peter Kuma
