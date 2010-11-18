@@ -1,0 +1,13 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% block content %}
+<div class="event-reports">
+<h3>{% trans "Reports" %}</h3>
+<ul>
+    <!--<li><a href="csv/report/">{% trans "Standard report in CSV" %}</a></li>-->
+    <li><a href="csv/fullreport/">{% trans "Full report in CSV" %}</a></li>
+</ul>
+</div>
+{{ block.super }}
+{% endblock %}
+ 

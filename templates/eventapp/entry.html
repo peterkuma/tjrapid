@@ -1,0 +1,37 @@
+{% extends "eventapp/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Entry" %} {{ entry.id }}{% endblock %}
+{% block content %}
+	<h3>{% trans "Entry" %} {{ entry.id }}
+	({% trans "event" %} <a href="../">{{ event|escape }}</a>)</h3>
+	{% if participants %}
+		<form method="get" action="pdf/" style="display: inline-block; margin: 5pt 0">
+			<input type="submit" value="{% trans "Export as PDF" %}" />
+		</form>
+	{% endif %}
+	{% if event.is_open %}
+		<form method="get" action="PA/" style="display: inline-block; margin: 5pt 0">
+			<input type="submit" value="{% trans "New participant" %}" />
+		</form>
+	{% endif %}
+	<p>{% trans "List of participants follows." %}</p>
+	<ol class="participant-list">
+		{% for pa in participants %}
+			<li class="participant">
+				<div class="fees">{{ pa.fees }} €</div>
+				<div class="name">{{ pa.firstname|escape }} {{ pa.surname|escape }}</div>
+				{% trans "Registration" %}: <em>{{ pa.club|escape }}, {{ pa.cls|escape }} ({{ pa.entryfee }} €)</em><br />
+				{% trans "SI" %}: <em>{{ pa.get_si_display }} {% if pa.sifee %}({{ pa.sifee }} €){% endif %}</em> <br />
+				{% if pa.accomm %}{% trans "Accommodation" %}: <em>{{ pa.accomm.label|escape }}, {{ pa.get_accommcount_display }}, {{ pa.get_accommnights_display }} ({{ pa.accommfee }} €)</em>{% endif %}
+				{% if event.is_open %}
+					<form method="post" action="{{ pa.id }}/">
+						<input type="hidden" name="id" value="{{ pa.id }}" />
+						<input type="submit" name="remove" value="{% trans "Remove" %}" />
+						<input type="submit" name="change" value="{% trans "Change" %}" />
+					</form>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ol>
+	<div class="total">{% trans "Total" %}:  {{ total }} €</div>
+{% endblock %}

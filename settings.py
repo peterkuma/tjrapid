@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'tjrapid.main',
     'tjrapid.ob',
     'tjrapid.news',
+    'tjrapid.eventapp',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -58,3 +59,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 SESSION_SAVE_EVERY_REQUEST = True
+
+import os
+RGFONT = os.path.join(FONTS_DIR, 'LiberationSans-Regular.ttf')
+BDFONT = os.path.join(FONTS_DIR, 'LiberationSans-Bold.ttf')
+ITFONT = os.path.join(FONTS_DIR, 'LiberationSans-Italic.ttf')
+

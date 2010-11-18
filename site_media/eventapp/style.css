@@ -1,0 +1,38 @@
+.event-closed-msg {
+	font-size: 150%;
+	color: #D50606;
+	margin: 10pt 0;
+}
+
+.participant-list {
+	padding-left: 20pt;
+	margin: 0;
+}
+
+.participant {
+	-background-color: #ECECEC;
+	padding: 10pt;
+	line-height: 150%;
+}
+
+.participant .name {
+	font-weight: bold;
+	font-size: 120%;
+	margin-bottom: 5pt;
+}
+
+.participant .fees {
+	float: right;
+	line-height: 150%;
+	font-size: 140%;
+}
+
+.participant form {
+	margin: 5pt 0 0 0;
+	padding: 0;
+}
+
+.total {
+	font-size: 150%;
+	margin: 10pt 0;
+}

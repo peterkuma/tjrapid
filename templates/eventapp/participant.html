@@ -1,0 +1,93 @@
+{% extends "eventapp/base.html" %}
+{% load i18n %}
+{% block title %}{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/site_media/eventapp/style.css" />
+<script language="javascript">
+function update_form(form) {
+	form.si.disabled = true;
+	for (i=0; i < form.simode.length; i++) {
+		r = form.simode[i]
+		if (r.value == 'P' && r.checked)
+			form.si.disabled = false;
+	}
+	
+	form.accommcount.disabled = form.accomm.value == '';
+	form.accommnights.disabled = form.accomm.value == '';
+	form.accommnote.disabled = form.accomm.value == '';
+	
+	{% for ac in accommodation %}
+		for (i = 0; i < form.accomm.length; i++) {
+			o = form.accomm[i];
+			if (o.value == '{{ ac.id }}') {
+				o.disabled = {{ ac.free }} == 0
+				{% if participant.accomm and participant.accommcount %}
+					o.disabled = (o.value == '{{ participant.accomm.id }}') && {{ ac.free }} + {{participant.accommcount }} == 0
+				{% endif %}
+			}
+		}
+		
+		if (form.accomm.value == '{{ ac.id }}') {
+			for (i = 0; i < form.accommcount.length; i++) {
+				o = form.accommcount[i];
+				if ({{ ac.free }} >= o.value)
+					o.style.display = 'block';
+				else
+					o.style.display = 'none';
+				{% if ac == participant.accomm and participant.accommcount %}
+					if ({{ ac.free }} + {{ participant.accommcount }} >= o.value)
+						o.style.display = 'block';
+				{% endif %}
+			}
+			for (i = 0; i < form.accommnights.length; i++) {
+				o = form.accommnights[i];
+				if (o.value > {{ ac.maxnights }} || o.value < {{ ac.minnights }})
+					o.style.display = 'none';
+				else
+					o.style.display = 'block';
+			}
+		}
+	{% endfor %}
+}
+window.onload = function() {
+	update_form(document.getElementById('form'));
+}
+</script>
+{% endblock %}
+
+{% block content %}
+	<h3>{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}
+		({% trans "entry" %} <a href="../">{{ entry }}</a>)</h3>
+	<form method="post" action="" id="form" onchange="update_form(this)">
+		<table>
+			<tr><td colspan="2">{{ form.firstname.errors }}</td></tr>
+			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
+			<tr><td colspan="2">{{ form.surname.errors }}</td></tr>
+			<tr><td>{{ form.surname.label_tag }}*:</td><td>{{ form.surname }}</td></tr>
+			<tr><td colspan="2">{{ form.club.errors }}</td></tr>
+			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
+			<tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
+			<tr><td>{{ form.si.label_tag }}*:</td><td>
+				<input type="radio" name="simode" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
+				<label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
+				<input type="radio" name="simode" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
+				<label for="si_later">{% trans "supply later" %}</label><br />
+				{% if event.sifee %}
+					<input type="radio" name="simode" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
+					<label for="si_borrow">{% trans "want to borrow" %}</label><br />
+				{% endif %}
+			</td></tr>
+			<tr><td colspan="2">{{ form.cls.errors }}</td></tr>
+			<tr><td>{{ form.cls.label_tag }}*:</td><td>{{ form.cls }}</td></tr>
+			<tr><td colspan="2">{{ form.note.errors }}</td></tr>
+			<tr><td>{{ form.note.label_tag }}:</td><td>{{ form.note }}</td></tr>
+			<tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
+			<tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
+			<tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
+			<tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
+		</table>
+		<div class="form-buttons">
+			<input type="submit" name="commit" value="{% trans "Register" %}" />
+		</div>
+	</form>
+{% endblock %}
