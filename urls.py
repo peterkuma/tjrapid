@@ -32,9 +32,12 @@
 
 from django.conf.urls.defaults import *
 from django.conf import settings
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
-	(r'^admin/',include('django.contrib.admin.urls')),
+	(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+	(r'^admin/', include(admin.site.urls)),
 	(r'^ob/clenovia/$','tjrapid.ob.views.members',dict(category_name='ob')),
 	(r'^en/orienteering/members/$','tjrapid.ob.views.members',dict(category_name='orienteering')),
 	(r'^ob/preteky/$','tjrapid.ob.views.competitions',dict(category_name='ob')),

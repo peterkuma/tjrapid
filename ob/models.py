@@ -68,7 +68,7 @@ class Competition(models.Model):
 	name = models.SlugField(
 		_('name'),
 		unique=True,
-		prepopulate_from=('title',),
+#		prepopulate_from=('title',),
 		help_text=_('Short name that will appear in the URL')
 	)
 	start_date = models.DateField(_('start date'))

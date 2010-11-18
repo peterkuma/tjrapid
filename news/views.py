@@ -35,7 +35,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import translation
-from django import newforms as forms
+from django import forms
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
 

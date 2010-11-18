@@ -58,7 +58,7 @@ class Category(models.Model):
 	name = models.SlugField(
 		_('name'),
 		blank=True,
-		prepopulate_from=('title',),
+#		prepopulate_from=('title',),
 		help_text=_('Short name that will appear in the URL'),
 	)
 	language = models.ForeignKey(Language,verbose_name=_('language'))
@@ -95,7 +95,7 @@ class Page(models.Model):
 	name = models.SlugField(
 		_('name'),
 		blank=True,
-		prepopulate_from=('title',),
+#		prepopulate_from=('title',),
 		help_text=_('Short name that will appear in the URL'),
 	)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
