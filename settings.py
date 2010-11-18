@@ -31,6 +31,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
 #   'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'tjrapid.main.middleware.LanguageMiddleware', 
+    'tjrapid.main.middleware.CategoryMiddleware', 
 )
 
 ROOT_URLCONF = 'tjrapid.urls'
@@ -52,6 +54,7 @@ INSTALLED_APPS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.auth',
+    'tjrapid.main.context_processors.category', 
 )
 
 SESSION_SAVE_EVERY_REQUEST = True
