@@ -37,6 +37,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+	(r'^admin/eventapp/', include('tjrapid.eventapp.admin_urls')),
 	(r'^admin/', include(admin.site.urls)),
 	(r'^ob/clenovia/$','tjrapid.ob.views.members',dict(category_name='ob')),
 	(r'^en/orienteering/members/$','tjrapid.ob.views.members',dict(category_name='orienteering')),
