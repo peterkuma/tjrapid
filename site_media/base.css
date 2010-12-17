@@ -102,6 +102,11 @@ ul.compact img {
 	margin-right: 5px;
 	vertical-align: text-top;
 }
+.feed {
+	margin-left: 3px;
+	padding: 0 0 0 19px;
+	background: url("feed-icon-14x14.png") no-repeat 0 50%;
+}
 .article {
 	padding: 5px;
 	background-color: #ededed;
