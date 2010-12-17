@@ -27,6 +27,12 @@ class NewsFeed(Feed):
 #    def item_description(self, item):
 #        return markup.textile(item.head)
     
+    def item_title(self, item):
+        return item.title
+    
+    def item_description(self, item):
+        return None
+    
     def item_author(self, item):
         return item.author
     
