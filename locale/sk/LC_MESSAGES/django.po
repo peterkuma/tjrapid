@@ -476,7 +476,7 @@ msgstr "stránky"
 #: news/feed.py:25
 #, python-format
 msgid "News for %s"
-msgstr ""
+msgstr "%s"
 
 #: news/models.py:17
 msgid "head"

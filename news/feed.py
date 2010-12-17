@@ -16,13 +16,12 @@ from models import Article
 from tjrapid.main.models import Category
 
 class NewsFeed(Feed):
-    link = 'ob/news'
-    
-    def get_object(self, request, category):
+    def get_object(self, request, category, title):
+        self.title = title
         return get_object_or_404(Category, name=category)
     
-    def title(self, obj):
-        return _('News for %s') % obj.title
+    def link(self, obj):
+        return '%snews' % obj.get_absolute_url()
         
 #    def item_description(self, item):
 #        return markup.textile(item.head)
