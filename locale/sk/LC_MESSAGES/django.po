@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-14 13:04+0100\n"
+"POT-Creation-Date: 2010-12-17 21:07+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -17,262 +17,262 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : ((n>=2 && n<=4) ? 1 : 2);\n"
 
-#: eventapp/admin_views.py:25 eventapp/models.py:40 eventapp/models.py:80
-#: eventapp/models.py:100 eventapp/models.py:130
+#: eventapp/admin_views.py:32 eventapp/models.py:47 eventapp/models.py:87
+#: eventapp/models.py:107 eventapp/models.py:137
 msgid "ID"
 msgstr "ID"
 
-#: eventapp/admin_views.py:26
+#: eventapp/admin_views.py:33
 msgid "First name"
 msgstr "Krstné meno"
 
-#: eventapp/admin_views.py:27
+#: eventapp/admin_views.py:34
 msgid "Surname"
 msgstr "Priezvisko"
 
-#: eventapp/admin_views.py:28
+#: eventapp/admin_views.py:35
 msgid "Class"
 msgstr "Kategória"
 
-#: eventapp/admin_views.py:29
+#: eventapp/admin_views.py:36
 msgid "Club"
 msgstr "Klub"
 
-#: eventapp/admin_views.py:30 eventapp/models.py:135
+#: eventapp/admin_views.py:37 eventapp/models.py:142
 #: templates/eventapp/entry.html:24
 msgid "SI"
 msgstr "SI"
 
-#: eventapp/admin_views.py:31 eventapp/models.py:136
+#: eventapp/admin_views.py:38 eventapp/models.py:143
 msgid "SI mode"
 msgstr "SI mód"
 
-#: eventapp/admin_views.py:32
+#: eventapp/admin_views.py:39
 msgid "Note"
 msgstr "Poznámka"
 
-#: eventapp/admin_views.py:33 templates/eventapp/entry.html:25
+#: eventapp/admin_views.py:40 templates/eventapp/entry.html:25
 msgid "Accommodation"
 msgstr "Ubytovanie"
 
-#: eventapp/admin_views.py:34
+#: eventapp/admin_views.py:41
 msgid "Accommodation count"
 msgstr "Počet osôb"
 
-#: eventapp/admin_views.py:35
+#: eventapp/admin_views.py:42
 msgid "Accommodation nights"
 msgstr "Počet nocí"
 
-#: eventapp/admin_views.py:36
+#: eventapp/admin_views.py:43
 msgid "Accommodation note"
 msgstr "Poznámka k ubytovaniu"
 
-#: eventapp/admin_views.py:37
+#: eventapp/admin_views.py:44
 msgid "Entry fee"
 msgstr "Štartovné"
 
-#: eventapp/admin_views.py:38
+#: eventapp/admin_views.py:45
 msgid "Accommodation fee"
 msgstr "Poplatok za ubytovanie"
 
-#: eventapp/admin_views.py:39 eventapp/models.py:145
+#: eventapp/admin_views.py:46 eventapp/models.py:152
 msgid "SI fee"
 msgstr "Poplatok za čip"
 
-#: eventapp/admin_views.py:40
+#: eventapp/admin_views.py:47
 msgid "Fees"
 msgstr "Poplatky celkom"
 
-#: eventapp/models.py:7
+#: eventapp/models.py:14
 msgid "1 night"
 msgstr "1 noc"
 
-#: eventapp/models.py:8
+#: eventapp/models.py:15
 msgid "2 nights"
 msgstr "2 noci"
 
-#: eventapp/models.py:9
+#: eventapp/models.py:16
 msgid "3 nights"
 msgstr "3 noci"
 
-#: eventapp/models.py:10
+#: eventapp/models.py:17
 msgid "4 nights"
 msgstr "4 noci"
 
-#: eventapp/models.py:11
+#: eventapp/models.py:18
 msgid "5 nights"
 msgstr "5 nocí"
 
-#: eventapp/models.py:12
+#: eventapp/models.py:19
 msgid "6 nights"
 msgstr "6 nocí"
 
-#: eventapp/models.py:13
+#: eventapp/models.py:20
 msgid "7 nights"
 msgstr "7 nocí"
 
-#: eventapp/models.py:14
+#: eventapp/models.py:21
 msgid "8 nights"
 msgstr "8 nocí"
 
-#: eventapp/models.py:15
+#: eventapp/models.py:22
 msgid "9 nights"
 msgstr "9 nocí"
 
-#: eventapp/models.py:16
+#: eventapp/models.py:23
 msgid "10 nights"
 msgstr "10 nocí"
 
-#: eventapp/models.py:20
+#: eventapp/models.py:27
 msgid "1 person"
 msgstr "1 osoba"
 
-#: eventapp/models.py:21
+#: eventapp/models.py:28
 msgid "2 people"
 msgstr "2 osoby"
 
-#: eventapp/models.py:22
+#: eventapp/models.py:29
 msgid "3 people"
 msgstr "3 osoby"
 
-#: eventapp/models.py:23
+#: eventapp/models.py:30
 msgid "4 people"
 msgstr "4 osoby"
 
-#: eventapp/models.py:24
+#: eventapp/models.py:31
 msgid "5 people"
 msgstr "5 osôb"
 
-#: eventapp/models.py:25
+#: eventapp/models.py:32
 msgid "6 people"
 msgstr "6 osôb"
 
-#: eventapp/models.py:29
+#: eventapp/models.py:36
 msgid "later"
 msgstr "neskôr"
 
-#: eventapp/models.py:30
+#: eventapp/models.py:37
 msgid "borrow"
 msgstr "požičiať"
 
-#: eventapp/models.py:31
+#: eventapp/models.py:38
 msgid "present"
 msgstr "vyplený"
 
-#: eventapp/models.py:41 main/models.py:26 main/models.py:63 news/models.py:8
-#: templates/admin/models.py:35
+#: eventapp/models.py:48 main/models.py:33 main/models.py:70 news/models.py:15
+#: ob/models.py:43
 msgid "title"
 msgstr "názov"
 
-#: eventapp/models.py:42
+#: eventapp/models.py:49
 msgid "si fee"
 msgstr "poplatok za čip"
 
-#: eventapp/models.py:43
+#: eventapp/models.py:50
 msgid "open date"
 msgstr "deň otvorenia"
 
-#: eventapp/models.py:44
+#: eventapp/models.py:51
 msgid "close date"
 msgstr "deň uzatvorenia"
 
-#: eventapp/models.py:45 eventapp/models.py:82 templates/admin/models.py:16
+#: eventapp/models.py:52 eventapp/models.py:89 ob/models.py:24
 msgid "e-mail"
 msgstr "e-mail"
 
-#: eventapp/models.py:58 eventapp/models.py:63 eventapp/models.py:81
-#: eventapp/models.py:101 templates/eventapp/entry.html:6
+#: eventapp/models.py:65 eventapp/models.py:70 eventapp/models.py:88
+#: eventapp/models.py:108 templates/eventapp/entry.html:6
 msgid "event"
 msgstr "pretek"
 
-#: eventapp/models.py:59
+#: eventapp/models.py:66
 msgid "events"
 msgstr "preteky"
 
-#: eventapp/models.py:64 eventapp/models.py:102
+#: eventapp/models.py:71 eventapp/models.py:109
 msgid "label"
 msgstr "popis"
 
-#: eventapp/models.py:65
+#: eventapp/models.py:72
 msgid "classes"
 msgstr "kategórie"
 
-#: eventapp/models.py:66 templates/admin/models.py:42
+#: eventapp/models.py:73 ob/models.py:50
 msgid "start date"
 msgstr "začiatok"
 
-#: eventapp/models.py:67
+#: eventapp/models.py:74
 msgid "end_date"
 msgstr "koniec"
 
-#: eventapp/models.py:68
+#: eventapp/models.py:75
 msgid "fee"
 msgstr "poplatok"
 
-#: eventapp/models.py:74
+#: eventapp/models.py:81
 msgid "class fee"
 msgstr "štartovné"
 
-#: eventapp/models.py:75
+#: eventapp/models.py:82
 msgid "class fees"
 msgstr "štartovné"
 
-#: eventapp/models.py:83 eventapp/models.py:146 main/models.py:72
+#: eventapp/models.py:90 eventapp/models.py:153 main/models.py:79
 msgid "created"
 msgstr "vytvorené"
 
-#: eventapp/models.py:84 eventapp/models.py:147 main/models.py:73
-#: news/models.py:14
+#: eventapp/models.py:91 eventapp/models.py:154 main/models.py:80
+#: news/models.py:21
 msgid "modified"
 msgstr "upravené"
 
-#: eventapp/models.py:94 eventapp/models.py:131
+#: eventapp/models.py:101 eventapp/models.py:138
 #: templates/eventapp/participant.html:60
 msgid "entry"
 msgstr "prihláška"
 
-#: eventapp/models.py:95
+#: eventapp/models.py:102
 msgid "entries"
 msgstr "prihlášky"
 
-#: eventapp/models.py:103
+#: eventapp/models.py:110
 msgid "price"
 msgstr "cena"
 
-#: eventapp/models.py:104
+#: eventapp/models.py:111
 msgid "minimum nights"
 msgstr "minimálny počet nocí"
 
-#: eventapp/models.py:105
+#: eventapp/models.py:112
 msgid "maximum nights"
 msgstr "maximálny počet nocí"
 
-#: eventapp/models.py:106
+#: eventapp/models.py:113
 msgid "capacity"
 msgstr "kapacita"
 
-#: eventapp/models.py:109
+#: eventapp/models.py:116
 #, python-format
 msgid "%(label)s (%(price)s € per night)"
 msgstr "%(label)s (%(price)s € za noc)"
 
-#: eventapp/models.py:124 eventapp/models.py:125 eventapp/models.py:139
+#: eventapp/models.py:131 eventapp/models.py:132 eventapp/models.py:146
 msgid "accommodation"
 msgstr "ubytovanie"
 
-#: eventapp/models.py:132 templates/admin/models.py:13
+#: eventapp/models.py:139 ob/models.py:21
 msgid "first name"
 msgstr "krstné meno"
 
-#: eventapp/models.py:133 templates/admin/models.py:14
+#: eventapp/models.py:140 ob/models.py:22
 msgid "surname"
 msgstr "priezvisko"
 
-#: eventapp/models.py:134
+#: eventapp/models.py:141
 msgid "club"
 msgstr "klub"
 
-#: eventapp/models.py:134
+#: eventapp/models.py:141
 msgid ""
 "Club and membership number, e.g. RBA1234. If registering as an individual, "
 "enter XXXyy, where yy is the year of birth, e.g. XXX80."
@@ -280,146 +280,143 @@ msgstr ""
 "Klub a číslo člena, napr. RBA1234. Ak nie je členom klubu, tak XXXyy,kde yy "
 "je rok narodenia, napr. XXX80."
 
-#: eventapp/models.py:137
+#: eventapp/models.py:144
 msgid "class"
 msgstr "kategória"
 
-#: eventapp/models.py:138
+#: eventapp/models.py:145
 msgid "note"
 msgstr "poznámka"
 
-#: eventapp/models.py:140
+#: eventapp/models.py:147
 msgid "accommodation count"
 msgstr "počet osôb"
 
-#: eventapp/models.py:141
+#: eventapp/models.py:148
 msgid "accommodation nights"
 msgstr "počet nocí"
 
-#: eventapp/models.py:142
+#: eventapp/models.py:149
 msgid "accommodation note"
 msgstr "poznámka k ubytovaniu"
 
-#: eventapp/models.py:143
+#: eventapp/models.py:150
 msgid "accommodation fee"
 msgstr "poplatok za ubytovanie"
 
-#: eventapp/models.py:144
+#: eventapp/models.py:151
 msgid "entry fee"
 msgstr "štartovné"
 
-#: eventapp/models.py:157 templates/eventapp/participant.html:74
+#: eventapp/models.py:164 templates/eventapp/participant.html:74
 msgid "supply later"
 msgstr "dodám neskôr"
 
-#: eventapp/models.py:159 templates/eventapp/participant.html:77
+#: eventapp/models.py:166 templates/eventapp/participant.html:77
 msgid "want to borrow"
 msgstr "chcem si požičiať"
 
-#: eventapp/models.py:169
+#: eventapp/models.py:176
 msgid "participant"
 msgstr "pretekár"
 
-#: eventapp/models.py:170
+#: eventapp/models.py:177
 msgid "participants"
 msgstr "pretekári"
 
-#: eventapp/views.py:46 site_media/views.py:45
+#: eventapp/views.py:48
 msgid "Entry identification code"
 msgstr "Identifikačný kód prihlášky"
 
-#: eventapp/views.py:53 site_media/views.py:52
+#: eventapp/views.py:55
 #, python-format
 msgid "Entry %s does not exist."
 msgstr "Prihláška %s neexistuje."
 
-#: eventapp/views.py:65 site_media/views.py:64
+#: eventapp/views.py:67
 msgid "No matching entry found."
 msgstr "Taká prihĺáška nebola nájdená."
 
-#: eventapp/views.py:73 eventapp/views.py:182 site_media/views.py:72
-#: site_media/views.py:179
+#: eventapp/views.py:75 eventapp/views.py:186
 #, python-format
 msgid "The event will open on %s."
 msgstr "Prihlasovanie na tento pretek bude zahájené %s"
 
-#: eventapp/views.py:89 site_media/views.py:88
+#: eventapp/views.py:91
 msgid "New entry information"
 msgstr "Informácie o novej prihláške"
 
-#: eventapp/views.py:96 eventapp/views.py:134 site_media/views.py:95
-#: site_media/views.py:131
-msgid "Failed to send mail."
-msgstr "Nepodarilo sa odoslať mail."
-
-#: eventapp/views.py:125 site_media/views.py:124
-#: templates/eventapp/recovery_response.html:3
-#: templates/eventapp/recovery_response.html:5
-msgid "Entry identification code recovery"
-msgstr "Pripomienka identifikačného kódu prihlášky"
-
-#: eventapp/views.py:127
+#: eventapp/views.py:93 eventapp/views.py:131
 #, python-format
 msgid "Event organiser <%s>"
 msgstr "Organizátor preteku <%s>"
 
-#: eventapp/views.py:180 site_media/views.py:177
+#: eventapp/views.py:100 eventapp/views.py:138
+msgid "Failed to send mail."
+msgstr "Nepodarilo sa odoslať mail."
+
+#: eventapp/views.py:129 templates/eventapp/recovery_response.html:3
+#: templates/eventapp/recovery_response.html:5
+msgid "Entry identification code recovery"
+msgstr "Pripomienka identifikačného kódu prihlášky"
+
+#: eventapp/views.py:184
 #, python-format
 msgid "The event was closed on %s."
 msgstr "Prihlasovanie na tento pretek bolo uzavreté %s."
 
-#: eventapp/views.py:224
+#: eventapp/views.py:228
 msgid "The SI number is invalid."
 msgstr "Neplatné SI číslo."
 
-#: eventapp/views.py:231 site_media/views.py:228
+#: eventapp/views.py:235
 msgid "There are not as many places available in the accommodation selected."
 msgstr "Nie je dostatok voľných miest na vybranom ubytovaní."
 
-#: eventapp/views.py:304 site_media/views.py:301
+#: eventapp/views.py:308
 msgid "Entry Statement"
 msgstr "Výpis prihlášky"
 
-#: eventapp/views.py:306 site_media/views.py:303
+#: eventapp/views.py:310
 #, python-format
 msgid "Page %(page)d of %(num_pages)d"
 msgstr "Strana %(page)d z %(num_pages)d"
 
-#: eventapp/views.py:310 site_media/views.py:307
+#: eventapp/views.py:314
 #, python-format
 msgid "Event: %s"
 msgstr "Pretek: %s"
 
-#: eventapp/views.py:312 site_media/views.py:309
+#: eventapp/views.py:316
 #, python-format
 msgid "Issue time: %s"
 msgstr "Dátum a čas vystavenia: %s"
 
-#: eventapp/views.py:326 site_media/views.py:323
+#: eventapp/views.py:330
 msgid "Registration:"
 msgstr "Registrácia:"
 
-#: eventapp/views.py:333 site_media/views.py:330
+#: eventapp/views.py:337
 msgid "SI token:"
 msgstr "SI čip:"
 
-#: eventapp/views.py:344 site_media/views.py:341
+#: eventapp/views.py:348
 msgid "Accommodation:"
 msgstr "Ubytovanie:"
 
-#: eventapp/views.py:367 site_media/views.py:364
+#: eventapp/views.py:371
 msgid "No participants in this entry."
 msgstr "V tejto prihláške nie sú žiadni pretekári."
 
-#: eventapp/views.py:382 site_media/views.py:379
+#: eventapp/views.py:386
 msgid "Total:"
 msgstr "Celkom:"
 
-#: main/models.py:8
+#: main/models.py:15
 msgid "code"
 msgstr "kód"
 
-#: main/models.py:10
+#: main/models.py:17
 msgid ""
 "All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
 "dirlang.html#langcodes"
@@ -427,109 +424,149 @@ msgstr ""
 "Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
 "dirlang.html#langcodes"
 
-#: main/models.py:12 main/models.py:28 main/models.py:65
-#: templates/admin/models.py:37
+#: main/models.py:19 main/models.py:35 main/models.py:72 ob/models.py:45
 msgid "name"
 msgstr "meno"
 
-#: main/models.py:19 main/models.py:33
+#: main/models.py:26 main/models.py:40
 msgid "language"
 msgstr "jazyk"
 
-#: main/models.py:20
+#: main/models.py:27
 msgid "languages"
 msgstr "jazyky"
 
-#: main/models.py:31 main/models.py:68 templates/admin/models.py:40
+#: main/models.py:38 main/models.py:75 ob/models.py:48
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
-#: main/models.py:34
+#: main/models.py:41
 msgid "template name"
 msgstr "meno šablóny"
 
-#: main/models.py:35
+#: main/models.py:42
 msgid "menu"
 msgstr "menu"
 
-#: main/models.py:51 main/models.py:84 news/models.py:23 news/models.py:53
+#: main/models.py:58 main/models.py:91 news/models.py:30 news/models.py:60
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:55 main/models.py:70 news/models.py:9
-#: templates/admin/models.py:15 templates/admin/models.py:45
+#: main/models.py:62 main/models.py:77 news/models.py:16 ob/models.py:23
+#: ob/models.py:53
 msgid "category"
 msgstr "kategória"
 
-#: main/models.py:56
+#: main/models.py:63
 msgid "categories"
 msgstr "kategórie"
 
-#: main/models.py:71 news/models.py:43
+#: main/models.py:78 news/models.py:50
 msgid "content"
 msgstr "obsah"
 
-#: main/models.py:90
+#: main/models.py:97
 msgid "page"
 msgstr "stránka"
 
-#: main/models.py:91
+#: main/models.py:98
 msgid "pages"
 msgstr "stránky"
 
-#: news/models.py:10
+#: news/feed.py:25
+#, python-format
+msgid "News for %s"
+msgstr ""
+
+#: news/models.py:17
 msgid "head"
 msgstr "hlavička"
 
-#: news/models.py:11
+#: news/models.py:18
 msgid "body"
 msgstr "telo"
 
-#: news/models.py:12
+#: news/models.py:19
 msgid "author"
 msgstr "autor"
 
-#: news/models.py:13
+#: news/models.py:20
 msgid "published"
 msgstr "publikované"
 
-#: news/models.py:31 news/models.py:41
+#: news/models.py:38 news/models.py:48
 msgid "article"
 msgstr "článok"
 
-#: news/models.py:32
+#: news/models.py:39
 msgid "articles"
 msgstr "články"
 
-#: news/models.py:40
+#: news/models.py:47
 msgid "subject"
 msgstr "subjekt"
 
-#: news/models.py:42
+#: news/models.py:49
 msgid "reply to"
 msgstr "odpoveď na"
 
-#: news/models.py:44
+#: news/models.py:51
 msgid "sender"
 msgstr "odosielateľ"
 
-#: news/models.py:45
+#: news/models.py:52
 msgid "posted"
 msgstr "odoslané"
 
-#: news/models.py:69
+#: news/models.py:76
 msgid "comment"
 msgstr "komentár"
 
-#: news/models.py:70
+#: news/models.py:77
 msgid "comments"
 msgstr "komentáre"
 
-#: news/views.py:66 templates/news/archive/ob.html:4
+#: news/views.py:74 templates/news/archive/ob.html:4
 #: templates/news/archive/ob.html.py:8 templates/news/comment/ob.html:4
 #: templates/news/details/ob.html:4
 msgid "News"
 msgstr "Novinky"
+
+#: ob/models.py:34
+msgid "member"
+msgstr "člen"
+
+#: ob/models.py:35
+msgid "members"
+msgstr "členovia"
+
+#: ob/models.py:51
+msgid "end date"
+msgstr "koniec"
+
+#: ob/models.py:52
+msgid "location"
+msgstr "miesto"
+
+#: ob/models.py:69 ob/models.py:76 ob/models.py:83 ob/models.py:91
+msgid "competitions"
+msgstr "preteky"
+
+#: ob/models.py:69
+msgid "specification"
+msgstr "rozpis"
+
+#: ob/models.py:76
+msgid "results"
+msgstr "vysledky"
+
+#: ob/models.py:83
+msgid "directives"
+msgstr "pokyny"
+
+#: ob/models.py:90
+msgid "competition"
+msgstr "pretek"
 
 #: templates/base.html:57
 msgid "Last updated"
@@ -600,54 +637,21 @@ msgstr "Meno"
 msgid "Category"
 msgstr "Kategória"
 
-#: templates/admin/models.py:26
-msgid "member"
-msgstr "člen"
-
-#: templates/admin/models.py:27
-msgid "members"
-msgstr "členovia"
-
-#: templates/admin/models.py:43
-msgid "end date"
-msgstr "koniec"
-
-#: templates/admin/models.py:44
-msgid "location"
-msgstr "miesto"
-
-#: templates/admin/models.py:61 templates/admin/models.py:68
-#: templates/admin/models.py:75 templates/admin/models.py:83
-msgid "competitions"
-msgstr "preteky"
-
-#: templates/admin/models.py:61
-msgid "specification"
-msgstr "rozpis"
-
-#: templates/admin/models.py:68
-msgid "results"
-msgstr "vysledky"
-
-#: templates/admin/models.py:75
-msgid "directives"
-msgstr "pokyny"
-
-#: templates/admin/models.py:82
-msgid "competition"
-msgstr "pretek"
-
-#: templates/admin/eventapp/event/change_form.html:5
+#: templates/admin/eventapp/event/change_form.html:6
 msgid "Reports"
 msgstr "Súhrnné správy"
 
-#: templates/admin/eventapp/event/change_form.html:7
+#: templates/admin/eventapp/event/change_form.html:8
 msgid "Standard report in CSV"
 msgstr "Štandardný výpis v CSV"
 
-#: templates/admin/eventapp/event/change_form.html:8
+#: templates/admin/eventapp/event/change_form.html:9
 msgid "Full report in CSV"
 msgstr "Úplný výpis v CSV"
+
+#: templates/admin/eventapp/event/change_form.html:13
+msgid "Links to this event"
+msgstr "Odkazy na tento pretek"
 
 #: templates/eventapp/500.html:3 templates/eventapp/500.html.py:6
 msgid "Page temporarily unavailable"
@@ -755,38 +759,6 @@ msgstr ""
 msgid "Send me my entry ID"
 msgstr "Potvrdiť"
 
-#: templates/eventapp/newentry-email.txt:1
-#: templates/eventapp/recovery-email.txt:1
-msgid "Dear Registrant,"
-msgstr "Dobrý deň,"
-
-#: templates/eventapp/newentry-email.txt:3
-#, python-format
-msgid ""
-"Registration to `%(event_title)s' has been requested via http://%(domain)s%"
-"(event_url)s."
-msgstr ""
-"Prihláška na `%(event_title)s' bola vyžiadaná cez http://%(domain)s%"
-"(event_url)s."
-
-#: templates/eventapp/newentry-email.txt:5
-#: templates/eventapp/recovery-email.txt:5
-#, python-format
-msgid "Your entry identification code is %(id)s."
-msgstr "Váš identifikačný kód prihlášky je %(id)s."
-
-#: templates/eventapp/newentry-email.txt:7
-#: templates/eventapp/recovery-email.txt:7
-#, python-format
-msgid "You can view or modify the entry at http://%(domain)s%(entry_url)s."
-msgstr ""
-"Prihlášku môžete zobraziť alebo upraviť na http://%(domain)s%(entry_url)s."
-
-#: templates/eventapp/newentry-email.txt:9
-#: templates/eventapp/recovery-email.txt:9
-msgid "This e-mail has been generated automatically."
-msgstr "Tento e-mail bol vygenerovaný automaticky."
-
 #: templates/eventapp/participant.html:3
 #: templates/eventapp/participant.html:59
 msgid "Participant"
@@ -804,15 +776,6 @@ msgstr "Poznámka k ubytovaniu"
 msgid "Register"
 msgstr "Registrovať"
 
-#: templates/eventapp/recovery-email.txt:3
-#, python-format
-msgid ""
-"Recovery of your entry identification code has been requested via http://%"
-"(domain)s%(event_url)s."
-msgstr ""
-"Pripomienka identifikačného kódu prihlášky bola vyžiadaná cez http://%"
-"(domain)s%(event_url)s."
-
 #: templates/eventapp/recovery_response.html:6
 #, python-format
 msgid ""
@@ -820,11 +783,15 @@ msgid ""
 msgstr ""
 "Identifikačné číslo prihlášky bolo odoslané na <strong>%(email)s</strong>."
 
-#: templates/news/archive/ob.html:20
+#: templates/news/archive/ob.html:12
+msgid "RSS feed"
+msgstr "RSS feed"
+
+#: templates/news/archive/ob.html:21
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: templates/news/archive/ob.html:27
+#: templates/news/archive/ob.html:28
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -832,7 +799,7 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: templates/news/archive/ob.html:30 templates/news/details/ob.html:27
+#: templates/news/archive/ob.html:31 templates/news/details/ob.html:27
 msgid "Add new comment"
 msgstr "Pridať nový komentár"
 
@@ -859,3 +826,30 @@ msgstr "Komentáre"
 #: templates/news/details/ob.html:21
 msgid "Reply to this comment"
 msgstr "Odpovedať na tento komentár"
+
+#~ msgid "Dear Registrant,"
+#~ msgstr "Dobrý deň,"
+
+#~ msgid ""
+#~ "Registration to `%(event_title)s' has been requested via http://%(domain)s"
+#~ "%(event_url)s."
+#~ msgstr ""
+#~ "Prihláška na `%(event_title)s' bola vyžiadaná cez http://%(domain)s%"
+#~ "(event_url)s."
+
+#~ msgid "Your entry identification code is %(id)s."
+#~ msgstr "Váš identifikačný kód prihlášky je %(id)s."
+
+#~ msgid "You can view or modify the entry at http://%(domain)s%(entry_url)s."
+#~ msgstr ""
+#~ "Prihlášku môžete zobraziť alebo upraviť na http://%(domain)s%(entry_url)s."
+
+#~ msgid "This e-mail has been generated automatically."
+#~ msgstr "Tento e-mail bol vygenerovaný automaticky."
+
+#~ msgid ""
+#~ "Recovery of your entry identification code has been requested via http://%"
+#~ "(domain)s%(event_url)s."
+#~ msgstr ""
+#~ "Pripomienka identifikačného kódu prihlášky bola vyžiadaná cez http://%"
+#~ "(domain)s%(event_url)s."
