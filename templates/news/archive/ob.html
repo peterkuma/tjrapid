@@ -9,6 +9,7 @@
 		{% if day %}{{ day }}{% endif %}
 		{% if month_name %}{{ month_name }}{% endif %}
 		{% if year %}{{ year }}{% endif %}
+                <a href="rss/" class="feed" style="margin-left: 10pt">{% trans "RSS feed" %}</a>
 	</h3>
 	{% for a in articles %}
 		<div class="article">
