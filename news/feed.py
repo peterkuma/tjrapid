@@ -40,4 +40,4 @@ class NewsFeed(Feed):
         return item.published
     
     def items(self, obj):
-        return Article.objects.filter(category=obj)[:5]
+        return Article.objects.filter(category=obj)
