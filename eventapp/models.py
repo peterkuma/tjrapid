@@ -86,7 +86,7 @@ class ClassFee(Model):
 class Entry(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('ER'), max_length=11)
 	event = ForeignKey('Event', db_column='eventid', verbose_name=_('event'))
-	email = EmailField(_('e-mail'),  unique=True)
+	email = EmailField(_('e-mail'))
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 	
@@ -101,6 +101,7 @@ class Entry(Model):
 		verbose_name = _('entry')
 		verbose_name_plural = _('entries')
 		ordering = ('event', 'created')
+		unique_together = ('event', 'email')
 
 	
 class Accommodation(Model):
@@ -141,7 +142,7 @@ class Participant(Model):
 	club = CharField(_('club'), max_length=7,  help_text=_('Club and membership number, e.g. RBA1234. If registering as an individual, enter XXXyy, where yy is the year of birth, e.g. XXX80.'))
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
 	simode = CharField(_('SI mode'),  max_length=1,  choices=SIMODE_CHOICES, default='P')
-	cls = CharField(_('class'), max_length=5)
+	cls = CharField(_('class'), max_length=10)
 	note = TextField(_('note'), blank=True)
 	accomm = ForeignKey('Accommodation', db_column='accomid', verbose_name=_('accommodation'), blank=True,  null=True)
 	accommcount = PositiveSmallIntegerField(_('accommodation count'),  default=1, blank=True, null=True, choices=ACCOMMCOUNT_CHOICES)
