@@ -22,7 +22,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.core.urlresolvers import reverse
 from django.core.exceptions import *
@@ -39,23 +39,23 @@ def http500(request, error):
 	c = RequestContext(request, {'error': error})
 	return HttpResponseServerError(t.render(c))
 
-class NewEntryForm(forms.ModelForm):
-	class Meta:
-		model = Entry
-		fields = ('event', 'email', )
-	
-class ExistingEntryForm(forms.Form):
-	id = forms.CharField(label=_('Entry identification code'), max_length=11)	
-		
-	def clean_id(self):
-		data = self.cleaned_data['id']
-		try:
-			Entry.objects.get(pk=data)
-		except Entry.DoesNotExist:
-			raise ValidationError(_('Entry %s does not exist.') % data)
-		return data
-
 def event(request, id, namespace=None, **kwargs):
+	class NewEntryForm(forms.ModelForm):
+		class Meta:
+			model = Entry
+			fields = ('event', 'email', )
+		
+	class ExistingEntryForm(forms.Form):
+		id = forms.CharField(label=_('Entry identification code'), max_length=11)	
+			
+		def clean_id(self):
+			data = self.cleaned_data['id']
+			try:
+				Entry.objects.get(pk=data)
+			except Entry.DoesNotExist:
+				raise ValidationError(_('Entry %s does not exist.') % data)
+			return data
+
 	class RecoveryForm(forms.Form):
 		email = forms.EmailField()
 		
