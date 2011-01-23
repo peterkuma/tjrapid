@@ -15,6 +15,7 @@
 		{% blocktrans %}To register one or more participants, create a new entry. <strong>Entry identification code</strong> will be sent to your e-mail. You will be able to view or modify an existing entry at a later time using the identification code.{% endblocktrans %}
 		</p>
 		<form method="post" action="">
+			{{ newentry_form.non_field_errors }}
 			{{ newentry_form.email.errors }}
 			{{ newentry_form.email.label_tag }}: {{ newentry_form.email }} <input type="submit" name="newentry" value="{% trans "New entry" %}" />
 		</form>

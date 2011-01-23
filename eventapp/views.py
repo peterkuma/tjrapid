@@ -22,7 +22,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django import forms
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.core.urlresolvers import reverse
 from django.core.exceptions import *
@@ -42,7 +42,7 @@ def http500(request, error):
 class NewEntryForm(forms.ModelForm):
 	class Meta:
 		model = Entry
-		fields = ('email', )
+		fields = ('event', 'email', )
 	
 class ExistingEntryForm(forms.Form):
 	id = forms.CharField(label=_('Entry identification code'), max_length=11)	
@@ -75,7 +75,7 @@ def event(request, id, namespace=None, **kwargs):
 		return http500(request,  _('The event will open on %s.' % ev.open_date))
 
 	if request.method == 'POST' and request.POST.has_key('newentry'):
-		newentry_form = NewEntryForm(request.POST)
+		newentry_form = NewEntryForm(dict(event=id, email=request.POST['email']))
 		if newentry_form.is_valid():
 			er = newentry_form.save(commit=False)
 			er.event = ev

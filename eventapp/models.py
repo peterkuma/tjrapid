@@ -7,7 +7,7 @@
 #
 
 from django.db.models import *
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from os import urandom
 
 ACCOMMNIGHTS_CHOICES = (
@@ -101,7 +101,7 @@ class Entry(Model):
 		verbose_name = _('entry')
 		verbose_name_plural = _('entries')
 		ordering = ('event', 'created')
-		unique_together = ('event', 'email')
+		unique_together = (('event', 'email'),)
 
 	
 class Accommodation(Model):
