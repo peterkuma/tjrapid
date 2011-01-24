@@ -231,6 +231,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			accomm = self.cleaned_data.get('accomm')
 			accommcount = self.cleaned_data.get('accommcount')
 			accommnights = self.cleaned_data.get('accommnights')
+			
 			if accomm != None and accommcount != None:
 				if pa != None and accomm == pa.accomm and accomm.free() + pa.accommcount < accommcount or pa == None and accomm.free() < accommcount:
 					self._errors['accomm'] = self.error_class([_('There are not as many places available in the accommodation selected.')])
@@ -252,7 +253,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 				pa.sifee = ev.sifee
 			else:
 				pa.sifee = 0
-			if pa.accomm != None:
+			if pa.accomm != None and pa.accommcount != None and pa.accommnights != None:
 				pa.accommfee = pa.accomm.price * pa.accommcount * pa.accommnights
 			pa.save(force_insert=(id == None))
 			
