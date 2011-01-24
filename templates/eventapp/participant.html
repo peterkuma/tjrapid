@@ -50,7 +50,11 @@ function update_form(form) {
 	{% endfor %}
 }
 window.onload = function() {
-	update_form(document.getElementById('form'));
+	form = document.getElementById('form');
+	accomm = document.getElementById('id_accomm');
+	
+	update_form(form);
+	accomm.onchange = function() { update_form(form); };
 }
 </script>
 {% endblock %}
@@ -58,7 +62,7 @@ window.onload = function() {
 {% block content %}
 	<h3>{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}
 		({% trans "entry" %} <a href="../">{{ entry }}</a>)</h3>
-	<form method="post" action="" id="form" onchange="update_form(this)">
+	<form method="post" action="" id="form">
 		<table>
 			<tr><td colspan="2">{{ form.firstname.errors }}</td></tr>
 			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
@@ -68,12 +72,12 @@ window.onload = function() {
 			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
 			<tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
 			<tr><td>{{ form.si.label_tag }}*:</td><td>
-				<input type="radio" name="simode" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
+				<input type="radio" name="simode" onchange="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
 				<label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
-				<input type="radio" name="simode" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
+				<input type="radio" name="simode" onchange="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
 				<label for="si_later">{% trans "supply later" %}</label><br />
 				{% if event.sifee %}
-					<input type="radio" name="simode" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
+					<input type="radio" name="simode" onchange="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
 					<label for="si_borrow">{% trans "want to borrow" %}</label><br />
 				{% endif %}
 			</td></tr>
