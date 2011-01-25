@@ -3,6 +3,9 @@
 {% block title %}{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/site_media/eventapp/style.css" />
+<script type="text/javascript" src="/site_media/mootools.js"></script>
+<script type="text/javascript" src="/site_media/mootools-textarea-resizer.js"></script>
+<link rel="stylesheet" type="text/css" href="/site_media/textarea-resizer.css" />
 <script language="javascript">
 function update_form(form) {
 	form.si.disabled = true;
@@ -50,11 +53,13 @@ function update_form(form) {
 	{% endfor %}
 }
 window.onload = function() {
-	form = document.getElementById('form');
-	accomm = document.getElementById('id_accomm');
+	$$('textarea').resizable();
+	$$('textarea').setStyle('height', 40);
+
+	f = document.getElementById('form');
 	
-	update_form(form);
-	accomm.onchange = function() { update_form(form); };
+	update_form(f);
+	f.accomm.onchange = function() { update_form(f); };
 }
 </script>
 {% endblock %}
@@ -72,12 +77,12 @@ window.onload = function() {
 			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
 			<tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
 			<tr><td>{{ form.si.label_tag }}*:</td><td>
-				<input type="radio" name="simode" onchange="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
+				<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
 				<label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
-				<input type="radio" name="simode" onchange="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
+				<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
 				<label for="si_later">{% trans "supply later" %}</label><br />
 				{% if event.sifee %}
-					<input type="radio" name="simode" onchange="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
+					<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
 					<label for="si_borrow">{% trans "want to borrow" %}</label><br />
 				{% endif %}
 			</td></tr>
