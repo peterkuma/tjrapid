@@ -3,6 +3,21 @@
 {% load markup %}
 {% block title %}{% trans "News" %}{% endblock %}
 
+{% block head %}
+<script type="text/javascript" src="/site_media/mootools.js"></script>
+<script type="text/javascript" src="/site_media/mootools-textarea-resizer.js"></script>
+<link rel="stylesheet" type="text/css" href="/site_media/textarea-resizer.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window.addEvent('domready', function() {
+	$$('textarea').setStyle('width', 400);
+	$$('textarea').setStyle('height', 150);
+	$$('textarea').resizable();
+});
+/* ]]> */
+</script>
+{% endblock %}
+
 {% block content %}
 	{% if reply %}
 		<h3>{% trans "In reply to" %}:</h3>
