@@ -7,6 +7,11 @@
 <script type="text/javascript" src="/site_media/mootools-textarea-resizer.js"></script>
 <link rel="stylesheet" type="text/css" href="/site_media/textarea-resizer.css" />
 <script language="javascript">
+accommcount_cache = new Array();
+accommnights_cache = new Array();
+accommcount_selected = 0;
+accommnights_selected = 0;
+	
 function update_form(form) {
 	form.si.disabled = true;
 	for (i=0; i < form.simode.length; i++) {
@@ -15,52 +20,82 @@ function update_form(form) {
 			form.si.disabled = false;
 	}
 	
-	form.accommcount.disabled = form.accomm.value == '';
-	form.accommnights.disabled = form.accomm.value == '';
-	form.accommnote.disabled = form.accomm.value == '';
-	
+	while (form.accommcount.length > 0)
+		form.accommcount.remove(0);
+	while (form.accommnights.length > 0)
+		form.accommnights.remove(0);
+		
 	{% for ac in accommodation %}
 		for (i = 0; i < form.accomm.length; i++) {
 			o = form.accomm[i];
 			if (o.value == '{{ ac.id }}') {
-				o.disabled = {{ ac.free }} == 0
-				{% if participant.accomm and participant.accommcount %}
-					o.disabled = (o.value == '{{ participant.accomm.id }}') && {{ ac.free }} + {{participant.accommcount }} == 0
+				{% if ac == participant.accomm and participant.accommcount %}
+					o.disabled = {{ ac.free }} + {{participant.accommcount }} == 0;
+				{% else %}
+					o.disabled = {{ ac.free }} == 0;
 				{% endif %}
 			}
 		}
 		
 		if (form.accomm.value == '{{ ac.id }}') {
-			for (i = 0; i < form.accommcount.length; i++) {
-				o = form.accommcount[i];
-				if ({{ ac.free }} >= o.value)
-					o.style.display = 'block';
-				else
-					o.style.display = 'none';
+			for (i = 0; i < accommcount_cache.length; i++) {
+				o = accommcount_cache[i];
 				{% if ac == participant.accomm and participant.accommcount %}
 					if ({{ ac.free }} + {{ participant.accommcount }} >= o.value)
-						o.style.display = 'block';
+						form.accommcount.add(o, null);
+				{% else %}
+					if ({{ ac.free }} >= o.value)
+						form.accommcount.add(o, null);
 				{% endif %}
 			}
-			for (i = 0; i < form.accommnights.length; i++) {
-				o = form.accommnights[i];
-				if (o.value > {{ ac.maxnights }} || o.value < {{ ac.minnights }})
-					o.style.display = 'none';
-				else
-					o.style.display = 'block';
+			for (i = 0; i < accommnights_cache.length; i++) {
+				o = accommnights_cache[i];
+				if (o.value <= {{ ac.maxnights }} && o.value >= {{ ac.minnights }})
+					form.accommnights.add(o, null);
 			}
 		}
 	{% endfor %}
+	
+	for (i = 0; i < form.accommcount.length; i++)
+		if (form.accommcount[i] == accommcount_selected)
+			form.accommcount.selectedIndex = i;
+	for (i = 0; i < form.accommnights.length; i++)
+		if (form.accommnights[i] == accommnights_selected)
+			form.accommnights.selectedIndex = i;
+	
+	disabled = form.accomm.value == '' || form.accommcount.length == 0 || form.accommnights.length == 0;
+	form.accommcount.disabled = disabled;
+	form.accommnights.disabled = disabled;
+	form.accommnote.disabled = disabled;
+	
+	form.accomm.disabled = form.accomm.length == 1;
+	
+	if (form.accommcount.length == 0)
+		form.accommcount.add(new Option('---------', '0'), null);
+	if (form.accommnights.length == 0)
+		form.accommnights.add(new Option('---------', '0'), null);
 }
-window.onload = function() {
+window.addEvent('domready', function() {
 	$$('textarea').resizable();
 	$$('textarea').setStyle('height', 40);
 
 	f = document.getElementById('form');
 	
+	for (i = 0; i < f.accommcount.length; i++)
+		accommcount_cache.push(f.accommcount[i].cloneNode(true));
+	for (i = 0; i < f.accommnights.length; i++)
+		accommnights_cache.push(f.accommnights[i].cloneNode(true));
+
 	update_form(f);
 	f.accomm.onchange = function() { update_form(f); };
-}
+	
+	$('id_accommcount').addEvent('change', function() {
+	    accommcount_selected = f.accommcount[f.accommcount.selectedIndex];
+	});
+	$('id_accommnights').addEvent('change', function() {
+	    accommnights_selected = f.accommnights[f.accommnights.selectedIndex];
+	});
+});
 </script>
 {% endblock %}
 
