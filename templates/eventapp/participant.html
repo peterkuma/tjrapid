@@ -9,9 +9,17 @@
 <script language="javascript">
 accommcount_cache = new Array();
 accommnights_cache = new Array();
-accommcount_selected = 0;
-accommnights_selected = 0;
-	
+accommcount_selected = null;
+accommnights_selected = null;
+
+function add(s, o) {
+	try {
+		s.add(o, null);
+	} catch(err) { /* IE. */
+		s.add(o);
+	}
+}
+
 function update_form(form) {
 	form.si.disabled = true;
 	for (i=0; i < form.simode.length; i++) {
@@ -19,6 +27,9 @@ function update_form(form) {
 		if (r.value == 'P' && r.checked)
 			form.si.disabled = false;
 	}
+	
+	form.accommcount.onchange = null;
+	form.accommnights.onchange = null;
 	
 	while (form.accommcount.length > 0)
 		form.accommcount.remove(0);
@@ -42,25 +53,27 @@ function update_form(form) {
 				o = accommcount_cache[i];
 				{% if ac == participant.accomm and participant.accommcount %}
 					if ({{ ac.free }} + {{ participant.accommcount }} >= o.value)
-						form.accommcount.add(o, null);
+						add(form.accommcount, o);
 				{% else %}
 					if ({{ ac.free }} >= o.value)
-						form.accommcount.add(o, null);
+						add(form.accommcount, o);
 				{% endif %}
 			}
 			for (i = 0; i < accommnights_cache.length; i++) {
 				o = accommnights_cache[i];
 				if (o.value <= {{ ac.maxnights }} && o.value >= {{ ac.minnights }})
-					form.accommnights.add(o, null);
+					add(form.accommnights, o);
 			}
 		}
 	{% endfor %}
 	
+	form.accommnights.selectedIndex = 0;
+	form.accommcount.selectedIndex = 0;
 	for (i = 0; i < form.accommcount.length; i++)
-		if (form.accommcount[i] == accommcount_selected)
+		if (form.accommcount[i].value == accommcount_selected.value)
 			form.accommcount.selectedIndex = i;
 	for (i = 0; i < form.accommnights.length; i++)
-		if (form.accommnights[i] == accommnights_selected)
+		if (form.accommnights[i].value == accommnights_selected.value)
 			form.accommnights.selectedIndex = i;
 	
 	disabled = form.accomm.value == '' || form.accommcount.length == 0 || form.accommnights.length == 0;
@@ -71,30 +84,33 @@ function update_form(form) {
 	form.accomm.disabled = form.accomm.length == 1;
 	
 	if (form.accommcount.length == 0)
-		form.accommcount.add(new Option('---------', '0'), null);
+		add(form.accommcount, new Option('---------', '0', false));
 	if (form.accommnights.length == 0)
-		form.accommnights.add(new Option('---------', '0'), null);
+		add(form.accommnights, new Option('---------', '0', false));
+		
+    	form.accommcount.onchange = function() {
+		accommcount_selected = this[this.selectedIndex];
+	};
+	form.accommnights.onchange = function() {
+		accommnights_selected = this[this.selectedIndex];
+	};
 }
 window.addEvent('domready', function() {
 	$$('textarea').resizable();
 	$$('textarea').setStyle('height', 40);
 
-	f = document.getElementById('form');
+	f = $('form');
 	
 	for (i = 0; i < f.accommcount.length; i++)
-		accommcount_cache.push(f.accommcount[i].cloneNode(true));
+		accommcount_cache.push(f.accommcount[i]);
 	for (i = 0; i < f.accommnights.length; i++)
-		accommnights_cache.push(f.accommnights[i].cloneNode(true));
+		accommnights_cache.push(f.accommnights[i]);
+
+	accommcount_selected = f.accommcount[f.accommcount.selectedIndex];
+	accommnights_selected = f.accommnights[f.accommnights.selectedIndex];
 
 	update_form(f);
 	f.accomm.onchange = function() { update_form(f); };
-	
-	$('id_accommcount').addEvent('change', function() {
-	    accommcount_selected = f.accommcount[f.accommcount.selectedIndex];
-	});
-	$('id_accommnights').addEvent('change', function() {
-	    accommnights_selected = f.accommnights[f.accommnights.selectedIndex];
-	});
 });
 </script>
 {% endblock %}
