@@ -141,10 +141,12 @@ window.addEvent('domready', function() {
 			<tr><td>{{ form.cls.label_tag }}*:</td><td>{{ form.cls }}</td></tr>
 			<tr><td colspan="2">{{ form.note.errors }}</td></tr>
 			<tr><td>{{ form.note.label_tag }}:</td><td>{{ form.note }}</td></tr>
-			<tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
-			<tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
-			<tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
-			<tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
+			{% if accommodation %}
+			    <tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
+			    <tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
+			    <tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
+			    <tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
+			{% endif %}
 		</table>
 		<div class="form-buttons">
 			<input type="submit" name="commit" value="{% trans "Register" %}" />
