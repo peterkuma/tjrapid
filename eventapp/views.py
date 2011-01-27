@@ -183,6 +183,26 @@ def entry(request, eventid, id, **kwargs):
 		RequestContext(request)
 	)
 
+def action(request, eventid,  entryid, namespace=None, **kwargs):
+	ev = get_object_or_404(Event,  pk=eventid)
+	er = get_object_or_404(Entry,  pk=entryid,  event=ev)
+
+	if ev.close_date < datetime.date.today():
+		return http500(request, _('The event was closed on %s.' % ev.close_date))
+	elif ev.open_date > datetime.date.today():
+		return http500(request,  _('The event will open on %s.' % ev.open_date))
+		
+	action = request.POST.get('action')
+	selected = request.POST.getlist('selected')
+	
+	participants = Participant.objects.filter(entry=er)
+	for pa in participants:
+		if pa.id in selected:
+			if action == "remove":
+				pa.delete()
+		
+	return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
+
 def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	ev = get_object_or_404(Event,  pk=eventid)
 	er = get_object_or_404(Entry,  pk=entryid,  event=ev)

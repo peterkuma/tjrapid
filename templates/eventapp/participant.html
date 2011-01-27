@@ -160,8 +160,8 @@ window.addEvent('domready', function() {
 {% endblock %}
 
 {% block content %}
-	<h3>{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}
-		({% trans "entry" %} <a href="../">{{ entry }}</a>)</h3>
+	<h4>{% trans "Entry" %} <a href="../">{{ entry }}</a></h4>
+	<h3>{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}</h3>
 	<form method="post" action="" id="form">
 		<table>
 			<tr><td colspan="2">{{ form.surname.errors }}</td></tr>
@@ -178,7 +178,7 @@ window.addEvent('domready', function() {
 				<label for="si_later">{% trans "supply later" %}</label><br />
 				{% if event.sifee %}
 					<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
-					<label for="si_borrow">{% trans "want to borrow" %}</label><br />
+					<label for="si_borrow">{% trans "want to borrow" %} ({{ event.sifee }} €)</label><br />
 				{% endif %}
 			</td></tr>
 			<tr><td colspan="2">{{ form.cls.errors }}</td></tr>

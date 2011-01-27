@@ -1,9 +1,24 @@
 {% extends "eventapp/base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Entry" %} {{ entry.id }}{% endblock %}
+{% block head %}
+{{ block.super }}
+<script type="text/javascript" src="/site_media/mootools.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+function selectall(me, others) {
+	
+	$$(others).each(function(e) { e.checked = me.checked; });
+}
+
+window.addEvent('domready', function() {		
+});
+/* ]]> */
+</script>
+{% endblock %}
 {% block content %}
-	<h3>{% trans "Entry" %} {{ entry.id }}
-	({% trans "event" %} <a href="../">{{ event|escape }}</a>)</h3>
+	<h4><a href="../">{{ event|escape }}</a></h4>
+	<h3>{% trans "Entry" %} {{ entry.id }}</h3>
 	{% if participants %}
 		<form method="get" action="pdf/" style="display: inline-block; margin: 5pt 0">
 			<input type="submit" value="{% trans "Export as PDF" %}" />
@@ -11,27 +26,44 @@
 	{% endif %}
 	{% if event.is_open %}
 		<form method="get" action="PA/" style="display: inline-block; margin: 5pt 0">
-			<input type="submit" value="{% trans "New participant" %}" />
+			<input type="submit" value="{% trans "Add a participant to the entry" %}" />
 		</form>
 	{% endif %}
-	<p>{% trans "List of participants follows." %}</p>
-	<ol class="participant-list">
-		{% for pa in participants %}
-			<li class="participant">
-				<div class="fees">{{ pa.fees }} €</div>
-				<div class="name">{{ pa.firstname|escape }} {{ pa.surname|escape }}</div>
-				{% trans "Registration" %}: <em>{{ pa.club|escape }}, {{ pa.cls|escape }} ({{ pa.entryfee }} €)</em><br />
-				{% trans "SI" %}: <em>{{ pa.get_si_display }} {% if pa.sifee %}({{ pa.sifee }} €){% endif %}</em> <br />
-				{% if pa.accomm %}{% trans "Accommodation" %}: <em>{{ pa.accomm.label|escape }}, {{ pa.get_accommcount_display }}, {{ pa.get_accommnights_display }} ({{ pa.accommfee }} €)</em>{% endif %}
-				{% if event.is_open %}
-					<form method="post" action="{{ pa.id }}/">
-						<input type="hidden" name="id" value="{{ pa.id }}" />
-						<input type="submit" name="remove" value="{% trans "Remove" %}" />
-						<input type="submit" name="change" value="{% trans "Change" %}" />
-					</form>
-				{% endif %}
-			</li>
-		{% endfor %}
-	</ol>
-	<div class="total">{% trans "Total" %}:  {{ total }} €</div>
+	{% if participants %}
+		<form action="action/" method="post">
+			<div style="float: right; padding-bottom: 10px">
+				<select name="action">
+					<option value="remove">{% trans "Remove selected" %}</option>
+				</select>
+				<input type="submit" value="{% trans "Perform" %}" />
+			</div>
+			<table class="standard participant-table" style="clear: both; width: 100%">
+				<tr>
+					<th><input type="checkbox" onchange="selectall(this, 'input[name=selected]')" /></th>
+					<th>{% trans "Name" %}</th>
+					<th>{% trans "Club" %}</th>
+					<th>{% trans "Class" %}</th>
+					<th>{% trans "SI" %}</th>
+					<th>{% trans "Accomm." %}</th>
+					<th>{% trans "Entry/Acomm./SI fee" %}</th>
+					<th>{% trans "Total" %}</th>
+				</tr>
+				{% for pa in participants %}
+					<tr>
+						<td><input type="checkbox" name="selected" value="{{ pa.id }}" /></td>
+						<td><a href="{{ pa.id }}">{{ pa.firstname|escape }} {{ pa.surname|escape }}</a></td>
+						<td>{{ pa.club|escape }}</td>
+						<td>{{ pa.cls|escape }}</td>
+						<td>{{ pa.get_si_abbr }}</td>
+						<td>{{ pa.accomm.label|slice:":20"|escape }}</td>
+						<td>{{ pa.entryfee }}/{{ pa.accommfee }}/{{ pa.sifee }} €</td>
+						<td>{{ pa.fees }} €</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</form>
+		<div class="total">{% trans "Total" %}:  {{ total }} €</div>
+	{% else %}
+		<p>{% trans "The entry is empty. Use the button above to add participants." %}</p>
+	{% endif %}
 {% endblock %}

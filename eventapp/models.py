@@ -168,6 +168,14 @@ class Participant(Model):
 		else:
 			return self.si
 
+	def get_si_abbr(self):
+		if self.simode == 'L':
+			return _('later')
+		elif self.simode == 'B':
+			return _('borrow')
+		else:
+			return self.si
+	
 	def save(self, *args, **kwargs):
 		Model.save(self, *args, **kwargs)
 		self.entry.modified = datetime.datetime.now()
