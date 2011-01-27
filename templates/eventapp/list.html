@@ -20,7 +20,7 @@ window.addEvent('domready', function() {
 	<p><a href="../">{% trans "Go back to my entry" %}</a></p>
 	<h3>{{ event|escape }}: {% trans "List of participants" %}</h3>
 	{% if participants %}
-		<table id="table" class="standard participant-table" style="width: 100%">
+		<table id="table" class="standard participant-table">
 			<thead>
 				<tr>
 					<th>{% trans "First Name" %}</th>
