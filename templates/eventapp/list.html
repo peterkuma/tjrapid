@@ -1,16 +1,16 @@
 {% extends "eventapp/base.html" %}
 {% load i18n %}
-{% block title %}{% blocktrans with event|escape as event %}List of participants at {{ event }}{% endblocktrans %}{% endblock %}
+{% block title %}{{ event|escape }}: {% trans "List of participants" %}{% endblock %}
 {% block content %}
-	<p><a href="../">{% blocktrans %}Go back to my entry{% endblocktrans %}</a></p>
-	<h3>{% blocktrans with event|escape as event %}List of participants at {{ event }}{% endblocktrans %}</h3>
+	<p><a href="../">{% trans "Go back to my entry" %}</a></p>
+	<h3>{{ event|escape }}: {% trans "List of participants" %}</h3>
 	{% if participants %}
-		<table class="standard participant-table" style="clear: both; width: 100%">
+		<table class="standard participant-table" style="width: 100%">
 			<tr>
 				<th>{% trans "Name" %}</th>
 				<th>{% trans "Club" %}</th>
 				<th>{% trans "Class" %}</th>
-				<th>{% trans "Accomm." %}</th>
+				<th>{% trans "Accommodation" %}</th>
 			</tr>
 			{% for pa in participants %}
 				<tr>

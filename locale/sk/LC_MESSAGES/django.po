@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 20:04+0100\n"
+"POT-Creation-Date: 2011-01-27 20:14+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -53,7 +53,7 @@ msgstr "SI mód"
 msgid "Note"
 msgstr "Poznámka"
 
-#: eventapp/admin_views.py:40
+#: eventapp/admin_views.py:40 templates/eventapp/list.html:13
 msgid "Accommodation"
 msgstr "Ubytovanie"
 
@@ -676,8 +676,8 @@ msgstr "Prihláška"
 
 #: templates/eventapp/entry.html:22
 #, python-format
-msgid "List of all participants at %(event)s"
-msgstr "Zoznam všetkých pretekárov na %(event)s"
+msgid "List of all participants at <em>%(event)s</em>"
+msgstr "Zoznam všetkých pretekárov na <em>%(event)s</em>"
 
 #: templates/eventapp/entry.html:25
 msgid "Export as PDF"
@@ -695,7 +695,7 @@ msgstr "Odstrániť vybraných"
 msgid "Perform"
 msgstr "Vykonaj"
 
-#: templates/eventapp/entry.html:48 templates/eventapp/list.html:13
+#: templates/eventapp/entry.html:48
 msgid "Accomm."
 msgstr "Ubyt."
 
@@ -781,9 +781,8 @@ msgid "Send me my entry ID"
 msgstr "Potvrdiť"
 
 #: templates/eventapp/list.html:3 templates/eventapp/list.html.py:6
-#, python-format
-msgid "List of participants at %(event)s"
-msgstr "Zoznam pretekárov na %(event)s"
+msgid "List of participants"
+msgstr "Zoznam pretekárov"
 
 #: templates/eventapp/list.html:5
 msgid "Go back to my entry"

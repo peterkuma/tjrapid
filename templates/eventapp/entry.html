@@ -19,7 +19,7 @@ window.addEvent('domready', function() {
 {% block content %}
 	<h4><a href="../">{{ event|escape }}</a></h4>
 	<h3>{% trans "Entry" %} {{ entry.id }}</h3>
-	<p><a href="list/">{% blocktrans with event as event|escape %}List of all participants at {{ event }}{% endblocktrans %}</a></p>
+	<p><a href="list/">{% blocktrans with event as event|escape %}List of all participants at <em>{{ event }}</em>{% endblocktrans %}</a></p>
 	{% if participants %}
 		<form method="get" action="pdf/" style="display: inline-block; margin: 5pt 0">
 			<input type="submit" value="{% trans "Export as PDF" %}" />
