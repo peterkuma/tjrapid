@@ -6,10 +6,6 @@
 .laps li {
 	display: inline;
 }
-.participant-table {
-	font-size: 90%;
-	width: 100%;
-}
 #id_surname {
 	width: 300px;
 }
