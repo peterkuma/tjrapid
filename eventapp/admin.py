@@ -28,9 +28,14 @@ class ParticipantAdmin(admin.ModelAdmin):
 	list_display = ('entry', 'id', 'firstname', 'surname', 'cls')
 	list_filter = ('entry',)
 
+class DirectoryAdmin(admin.ModelAdmin):
+	list_display = ('firstname', 'surname', 'club', 'cls')
+	list_filter = ('cls',)
+
 admin.site.register(Event, EventAdmin)
 admin.site.register(Accommodation, AccommodationAdmin)
 admin.site.register(ClassFee, ClassFeeAdmin)
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(Participant, ParticipantAdmin)
+admin.site.register(Directory, DirectoryAdmin)
 

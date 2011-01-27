@@ -2,11 +2,54 @@
 {% load i18n %}
 {% block title %}{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}{% endblock %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="/site_media/eventapp/style.css" />
 <script type="text/javascript" src="/site_media/mootools.js"></script>
 <script type="text/javascript" src="/site_media/mootools-textarea-resizer.js"></script>
+<script type="text/javascript" src="/site_media/mootools-more.js"></script>
+<script type="text/javascript" src="/site_media/mootools-autocomplete.js"></script>
+<script type="text/javascript" src="/site_media/BGIframe.js"></script>
 <link rel="stylesheet" type="text/css" href="/site_media/textarea-resizer.css" />
-<script language="javascript">
+<link rel="stylesheet" type="text/css" href="/site_media/mootools-autocomplete.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/eventapp/style.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/eventapp/participant.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window.addEvent('domready', function() {
+	var ac = new Meio.Autocomplete($('id_surname'), 'search/', {
+			minChars: 0,
+			selectOnTab: false,
+		filter: {
+			//type: 'startswith',
+			//path: 'fields.surname',
+			filter: function(text, data) {
+				return true;
+			},
+			formatMatch: function(text, data, i) {
+				return data.fields.surname;
+			},
+			formatItem: function(text, data) {
+				return data.fields.surname.substring(0, text.length) +
+				       '<strong>' +
+				       data.fields.surname.substring(text.length) +
+				       '<\/strong><span style="color: grey">, ' +
+				       data.fields.firstname + ' (' +
+				       data.fields.club + ')' +
+				       '<\/span>';
+			},
+		},
+	});
+	
+	ac.addEvent('select', function(elements, value) {
+		f = $('form');
+		f.firstname.value = value.fields.firstname;
+		f.club.value = value.fields.club;
+		f.si.value = value.fields.si;
+		f.cls.value = value.fields.cls;
+	});
+});
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
 accommcount_cache = new Array();
 accommnights_cache = new Array();
 accommcount_selected = null;
@@ -112,6 +155,7 @@ window.addEvent('domready', function() {
 	update_form(f);
 	f.accomm.onchange = function() { update_form(f); };
 });
+/* ]]> */
 </script>
 {% endblock %}
 
@@ -120,10 +164,10 @@ window.addEvent('domready', function() {
 		({% trans "entry" %} <a href="../">{{ entry }}</a>)</h3>
 	<form method="post" action="" id="form">
 		<table>
-			<tr><td colspan="2">{{ form.firstname.errors }}</td></tr>
-			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
 			<tr><td colspan="2">{{ form.surname.errors }}</td></tr>
 			<tr><td>{{ form.surname.label_tag }}*:</td><td>{{ form.surname }}</td></tr>
+			<tr><td colspan="2">{{ form.firstname.errors }}</td></tr>
+			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
 			<tr><td colspan="2">{{ form.club.errors }}</td></tr>
 			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
 			<tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
@@ -141,12 +185,10 @@ window.addEvent('domready', function() {
 			<tr><td>{{ form.cls.label_tag }}*:</td><td>{{ form.cls }}</td></tr>
 			<tr><td colspan="2">{{ form.note.errors }}</td></tr>
 			<tr><td>{{ form.note.label_tag }}:</td><td>{{ form.note }}</td></tr>
-			{% if accommodation %}
-			    <tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
-			    <tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
-			    <tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
-			    <tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
-			{% endif %}
+			<tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
+			<tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
+			<tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
+			<tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
 		</table>
 		<div class="form-buttons">
 			<input type="submit" name="commit" value="{% trans "Register" %}" />

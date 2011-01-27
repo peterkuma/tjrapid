@@ -30,6 +30,7 @@ from django.template import Context, loader
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.core import serializers
 
 import urls
 from models import *
@@ -390,4 +391,27 @@ def entry_pdf(request, eventid, id, **kwargs):
 
 	c.showPage()
 	c.save()
+	return response
+
+
+def query(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
+	ev = get_object_or_404(Event,  pk=eventid)
+	er = get_object_or_404(Entry,  pk=entryid,  event=ev)
+
+	if id != None:
+		pa = get_object_or_404(Participant,  pk=id)
+	else:
+		pa = None
+	
+	q = request.GET.get("q", None)
+	
+	if q == None or len(q) == 0:
+		people = []
+	else:
+		people = Directory.objects.filter(surname__istartswith=q)
+		
+	response = HttpResponse()
+	json_serializer = serializers.get_serializer("json")()
+	json_serializer.serialize(people, ensure_ascii=False, stream=response,
+				  fields=('firstname', 'surname', 'club', 'si', 'cls'))
 	return response

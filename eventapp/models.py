@@ -177,3 +177,21 @@ class Participant(Model):
 		verbose_name = _('participant')
 		verbose_name_plural = _('participants')
 		ordering = ('entry', 'created')
+
+class Directory(Model):
+	firstname = CharField(_('first name'), max_length=50)
+	surname = CharField(_('surname'), max_length=50)
+	club = CharField(_('club'), max_length=7)
+	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
+	cls = CharField(_('class'), max_length=10)
+	created = DateTimeField(_('created'),auto_now_add=True)
+	modified = DateTimeField(_('modified'),auto_now=True)
+
+	def __unicode__(self):
+		return self.firstname + " " + self.surname
+	
+	class Meta:
+		verbose_name = _('directory')
+		verbose_name_plural = _('directory')
+		ordering = ('surname', 'firstname')
+
