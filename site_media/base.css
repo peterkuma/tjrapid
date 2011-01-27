@@ -152,10 +152,10 @@ ul.compact img {
 	margin: 4px 0;
 }
 #main {
-	background: url("bg.png") repeat-x;
 	width: 800px;
 	margin: 0 auto 10px auto;
 	position: relative;
+	background: url("menu.png") repeat-y;
 }
 #header {
 	background: url("header.png") repeat-x;
@@ -289,15 +289,24 @@ ul.compact img {
 #content {
 	font-family: Tahoma, sans-serif;
 	font-size: 9pt;
-	padding: 0 20px 20px 160px;
+	margin-left: 145px;
+	padding: 10px 20px 20px 14px;
 	border: 1px silver solid;
-	min-height: 400px;
+	min-height: 458px;
+	background: url("bg.png") repeat-x;
 }
 #content-wide {
 	font-family: Tahoma, sans-serif;
 	font-size: 9pt;
 	padding: 0 20px 20px 20px;
 	border: 1px silver solid;
+	background: url("bg.png") repeat-x;
+}
+#content h3 {
+	font-size: 140%;
+	font-family: Verdana, sans-serif;
+	width: 400px;
+	margin: 15px 0 15px 0;
 }
 #content table.standard {
 	border: 1px solid silver;
