@@ -41,10 +41,18 @@ def http500(request, error):
 	return HttpResponseServerError(t.render(c))
 
 def event(request, id, namespace=None, **kwargs):
+	ev = get_object_or_404(Event, pk=id)
+
 	class NewEntryForm(forms.ModelForm):
 		class Meta:
 			model = Entry
 			fields = ('event', 'email', )
+			
+		def clean_email(self):
+			email = self.cleaned_data['email']
+			if Entry.objects.filter(event=ev, email=email).exists():
+				raise ValidationError(_('An entry with this e-mail already exists. Please use the link from the message you have received, or use the form below to recover your entry identification code.'))
+			return email
 		
 	class ExistingEntryForm(forms.Form):
 		id = forms.CharField(label=_('Entry identification code'), max_length=11)	
@@ -67,9 +75,7 @@ def event(request, id, namespace=None, **kwargs):
 			except Entry.DoesNotExist:
 				raise ValidationError(_('No matching entry found.'))
 			return data
-		
-	ev = get_object_or_404(Event, pk=id)
-
+	
 	#if ev.close_date < datetime.date.today():
 	#	return http500(request, _('The event was closed on %s.' % ev.close_date))
 	if ev.open_date > datetime.date.today():

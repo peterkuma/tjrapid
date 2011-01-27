@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 16:33+0100\n"
+"POT-Creation-Date: 2011-01-27 16:50+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -329,91 +329,101 @@ msgstr "pretekári"
 msgid "directory"
 msgstr "zoznam"
 
-#: eventapp/views.py:50
+#: eventapp/views.py:54
+msgid ""
+"An entry with this e-mail already exists. Please use the link from the "
+"message you have received, or use the form below to recover your entry "
+"identification code."
+msgstr ""
+"Prihláška na túto e-mailovú adresu už existuje. Použite prosím odkaz "
+"zo správy, ktorú ste dostali, alebo formulár uvedený nižšie "
+"ak ste túto správu vymazali alebo nedostali."
+
+#: eventapp/views.py:58
 msgid "Entry identification code"
 msgstr "Identifikačný kód prihlášky"
 
-#: eventapp/views.py:57
+#: eventapp/views.py:65
 #, python-format
 msgid "Entry %s does not exist."
 msgstr "Prihláška %s neexistuje."
 
-#: eventapp/views.py:68
+#: eventapp/views.py:76
 msgid "No matching entry found."
 msgstr "Taká prihĺáška nebola nájdená."
 
-#: eventapp/views.py:76 eventapp/views.py:187
+#: eventapp/views.py:82 eventapp/views.py:193
 #, python-format
 msgid "The event will open on %s."
 msgstr "Prihlasovanie na tieto preteky bude zahájené %s"
 
-#: eventapp/views.py:92
+#: eventapp/views.py:98
 msgid "New entry information"
 msgstr "Informácie o novej prihláške"
 
-#: eventapp/views.py:94 eventapp/views.py:132
+#: eventapp/views.py:100 eventapp/views.py:138
 #, python-format
 msgid "Event organiser <%s>"
 msgstr "Organizátor preteku <%s>"
 
-#: eventapp/views.py:101 eventapp/views.py:139
+#: eventapp/views.py:107 eventapp/views.py:145
 msgid "Failed to send mail."
 msgstr "Nepodarilo sa odoslať mail."
 
-#: eventapp/views.py:130 templates/eventapp/recovery_response.html:3
+#: eventapp/views.py:136 templates/eventapp/recovery_response.html:3
 #: templates/eventapp/recovery_response.html:5
 msgid "Entry identification code recovery"
 msgstr "Pripomienka identifikačného kódu prihlášky"
 
-#: eventapp/views.py:185
+#: eventapp/views.py:191
 #, python-format
 msgid "The event was closed on %s."
 msgstr "Prihlasovanie na tieto preteky bolo uzavreté %s."
 
-#: eventapp/views.py:230
+#: eventapp/views.py:236
 msgid "The SI number is invalid."
 msgstr "Neplatné SI číslo."
 
-#: eventapp/views.py:238
+#: eventapp/views.py:244
 msgid "There are not as many places available in the accommodation selected."
 msgstr "Nie je dostatok voľných miest na vybranom ubytovaní."
 
-#: eventapp/views.py:311
+#: eventapp/views.py:317
 msgid "Entry Statement"
 msgstr "Výpis prihlášky"
 
-#: eventapp/views.py:313
+#: eventapp/views.py:319
 #, python-format
 msgid "Page %(page)d of %(num_pages)d"
 msgstr "Strana %(page)d z %(num_pages)d"
 
-#: eventapp/views.py:317
+#: eventapp/views.py:323
 #, python-format
 msgid "Event: %s"
 msgstr "Preteky: %s"
 
-#: eventapp/views.py:319
+#: eventapp/views.py:325
 #, python-format
 msgid "Issue time: %s"
 msgstr "Dátum a čas vystavenia: %s"
 
-#: eventapp/views.py:333
+#: eventapp/views.py:339
 msgid "Registration:"
 msgstr "Registrácia:"
 
-#: eventapp/views.py:340
+#: eventapp/views.py:346
 msgid "SI token:"
 msgstr "SI čip:"
 
-#: eventapp/views.py:351
+#: eventapp/views.py:357
 msgid "Accommodation:"
 msgstr "Ubytovanie:"
 
-#: eventapp/views.py:374
+#: eventapp/views.py:380
 msgid "No participants in this entry."
 msgstr "V tejto prihláške nie sú žiadni pretekári."
 
-#: eventapp/views.py:389
+#: eventapp/views.py:395
 msgid "Total:"
 msgstr "Celkom:"
 
@@ -767,7 +777,7 @@ msgstr "Dobrý deň,"
 #: templates/eventapp/newentry-email.txt:3
 #, python-format
 msgid "Your entry identification code for `%(event_title)s' is %(id)s."
-msgstr "Váš identifikačný kód prihlášky na `%(event_title)s' je %(id)s."
+msgstr "váš identifikačný kód prihlášky na `%(event_title)s' je %(id)s."
 
 #: templates/eventapp/newentry-email.txt:5
 #: templates/eventapp/recovery-email.txt:7
