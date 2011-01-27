@@ -183,7 +183,7 @@ msgstr "e-mail"
 #: eventapp/models.py:65 eventapp/models.py:70 eventapp/models.py:88
 #: eventapp/models.py:109 templates/eventapp/entry.html:6
 msgid "event"
-msgstr "pretek"
+msgstr "preteky"
 
 #: eventapp/models.py:66
 msgid "events"
@@ -340,7 +340,7 @@ msgstr "Taká prihĺáška nebola nájdená."
 #: eventapp/views.py:75 eventapp/views.py:186
 #, python-format
 msgid "The event will open on %s."
-msgstr "Prihlasovanie na tento pretek bude zahájené %s"
+msgstr "Prihlasovanie na tieto preteky bude zahájené %s"
 
 #: eventapp/views.py:91
 msgid "New entry information"
@@ -363,7 +363,7 @@ msgstr "Pripomienka identifikačného kódu prihlášky"
 #: eventapp/views.py:184
 #, python-format
 msgid "The event was closed on %s."
-msgstr "Prihlasovanie na tento pretek bolo uzavreté %s."
+msgstr "Prihlasovanie na tieto preteky bolo uzavreté %s."
 
 #: eventapp/views.py:229
 msgid "The SI number is invalid."
@@ -385,7 +385,7 @@ msgstr "Strana %(page)d z %(num_pages)d"
 #: eventapp/views.py:315
 #, python-format
 msgid "Event: %s"
-msgstr "Pretek: %s"
+msgstr "Preteky: %s"
 
 #: eventapp/views.py:317
 #, python-format
@@ -561,7 +561,7 @@ msgstr "pokyny"
 
 #: ob/models.py:90
 msgid "competition"
-msgstr "pretek"
+msgstr "preteky"
 
 #: templates/base.html:57
 msgid "Last updated"
@@ -646,7 +646,7 @@ msgstr "Úplný výpis v CSV"
 
 #: templates/admin/eventapp/event/change_form.html:13
 msgid "Links to this event"
-msgstr "Odkazy na tento pretek"
+msgstr "Odkazy na tieto preteky"
 
 #: templates/eventapp/500.html:3 templates/eventapp/500.html.py:6
 msgid "Page temporarily unavailable"
@@ -691,7 +691,7 @@ msgstr "Prihláška"
 
 #: templates/eventapp/event.html:8
 msgid "Event"
-msgstr "Pretek"
+msgstr "Preteky"
 
 #: templates/eventapp/event.html:9
 msgid "Registration opens"
@@ -718,7 +718,7 @@ msgstr ""
 
 #: templates/eventapp/event.html:23
 msgid "This event is closed."
-msgstr "Prihlasovanie na tento pretek bolo uzatvorené."
+msgstr "Prihlasovanie na tieto preteky bolo uzatvorené."
 
 #: templates/eventapp/event.html:25
 msgid "Go to existing entry"
@@ -730,7 +730,7 @@ msgid ""
 "<strong>entry identification code</strong> you received to view or modify "
 "the entry."
 msgstr ""
-"Pokiaľ Ste vytvorili prihlášku pomocou formulára uvedeného vyššie, môžete "
+"Pokiaľ ste vytvorili prihlášku pomocou formulára uvedeného vyššie, môžete "
 "použiť <strong>identifikačný kód prihlášky</strong> na zobrazenie alebo "
 "upravenie tejto prihlášky."
 
@@ -740,7 +740,7 @@ msgstr "Otvoriť prihlášku"
 
 #: templates/eventapp/event.html:33
 msgid "Forgot your entry identification code?"
-msgstr "Zabudli Ste identifikačný kód prihlášky?"
+msgstr "Zabudli ste identifikačný kód prihlášky?"
 
 #: templates/eventapp/event.html:35
 msgid ""
