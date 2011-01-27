@@ -55,7 +55,13 @@ window.addEvent('domready', function() {
 						<td>{{ pa.club|escape }}</td>
 						<td>{{ pa.cls|escape }}</td>
 						<td>{{ pa.get_si_abbr }}</td>
-						<td>{{ pa.accomm.label|slice:":20"|escape }}</td>
+						<td>{% if pa.accomm %}
+							{% if pa.accomm.label|length > 17 %}
+								{{ pa.accomm.label|slice:":15"|escape }}...
+							{% else %}
+								{{ pa.accomm.label|escape }}
+							{% endif %}
+						{% endif %}</td>
 						<td>{{ pa.entryfee }}/{{ pa.sifee }}/{{ pa.accommfee }} €</td>
 						<td>{{ pa.fees }} €</td>
 					</tr>
