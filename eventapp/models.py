@@ -184,7 +184,7 @@ class Participant(Model):
 	class Meta:
 		verbose_name = _('participant')
 		verbose_name_plural = _('participants')
-		ordering = ('entry', 'created')
+		ordering = ('club', 'surname', 'firstname')
 
 class Directory(Model):
 	firstname = CharField(_('first name'), max_length=50)
