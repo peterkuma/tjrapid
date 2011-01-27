@@ -181,9 +181,9 @@ class Participant(Model):
 class Directory(Model):
 	firstname = CharField(_('first name'), max_length=50)
 	surname = CharField(_('surname'), max_length=50)
-	club = CharField(_('club'), max_length=7)
+	club = CharField(_('club'), max_length=7, null=True)
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
-	cls = CharField(_('class'), max_length=10)
+	cls = CharField(_('class'), max_length=10, null=True)
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 
