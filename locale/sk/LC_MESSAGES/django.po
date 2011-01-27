@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 19:10+0100\n"
+"POT-Creation-Date: 2011-01-27 19:19+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -693,8 +693,8 @@ msgid "Accomm."
 msgstr "Ubyt."
 
 #: templates/eventapp/entry.html:48
-msgid "Entry/Acomm./SI fee"
-msgstr "Popl. za št./ubyt./SI"
+msgid "Entry/SI/Acomm. fee"
+msgstr "Popl. za št./SI/ubyt."
 
 #: templates/eventapp/entry.html:49 templates/eventapp/entry.html.py:65
 msgid "Total"

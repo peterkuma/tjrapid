@@ -45,7 +45,7 @@ window.addEvent('domready', function() {
 					<th>{% trans "Class" %}</th>
 					<th>{% trans "SI" %}</th>
 					<th>{% trans "Accomm." %}</th>
-					<th>{% trans "Entry/Acomm./SI fee" %}</th>
+					<th>{% trans "Entry/SI/Acomm. fee" %}</th>
 					<th>{% trans "Total" %}</th>
 				</tr>
 				{% for pa in participants %}
@@ -56,7 +56,7 @@ window.addEvent('domready', function() {
 						<td>{{ pa.cls|escape }}</td>
 						<td>{{ pa.get_si_abbr }}</td>
 						<td>{{ pa.accomm.label|slice:":20"|escape }}</td>
-						<td>{{ pa.entryfee }}/{{ pa.accommfee }}/{{ pa.sifee }} €</td>
+						<td>{{ pa.entryfee }}/{{ pa.sifee }}/{{ pa.accommfee }} €</td>
 						<td>{{ pa.fees }} €</td>
 					</tr>
 				{% endfor %}
