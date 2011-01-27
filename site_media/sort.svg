@@ -17,7 +17,7 @@
    sodipodi:docname="sort.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
-   inkscape:export-filename="/mnt/data1/www/tjrapid/wc/trunk/site_media/sort.png"
+   inkscape:export-filename="/mnt/data1/www/tjrapid/wc/trunk/site_media/sort-rev.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -123,6 +123,6 @@
        inkscape:rounded="0"
        inkscape:randomized="0"
        d="M 18.184718,9.0470117 L 12.119858,9.0470117 L 15.152288,3.7946889 L 18.184718,9.0470117 z"
-       transform="matrix(0.6668835,0,0,-0.661551,9.4822142,16.204305)" />
+       transform="matrix(0.6668835,0,0,0.661551,9.4822142,7.7088651)" />
   </g>
 </svg>
