@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 19:19+0100\n"
+"POT-Creation-Date: 2011-01-27 20:04+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -30,16 +30,18 @@ msgstr "Krstné meno"
 msgid "Surname"
 msgstr "Priezvisko"
 
-#: eventapp/admin_views.py:35 templates/eventapp/entry.html:45
+#: eventapp/admin_views.py:35 templates/eventapp/entry.html:46
+#: templates/eventapp/list.html:12
 msgid "Class"
 msgstr "Kategória"
 
-#: eventapp/admin_views.py:36 templates/eventapp/entry.html:44
+#: eventapp/admin_views.py:36 templates/eventapp/entry.html:45
+#: templates/eventapp/list.html:11
 msgid "Club"
 msgstr "Klub"
 
 #: eventapp/admin_views.py:37 eventapp/models.py:143 eventapp/models.py:193
-#: templates/eventapp/entry.html:46
+#: templates/eventapp/entry.html:47
 msgid "SI"
 msgstr "SI"
 
@@ -351,7 +353,7 @@ msgstr "Prihláška %s neexistuje."
 msgid "No matching entry found."
 msgstr "Taká prihĺáška nebola nájdená."
 
-#: eventapp/views.py:82 eventapp/views.py:193 eventapp/views.py:213
+#: eventapp/views.py:82 eventapp/views.py:193 eventapp/views.py:227
 #, python-format
 msgid "The event will open on %s."
 msgstr "Prihlasovanie na tieto preteky bude zahájené %s"
@@ -374,55 +376,55 @@ msgstr "Nepodarilo sa odoslať mail."
 msgid "Entry identification code recovery"
 msgstr "Pripomienka identifikačného kódu prihlášky"
 
-#: eventapp/views.py:191 eventapp/views.py:211
+#: eventapp/views.py:191 eventapp/views.py:225
 #, python-format
 msgid "The event was closed on %s."
 msgstr "Prihlasovanie na tieto preteky bolo uzavreté %s."
 
-#: eventapp/views.py:256
+#: eventapp/views.py:270
 msgid "The SI number is invalid."
 msgstr "Neplatné SI číslo."
 
-#: eventapp/views.py:264
+#: eventapp/views.py:278
 msgid "There are not as many places available in the accommodation selected."
 msgstr "Nie je dostatok voľných miest na vybranom ubytovaní."
 
-#: eventapp/views.py:337
+#: eventapp/views.py:351
 msgid "Entry Statement"
 msgstr "Výpis prihlášky"
 
-#: eventapp/views.py:339
+#: eventapp/views.py:353
 #, python-format
 msgid "Page %(page)d of %(num_pages)d"
 msgstr "Strana %(page)d z %(num_pages)d"
 
-#: eventapp/views.py:343
+#: eventapp/views.py:357
 #, python-format
 msgid "Event: %s"
 msgstr "Preteky: %s"
 
-#: eventapp/views.py:345
+#: eventapp/views.py:359
 #, python-format
 msgid "Issue time: %s"
 msgstr "Dátum a čas vystavenia: %s"
 
-#: eventapp/views.py:359
+#: eventapp/views.py:373
 msgid "Registration:"
 msgstr "Registrácia:"
 
-#: eventapp/views.py:366
+#: eventapp/views.py:380
 msgid "SI token:"
 msgstr "SI čip:"
 
-#: eventapp/views.py:377
+#: eventapp/views.py:391
 msgid "Accommodation:"
 msgstr "Ubytovanie:"
 
-#: eventapp/views.py:400
+#: eventapp/views.py:414
 msgid "No participants in this entry."
 msgstr "V tejto prihláške nie sú žiadni pretekári."
 
-#: eventapp/views.py:415
+#: eventapp/views.py:429
 msgid "Total:"
 msgstr "Celkom:"
 
@@ -639,7 +641,7 @@ msgid "Members"
 msgstr "Členovia"
 
 #: templates/ob_members.html:10 templates/ob_members.html.py:21
-#: templates/eventapp/entry.html:43
+#: templates/eventapp/entry.html:44 templates/eventapp/list.html:10
 msgid "Name"
 msgstr "Meno"
 
@@ -672,35 +674,40 @@ msgstr "Stránka dočasne nedostupná"
 msgid "Entry"
 msgstr "Prihláška"
 
-#: templates/eventapp/entry.html:24
+#: templates/eventapp/entry.html:22
+#, python-format
+msgid "List of all participants at %(event)s"
+msgstr "Zoznam všetkých pretekárov na %(event)s"
+
+#: templates/eventapp/entry.html:25
 msgid "Export as PDF"
 msgstr "Exportovať ako PDF"
 
-#: templates/eventapp/entry.html:29
+#: templates/eventapp/entry.html:30
 msgid "Add a participant to the entry"
 msgstr "Pridať pretekára do prihlášky"
 
-#: templates/eventapp/entry.html:36
+#: templates/eventapp/entry.html:37
 msgid "Remove selected"
 msgstr "Odstrániť vybraných"
 
-#: templates/eventapp/entry.html:38
+#: templates/eventapp/entry.html:39
 msgid "Perform"
 msgstr "Vykonaj"
 
-#: templates/eventapp/entry.html:47
+#: templates/eventapp/entry.html:48 templates/eventapp/list.html:13
 msgid "Accomm."
 msgstr "Ubyt."
 
-#: templates/eventapp/entry.html:48
+#: templates/eventapp/entry.html:49
 msgid "Entry/SI/Acomm. fee"
 msgstr "Popl. za št./SI/ubyt."
 
-#: templates/eventapp/entry.html:49 templates/eventapp/entry.html.py:65
+#: templates/eventapp/entry.html:50 templates/eventapp/entry.html.py:72
 msgid "Total"
 msgstr "Celkom"
 
-#: templates/eventapp/entry.html:67
+#: templates/eventapp/entry.html:74
 msgid "The entry is empty. Use the button above to add participants."
 msgstr "Prihláška je prázdna. Použite tlačítko vyššie na pridanie pretekárov."
 
@@ -772,6 +779,19 @@ msgstr ""
 #: templates/eventapp/event.html:39
 msgid "Send me my entry ID"
 msgstr "Potvrdiť"
+
+#: templates/eventapp/list.html:3 templates/eventapp/list.html.py:6
+#, python-format
+msgid "List of participants at %(event)s"
+msgstr "Zoznam pretekárov na %(event)s"
+
+#: templates/eventapp/list.html:5
+msgid "Go back to my entry"
+msgstr "Späť na moju prihlášku"
+
+#: templates/eventapp/list.html:25
+msgid "There are no participants."
+msgstr "Nie sú žiadni prihlásení pretekári."
 
 #: templates/eventapp/newentry-email.txt:1
 #: templates/eventapp/recovery-email.txt:1
