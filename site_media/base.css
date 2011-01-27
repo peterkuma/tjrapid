@@ -7,8 +7,15 @@ img {
 ul {
 	list-style-type: square;
 }
+h3 {
+	font-size: 140%;
+	font-family: Verdana, sans-serif;
+	width: 400px;
+	margin: 15px 0 15px 0;
+}
 h4 {
-	font-size: 105%;
+	font-size: 120%;
+	font-family: Verdana, sans-serif;
 }
 dt {
 	display: inline;
@@ -301,12 +308,6 @@ ul.compact img {
 	padding: 0 20px 20px 20px;
 	border: 1px silver solid;
 	background: url("bg.png") repeat-x;
-}
-#content h3 {
-	font-size: 140%;
-	font-family: Verdana, sans-serif;
-	width: 400px;
-	margin: 15px 0 15px 0;
 }
 #content table.standard {
 	border: 1px solid silver;
