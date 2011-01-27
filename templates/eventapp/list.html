@@ -1,25 +1,44 @@
 {% extends "eventapp/base.html" %}
 {% load i18n %}
 {% block title %}{{ event|escape }}: {% trans "List of participants" %}{% endblock %}
+{% block head %}
+<script type="text/javascript" src="/site_media/mootools.js"></script>
+<script type="text/javascript" src="/site_media/mootools-more.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+window.addEvent('domready', function() {
+	var t = new HtmlTable($('table'));
+	t.enableSort();
+});
+/* ]]> */
+</script>
+{{ block.super }}
+{% endblock %}
 {% block content %}
 	<p><a href="../">{% trans "Go back to my entry" %}</a></p>
 	<h3>{{ event|escape }}: {% trans "List of participants" %}</h3>
 	{% if participants %}
-		<table class="standard participant-table" style="width: 100%">
-			<tr>
-				<th>{% trans "Name" %}</th>
-				<th>{% trans "Club" %}</th>
-				<th>{% trans "Class" %}</th>
-				<th>{% trans "Accommodation" %}</th>
-			</tr>
-			{% for pa in participants %}
+		<table id="table" class="standard participant-table" style="width: 100%">
+			<thead>
 				<tr>
-					<td>{{ pa.firstname|escape }} {{ pa.surname|escape }}</td>
-					<td>{{ pa.club|escape }}</td>
-					<td>{{ pa.cls|escape }}</td>
-					<td>{{ pa.accomm.label|escape }}</td>
+					<th>{% trans "First Name" %}</th>
+					<th>{% trans "Surname" %}</th>
+					<th>{% trans "Club" %}</th>
+					<th>{% trans "Class" %}</th>
+					<th>{% trans "Accommodation" %}</th>
 				</tr>
-			{% endfor %}
+			</thead>
+			<tbody>
+				{% for pa in participants %}
+					<tr>
+						<td>{{ pa.firstname|escape }}</td>
+						<td>{{ pa.surname|escape }}</td>
+						<td>{{ pa.club|escape }}</td>
+						<td>{{ pa.cls|escape }}</td>
+						<td>{{ pa.accomm.label|escape }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 	{% else %}
 		<p>{% trans "There are no participants." %}</p>
