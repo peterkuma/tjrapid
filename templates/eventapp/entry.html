@@ -57,7 +57,7 @@ window.addEvent('domready', function() {
 						<td>{{ pa.get_si_abbr }}</td>
 						<td>{% if pa.accomm %}
 							{% if pa.accomm.label|length > 17 %}
-								{{ pa.accomm.label|slice:":15"|escape }}&hellip;
+								{{ pa.accomm.label|slice:":15"|escape }}…
 							{% else %}
 								{{ pa.accomm.label|escape }}
 							{% endif %}
