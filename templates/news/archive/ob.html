@@ -2,14 +2,16 @@
 {% load i18n %}
 {% load markup %}
 {% block title %}{% trans "News" %}{% endblock %}
-
+{% block head %}
+<link rel="alternate" title="RSS" href="rss/" type="application/rss+xml" />
+{% endblock %}
 {% block content %}
 	<h3>
 		{% trans "News" %}{% if year %}:{% endif %}
 		{% if day %}{{ day }}{% endif %}
 		{% if month_name %}{{ month_name }}{% endif %}
 		{% if year %}{{ year }}{% endif %}
-                <a href="rss/" class="feed" style="margin-left: 10pt">{% trans "RSS feed" %}</a>
+                <a href="rss/"><img src="/site_media/feed-icon-14x14.png" alt="RSS feed" /></a>
 	</h3>
 	{% for a in articles %}
 		<div class="article">
