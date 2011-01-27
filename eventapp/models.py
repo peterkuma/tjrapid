@@ -50,6 +50,7 @@ class Event(Model):
 	open_date = DateField(_('open date'), default=datetime.datetime.now)
 	close_date = DateField(_('close date'))
 	email = EmailField(_('e-mail'))
+	laps = PositiveIntegerField(_('number of laps'), default=1)
 	
 	def is_open(self):
 		return self.open_date <= datetime.date.today() and self.close_date >= datetime.date.today()
@@ -73,6 +74,7 @@ class ClassFee(Model):
 	start_date = DateField(_('start date'), blank=True, null=True)
 	end_date = DateField(_('end_date'), blank=True, null=True)
 	fee = DecimalField(_('fee'), max_digits=10, decimal_places=2)
+	lapfee = DecimalField(_('lap fee'), max_digits=10, decimal_places=2, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.label
@@ -143,6 +145,7 @@ class Participant(Model):
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
 	simode = CharField(_('SI mode'),  max_length=1,  choices=SIMODE_CHOICES, default='P')
 	cls = CharField(_('class'), max_length=10)
+	laps = CommaSeparatedIntegerField(_('laps'), max_length=50,)
 	note = TextField(_('note'), blank=True)
 	accomm = ForeignKey('Accommodation', db_column='accomid', verbose_name=_('accommodation'), blank=True,  null=True)
 	accommcount = PositiveSmallIntegerField(_('accommodation count'),  default=1, blank=True, null=True, choices=ACCOMMCOUNT_CHOICES)
@@ -159,7 +162,13 @@ class Participant(Model):
 
 	def fees(self):
 		return self.entryfee + self.accommfee + self.sifee
-		
+
+	def laps_list(self):
+		return [int(l) for l in self.laps.split(',')]
+
+	def laps_count(self):
+		return len(self.laps_list())
+
 	def get_si_display(self):
 		if self.simode == 'L':
 			return _('supply later')

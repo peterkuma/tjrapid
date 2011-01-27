@@ -246,23 +246,37 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		classes = re.split(r'\s*,\s*', classfee.classes)
 		for c in classes:
 			c = c[0:10]
-			clsdict[c] = classfee.fee
-	if pa != None:
-		clsdict[pa.cls] = pa.entryfee
+			clsdict[c] = (classfee.fee, classfee.lapfee)
+	#if pa != None:
+	#	clsdict[pa.cls] = pa.entryfee
 	keys = clsdict.keys()
 	keys.sort()
-	clschoices = [(k, u'%s (%s €)' % (k,  clsdict[k])) for k in keys]
+	clschoices = []
+	for k in keys:
+		if clsdict[k][1] != None and clsdict[k][0] != clsdict[k][1]:
+			clschoices.append((k, _(u'%(cls)s (%(fee)s € or %(lapfee)s € per lap)') % dict(cls=k, fee=clsdict[k][0], lapfee=clsdict[k][1])))
+		else:
+			clschoices.append((k, _(u'%(cls)s (%(fee)s €)') % dict(cls=k,  fee=clsdict[k][0])))
 	
 	class ParticipantForm(forms.ModelForm):
 		cls = forms.ChoiceField(choices=clschoices,
 			label=Participant._meta.get_field('cls').verbose_name.capitalize(),
 			help_text=Participant._meta.get_field('cls').help_text
 		)
+		laps = forms.MultipleChoiceField(choices=zip(range(1,ev.laps+1),range(1,ev.laps+1)),
+			label=Participant._meta.get_field('laps').verbose_name.capitalize(),
+			widget=forms.CheckboxSelectMultiple(),
+			initial=range(1,ev.laps+1),
+		)
 		
 		class Meta:
 			model = Participant
 			exclude = ('id', 'entry', 'cls', 'accommfee', 'entryfee', 'sifee')
-						
+		
+		def clean_laps(self):
+			laps_raw = self.cleaned_data['laps']
+			return ','.join(laps_raw)
+					
 		def clean(self):
 			si = self.cleaned_data.get('si')
 			simode = self.cleaned_data.get('simode')
@@ -289,7 +303,11 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 				pa.si = None
 			pa.cls = form.cleaned_data['cls']
 			pa.entry = er
-			pa.entryfee = clsdict[form.cleaned_data['cls']]
+			clsfee = clsdict[form.cleaned_data['cls']]
+			if pa.laps_count() != ev.laps and clsfee[1] != None:
+				pa.entryfee = clsfee[1] * pa.laps_count()
+			else:
+				pa.entryfee = clsfee[0]
 			if ev.sifee != None and pa.simode == 'B':
 				pa.sifee = ev.sifee
 			else:

@@ -27,6 +27,7 @@ window.addEvent('domready', function() {
 					<th>{% trans "Surname" %}</th>
 					<th>{% trans "Club" %}</th>
 					<th>{% trans "Class" %}</th>
+					<th>{% trans "Laps" %}</th>
 					<th>{% trans "Accommodation" %}</th>
 				</tr>
 			</thead>
@@ -37,6 +38,7 @@ window.addEvent('domready', function() {
 						<td>{{ pa.surname|escape }}</td>
 						<td>{{ pa.club|escape }}</td>
 						<td>{{ pa.cls|escape }}</td>
+						<td>{{ pa.laps|escape }}</td>
 						<td>{{ pa.accomm.label|escape }}</td>
 					</tr>
 				{% endfor %}
