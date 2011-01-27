@@ -9,6 +9,8 @@
 window.addEvent('domready', function() {
 	var t = new HtmlTable($('table'));
 	t.enableSort();
+	t.sort(2, false, true);
+	t.sort(1, false, false);
 });
 /* ]]> */
 </script>
