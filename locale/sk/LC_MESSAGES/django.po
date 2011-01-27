@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 20:14+0100\n"
+"POT-Creation-Date: 2011-01-27 22:13+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -26,17 +26,17 @@ msgstr "ID"
 msgid "First name"
 msgstr "Krstné meno"
 
-#: eventapp/admin_views.py:34
+#: eventapp/admin_views.py:34 templates/eventapp/list.html:25
 msgid "Surname"
 msgstr "Priezvisko"
 
 #: eventapp/admin_views.py:35 templates/eventapp/entry.html:46
-#: templates/eventapp/list.html:12
+#: templates/eventapp/list.html:27
 msgid "Class"
 msgstr "Kategória"
 
 #: eventapp/admin_views.py:36 templates/eventapp/entry.html:45
-#: templates/eventapp/list.html:11
+#: templates/eventapp/list.html:26
 msgid "Club"
 msgstr "Klub"
 
@@ -53,7 +53,7 @@ msgstr "SI mód"
 msgid "Note"
 msgstr "Poznámka"
 
-#: eventapp/admin_views.py:40 templates/eventapp/list.html:13
+#: eventapp/admin_views.py:40 templates/eventapp/list.html:28
 msgid "Accommodation"
 msgstr "Ubytovanie"
 
@@ -641,7 +641,7 @@ msgid "Members"
 msgstr "Členovia"
 
 #: templates/ob_members.html:10 templates/ob_members.html.py:21
-#: templates/eventapp/entry.html:44 templates/eventapp/list.html:10
+#: templates/eventapp/entry.html:44
 msgid "Name"
 msgstr "Meno"
 
@@ -780,15 +780,19 @@ msgstr ""
 msgid "Send me my entry ID"
 msgstr "Potvrdiť"
 
-#: templates/eventapp/list.html:3 templates/eventapp/list.html.py:6
+#: templates/eventapp/list.html:3 templates/eventapp/list.html.py:19
 msgid "List of participants"
 msgstr "Zoznam pretekárov"
 
-#: templates/eventapp/list.html:5
+#: templates/eventapp/list.html:18
 msgid "Go back to my entry"
 msgstr "Späť na moju prihlášku"
 
-#: templates/eventapp/list.html:25
+#: templates/eventapp/list.html:24
+msgid "First Name"
+msgstr "Krstné meno"
+
+#: templates/eventapp/list.html:44
 msgid "There are no participants."
 msgstr "Nie sú žiadni prihlásení pretekári."
 
