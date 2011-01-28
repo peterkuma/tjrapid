@@ -99,6 +99,18 @@ class Entry(Model):
 	def get_absolute_url(self):
 		return ('eventapp:entry', (), dict(eventid=self.event.id, id=self.id))	
 
+	def entryfees(self):
+		return Participant.objects.filter(entry=self).aggregate(Sum('entryfee'))['entryfee__sum']
+		
+	def sifees(self):
+		return Participant.objects.filter(entry=self).aggregate(Sum('sifee'))['sifee__sum']
+	
+	def accommfees(self):
+		return Participant.objects.filter(entry=self).aggregate(Sum('accommfee'))['accommfee__sum']
+
+	def fees(self):
+		return self.entryfees() + self.sifees() + self.accommfees()
+
 	class Meta:
 		verbose_name = _('entry')
 		verbose_name_plural = _('entries')

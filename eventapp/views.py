@@ -13,9 +13,6 @@ import re
 from smtplib import SMTPException
 import socket
 import logging
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfgen import canvas
 import unicodedata
 
 from django.shortcuts import render_to_response, get_object_or_404
@@ -340,7 +337,21 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	)
 
 
-def entry_pdf(request, eventid, id, **kwargs):	
+def entry_pdf(request, eventid, id, **kwargs):
+	ev = get_object_or_404(Event, pk=eventid)
+	er = get_object_or_404(Entry, pk=id, event=ev)
+	participants = Participant.objects.filter(entry=er)
+	issue_datetime = datetime.datetime.now()
+	
+	from reportlab.pdfbase import pdfmetrics
+	from reportlab.pdfbase.ttfonts import TTFont
+	from reportlab.lib.pagesizes import A4
+	from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+	from reportlab.lib.styles import ParagraphStyle
+	from reportlab.lib import colors
+	from reportlab.lib.units import inch, cm
+	
+	# Set up fonts.
 	pdfmetrics.registerFont(TTFont('regular', settings.RGFONT))
 	pdfmetrics.registerFont(TTFont('bold', settings.BDFONT))
 	pdfmetrics.registerFont(TTFont('italic', settings.ITFONT))
@@ -349,106 +360,102 @@ def entry_pdf(request, eventid, id, **kwargs):
 	bdfont = 'bold'
 	itfont = 'italic'
 	
-	ev = get_object_or_404(Event, pk=eventid)
-	er = get_object_or_404(Entry, pk=id, event=ev)
+	# Declare styles.
+	normal = ParagraphStyle('normal',
+				 fontName=font,
+				 fontSize=10,
+				 spaceBefore=0.5*cm,
+				 spaceAfter=0.5*cm,
+	)
+	heading1 = ParagraphStyle('heading1',
+				 fontName=bdfont,
+				 fontSize=18,
+				 spaceBefore=0.6*cm,
+				 spaceAfter=1.5*cm,
+	)
+	heading2 = ParagraphStyle('heading2',
+				 fontName=itfont,
+				 fontSize=14,
+				 spaceBefore=0.5*cm,
+				 spaceAfter=0.8*cm,
+	)
 	
-	participants = Participant.objects.filter(entry=er)
-	total = Decimal(0)
-	for pa in participants:
-		total += pa.fees()
+	def truncate(s, n):
+		return u'%s…' % s[0:n-2] if len(s) > n else s
 	
-	response = HttpResponse(mimetype='application/pdf')
-	response['Content-Disposition'] = 'attachment; filename=entry.pdf'
-	
-	issue_datetime = datetime.datetime.now()
-	
-	def print_headline(page, num_pages):
-		c.translate(3*cm, -4.5*cm)
-		c.saveState()
-		c.setFont(font, 24)
-		c.drawString(0, 0, _('Entry Statement'))
-		c.setFont(font, 14)
-		c.drawRightString(width-5*cm, 0, _('Page %(page)d of %(num_pages)d') % dict(page=page, num_pages=num_pages))
-		c.restoreState()
-		c.translate(0, -2*cm)
-	
-		c.drawString(0, 0, _('Event: %s') % ev)
-		c.translate(0, -8*mm)
-		c.drawString(0, 0, _('Issue time: %s') % issue_datetime.strftime('%Y-%m-%d %H:%M %Z'))
-		c.translate(0, -8*mm)
+	def participants_table():
+		data = []
+		data.append(['#', _('Name'), _('Club'), _('Class'), _('Laps'), _('SI'), _('Accomm.'), _('Entry/SI/Accomm. fee'), _('Fees')])
+		i = 1
+		for pa in participants:			
+			data.append([
+				i,
+				truncate(pa.firstname + ' ' + pa.surname, 25),
+				pa.club,
+				pa.cls,
+				pa.laps,
+				unicode(pa.get_si_abbr()),
+				truncate(pa.accomm.label, 20) if pa.accomm else '',
+				u'%s/%s/%s €' % (pa.entryfee, pa.sifee, pa.accommfee),
+				u'%s €' % pa.fees(),
+			])
+			i = i + 1
+		extrafees = u'%s/%s/%s €' % (er.entryfees(), er.sifees(), er.accommfees())
+		data.append([_('Total'),'','','','','','',extrafees,u'%s €' % er.fees()])
 		
-		c.translate(0, -1*cm)
+		last = len(data) - 1
+		tstyle = TableStyle()
+		tstyle.add('FONT', (0,0), (-1,0), bdfont, 8)
+		tstyle.add('FONT', (0,1), (-1,-1), font, 8)
+		tstyle.add('LINEABOVE', (0,0), (-1,0), 1, colors.black)
+		tstyle.add('LINEBELOW', (0,0), (-1,0), 1, colors.black)
+		tstyle.add('FONT', (0,-1), (-1,-1), bdfont, 8)
+		tstyle.add('LINEABOVE', (0,-1), (-1,-1), 1, colors.black)
+		tstyle.add('LINEBELOW', (0,-1), (-1,-1), 1, colors.black)
+		tstyle.add('ALIGN', (-2,0), (-1,-1), 'RIGHT')
+		tstyle.add('SPAN', (0,last), (-3,last))
+		t = Table(data)
+		t.setStyle(tstyle)
+		return t
 	
-	def print_participant(pa, n):
-		c.drawString(0, 0, '%d.' % n)
+	def firstpage(c, doc):
 		c.saveState()
-		c.setFont(bdfont, 12)
-		c.drawString(1*cm, 0, u'%s %s' % (pa.firstname, pa.surname))
+		c.setFont(bdfont, 10)
+		c.drawRightString(A4[0]-1.5*cm, 2*cm, unicode(doc.page))
 		c.restoreState()
-		c.translate(0, -8*mm)
-
-		c.saveState()
-		c.drawString(0, 0, _('Registration:'))
-		c.setFont(itfont, 12)
-		c.drawString(4*cm, 0, u'%s, %s (%s €)' % (pa.club, pa.cls, pa.entryfee))
-		c.restoreState()
-		c.translate(0, -8*mm)
-
-		c.saveState()
-		c.drawString(0, 0, _(u'SI token:'))
-		c.setFont(itfont, 12)
-		if pa.sifee > 0:
-			c.drawString(4*cm, 0, u'%s (%s €)' % (pa.get_si_display(), pa.sifee))
-		else:
-			c.drawString(4*cm, 0, u'%s' % pa.get_si_display())
-		c.restoreState()
-		c.translate(0, -8*mm)
-
-		if pa.accomm:
-			c.saveState()
-			c.drawString(0, 0, _('Accommodation:'))
-			c.setFont(itfont, 12)
-			c.drawString(4*cm, 0, u'%s, %s, %s (%s €)' % (pa.accomm.label, pa.get_accommcount_display(), pa.get_accommnights_display(), pa.accommfee))
-			c.restoreState()
-			c.translate(0, -8*mm)
-			
-		c.saveState()
-		c.setFont(font, 14)
-		c.drawRightString(width-5*cm, 7*mm, u'%s €' % pa.fees())
-		c.restoreState()
-		
-		c.translate(0, -4*mm)
 	
-	mm = 2.835
-	cm = 10*mm
-	width = 210*mm
-	height = 297*mm
-	c = canvas.Canvas(response, pagesize=(width, height))
-	c.translate(0, height)
-	c.setFont(font, 12)
+	def nextpage(c, doc):
+		c.saveState()
+		c.setFont(itfont, 10)
+		c.drawString(1.5*cm, A4[1]-2*cm, unicode(ev))
+		c.setFont(font, 10)
+		c.drawCentredString(A4[0]/2, A4[1]-2*cm, _('Entry Statement'))
+		c.setFont(bdfont, 10)
+		c.drawRightString(A4[0]-1.5*cm, A4[1]-2*cm, unicode(doc.page))
+		c.setLineWidth(0.5)
+		c.line(1.4*cm, A4[1]-2.2*cm, A4[0]-1.4*cm, A4[1]-2.2*cm)
+		c.restoreState()
 	
-	if len(participants) == 0:
-		print_headline(1, 1)
-		c.drawString(0, 0, _('No participants in this entry.'))
+	story = []
+	story.append(Paragraph(unicode(ev), heading2))
+	story.append(Paragraph(_('Entry Statement'), heading1))
+	from django.utils import formats
+	story.append(Paragraph(formats.date_format(issue_datetime, 'DATETIME_FORMAT'), normal))
+	story.append(Spacer(0.5*cm, 0.5*cm))
+	if participants:
+		story.append(participants_table())
 	else:
-		i = 0
-		participants_per_page = 5
-		for pa in participants:
-			if i % participants_per_page == 0:
-				if i != 0:
-					c.showPage()
-					c.translate(0, height)
-				print_headline(i/participants_per_page + 1,
-					       (len(participants)-1)/participants_per_page + 1)
-			print_participant(pa, i+1)	
-			i = i + 1	
-		c.translate(0, -1*cm)
-		c.setFont(font, 16)
-		c.drawString(0, 0, _('Total:'))
-		c.drawRightString(width-5*cm, 0, u'%s €' % total)	
+		story.append(Paragraph(_('There are no participants in this entry.'), normal))
 
-	c.showPage()
-	c.save()
+	response = HttpResponse(mimetype='application/pdf')
+	response['Content-Disposition'] = 'attachment; filename=entry.pdf'	
+	doc = SimpleDocTemplate(response,
+				pagesize=A4,
+				leftMargin=1.5*cm,
+				rightMargin=1.5*cm,
+				topMargin=2.5*cm,
+				bottomMargin=3*cm)
+	doc.build(story, onFirstPage=firstpage, onLaterPages=nextpage)	
 	return response
 
 
