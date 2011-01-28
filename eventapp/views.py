@@ -243,7 +243,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		classes = re.split(r'\s*,\s*', classfee.classes)
 		for c in classes:
 			c = c[0:10]
-			clsdict[c] = (classfee.fee, classfee.lapfee)
+			clsdict[c] = (classfee.fee, classfee.lapfee, classfee.lapsifee)
 	#if pa != None:
 	#	clsdict[pa.cls] = pa.entryfee
 	keys = clsdict.keys()
@@ -305,8 +305,11 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 				pa.entryfee = clsfee[1] * pa.laps_count()
 			else:
 				pa.entryfee = clsfee[0]
-			if ev.sifee != None and pa.simode == 'B':
-				pa.sifee = ev.sifee
+			if pa.simode == 'B':
+				if pa.laps_count() != ev.laps and clsfee[2] != None:
+					pa.sifee = clsfee[2] * pa.laps_count()
+				elif ev.sifee != None:
+					pa.sifee = ev.sifee
 			else:
 				pa.sifee = 0
 			if pa.accomm != None and pa.accommcount != None and pa.accommnights != None:

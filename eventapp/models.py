@@ -75,6 +75,7 @@ class ClassFee(Model):
 	end_date = DateField(_('end_date'), blank=True, null=True)
 	fee = DecimalField(_('fee'), max_digits=10, decimal_places=2)
 	lapfee = DecimalField(_('lap fee'), max_digits=10, decimal_places=2, blank=True, null=True)
+	lapsifee =  DecimalField(_('lap SI fee'), max_digits=10, decimal_places=2, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.label
