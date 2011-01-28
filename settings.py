@@ -19,6 +19,8 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+USE_L10N = True
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
