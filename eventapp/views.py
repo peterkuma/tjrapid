@@ -358,7 +358,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 		total += pa.fees()
 	
 	response = HttpResponse(mimetype='application/pdf')
-	response['Content-Disposition'] = 'attachment; filename=somefilename.pdf'
+	response['Content-Disposition'] = 'attachment; filename=entry.pdf'
 	
 	issue_datetime = datetime.datetime.now()
 	
