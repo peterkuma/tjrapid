@@ -7,6 +7,18 @@
 <script type="text/javascript">
 /* <![CDATA[ */
 window.addEvent('domready', function() {
+	var stringParser = {
+		match: /.*/,
+		convert: function() {
+			return this.get('text').toLowerCase().standardize();
+		},
+		number: false,
+	};
+	
+	HtmlTable.Parsers = {
+		string: stringParser,
+	};
+	
 	var t = new HtmlTable($('table'));
 	t.enableSort();
 	t.sort(2, false, true);
