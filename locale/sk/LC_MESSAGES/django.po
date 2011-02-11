@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 14:58+0100\n"
+"POT-Creation-Date: 2011-01-28 15:13+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -438,13 +438,17 @@ msgstr "Popl. za št./SI/ubyt."
 msgid "Total"
 msgstr "Celkom"
 
-#: eventapp/views.py:435 eventapp/views.py:444
+#: eventapp/views.py:435 eventapp/views.py:444 eventapp/views.py:457
 msgid "Entry Statement"
 msgstr "Výpis prihlášky"
 
 #: eventapp/views.py:451
 msgid "There are no participants in this entry."
 msgstr "V tejto prihláške nie sú žiadni pretekári."
+
+#: eventapp/views.py:454
+msgid "entry-statement.pdf"
+msgstr "vypis-prihlasky.pdf"
 
 #: main/models.py:15
 msgid "code"
