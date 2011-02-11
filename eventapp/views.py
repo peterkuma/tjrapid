@@ -451,9 +451,10 @@ def entry_pdf(request, eventid, id, **kwargs):
 		story.append(Paragraph(_('There are no participants in this entry.'), normal))
 
 	response = HttpResponse(mimetype='application/pdf')
-	response['Content-Disposition'] = 'attachment; filename=entry.pdf'	
+	response['Content-Disposition'] = 'attachment; filename=%s' % _('entry-statement.pdf')
 	doc = SimpleDocTemplate(response,
 				pagesize=A4,
+				title=_('Entry Statement'),
 				leftMargin=1.5*cm,
 				rightMargin=1.5*cm,
 				topMargin=2.5*cm,
