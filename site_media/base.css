@@ -58,7 +58,7 @@ form .errorlist {
 	line-height: 0;
 }
 .menu {
-	width: 165px;
+	width: 145px;
 	height: 600px;
 	padding-top: 10px;
 	position: absolute;
@@ -308,7 +308,7 @@ ul.compact img {
 	margin-left: 145px;
 	padding: 10px 20px 20px 14px;
 	border: 1px silver solid;
-	min-height: 458px;
+	min-height: 520px;
 	background: url("bg.png") repeat-x;
 }
 #content-wide {
