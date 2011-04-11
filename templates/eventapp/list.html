@@ -29,7 +29,11 @@ window.addEvent('domready', function() {
 {{ block.super }}
 {% endblock %}
 {% block content %}
-	<p><a href="../">{% trans "Go back to my entry" %}</a></p>
+	{% if entry %}
+		<p><a href="../">{% trans "Go back to my entry" %}</a></p>
+	{% else %}
+		<p><a href="../">{% trans "Go back to the event page" %}</a></p>
+	{% endif %}
 	<h3>{{ event|escape }}: {% trans "List of participants" %}</h3>
 	{% if participants %}
 		<table id="table" class="standard participants-table">

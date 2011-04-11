@@ -200,10 +200,13 @@ def action(request, eventid,  entryid, namespace=None, **kwargs):
 		
 	return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
 
-def list(request, eventid,  entryid, namespace=None, **kwargs):
+def list(request, eventid,  entryid=None, namespace=None, **kwargs):
 	ev = get_object_or_404(Event,  pk=eventid)
-	er = get_object_or_404(Entry,  pk=entryid,  event=ev)
-
+	if entryid != None:
+		er = get_object_or_404(Entry,  pk=entryid,  event=ev)
+	else:
+		er = None
+	
 	participants = Participant.objects.filter(entry__event=ev)
 
 	return render_to_response('eventapp/list.html',  {

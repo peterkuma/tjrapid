@@ -9,6 +9,7 @@
 		<strong>{% trans "Registration opens" %}:</strong> {{ event.open_date|date:"SHORT_DATE_FORMAT" }}<br />
 		<strong>{% trans "Registration closes" %}:</strong> {{ event.close_date|date:"SHORT_DATE_FORMAT" }}
 	</div>
+        <p><a href="list/">{% blocktrans with event as event|escape %}List of all participants at <em>{{ event }}</em>{% endblocktrans %}</a></p>
 	{% if event.is_open %}
 		<h4>{% trans "New entry" %}</h4>
 		<p>
