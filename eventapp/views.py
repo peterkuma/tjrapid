@@ -245,7 +245,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	for classfee in classfees:
 		classes = re.split(r'\s*,\s*', classfee.classes)
 		for c in classes:
-			c = c[0:10]
+			c = c[0:20]
 			clsdict[c] = (classfee.fee, classfee.lapfee, classfee.lapsifee)
 	#if pa != None:
 	#	clsdict[pa.cls] = pa.entryfee

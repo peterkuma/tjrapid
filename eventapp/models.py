@@ -157,7 +157,7 @@ class Participant(Model):
 	club = CharField(_('club'), max_length=7,  help_text=_('Club and membership number, e.g. RBA1234. If registering as an individual, enter XXXyy, where yy is the year of birth, e.g. XXX80.'))
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
 	simode = CharField(_('SI mode'),  max_length=1,  choices=SIMODE_CHOICES, default='P')
-	cls = CharField(_('class'), max_length=10)
+	cls = CharField(_('class'), max_length=20)
 	laps = CommaSeparatedIntegerField(_('laps'), max_length=50,)
 	note = TextField(_('note'), blank=True)
 	accomm = ForeignKey('Accommodation', db_column='accomid', verbose_name=_('accommodation'), blank=True,  null=True)
@@ -213,7 +213,7 @@ class Directory(Model):
 	surname = CharField(_('surname'), max_length=50)
 	club = CharField(_('club'), max_length=7, null=True)
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
-	cls = CharField(_('class'), max_length=10, null=True)
+	cls = CharField(_('class'), max_length=20, null=True)
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 
