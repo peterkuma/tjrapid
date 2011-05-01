@@ -42,7 +42,7 @@ window.addEvent('domready', function() {
 		f = $('form');
 		f.firstname.value = value.fields.firstname;
 		f.club.value = value.fields.club;
-		f.si.value = value.fields.si;
+		{% if ev.withsi %}f.si.value = value.fields.si;{% endif %}
 		f.cls.value = value.fields.cls;
 	});
 });
@@ -64,12 +64,14 @@ function add(s, o) {
 }
 
 function update_form(form) {
-	form.si.disabled = true;
-	for (i=0; i < form.simode.length; i++) {
-		r = form.simode[i]
-		if (r.value == 'P' && r.checked)
-			form.si.disabled = false;
-	}
+	{% if ev.withsi %}
+	    form.si.disabled = true;
+	    for (i=0; i < form.simode.length; i++) {
+		    r = form.simode[i]
+		    if (r.value == 'P' && r.checked)
+			    form.si.disabled = false;
+	    }
+	{% endif %}
 	
 	form.accommcount.onchange = null;
 	form.accommnights.onchange = null;
@@ -170,17 +172,19 @@ window.addEvent('domready', function() {
 			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
 			<tr><td colspan="2">{{ form.club.errors }}</td></tr>
 			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
-			<tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
-			<tr><td>{{ form.si.label_tag }}*:</td><td>
-				<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
-				<label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
-				<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
-				<label for="si_later">{% trans "supply later" %}</label><br />
-				{% if event.sifee %}
-					<input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
-					<label for="si_borrow">{% trans "want to borrow" %} ({{ event.sifee }} €)</label><br />
-				{% endif %}
-			</td></tr>
+			{% if event.withsi %}
+			    <tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
+			    <tr><td>{{ form.si.label_tag }}*:</td><td>
+				    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
+				    <label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
+				    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
+				    <label for="si_later">{% trans "supply later" %}</label><br />
+				    {% if event.sifee %}
+					    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
+					    <label for="si_borrow">{% trans "want to borrow" %} ({{ event.sifee }} €)</label><br />
+				    {% endif %}
+			    </td></tr>
+			{% endif %}
 			<tr><td colspan="2">{{ form.cls.errors }}</td></tr>
 			<tr><td>{{ form.cls.label_tag }}*:</td><td>{{ form.cls }}</td></tr>
 			<tr><td colspan="2">{{ form.laps.errors }}</td></tr>

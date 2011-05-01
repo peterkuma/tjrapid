@@ -45,9 +45,13 @@ window.addEvent('domready', function() {
 					<th>{% trans "Club" %}</th>
 					<th>{% trans "Class" %}</th>
 					<th>{% trans "Laps" %}</th>
-					<th>{% trans "SI" %}</th>
+					{% if event.withsi %}<th>{% trans "SI" %}</th>{% endif %}
 					<th>{% trans "Accomm." %}</th>
-					<th>{% trans "Entry/SI/Accomm. fee" %}</th>
+					{% if event.withsi %}
+						<th>{% trans "Entry/SI/Accomm. fee" %}</th>
+					{% else %}
+						<th>{% trans "Entry/Accomm. fee" %}</th>
+					{% endif %}
 					<th>{% trans "Total" %}</th>
 				</tr>
 				{% for pa in participants %}
@@ -57,7 +61,7 @@ window.addEvent('domready', function() {
 						<td>{{ pa.club|escape }}</td>
 						<td>{{ pa.cls|escape }}</td>
 						<td>{{ pa.laps|escape }}</td>
-						<td>{{ pa.get_si_abbr }}</td>
+						{% if event.withsi %}<td>{{ pa.get_si_abbr }}</td>{% endif %}
 						<td>{% if pa.accomm %}
 							{% if pa.accomm.label|length > 12 %}
 								{{ pa.accomm.label|slice:":10"|escape }}…
@@ -65,7 +69,11 @@ window.addEvent('domready', function() {
 								{{ pa.accomm.label|escape }}
 							{% endif %}
 						{% endif %}</td>
-						<td>{{ pa.entryfee }}/{{ pa.sifee }}/{{ pa.accommfee }}&nbsp;€</td>
+						{% if event.withsi %}
+							<td>{{ pa.entryfee }}/{{ pa.sifee }}/{{ pa.accommfee }}&nbsp;€</td>
+						{% else %}
+							<td>{{ pa.entryfee }}/{{ pa.accommfee }}&nbsp;€</td>
+						{% endif %}
 						<td>{{ pa.fees }}&nbsp;€</td>
 					</tr>
 				{% endfor %}

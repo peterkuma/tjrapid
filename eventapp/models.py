@@ -47,6 +47,7 @@ class Event(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('EV'), max_length=11)
 	title = CharField(_('title'), max_length=50)
 	sifee = DecimalField(_('si fee'), max_digits=10, decimal_places=2, blank=True, null=True)
+	withsi = BooleanField(_('with SI'), default=True)
 	open_date = DateField(_('open date'), default=datetime.datetime.now)
 	close_date = DateField(_('close date'))
 	email = EmailField(_('e-mail'))
@@ -156,7 +157,7 @@ class Participant(Model):
 	surname = CharField(_('surname'), max_length=50)
 	club = CharField(_('club'), max_length=7,  help_text=_('Club and membership number, e.g. RBA1234. If registering as an individual, enter XXXyy, where yy is the year of birth, e.g. XXX80.'))
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
-	simode = CharField(_('SI mode'),  max_length=1,  choices=SIMODE_CHOICES, default='P')
+	simode = CharField(_('SI mode'),  max_length=1, choices=SIMODE_CHOICES, default='P', blank=True, null=True)
 	cls = CharField(_('class'), max_length=20)
 	laps = CommaSeparatedIntegerField(_('laps'), max_length=50,)
 	note = TextField(_('note'), blank=True)
@@ -187,6 +188,8 @@ class Participant(Model):
 			return _('supply later')
 		elif self.simode == 'B':
 			return _('want to borrow')
+		elif self.simode == None:
+			return ''
 		else:
 			return self.si
 
@@ -195,6 +198,8 @@ class Participant(Model):
 			return _('later')
 		elif self.simode == 'B':
 			return _('borrow')
+		elif self.simode == None:
+			return ''
 		else:
 			return self.si
 	

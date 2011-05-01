@@ -258,6 +258,11 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		else:
 			clschoices.append((k, _(u'%(cls)s (%(fee)s €)') % dict(cls=k,  fee=clsdict[k][0])))
 	
+	if ev.withsi:
+		exclude_si = []
+	else:
+		exclude_si = ['si', 'simode']
+	
 	class ParticipantForm(forms.ModelForm):
 		cls = forms.ChoiceField(choices=clschoices,
 			label=Participant._meta.get_field('cls').verbose_name.capitalize(),
@@ -271,7 +276,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		
 		class Meta:
 			model = Participant
-			exclude = ('id', 'entry', 'cls', 'accommfee', 'entryfee', 'sifee')
+			exclude = ['id', 'entry', 'cls', 'accommfee', 'entryfee', 'sifee'] + exclude_si
 		
 		def clean_laps(self):
 			laps_raw = self.cleaned_data['laps']
@@ -280,7 +285,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		def clean(self):
 			si = self.cleaned_data.get('si')
 			simode = self.cleaned_data.get('simode')
-			if simode == 'P' and si == None:
+			if ev.withsi and (simode == None or (simode == 'P' and si == None)):
 				self._errors['si'] = self.error_class([_('The SI number is invalid.')])
 			
 			accomm = self.cleaned_data.get('accomm')
@@ -296,9 +301,12 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	
 	if request.method == 'POST' and request.POST.has_key('commit'):
 		form = ParticipantForm(request.POST, instance=pa)
-		simode = form.data['simode']
+		simode = form.data.get('simode')
 		if form.is_valid():
 			pa = form.save(commit=False)
+			if not ev.withsi:
+				pa.simode = None
+				pa.si = None
 			if pa.simode != 'P':
 				pa.si = None
 			pa.cls = form.cleaned_data['cls']
@@ -325,7 +333,10 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		simode = pa.simode
 	else:
 		form = ParticipantForm()
-		simode = form.fields['simode'].initial
+		if ev.withsi:
+			simode = form.fields['simode'].initial
+		else:
+			simode = None
 		
 	form.fields['accomm'].queryset = Accommodation.objects.filter(event=ev)
 	del form.fields['accommnights'].choices[0]
