@@ -21,8 +21,7 @@ class Article(models.Model):
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	
 	def get_absolute_url(self):
-		return '%snews/%s/%s/' % (self.category.get_absolute_url(), \
-			self.published.strftime('%Y/%m/%d'),self.id)
+		return '%snews/article/%s/' % (self.category.get_absolute_url(), self.id)
 
 	def path(self):
 		return self.get_absolute_url()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-28 15:58+0200\n"
+"POT-Creation-Date: 2012-01-24 13:00+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : ((n>=2 && n<=4) ? 1 : 2);\n"
+
+#: eventapp/admin_views.py:28
+msgid "report.csv"
+msgstr "vypis.csv"
 
 #: eventapp/admin_views.py:32 eventapp/models.py:47 eventapp/models.py:91
 #: eventapp/models.py:124 eventapp/models.py:154
@@ -491,7 +495,7 @@ msgstr "meno šablóny"
 msgid "menu"
 msgstr "menu"
 
-#: main/models.py:58 main/models.py:91 news/models.py:30 news/models.py:60
+#: main/models.py:58 main/models.py:91 news/models.py:29 news/models.py:59
 msgid "path"
 msgstr "cesta"
 
@@ -504,7 +508,7 @@ msgstr "kategória"
 msgid "categories"
 msgstr "kategórie"
 
-#: main/models.py:78 news/models.py:50
+#: main/models.py:78 news/models.py:49
 msgid "content"
 msgstr "obsah"
 
@@ -532,43 +536,37 @@ msgstr "autor"
 msgid "published"
 msgstr "publikované"
 
-#: news/models.py:38 news/models.py:48
+#: news/models.py:37 news/models.py:47
 msgid "article"
 msgstr "článok"
 
-#: news/models.py:39
+#: news/models.py:38
 msgid "articles"
 msgstr "články"
 
-#: news/models.py:47
+#: news/models.py:46
 msgid "subject"
 msgstr "subjekt"
 
-#: news/models.py:49
+#: news/models.py:48
 msgid "reply to"
 msgstr "odpoveď na"
 
-#: news/models.py:51
+#: news/models.py:50
 msgid "sender"
 msgstr "odosielateľ"
 
-#: news/models.py:52
+#: news/models.py:51
 msgid "posted"
 msgstr "odoslané"
 
-#: news/models.py:76
+#: news/models.py:75
 msgid "comment"
 msgstr "komentár"
 
-#: news/models.py:77
+#: news/models.py:76
 msgid "comments"
 msgstr "komentáre"
-
-#: news/views.py:74 templates/news/archive/ob.html:4
-#: templates/news/archive/ob.html.py:10 templates/news/comment/ob.html:4
-#: templates/news/details/ob.html:4
-msgid "News"
-msgstr "Novinky"
 
 #: ob/models.py:34
 msgid "member"
@@ -879,11 +877,16 @@ msgid ""
 msgstr ""
 "Identifikačné číslo prihlášky bolo odoslané na <strong>%(email)s</strong>."
 
-#: templates/news/archive/ob.html:23
+#: templates/news/archive/ob.html:4 templates/news/archive/ob.html.py:10
+#: templates/news/comment/ob.html:4 templates/news/details/ob.html:4
+msgid "News"
+msgstr "Novinky"
+
+#: templates/news/archive/ob.html:20
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: templates/news/archive/ob.html:30
+#: templates/news/archive/ob.html:27
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -891,9 +894,17 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: templates/news/archive/ob.html:33 templates/news/details/ob.html:27
+#: templates/news/archive/ob.html:30 templates/news/details/ob.html:27
 msgid "Add new comment"
 msgstr "Pridať nový komentár"
+
+#: templates/news/archive/ob.html:38
+msgid "Next"
+msgstr "Ďalšie"
+
+#: templates/news/archive/ob.html:43
+msgid "Previous"
+msgstr "Predchádzajúce"
 
 #: templates/news/comment/ob.html:23
 msgid "In reply to"

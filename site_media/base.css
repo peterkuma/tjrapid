@@ -114,6 +114,23 @@ ul.compact img {
 	padding: 0 0 0 19px;
 	background: url("feed-icon-14x14.png") no-repeat 0 50%;
 }
+.pagination {
+	clear: both;
+}
+.pagination .previous:after {
+	content: "⇨";
+	font-size: 120%;
+}
+.pagination .previous {
+	float: right;
+}
+.pagination .next:before {
+	content: "⇦";
+	font-size: 120%;
+}
+.pagination .next {
+	float: left;
+}
 .article {
 	padding: 5px 8px;
 	background-color: #ededed;
