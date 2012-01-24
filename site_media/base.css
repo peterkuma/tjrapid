@@ -115,7 +115,7 @@ ul.compact img {
 	background: url("feed-icon-14x14.png") no-repeat 0 50%;
 }
 .article {
-	padding: 5px;
+	padding: 5px 8px;
 	background-color: #ededed;
 	margin: 10px 0;
 }
@@ -125,6 +125,10 @@ ul.compact img {
 .article-info {
 	color: #001800;
 	font-size: 90%;
+}
+.article-footer {
+	text-align: right;
+	margin: 5px 0;
 }
 .comment {
 	padding: 5px;
@@ -151,7 +155,7 @@ ul.compact img {
 	color: #001800;
 	font-size: 90%;
 }
-.comment pre {
+.comment-body {
 }
 .comment-form label {
 	font-weight: bold;
