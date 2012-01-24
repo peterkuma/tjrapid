@@ -18,11 +18,11 @@
 						<div class="comment-info">{{ o.comment.sender|escape }},
 							{{ o.comment.posted|date:"j F Y H:i" }}</div>
 						<div class="comment-body">{{ o.comment.message|escape|linebreaks|urlize }}</div>
-						<a href="comment/{{ o.comment.id }}/">{% trans "Reply to this comment" %}</a>
+						<div class="comment-footer"><a href="comment/{{ o.comment.id }}/">{% trans "Reply" %}</a></div>
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 	{% endif %}
-	<a href="comment/">{% trans "Add new comment" %}</a>
+        <p><a href="comment/">{% trans "Add new comment" %}</a></p>
 {% endblock %}

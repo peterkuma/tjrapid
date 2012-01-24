@@ -19,30 +19,36 @@ window.addEvent('domready', function() {
 {% endblock %}
 
 {% block content %}
+	<h3>{{ article.title|escape }}</h3>
+	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
+	{% if article.head %}<p>{{ article.head|textile }}</p>{% endif %}
+	<p>{{ article.body|textile }}</p>
+	<h4>{% trans "Comments" %}</h4>
 	{% if reply %}
-		<h3>{% trans "In reply to" %}:</h3>
-		<div class="comment">
-			<h5>{{ reply.subject }}</h5>
-			<div class="comment-info">
-				{{ reply.sender|escape }}, {{ reply.posted|date:"j F Y H:i" }}
+		<div class="comment-wrapper">
+			<div class="comment">
+				<h5>{{ reply.subject }}</h5>
+				<div class="comment-info">
+					{{ reply.sender|escape }}, {{ reply.posted|date:"j F Y H:i" }}
+				</div>
+				<div class="comment-body">{{ reply.message|escape|linebreaks|urlize }}</div>
 			</div>
-			<pre>{{ reply.message|escape }}</pre>
 		</div>
 	{% endif %}
-	<h4>{% trans "Your comment" %}</h4>
 	{% if comment %}
-		<h5>Preview</h5>
-		<div class="comment">
-			<h5>{{ comment.subject|escape }}</h5>
-			<div class="comment-info">
-				{{ comment.sender|escape }}, {% now "j F Y H:i" %}
+		<div class="comment-wrapper">
+			<div class="comment{% if reply %} comment-level-1{% endif %}">
+				<h5>{{ comment.subject|escape }}</h5>
+				<div class="comment-info">
+					{{ comment.sender|escape }}, {% now "j F Y H:i" %}
+				</div>
+				<div class="comment-body">{{ comment.message|escape|linebreaks|urlize }}</div>
 			</div>
-			<pre>{{ comment.message|escape }}</pre>
 		</div>
 	{% endif %}
 	<form class="comment-form" method="post" action="">
-		{{ form }}
-		<div class="form-buttons">
+		<table>{{ form }}</table>
+		<div class="buttons">
 			<input type="submit" name="preview" value="{% trans "Preview comment" %}" />
 			<input type="submit" name="send" value="{% trans "Send comment" %}" />
 		</div>

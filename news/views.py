@@ -89,10 +89,10 @@ def comment(request,category,lang=settings.LANGUAGE_CODE,id=None,reply_id=None):
 		initial_subject = None
 
 	class CommentForm(forms.Form):
-		subject = forms.CharField(max_length=100,initial=initial_subject,
+		subject = forms.CharField(label=_('Subject'),max_length=100,initial=initial_subject,
 			widget=forms.TextInput(attrs={'size':'40'}))
-		message = forms.CharField(max_length=300,widget=forms.Textarea())
-		sender = forms.CharField(max_length=50)
+		sender = forms.CharField(label=_('Sender'),max_length=50)
+		message = forms.CharField(label=_('Message'),max_length=300,widget=forms.Textarea())
 	
 	comment = None
 	if request.method == 'POST':

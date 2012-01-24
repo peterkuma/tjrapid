@@ -31,9 +31,6 @@ form .errorlist {
 	color: #d40000;
 	font-weight: bold;
 }
-.form-buttons {
-	margin: 10px 0;
-}
 .pic {
 	border: 1px solid #ccc;
 	padding: 7px;
@@ -148,9 +145,9 @@ ul.compact img {
 	margin: 5px 0;
 }
 .comment {
-	padding: 5px;
+	padding: 8px;
 	background-color: #ededed;
-	margin: 10px 0;
+	margin: 1px 0;
 }
 .comment-wrapper {
 	background: url("comment-wrapper.png") repeat-y;
@@ -165,19 +162,30 @@ ul.compact img {
 .comment-level-8 { margin-left: 80px; }
 .comment-level-9 { margin-left: 90px; }
 .comment h5 {
-	font-size: 95%;
+	font-size: 10pt;
 	margin: 0;
 }
 .comment-info {
 	color: #001800;
-	font-size: 90%;
+	margin: 4px 0;
 }
 .comment-body {
 }
-.comment-form label {
+.comment-footer {
+	text-align: right;
+	margin: 5px 0;
+}
+.comment-form {
+	margin: 20px 0;
+}
+.comment-form th {
 	font-weight: bold;
-	display: block;
-	margin: 4px 0;
+	text-align: right;
+	vertical-align: top;
+	padding-right: 5px;
+}
+.comment-form .buttons {
+	margin: 10px 0;
 }
 .table-sortable th {
 	cursor: pointer;

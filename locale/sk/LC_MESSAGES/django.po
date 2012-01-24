@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-24 13:00+0100\n"
+"POT-Creation-Date: 2012-01-24 14:03+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -568,6 +568,18 @@ msgstr "komentár"
 msgid "comments"
 msgstr "komentáre"
 
+#: news/views.py:92
+msgid "Subject"
+msgstr "Predmet"
+
+#: news/views.py:94
+msgid "Message"
+msgstr "Správa"
+
+#: news/views.py:95
+msgid "Sender"
+msgstr "Odosielateľ"
+
 #: ob/models.py:34
 msgid "member"
 msgstr "člen"
@@ -906,29 +918,18 @@ msgstr "Ďalšie"
 msgid "Previous"
 msgstr "Predchádzajúce"
 
-#: templates/news/comment/ob.html:23
-msgid "In reply to"
-msgstr "Odpoveď na"
-
-#: templates/news/comment/ob.html:32
-msgid "Your comment"
-msgstr "Váš komentár"
-
-#: templates/news/comment/ob.html:46
-msgid "Preview comment"
-msgstr "Náhľad komentára"
-
-#: templates/news/comment/ob.html:47
-msgid "Send comment"
-msgstr "Poslať komentár"
-
-#: templates/news/details/ob.html:12
+#: templates/news/comment/ob.html:26 templates/news/details/ob.html:12
 msgid "Comments"
 msgstr "Komentáre"
 
-#: templates/news/details/ob.html:21
-msgid "Reply to this comment"
-msgstr "Odpovedať na tento komentár"
+#: templates/news/comment/ob.html:52
+msgid "Preview comment"
+msgstr "Náhľad komentára"
 
-#~ msgid "RSS feed"
-#~ msgstr "RSS feed"
+#: templates/news/comment/ob.html:53
+msgid "Send comment"
+msgstr "Poslať komentár"
+
+#: templates/news/details/ob.html:21
+msgid "Reply"
+msgstr "Odpovedať"
