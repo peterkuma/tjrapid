@@ -908,7 +908,7 @@ msgstr[2] "%(count)s komentárov"
 
 #: templates/news/archive/ob.html:30 templates/news/details/ob.html:27
 msgid "Add new comment"
-msgstr "Pridať nový komentár"
+msgstr "Napísať komentár"
 
 #: templates/news/archive/ob.html:38
 msgid "Next"
