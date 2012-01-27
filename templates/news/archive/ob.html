@@ -1,6 +1,7 @@
 {% extends "ob.html" %}
 {% load i18n %}
 {% load markup %}
+{% load baseurl %}
 {% block title %}{% trans "News" %}{% endblock %}
 {% block head %}
 <link rel="alternate" title="RSS" href="rss/" type="application/rss+xml" />
@@ -15,11 +16,11 @@
 			<h4>{{ a.title|escape }}</h4>
 			<div class="article-info">{{ a.author|escape }}, {{ a.published|date:"j F Y" }}</div>
 			{% if a.head %}
-				<p>{{ a.head|textile }}</p>
+				<p>{{ a.head|textile|baseurl:a.get_absolute_url }}</p>
 				<div class="article-footer">
 					{% if a.body %}<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a> | {% endif %}
 			{% else %}
-				<p>{{ a.body|textile }}</p>
+				<p>{{ a.body|textile|baseurl:a.get_absolute_url }}</p>
 				<div class="article-footer">
 			{% endif %}
 			{% if a.comment_set.count %}
