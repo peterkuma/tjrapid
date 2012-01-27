@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs', 
 #   'django.contrib.flatpages',
     'django.contrib.markup',
+    'tjrapid.attachment',
     'tjrapid.main',
     'tjrapid.ob',
     'tjrapid.news',
