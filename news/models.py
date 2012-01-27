@@ -36,7 +36,7 @@ class Article(models.Model):
 
 	class Meta:
 		get_latest_by = 'published'
-		ordering = ('category','-published')
+		ordering = ('-published',)
 		verbose_name = _('article')
 		verbose_name_plural = _('articles')
 	
@@ -70,7 +70,7 @@ class Comment(models.Model):
 
 	class Meta:
 		get_latest_by = 'posted'
-		ordering = ('posted',)
+		ordering = ('-posted',)
 		verbose_name = _('comment')
 		verbose_name_plural = _('comments')
 	

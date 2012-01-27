@@ -16,16 +16,15 @@ class AttachmentInline(GenericTabularInline):
 	extra = 2
 
 class ArticleAdmin(admin.ModelAdmin):
-	list_display = ('title','category','path','published','author','modified')
+	list_display = ('title','author','published','category')
 	search_fields = ('title','author','head','body')
-	list_filter = ('category','published','author')
+	list_filter = ('author','category')
 	fields = ('title', 'author', 'category', 'head', 'body')
 	inlines = (AttachmentInline,)
 
 class CommentAdmin(admin.ModelAdmin):
-	list_display = ('subject','article','reply','posted','sender')
+	list_display = ('subject','sender','article','posted',)
 	search_fields = ('subject','message','article','sender')
-	list_filter = ('posted',)
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
