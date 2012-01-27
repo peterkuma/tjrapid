@@ -8,17 +8,20 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.contrib.contenttypes.generic import GenericRelation
+from tjrapid.attachment.models import Attachment
 
 from tjrapid.main.models import *
 
 class Article(models.Model):
 	title = models.CharField(_('title'),max_length=100)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
-	head = models.TextField(_('head'),blank=True,help_text='Text is formatted in Textile. See <a href="http://hobix.com/textile/">language reference</a>.')
-	body = models.TextField(_('body'),blank=True,help_text='Text is formatted in Textile. See <a href="http://hobix.com/textile/">language reference</a>.')
+	head = models.TextField(_('head'),blank=True,help_text='Text formatted in <a href="http://hobix.com/textile/">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.')
+	body = models.TextField(_('body'),blank=True,help_text='Text formatted in <a href="http://hobix.com/textile/">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.')
 	author = models.CharField(_('author'),max_length=100)
 	published = models.DateTimeField(_('published'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
+	attachments = GenericRelation(Attachment)
 	
 	def get_absolute_url(self):
 		return '%snews/article/%s/' % (self.category.get_absolute_url(), self.id)
@@ -37,10 +40,6 @@ class Article(models.Model):
 		verbose_name = _('article')
 		verbose_name_plural = _('articles')
 	
-	class Admin:
-		list_display = ('title','category','path','published','author','modified')
-		search_fields = ('name','title','head','body')
-		list_filter = ('category','published','author')
 
 class Comment(models.Model):
 	subject = models.CharField(_('subject'),max_length=100)
@@ -75,8 +74,4 @@ class Comment(models.Model):
 		verbose_name = _('comment')
 		verbose_name_plural = _('comments')
 	
-	class Admin:
-		list_display = ('subject','article','reply','posted','sender')
-		search_fields = ('subject','message','article','sender')
-		list_filter = ('posted',)
 

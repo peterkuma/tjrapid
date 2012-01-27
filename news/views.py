@@ -6,6 +6,8 @@
 # All rights reserved.
 #
 
+import os
+
 from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -74,6 +76,17 @@ def details(request,category,lang=settings.LANGUAGE_CODE,id=None):
 		RequestContext(request)
 	)
 
+def attachment(request,category,lang=settings.LANGUAGE_CODE,id=None,attachment=None):
+	try:
+		c = Category.objects.get(language__code=lang,name=category)
+		article = Article.objects.get(category=c,id=id)
+		for a in article.attachments.all():
+			if os.path.basename(a.file.name) == attachment:
+				return HttpResponseRedirect(a.file.url)
+	except ObjectDoesNotExist:
+		raise Http404
+	raise Http404
+	
 def comment(request,category,lang=settings.LANGUAGE_CODE,id=None,reply_id=None):
 	try:
 		c = Category.objects.get(language__code=lang,name=category)

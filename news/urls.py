@@ -13,7 +13,10 @@ urlpatterns = patterns('tjrapid.news.views',
 	(r'^$','archive'),
 	(r'^(?P<page>\d+)?/$','archive'),
 	(r'^article/(?P<id>\d+)/$','details'),
+	(r'^article/(?P<id>\d+)/(?P<attachment>[^/]+)$','attachment'),
 	(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$','comment'),
+	(r'^article/(?P<id>\d+)/comment/(?P<attachment>[^/]+)$','attachment'),
+	(r'^article/(?P<id>\d+)/comment/\d+/(?P<attachment>[^/]+)$','attachment'),
 	
 	# Legacy URLs.
 	#(r'^(?P<year>\d{4})/$','archive'),
