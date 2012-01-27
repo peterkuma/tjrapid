@@ -1,0 +1,27 @@
+#header {
+	background: url("../img/header.png") repeat-x;
+}
+
+#branding a:hover {
+	text-decoration: none !important;
+}
+
+#header h1 {
+	color: #555;
+	font-weight: bold;
+	background: url("../img/logo.png") 10px no-repeat;
+	padding-left: 32px;
+	font-family: Helvetica, sans-serif;
+}
+
+#user-tools {
+	color: black;
+}
+
+#user-tools a {
+	color: black !important;
+}
+
+.vLargeTextField {
+	height: 200px;
+}
