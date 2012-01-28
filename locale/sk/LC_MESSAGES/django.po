@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-24 14:03+0100\n"
+"POT-Creation-Date: 2012-01-28 10:31+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: peter <(null)>\n"
 "Language-Team: English <en@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : ((n>=2 && n<=4) ? 1 : 2);\n"
+
+#: attachment/models.py:17
+msgid "content type"
+msgstr "typ objektu"
+
+#: attachment/models.py:18
+msgid "object ID"
+msgstr "ID objektu"
+
+#: attachment/models.py:20
+msgid "file"
+msgstr "súbor"
+
+#: attachment/models.py:30
+msgid "attachment"
+msgstr "príloha"
+
+#: attachment/models.py:31
+msgid "attachments"
+msgstr "prílohy"
 
 #: eventapp/admin_views.py:28
 msgid "report.csv"
@@ -166,7 +186,7 @@ msgstr "požičiať"
 msgid "present"
 msgstr "vyplený"
 
-#: eventapp/models.py:48 main/models.py:33 main/models.py:70 news/models.py:15
+#: eventapp/models.py:48 main/models.py:33 main/models.py:68 news/models.py:17
 #: ob/models.py:43
 msgid "title"
 msgstr "názov"
@@ -241,12 +261,12 @@ msgid "class fees"
 msgstr "štartovné"
 
 #: eventapp/models.py:94 eventapp/models.py:171 eventapp/models.py:222
-#: main/models.py:79
+#: main/models.py:77
 msgid "created"
 msgstr "vytvorené"
 
 #: eventapp/models.py:95 eventapp/models.py:172 eventapp/models.py:223
-#: main/models.py:80 news/models.py:21
+#: main/models.py:78 news/models.py:23
 msgid "modified"
 msgstr "upravené"
 
@@ -459,11 +479,15 @@ msgstr "V tejto prihláške nie sú žiadni pretekári."
 msgid "entry-statement.pdf"
 msgstr "vypis-prihlasky.pdf"
 
-#: main/models.py:15
+#: main/admin.py:37
+msgid "Advanced options"
+msgstr "Pokročilé nastavenia"
+
+#: main/models.py:17
 msgid "code"
 msgstr "kód"
 
-#: main/models.py:17
+#: main/models.py:19
 msgid ""
 "All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
 "dirlang.html#langcodes"
@@ -471,19 +495,19 @@ msgstr ""
 "Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
 "dirlang.html#langcodes"
 
-#: main/models.py:19 main/models.py:35 main/models.py:72 ob/models.py:45
+#: main/models.py:21 main/models.py:35 main/models.py:70 ob/models.py:45
 msgid "name"
 msgstr "meno"
 
-#: main/models.py:26 main/models.py:40
+#: main/models.py:28 main/models.py:40
 msgid "language"
 msgstr "jazyk"
 
-#: main/models.py:27
+#: main/models.py:29
 msgid "languages"
 msgstr "jazyky"
 
-#: main/models.py:38 main/models.py:75 ob/models.py:48
+#: main/models.py:38 main/models.py:73 ob/models.py:48
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
@@ -495,22 +519,39 @@ msgstr "meno šablóny"
 msgid "menu"
 msgstr "menu"
 
-#: main/models.py:58 main/models.py:91 news/models.py:29 news/models.py:59
+#: main/models.py:59 main/models.py:91 news/models.py:32 news/models.py:58
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:62 main/models.py:77 news/models.py:16 ob/models.py:23
+#: main/models.py:63 main/models.py:75 news/models.py:18 ob/models.py:23
 #: ob/models.py:53
 msgid "category"
 msgstr "kategória"
 
-#: main/models.py:63
+#: main/models.py:64
 msgid "categories"
 msgstr "kategórie"
 
-#: main/models.py:78 news/models.py:49
+#: main/models.py:76 news/models.py:48
 msgid "content"
 msgstr "obsah"
+
+#: main/models.py:76 news/models.py:19 news/models.py:20
+msgid ""
+"Text formatted in <a href=\"http://en.wikipedia.org/wiki/Textile_"
+"(markup_language)\">Textile</a>. Attachments can be referenced in links and "
+"images by their file name. HTML is allowed."
+msgstr "Text je formátovaný v <a href=\"http://en.wikipedia.org/wiki/Textile_"
+"(markup_language)\">Textile</a>. Prílohy môžu byť referencované z odkazov a "
+"obrázkov ich menom. HTML je povolené."
+
+#: main/models.py:80
+msgid "style"
+msgstr "Štýl"
+
+#: main/models.py:80
+msgid "Cascading Style Sheets"
+msgstr "Kaskádové štýly (CSS)"
 
 #: main/models.py:97
 msgid "page"
@@ -520,65 +561,65 @@ msgstr "stránka"
 msgid "pages"
 msgstr "stránky"
 
-#: news/models.py:17
+#: news/models.py:19
 msgid "head"
 msgstr "hlavička"
 
-#: news/models.py:18
+#: news/models.py:20
 msgid "body"
 msgstr "telo"
 
-#: news/models.py:19
+#: news/models.py:21
 msgid "author"
 msgstr "autor"
 
-#: news/models.py:20
+#: news/models.py:22
 msgid "published"
 msgstr "publikované"
 
-#: news/models.py:37 news/models.py:47
+#: news/models.py:40 news/models.py:46
 msgid "article"
 msgstr "článok"
 
-#: news/models.py:38
+#: news/models.py:41
 msgid "articles"
 msgstr "články"
 
-#: news/models.py:46
+#: news/models.py:45
 msgid "subject"
 msgstr "subjekt"
 
-#: news/models.py:48
+#: news/models.py:47
 msgid "reply to"
 msgstr "odpoveď na"
 
-#: news/models.py:50
+#: news/models.py:49
 msgid "sender"
 msgstr "odosielateľ"
 
-#: news/models.py:51
+#: news/models.py:50
 msgid "posted"
 msgstr "odoslané"
 
-#: news/models.py:75
+#: news/models.py:74
 msgid "comment"
 msgstr "komentár"
 
-#: news/models.py:76
+#: news/models.py:75
 msgid "comments"
 msgstr "komentáre"
 
-#: news/views.py:92
+#: news/views.py:105
 msgid "Subject"
 msgstr "Predmet"
 
-#: news/views.py:94
-msgid "Message"
-msgstr "Správa"
-
-#: news/views.py:95
+#: news/views.py:107
 msgid "Sender"
 msgstr "Odosielateľ"
+
+#: news/views.py:108
+msgid "Message"
+msgstr "Správa"
 
 #: ob/models.py:34
 msgid "member"
@@ -616,20 +657,20 @@ msgstr "pokyny"
 msgid "competition"
 msgstr "preteky"
 
-#: templates/base.html:57
+#: templates/base.html:62
 msgid "Last updated"
 msgstr "Posledná úprava"
 
-#: templates/base.html:58
+#: templates/base.html:63
 msgid "Office: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
 msgstr ""
 "Sekretariát: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
 
-#: templates/base.html:59
+#: templates/base.html:64
 msgid "Administrator"
 msgstr "Administrátor"
 
-#: templates/base.html:59
+#: templates/base.html:64
 msgid "Powered by Django"
 msgstr "Powered by Django"
 
@@ -680,6 +721,14 @@ msgstr "Členovia"
 #: templates/ob_members.html:10 templates/ob_members.html.py:21
 msgid "Category"
 msgstr "Kategória"
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Administrácia Django"
+
+#: templates/admin/base_site.html:7
+msgid "TJ Rapid"
+msgstr "TJ Rapid"
 
 #: templates/admin/eventapp/event/change_form.html:6
 msgid "Reports"
@@ -889,16 +938,16 @@ msgid ""
 msgstr ""
 "Identifikačné číslo prihlášky bolo odoslané na <strong>%(email)s</strong>."
 
-#: templates/news/archive/ob.html:4 templates/news/archive/ob.html.py:10
+#: templates/news/archive/ob.html:5 templates/news/archive/ob.html.py:11
 #: templates/news/comment/ob.html:4 templates/news/details/ob.html:4
 msgid "News"
 msgstr "Novinky"
 
-#: templates/news/archive/ob.html:20
+#: templates/news/archive/ob.html:21
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: templates/news/archive/ob.html:27
+#: templates/news/archive/ob.html:28
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -906,15 +955,15 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: templates/news/archive/ob.html:30 templates/news/details/ob.html:27
+#: templates/news/archive/ob.html:31 templates/news/details/ob.html:27
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
-#: templates/news/archive/ob.html:38
+#: templates/news/archive/ob.html:39
 msgid "Next"
 msgstr "Ďalšie"
 
-#: templates/news/archive/ob.html:43
+#: templates/news/archive/ob.html:44
 msgid "Previous"
 msgstr "Predchádzajúce"
 
