@@ -16,8 +16,8 @@ from tjrapid.main.models import *
 class Article(models.Model):
 	title = models.CharField(_('title'),max_length=100)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
-	head = models.TextField(_('head'),blank=True,help_text='Text formatted in <a href="http://hobix.com/textile/">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.')
-	body = models.TextField(_('body'),blank=True,help_text='Text formatted in <a href="http://hobix.com/textile/">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.')
+	head = models.TextField(_('head'),blank=True,help_text=_('Text formatted in <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.'))
+	body = models.TextField(_('body'),blank=True,help_text=_('Text formatted in <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.'))
 	author = models.CharField(_('author'),max_length=100)
 	published = models.DateTimeField(_('published'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
