@@ -21,49 +21,49 @@ Installation
 
 1. Create a new python virtual environment, and activate it:
 
-    virtualenv --no-site-packages tjr
-    cd tjr
-    . bin/activate
+        virtualenv --no-site-packages tjr
+        cd tjr
+        . bin/activate
 
 2. Install required python packages:
 
-    pip install django
-    pip install BeautifulSoup
-    pip install reportlab
-    pip install textile
-    pip install psycopg2 # For posgresql support (optional).
+        pip install django
+        pip install BeautifulSoup
+        pip install reportlab
+        pip install textile
+        pip install psycopg2 # For posgresql support (optional).
 
 3. Clone the tjrapid repository:
 
-    git clone git://github.com/peterkuma/tjrapid.git
-    cd trapid
+        git clone git://github.com/peterkuma/tjrapid.git
+        cd trapid
 
 4. Customize the project settings:
 
-    cp tjrapid/settings_local-example.py tjrapid/settings_local.py
-    vim tjrapid/settings_local.py
+        cp tjrapid/settings_local-example.py tjrapid/settings_local.py
+        vim tjrapid/settings_local.py
 
 5. Initialize the database:
 
-    ./manage.py syncdb
+        ./manage.py syncdb
 
    If you have a dump of the database, restore it as db/tjrapid.sqlite.
 
 6. Collect static files into the static directory:
 
-    ./manage.py collectstatic --noinput
+        ./manage.py collectstatic --noinput
 
 7. Run the development server:
 
-    ./manage.py runserver
+        ./manage.py runserver
 
 Deployment
 ----------
 
 For deployment, follow the instructions above, but take these additional steps:
 
-1. Set DEBUG = False in settings_local.py and configure
-   EMAIL_* and SECRET_KEY appropriately.
+1. Set DEBUG = False in settings\_local.py and configure
+   EMAIL\_* and SECRET_KEY appropriately.
 
 2. Set up a postgresql database by restoring a database dump.
    Configure DATABASES in settings_local.py.
