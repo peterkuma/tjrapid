@@ -43,11 +43,10 @@ Installation
         cp tjrapid/settings_local-example.py tjrapid/settings_local.py
         vim tjrapid/settings_local.py
 
-5. Initialize the database:
+5. If you have a dump of the database, restore it as db/tjrapid.sqlite.
+   Synchronize the database with Django models:
 
         ./manage.py syncdb
-
-   If you have a dump of the database, restore it as db/tjrapid.sqlite.
 
 6. Collect static files into the static directory:
 
