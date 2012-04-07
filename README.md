@@ -35,7 +35,7 @@ Installation
 
 3. Clone the tjrapid repository:
 
-        git clone git://github.com/peterkuma/tjrapid.git
+        git clone -b django1.4 git://github.com/peterkuma/tjrapid.git
         cd trapid
 
 4. Customize the project settings:
