@@ -1,0 +1,7 @@
+*.pyc
+*.komodoproject
+.komodotools
+*~
+/tjrapid/settings_local.py
+/db/tjrapid.sqlite
+

@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2007, 2008, 2009, 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2007-2012 Peter Kuma
 
 import os
 
@@ -13,9 +9,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import translation
 from django.http import HttpResponseRedirect
+from django.conf import settings
 
-from tjrapid import settings
-from tjrapid.main.models import Page
+from main.models import Page
 
 def page(request, path=''):
 	path = '/' + path
@@ -24,7 +20,7 @@ def page(request, path=''):
 		if p.path() == path:
 			translation.activate(p.category.language.code)
 			request.LANGUAGE_CODE = translation.get_language()
-			return render_to_response(p.category.template_name, {
+			return render_to_response('main/'+p.category.template_name, {
 					'page': p,
 					'category': p.category,
 					'style': p.style
@@ -34,12 +30,12 @@ def page(request, path=''):
 def attachment(request, path):
 	page_path = '/' + os.path.dirname(path) + '/'
 	attachment = os.path.basename(path)
-	
+
 	pages = Page.objects.all()
 	for p in pages:
 		if p.path() == page_path:
 			for a in p.attachments.all() | p.category.attachments.all():
 				if os.path.basename(a.file.name) == attachment:
 					return HttpResponseRedirect(a.file.url)
-			
+
 	raise Http404

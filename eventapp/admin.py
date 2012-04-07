@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
+
+from django.contrib import admin
 
 from models import *
-from django.contrib import admin
 
 class EventAdmin(admin.ModelAdmin):
 	list_display = ('id', 'title', 'open_date', 'close_date')
@@ -15,7 +12,7 @@ class EventAdmin(admin.ModelAdmin):
 class AccommodationAdmin(admin.ModelAdmin):
 	list_display = ('id', 'event', '__unicode__', 'capacity')
 	list_filter = ('event',)
-	
+
 class ClassFeeAdmin(admin.ModelAdmin):
 	list_display = ('event', 'label', 'classes')
 	list_filter = ('event',)

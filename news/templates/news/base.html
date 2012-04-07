@@ -1,0 +1,10 @@
+{% extends "main/ob.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{% trans "News" %}{% endblock %}
+
+{% block head %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "news/css/base.css" %}" />
+{% endblock %}

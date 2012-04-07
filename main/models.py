@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2007, 2008, 2009, 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2007-2012 Peter Kuma
 
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
 
-from tjrapid import settings
-from tjrapid.attachment.models import Attachment
+from django.conf import settings
+from attachment.models import Attachment
 
 class Language(models.Model):
 	code = models.CharField(_('code'),unique=True,
@@ -19,7 +15,7 @@ class Language(models.Model):
 		help_text=_('All choices can be found here: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes')
 	)
 	name = models.CharField(_('name'),max_length=100)
-	
+
 	def __unicode__(self):
 		return self.name
 
@@ -55,9 +51,9 @@ class Category(models.Model):
 
 	def path(self):
 		return self.get_absolute_url()
-	
+
 	path.short_description = _('path')
-	
+
 	class Meta:
 		ordering = ['title']
 		verbose_name = _('category')
@@ -96,4 +92,3 @@ class Page(models.Model):
 		unique_together = (('name','category'),)
 		verbose_name = _('page')
 		verbose_name_plural = _('pages')
-

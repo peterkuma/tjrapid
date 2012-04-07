@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2007-2012 Peter Kuma
 
 from django.contrib import admin
 from django.contrib.contenttypes.generic import GenericTabularInline
 from django.utils.translation import ugettext as _
 
 from models import *
-from tjrapid.attachment.models import Attachment
+from attachment.models import Attachment
 
 class AttachmentInline(GenericTabularInline):
 	model = Attachment
@@ -24,14 +20,13 @@ class CategoryAdmin(admin.ModelAdmin):
 	list_display = ('title','path','language')
 	list_filter = ('language',)
 	inlines = (AttachmentInline,)
-	
+
 class PageAdmin(admin.ModelAdmin):
 	list_display = ('title','category','path')
 	search_fields = ('name','title')
 	list_filter = ('category',)
-	js = ('/site_media/admin.js',)
 	inlines = (AttachmentInline,)
-	
+
 	fieldsets = (
 		(None, {'fields': ('title', 'name', 'category', 'content')}),
 		(_('Advanced options'), {
@@ -39,7 +34,7 @@ class PageAdmin(admin.ModelAdmin):
 			'fields': ('style',)
 		}),
 	)
-	
+
 
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Category, CategoryAdmin)

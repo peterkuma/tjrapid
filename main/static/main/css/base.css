@@ -1,0 +1,295 @@
+body {
+	margin: 0;
+}
+img {
+	border: none;
+}
+ul {
+	list-style-type: square;
+}
+h3 {
+	font-size: 140%;
+	font-family: Verdana, sans-serif;
+	margin: 15px 0 15px 0;
+}
+h4 {
+	font-size: 120%;
+	font-family: Verdana, sans-serif;
+}
+dt {
+	display: inline;
+	font-weight: bold;
+}
+dd {
+	display: inline;
+	margin-left: 5px;
+}
+form .errorlist {
+	list-style: none;
+	margin: 2px 0;
+	padding: 0;
+	color: #d40000;
+	font-weight: bold;
+}
+.pic {
+	border: 1px solid #ccc;
+	padding: 7px;
+	margin: 5px;
+	background-color: white;
+	line-height: 0;
+}
+.pic-right {
+	border: 1px solid #ccc;
+	padding: 7px;
+	margin: 5px 0 5px 10px;
+	background-color: white;
+	float: right;
+	line-height: 0;
+}
+.pic-left {
+	border: 1px solid #ccc;
+	padding: 7px;
+	margin: 5px 10px 5px 0;
+	background-color: white;
+	float: left;
+	line-height: 0;
+}
+.menu {
+	width: 145px;
+	height: 600px;
+	padding-top: 10px;
+	position: absolute;
+	left: 0;
+}
+.menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	padding: 4px 10px;
+}
+.menu a {
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+.menu a:hover {
+	text-decoration: underline;
+}
+.box {
+	background: #eec73e;
+	padding: 5px;
+	clear: both;
+}
+.box .title {
+	display: block;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 0 0 4px 0;
+}
+.box .subtitle {
+	display: block;
+}
+ul.compact {
+	margin: 4px 0;
+	padding: 0;
+}
+ul.compact li {
+	display: inline;
+	list-style: none;
+	margin-right: 10px;
+}
+ul.compact img {
+	margin-right: 5px;
+	vertical-align: text-top;
+}
+.table-sortable th {
+	cursor: pointer;
+}
+.table-th-sort {
+	background: url("../../img/sort.png") no-repeat right center;
+}
+.table-th-sort-rev {
+	background: url("../../img/sort-rev.png") no-repeat right center;
+}
+#main {
+	width: 800px;
+	margin: 0 auto 10px auto;
+	position: relative;
+	background: url("../img/menu.png") repeat-y;
+}
+#header {
+	background: url("../img/header.png") repeat-x;
+	height: 142px;
+}
+#header-title {
+	background: url("../img/header-title.png") no-repeat;
+	height:142px;
+	width: 550px;
+}
+#header-title a {
+	display: block;
+	height:142px;
+	width: 550px;
+	position: absolute;
+	text-decoration: none;
+}
+#header-title h2 {
+	font-family: "Trebuchet MS";
+	color: #ffd700;
+	font-size: 16pt;
+	position: absolute;
+	top: 25px;
+	left: 165px;
+}
+#header-title h1 {
+	font-family: "Trebuchet MS";
+	font-size: 18pt;
+	color: #daa520;
+	position: absolute;
+	top: 60px;
+	left: 165px;
+}
+#header-title-main {
+	background: url("../img/header-title.png") no-repeat;
+	height:142px;
+	width: 550px;
+}
+#header-title-main a {
+	display: block;
+	height:142px;
+	width: 550px;
+	position: absolute;
+	text-decoration: none;
+}
+#header-title-main h2 {
+	font-family: "Trebuchet MS";
+	color: #ffd700;
+	font-size: 16pt;
+	position: absolute;
+	top: 25px;
+	left: 165px;
+}
+#header-title-main h1 {
+	font-family: "Trebuchet MS";
+	font-size: 28pt;
+	color: #daa520;
+	position: absolute;
+	top: 40px;
+	left: 195px;
+}
+#header-lang {
+	font-size: 12px;
+	font-family: Tahoma;
+}
+#header-lang li {
+	list-style: none;
+	display: inline;
+}
+#header-lang img {
+	margin: 0 5px;
+	border: none;
+}
+#header-lang a {
+	color: white;
+	text-decoration: none;
+}
+#header-lang a:hover {
+	text-decoration: underline;
+}
+#header-extra {
+	height: 142px;
+	width: 90px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#header-extra-ob {
+	background: url("../img/header-extra-ob.png") no-repeat right;
+	height: 142px;
+	width: 330px;
+	text-align: right;
+	padding-right: 235px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#header-extra-gymnastika {
+	background: url("../img/header-extra-gymnastika.jpg") no-repeat right;
+	height: 142px;
+	width: 330px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#menu-ob { background: url("../img/menu-ob.png") no-repeat; }
+#menu-hadzana { background: url("../img/menu-hadzana.png") no-repeat; }
+#menu-karate { background: url("../img/menu-karate.png") no-repeat; }
+#menu-turistika { background: url("../img/menu-turistika.png") no-repeat; }
+#menu-gymnastika { background: url("../img/menu-gymnastika.png") no-repeat; }
+#menu-cyklo { background: url("../img/menu-cyklo.png") no-repeat; }
+#search {
+	position: absolute;
+	right: 10px;
+	top: 160px;
+}
+#search input {
+	margin: 3px 0;
+	padding: 1px 3px;
+	border: 1px solid silver;
+}
+#search button {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+#location {
+	margin: 8px 0 0 0;
+}
+#content {
+	font-family: Tahoma, sans-serif;
+	font-size: 9pt;
+	margin-left: 145px;
+	padding: 10px 20px 20px 14px;
+	border: 1px silver solid;
+	min-height: 590px;
+	background: url("../img/bg.png") repeat-x;
+}
+#content-wide {
+	font-family: Tahoma, sans-serif;
+	font-size: 9pt;
+	padding: 0 20px 20px 20px;
+	border: 1px silver solid;
+	background: url("../img/bg.png") repeat-x;
+}
+#content table.standard {
+	border: 1px solid silver;
+	border-collapse: collapse;
+	background: white;
+}
+#content table.standard th {
+	text-align: left;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid black;
+	padding: 3px 5px;
+}
+#content table.standard td {
+	text-align: left;
+	border-top: 1px solid #f4f4f4;
+	border-right: dashed 1px silver;
+	padding: 3px 5px;
+}
+#footer {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	font-size: 10px;
+	font-family: Tahoma, sans-serif;
+	text-align: center;
+	margin: 50px auto 20px auto;
+	width: 450px;
+	clear: both;
+}

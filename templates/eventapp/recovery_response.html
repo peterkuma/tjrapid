@@ -1,7 +1,0 @@
-{% extends "eventapp/base.html" %}
-{% load i18n %}
-{% block title %}{% trans "Entry identification code recovery" %} {{ entry.id }}{% endblock %}
-{% block content %}
-	<h3>{% trans "Entry identification code recovery" %}</h3>
-	<p>{% blocktrans with email|escape as email %}The entry identification code has been sent to <strong>{{ email }}</strong>.{% endblocktrans %}</p>
-{% endblock %}

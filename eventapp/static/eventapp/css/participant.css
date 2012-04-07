@@ -1,0 +1,14 @@
+.laps ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.laps li {
+	display: inline;
+}
+#id_surname {
+	width: 300px;
+}
+#id_firstname {
+	width: 300px;
+}

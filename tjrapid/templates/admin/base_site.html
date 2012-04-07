@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<a href="/admin/"><h1 id="site-name">{% trans 'TJ Rapid' %}</h1></a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base-overlay.css' %}" />
+{% endblock %}

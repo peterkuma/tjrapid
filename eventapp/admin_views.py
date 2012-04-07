@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
 
 import csv
 
@@ -22,7 +18,7 @@ from models import *
 def report(request, id, format, full=False):
 	ev = get_object_or_404(Event, pk=id)
 	participants = Participant.objects.filter(entry__event=ev)
-	
+
 	if format == 'csv':
 		response = HttpResponse(mimetype='text/csv')
 		response['Content-Disposition'] = 'attachment; filename=%s.csv' % ev
@@ -76,6 +72,5 @@ def report(request, id, format, full=False):
 					else:
 						row += (unicode(item).encode('utf-8'),)
 				writer.writerow(row)
-		return response	
+		return response
 	raise Exception('Unknown format')
-		

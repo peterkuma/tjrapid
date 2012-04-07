@@ -1,0 +1,203 @@
+{% extends "eventapp/base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}{% endblock %}
+{% block head %}
+<script type="text/javascript" src="{% static "mootools/mootools-textarea-resizer.js" %}"></script>
+<script type="text/javascript" src="{% static "mootools/mootools-autocomplete.js" %}"></script>
+<script type="text/javascript" src="{% static "eventapp/js/BGIframe.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "mootools/textarea-resizer.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "mootools/mootools-autocomplete.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "eventapp/css/base.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "eventapp/css/participant.css" %}" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window.addEvent('domready', function() {
+	var ac = new Meio.Autocomplete($('id_surname'), 'search/', {
+			minChars: 0,
+			selectOnTab: false,
+		filter: {
+			//type: 'startswith',
+			//path: 'fields.surname',
+			filter: function(text, data) {
+				return true;
+			},
+			formatMatch: function(text, data, i) {
+				return data.fields.surname;
+			},
+			formatItem: function(text, data) {
+				return data.fields.surname.substring(0, text.length) +
+				       '<strong>' +
+				       data.fields.surname.substring(text.length) +
+				       '<\/strong><span style="color: grey">, ' +
+				       data.fields.firstname + ' (' +
+				       data.fields.club + ')' +
+				       '<\/span>';
+			},
+		},
+	});
+
+	ac.addEvent('select', function(elements, value) {
+		f = $('form');
+		f.firstname.value = value.fields.firstname;
+		f.club.value = value.fields.club;
+		{% if ev.withsi %}f.si.value = value.fields.si;{% endif %}
+		f.cls.value = value.fields.cls;
+	});
+});
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+accommcount_cache = new Array();
+accommnights_cache = new Array();
+accommcount_selected = null;
+accommnights_selected = null;
+
+function add(s, o) {
+	try {
+		s.add(o, null);
+	} catch(err) { /* IE. */
+		s.add(o);
+	}
+}
+
+function update_form(form) {
+	{% if ev.withsi %}
+	    form.si.disabled = true;
+	    for (i=0; i < form.simode.length; i++) {
+		    r = form.simode[i]
+		    if (r.value == 'P' && r.checked)
+			    form.si.disabled = false;
+	    }
+	{% endif %}
+
+	form.accommcount.onchange = null;
+	form.accommnights.onchange = null;
+
+	while (form.accommcount.length > 0)
+		form.accommcount.remove(0);
+	while (form.accommnights.length > 0)
+		form.accommnights.remove(0);
+
+	{% for ac in accommodation %}
+		for (i = 0; i < form.accomm.length; i++) {
+			o = form.accomm[i];
+			if (o.value == '{{ ac.id }}') {
+				{% if ac == participant.accomm and participant.accommcount %}
+					o.disabled = {{ ac.free }} + {{participant.accommcount }} == 0;
+				{% else %}
+					o.disabled = {{ ac.free }} == 0;
+				{% endif %}
+			}
+		}
+
+		if (form.accomm.value == '{{ ac.id }}') {
+			for (i = 0; i < accommcount_cache.length; i++) {
+				o = accommcount_cache[i];
+				{% if ac == participant.accomm and participant.accommcount %}
+					if ({{ ac.free }} + {{ participant.accommcount }} >= o.value)
+						add(form.accommcount, o);
+				{% else %}
+					if ({{ ac.free }} >= o.value)
+						add(form.accommcount, o);
+				{% endif %}
+			}
+			for (i = 0; i < accommnights_cache.length; i++) {
+				o = accommnights_cache[i];
+				if (o.value <= {{ ac.maxnights }} && o.value >= {{ ac.minnights }})
+					add(form.accommnights, o);
+			}
+		}
+	{% endfor %}
+
+	form.accommnights.selectedIndex = 0;
+	form.accommcount.selectedIndex = 0;
+	for (i = 0; i < form.accommcount.length; i++)
+		if (form.accommcount[i].value == accommcount_selected.value)
+			form.accommcount.selectedIndex = i;
+	for (i = 0; i < form.accommnights.length; i++)
+		if (form.accommnights[i].value == accommnights_selected.value)
+			form.accommnights.selectedIndex = i;
+
+	disabled = form.accomm.value == '' || form.accommcount.length == 0 || form.accommnights.length == 0;
+	form.accommcount.disabled = disabled;
+	form.accommnights.disabled = disabled;
+	form.accommnote.disabled = disabled;
+
+	form.accomm.disabled = form.accomm.length == 1;
+
+	if (form.accommcount.length == 0)
+		add(form.accommcount, new Option('---------', '0', false));
+	if (form.accommnights.length == 0)
+		add(form.accommnights, new Option('---------', '0', false));
+
+    	form.accommcount.onchange = function() {
+		accommcount_selected = this[this.selectedIndex];
+	};
+	form.accommnights.onchange = function() {
+		accommnights_selected = this[this.selectedIndex];
+	};
+}
+window.addEvent('domready', function() {
+	$$('textarea').resizable();
+	$$('textarea').setStyle('height', 40);
+
+	f = $('form');
+
+	for (i = 0; i < f.accommcount.length; i++)
+		accommcount_cache.push(f.accommcount[i]);
+	for (i = 0; i < f.accommnights.length; i++)
+		accommnights_cache.push(f.accommnights[i]);
+
+	accommcount_selected = f.accommcount[f.accommcount.selectedIndex];
+	accommnights_selected = f.accommnights[f.accommnights.selectedIndex];
+
+	update_form(f);
+	f.accomm.onchange = function() { update_form(f); };
+});
+/* ]]> */
+</script>
+{% endblock %}
+
+{% block content %}
+	<h4>{% trans "Entry" %} <a href="../">{{ entry }}</a></h4>
+	<h3>{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}</h3>
+	<form method="post" action="" id="form">
+		{% csrf_token %}
+		<table>
+			<tr><td colspan="2">{{ form.surname.errors }}</td></tr>
+			<tr><td>{{ form.surname.label_tag }}*:</td><td>{{ form.surname }}</td></tr>
+			<tr><td colspan="2">{{ form.firstname.errors }}</td></tr>
+			<tr><td>{{ form.firstname.label_tag }}*:</td><td>{{ form.firstname }}</td></tr>
+			<tr><td colspan="2">{{ form.club.errors }}</td></tr>
+			<tr><td>{{ form.club.label_tag }}*:</td><td>{{ form.club }}<div>{{ form.club.help_text }}</div></td></tr>
+			{% if event.withsi %}
+			    <tr><td colspan="2">{{ form.si.errors }}{{ form.simode.errors }}</td></tr>
+			    <tr><td>{{ form.si.label_tag }}*:</td><td>
+				    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="P" id="si_present" {% if simode == 'P' %}checked="checked"{% endif %} />
+				    <label for="si_present">{% trans "the SI number is" %}:</label> {{ form.si }}<br />
+				    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="L" id="si_later" {% if simode == 'L' %}checked="checked"{% endif %}/>
+				    <label for="si_later">{% trans "supply later" %}</label><br />
+				    {% if event.sifee %}
+					    <input type="radio" name="simode" onchange="update_form(this.form)" onclick="update_form(this.form)" value="B" id="si_borrow" {% if simode == 'B' %}checked="checked"{% endif %}/>
+					    <label for="si_borrow">{% trans "want to borrow" %} ({{ event.sifee }} €)</label><br />
+				    {% endif %}
+			    </td></tr>
+			{% endif %}
+			<tr><td colspan="2">{{ form.cls.errors }}</td></tr>
+			<tr><td>{{ form.cls.label_tag }}*:</td><td>{{ form.cls }}</td></tr>
+			<tr><td colspan="2">{{ form.laps.errors }}</td></tr>
+			<tr><td>{{ form.laps.label_tag }}*:</td><td class="laps">{{ form.laps }}</td></tr>
+			<tr><td colspan="2">{{ form.note.errors }}</td></tr>
+			<tr><td>{{ form.note.label_tag }}:</td><td>{{ form.note }}</td></tr>
+			<tr><td colspan="2">{{ form.accomm.errors }}{{ form.accommcount.errors }}{{ form.accommnights.errors }}</td></tr>
+			<tr><td>{{ form.accomm.label_tag }}:</td><td>{{ form.accomm }}</td></tr>
+			<tr><td></td><td>{{ form.accommcount }} | {{ form.accommnights }}</td></tr>
+			<tr><td></td><td>{{ form.accommnote.errors }}<label for="">{% trans "Note related to accommodation" %}:</label><br />{{ form.accommnote }}</td></tr>
+		</table>
+		<div class="form-buttons">
+			<input type="submit" name="commit" value="{% trans "Register" %}" />
+		</div>
+	</form>
+{% endblock %}

@@ -1,30 +1,27 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
+
+from os import urandom
 
 from django.db.models import *
 from django.utils.translation import ugettext_lazy as _
-from os import urandom
 
 ACCOMMNIGHTS_CHOICES = (
-	(1,  _('1 night')), 
-	(2,  _('2 nights')), 
-	(3,  _('3 nights')), 
-	(4,  _('4 nights')), 
-	(5,  _('5 nights')), 
-	(6,  _('6 nights')), 
-	(7,  _('7 nights')), 
-	(8,  _('8 nights')), 
-	(9,  _('9 nights')), 
-	(10,  _('10 nights')), 
+	(1,  _('1 night')),
+	(2,  _('2 nights')),
+	(3,  _('3 nights')),
+	(4,  _('4 nights')),
+	(5,  _('5 nights')),
+	(6,  _('6 nights')),
+	(7,  _('7 nights')),
+	(8,  _('8 nights')),
+	(9,  _('9 nights')),
+	(10,  _('10 nights')),
 )
 
 ACCOMMCOUNT_CHOICES = (
-	(1,  _('1 person')), 
+	(1,  _('1 person')),
 	(2,  _('2 people')),
 	(3,  _('3 people')),
 	(4,  _('4 people')),
@@ -39,7 +36,7 @@ SIMODE_CHOICES = (
 )
 
 def genid(what):
-	return '%s%02d%02d-%02d%02d' % (what, 
+	return '%s%02d%02d-%02d%02d' % (what,
 		ord(urandom(1)) % 100, ord(urandom(1)) % 100,
 		ord(urandom(1)) % 100, ord(urandom(1)) % 100)
 
@@ -52,10 +49,10 @@ class Event(Model):
 	close_date = DateField(_('close date'))
 	email = EmailField(_('e-mail'))
 	laps = PositiveIntegerField(_('number of laps'), default=1)
-	
+
 	def is_open(self):
 		return self.open_date <= datetime.date.today() and self.close_date >= datetime.date.today()
-	
+
 	def __unicode__(self):
 		return self.title
 
@@ -93,20 +90,20 @@ class Entry(Model):
 	email = EmailField(_('e-mail'))
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
-	
+
 	def __unicode__(self):
 		return self.id
 
 	@permalink
 	def get_absolute_url(self):
-		return ('eventapp:entry', (), dict(eventid=self.event.id, id=self.id))	
+		return ('eventapp:entry', (), dict(eventid=self.event.id, id=self.id))
 
 	def entryfees(self):
 		return Participant.objects.filter(entry=self).aggregate(Sum('entryfee'))['entryfee__sum']
-		
+
 	def sifees(self):
 		return Participant.objects.filter(entry=self).aggregate(Sum('sifee'))['sifee__sum']
-	
+
 	def accommfees(self):
 		return Participant.objects.filter(entry=self).aggregate(Sum('accommfee'))['accommfee__sum']
 
@@ -119,7 +116,7 @@ class Entry(Model):
 		ordering = ('event', 'created')
 		unique_together = (('event', 'email'),)
 
-	
+
 class Accommodation(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('AC'), max_length=11)
 	event = ForeignKey('Event',  db_column='eventid', verbose_name=_('event'))
@@ -128,7 +125,7 @@ class Accommodation(Model):
 	minnights = PositiveSmallIntegerField(_('minimum nights'), default=1)
 	maxnights = PositiveSmallIntegerField(_('maximum nights'))
 	capacity = PositiveSmallIntegerField(_('capacity'),  blank=True,  null=True)
-	
+
 	def __unicode__(self):
 		return _(u'%(label)s (%(price)s € per night)') % dict(label=self.label,  price=self.price)
 
@@ -149,7 +146,7 @@ class Accommodation(Model):
 		verbose_name_plural = _('accommodation')
 		unique_together = (('event', 'label'),)
 		ordering = ('event', 'label')
-	
+
 class Participant(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('PA'), max_length=11)
 	entry = ForeignKey('Entry',  db_column='entryid', verbose_name=_('entry'))
@@ -202,7 +199,7 @@ class Participant(Model):
 			return ''
 		else:
 			return self.si
-	
+
 	def save(self, *args, **kwargs):
 		Model.save(self, *args, **kwargs)
 		self.entry.modified = datetime.datetime.now()
@@ -224,9 +221,8 @@ class Directory(Model):
 
 	def __unicode__(self):
 		return self.firstname + " " + self.surname
-	
+
 	class Meta:
 		verbose_name = _('directory')
 		verbose_name_plural = _('directory')
 		ordering = ('surname', 'firstname')
-

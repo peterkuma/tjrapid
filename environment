@@ -1,2 +1,0 @@
-[ -z "$PYTHONPATH" ] && PYTHONPATH=.:../trunk || PYTHONPATH=.:../trunk:$PYTHONPATH
-export PYTHONPATH

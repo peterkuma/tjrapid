@@ -1,39 +1,33 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2007, 2008, 2009 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2007-2012 Peter Kuma
+
+import os
+from datetime import date
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.conf import settings
 
-from datetime import date
-import os
-
-from tjrapid import settings
-
-from tjrapid.main.models import Category
-#from tjrapid.models import SmartFileField
+from main.models import Category
 
 class Member(models.Model):
 	first_name = models.CharField(_('first name'), max_length=50)
 	surname = models.CharField(_('surname'), max_length=50)
 	category = models.CharField(_('category'), max_length=5)
 	email = models.EmailField(_('e-mail'), blank=True)
-	
+
 	def __unicode__(self):
 		return '%s %s' % (self.first_name, self.surname)
-	
+
 	def email_special(self):
 		return self.email.replace('@', '[zavinac]')
-	
+
 	class Meta:
 		ordering = ('category','surname')
 		verbose_name = _('member')
 		verbose_name_plural = _('members')
-	
+
 	class Admin:
 		list_display = ('surname','first_name','category','email')
 		search_fields = ('first_name','surname')
@@ -89,10 +83,8 @@ class Competition(models.Model):
 		ordering = ('-start_date',)
 		verbose_name = _('competition')
 		verbose_name_plural = _('competitions')
-	
+
 	class Admin:
 		list_display = ('title','start_date','end_date')
 		search_fields = ('title','location')
 		list_filter = ('start_date','location')
-		js = ('/site_media/admin-ob_competitions.js',)
-

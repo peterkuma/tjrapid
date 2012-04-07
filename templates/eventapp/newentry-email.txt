@@ -1,7 +1,0 @@
-{% load i18n %}{% trans "Dear Registrant," %}
-
-{% blocktrans %}Your entry identification code for `{{ event_title }}' is {{ id }}.{% endblocktrans %}
-
-{% blocktrans %}You can view or modify the entry at http://{{ domain }}{{ entry_url }}.{% endblocktrans %}
---
-{% trans "This e-mail has been generated automatically." %}

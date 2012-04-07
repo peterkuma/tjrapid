@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2007-2012 Peter Kuma
 
 def category(request):
 	try:

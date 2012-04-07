@@ -1,0 +1,34 @@
+#oddiely {
+	background: url("../img/oddiely.png") no-repeat left 10px;
+	height: 100px;
+	margin: 40px;
+}
+#oddiely ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#oddiely li {
+	float: left;
+	text-align: center;
+}
+#oddiely a {
+	display: inline-block;
+	padding-top: 70px;
+	width: 109px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font-family: Tahoma;
+	font-size: 10pt;
+	font-weight: bold;
+}
+#oddiely a:hover {
+	text-decoration: underline;
+}
+#oddiely-karate a { background: url("../img/karate.png") no-repeat center top; }
+#oddiely-ob a { background: url("../img/ob.png") no-repeat center top; }
+#oddiely-hadzana a { background: url("../img/hadzana.png") no-repeat center top; }
+#oddiely-turistika a { background: url("../img/turistika.png") no-repeat center top; }
+#oddiely-cyklo a { background: url("../img/cyklo.png") no-repeat center top; }
+#oddiely-gymnastika a { background: url("../img/gymnastika.png") no-repeat center top; }

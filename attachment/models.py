@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
 # Copyright (c) 2012 Peter Kuma
-# All rights reserved.
-#
 
 import os
 
@@ -19,13 +15,13 @@ class Attachment(Model):
 	content_object = GenericForeignKey('content_type', 'object_id')
 	file = FileField(_('file'), upload_to=lambda i, f: 'attachment/%s/%s/%s/%s' %
 			 (i.content_type.app_label, i.content_type.model, i.content_object.id, f))
-	
+
 	def __unicode__(self):
 		if self.file:
 			return unicode(os.path.basename(self.file.path))
 		else:
 			return u'Attachment object'
-	
+
 	class Meta:
 		verbose_name = _('attachment')
 		verbose_name_plural = _('attachments')

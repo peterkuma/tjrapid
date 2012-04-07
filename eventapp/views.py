@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
 
 import os
 from datetime import datetime
@@ -44,16 +40,16 @@ def event(request, id, namespace=None, **kwargs):
 		class Meta:
 			model = Entry
 			fields = ('event', 'email', )
-			
+
 		def clean_email(self):
 			email = self.cleaned_data['email']
 			if Entry.objects.filter(event=ev, email=email).exists():
 				raise ValidationError(_('An entry with this e-mail already exists. Please use the link from the message you have received, or use the form below to recover your entry identification code.'))
 			return email
-		
+
 	class ExistingEntryForm(forms.Form):
-		id = forms.CharField(label=_('Entry identification code'), max_length=11)	
-			
+		id = forms.CharField(label=_('Entry identification code'), max_length=11)
+
 		def clean_id(self):
 			data = self.cleaned_data['id']
 			try:
@@ -64,7 +60,7 @@ def event(request, id, namespace=None, **kwargs):
 
 	class RecoveryForm(forms.Form):
 		email = forms.EmailField()
-		
+
 		def clean_email(self):
 			data = self.cleaned_data['email']
 			try:
@@ -72,7 +68,7 @@ def event(request, id, namespace=None, **kwargs):
 			except Entry.DoesNotExist:
 				raise ValidationError(_('No matching entry found.'))
 			return data
-	
+
 	#if ev.close_date < datetime.date.today():
 	#	return http500(request, _('The event was closed on %s.' % ev.close_date))
 	if ev.open_date > datetime.date.today():
@@ -102,12 +98,12 @@ def event(request, id, namespace=None, **kwargs):
 				log = logging.getLogger('django')
 				log.error('Failed to send mail: %s', e)
 				return http500(request, _('Failed to send mail.'))
-			
+
 			er.save(force_insert=True)
 			return HttpResponseRedirect(reverse('eventapp:new-participant', kwargs=dict(eventid=ev.id, entryid=er.id), current_app=namespace))
 	else:
 		newentry_form = NewEntryForm()
-	
+
 	if request.method == 'POST' and request.POST.has_key('existingentry'):
 		existingentry_form = ExistingEntryForm(request.POST)
 		if existingentry_form.is_valid():
@@ -116,7 +112,7 @@ def event(request, id, namespace=None, **kwargs):
 				id=existingentry_form.cleaned_data['id']), current_app=namespace))
 	else:
 		existingentry_form = ExistingEntryForm()
-	
+
 	if request.method == 'POST' and request.POST.has_key('recovery'):
 		recovery_form = RecoveryForm(request.POST)
 		if recovery_form.is_valid():
@@ -140,17 +136,17 @@ def event(request, id, namespace=None, **kwargs):
 				log = logging.getLogger('django')
 				log.error('Failed to send mail: %s', e)
 				return http500(request, _('Failed to send mail.'))
-	
+
 			return render_to_response('eventapp/recovery_response.html', {
 					'event': ev,
 					'email': recovery_form.cleaned_data['email'],
 				}, RequestContext(request))
 	else:
 		recovery_form = RecoveryForm()
-	
+
 	return render_to_response('eventapp/event.html', {
-			'event': ev, 
-			'newentry_form': newentry_form, 
+			'event': ev,
+			'newentry_form': newentry_form,
 			'existingentry_form': existingentry_form,
 			'recovery_form': recovery_form,
 		},
@@ -160,23 +156,23 @@ def event(request, id, namespace=None, **kwargs):
 def entry(request, eventid, id, **kwargs):
 	ev = get_object_or_404(Event, pk=eventid)
 	er = get_object_or_404(Entry, pk=id, event=ev)
-	
+
 	#if ev.close_date < datetime.date.today():
 	#	return http500(request, _('The event was closed on %s' % ev.close_date))
 	#elif ev.open_date > datetime.date.today():
 	#	return http500(request,  _('The event will open on %s' % ev.open_date))
-	
+
 	participants = Participant.objects.filter(entry=er)
 	total = Decimal(0)
 	for pa in participants:
 		total += pa.fees()
-	
+
 	return render_to_response('eventapp/entry.html',  {
-			'event': ev, 
-			'entry': er, 
-			'participants': participants, 
+			'event': ev,
+			'entry': er,
+			'participants': participants,
 			'total': total,
-		}, 
+		},
 		RequestContext(request)
 	)
 
@@ -188,16 +184,16 @@ def action(request, eventid,  entryid, namespace=None, **kwargs):
 		return http500(request, _('The event was closed on %s.' % ev.close_date))
 	elif ev.open_date > datetime.date.today():
 		return http500(request,  _('The event will open on %s.' % ev.open_date))
-		
+
 	action = request.POST.get('action')
 	selected = request.POST.getlist('selected')
-	
+
 	participants = Participant.objects.filter(entry=er)
 	for pa in participants:
 		if pa.id in selected:
 			if action == "remove":
 				pa.delete()
-		
+
 	return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
 
 def list(request, eventid,  entryid=None, namespace=None, **kwargs):
@@ -206,13 +202,13 @@ def list(request, eventid,  entryid=None, namespace=None, **kwargs):
 		er = get_object_or_404(Entry,  pk=entryid,  event=ev)
 	else:
 		er = None
-	
+
 	participants = Participant.objects.filter(entry__event=ev)
 
 	return render_to_response('eventapp/list.html',  {
-			'event': ev, 
-			'entry': er, 
-			'participants': participants, 
+			'event': ev,
+			'entry': er,
+			'participants': participants,
 		}, RequestContext(request)
 	)
 
@@ -225,22 +221,22 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		return http500(request, _('The event was closed on %s.' % ev.close_date))
 	elif ev.open_date > datetime.date.today():
 		return http500(request,  _('The event will open on %s.' % ev.open_date))
-		
+
 	if id != None:
 		pa = get_object_or_404(Participant,  pk=id)
 	else:
 		pa = None
-	
+
 	if request.POST.has_key('remove'):
 		pa.delete()
 		return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
-	
+
 	classfees = ClassFee.objects.filter(
 		Q(start_date=None) | Q(start_date__lte=datetime.datetime.now()),
-		Q(end_date=None) | Q(end_date__gte=datetime.datetime.now()), 
+		Q(end_date=None) | Q(end_date__gte=datetime.datetime.now()),
 		event=ev
 	)
-	
+
 	clsdict = {}
 	for classfee in classfees:
 		classes = re.split(r'\s*,\s*', classfee.classes)
@@ -257,12 +253,12 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			clschoices.append((k, _(u'%(cls)s (%(fee)s € or %(lapfee)s € per lap)') % dict(cls=k, fee=clsdict[k][0], lapfee=clsdict[k][1])))
 		else:
 			clschoices.append((k, _(u'%(cls)s (%(fee)s €)') % dict(cls=k,  fee=clsdict[k][0])))
-	
+
 	if ev.withsi:
 		exclude_si = []
 	else:
 		exclude_si = ['si', 'simode']
-	
+
 	class ParticipantForm(forms.ModelForm):
 		cls = forms.ChoiceField(choices=clschoices,
 			label=Participant._meta.get_field('cls').verbose_name.capitalize(),
@@ -273,32 +269,32 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			widget=forms.CheckboxSelectMultiple(),
 			initial=range(1,ev.laps+1),
 		)
-		
+
 		class Meta:
 			model = Participant
 			exclude = ['id', 'entry', 'cls', 'accommfee', 'entryfee', 'sifee'] + exclude_si
-		
+
 		def clean_laps(self):
 			laps_raw = self.cleaned_data['laps']
 			return ','.join(laps_raw)
-					
+
 		def clean(self):
 			si = self.cleaned_data.get('si')
 			simode = self.cleaned_data.get('simode')
 			if ev.withsi and (simode == None or (simode == 'P' and si == None)):
 				self._errors['si'] = self.error_class([_('The SI number is invalid.')])
-			
+
 			accomm = self.cleaned_data.get('accomm')
 			accommcount = self.cleaned_data.get('accommcount')
 			accommnights = self.cleaned_data.get('accommnights')
-			
+
 			if accomm != None and accommcount != None:
 				if pa != None and accomm == pa.accomm and accomm.free() + pa.accommcount < accommcount or pa == None and accomm.free() < accommcount:
 					self._errors['accomm'] = self.error_class([_('There are not as many places available in the accommodation selected.')])
 					del self.cleaned_data['accomm']
-					
+
 			return self.cleaned_data
-	
+
 	if request.method == 'POST' and request.POST.has_key('commit'):
 		form = ParticipantForm(request.POST, instance=pa)
 		simode = form.data.get('simode')
@@ -326,7 +322,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			if pa.accomm != None and pa.accommcount != None and pa.accommnights != None:
 				pa.accommfee = pa.accomm.price * pa.accommcount * pa.accommnights
 			pa.save(force_insert=(id == None))
-			
+
 			return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
 	elif id != None:
 		form = ParticipantForm(instance=pa, initial={'cls': pa.cls })
@@ -337,19 +333,19 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			simode = form.fields['simode'].initial
 		else:
 			simode = None
-		
+
 	form.fields['accomm'].queryset = Accommodation.objects.filter(event=ev)
 	del form.fields['accommnights'].choices[0]
 	del form.fields['accommcount'].choices[0]
 
 	return render_to_response('eventapp/participant.html',  {
-			'event': ev, 
-			'entry': er, 
-			'participant': pa, 
-			'form': form, 
-			'simode': simode, 
+			'event': ev,
+			'entry': er,
+			'participant': pa,
+			'form': form,
+			'simode': simode,
 			'accommodation': Accommodation.objects.filter(event=ev),
-		}, 
+		},
 		RequestContext(request)
 	)
 
@@ -359,7 +355,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 	er = get_object_or_404(Entry, pk=id, event=ev)
 	participants = Participant.objects.filter(entry=er)
 	issue_datetime = datetime.datetime.now()
-	
+
 	from reportlab.pdfbase import pdfmetrics
 	from reportlab.pdfbase.ttfonts import TTFont
 	from reportlab.lib.pagesizes import A4
@@ -367,16 +363,16 @@ def entry_pdf(request, eventid, id, **kwargs):
 	from reportlab.lib.styles import ParagraphStyle
 	from reportlab.lib import colors
 	from reportlab.lib.units import inch, cm
-	
+
 	# Set up fonts.
 	pdfmetrics.registerFont(TTFont('regular', settings.RGFONT))
 	pdfmetrics.registerFont(TTFont('bold', settings.BDFONT))
 	pdfmetrics.registerFont(TTFont('italic', settings.ITFONT))
-	
+
 	font = 'regular'
 	bdfont = 'bold'
 	itfont = 'italic'
-	
+
 	# Declare styles.
 	normal = ParagraphStyle('normal',
 				 fontName=font,
@@ -396,15 +392,15 @@ def entry_pdf(request, eventid, id, **kwargs):
 				 spaceBefore=0.5*cm,
 				 spaceAfter=0.8*cm,
 	)
-	
+
 	def truncate(s, n):
 		return u'%s…' % s[0:n-2] if len(s) > n else s
-	
+
 	def participants_table():
 		data = []
 		data.append(['#', _('Name'), _('Club'), _('Class'), _('Laps'), _('SI'), _('Accomm.'), _('Entry/SI/Accomm. fee'), _('Fees')])
 		i = 1
-		for pa in participants:			
+		for pa in participants:
 			data.append([
 				i,
 				truncate(pa.firstname + ' ' + pa.surname, 25),
@@ -419,7 +415,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 			i = i + 1
 		extrafees = u'%s/%s/%s €' % (er.entryfees(), er.sifees(), er.accommfees())
 		data.append([_('Total'),'','','','','','',extrafees,u'%s €' % er.fees()])
-		
+
 		last = len(data) - 1
 		tstyle = TableStyle()
 		tstyle.add('FONT', (0,0), (-1,0), bdfont, 8)
@@ -434,13 +430,13 @@ def entry_pdf(request, eventid, id, **kwargs):
 		t = Table(data)
 		t.setStyle(tstyle)
 		return t
-	
+
 	def firstpage(c, doc):
 		c.saveState()
 		c.setFont(bdfont, 10)
 		c.drawRightString(A4[0]-1.5*cm, 2*cm, unicode(doc.page))
 		c.restoreState()
-	
+
 	def nextpage(c, doc):
 		c.saveState()
 		c.setFont(itfont, 10)
@@ -452,7 +448,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 		c.setLineWidth(0.5)
 		c.line(1.4*cm, A4[1]-2.2*cm, A4[0]-1.4*cm, A4[1]-2.2*cm)
 		c.restoreState()
-	
+
 	story = []
 	story.append(Paragraph(unicode(ev), heading2))
 	story.append(Paragraph(_('Entry Statement'), heading1))
@@ -473,7 +469,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 				rightMargin=1.5*cm,
 				topMargin=2.5*cm,
 				bottomMargin=3*cm)
-	doc.build(story, onFirstPage=firstpage, onLaterPages=nextpage)	
+	doc.build(story, onFirstPage=firstpage, onLaterPages=nextpage)
 	return response
 
 
@@ -485,14 +481,14 @@ def query(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 		pa = get_object_or_404(Participant,  pk=id)
 	else:
 		pa = None
-	
+
 	q = request.GET.get("q", None)
-	
+
 	if q == None or len(q) == 0:
 		people = []
 	else:
 		people = Directory.objects.filter(surname__istartswith=q)
-		
+
 	response = HttpResponse()
 	json_serializer = serializers.get_serializer("json")()
 	json_serializer.serialize(people, ensure_ascii=False, stream=response,

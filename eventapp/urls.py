@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
 
 from django.conf.urls.defaults import *
 from django.conf import settings
 
-urlpatterns = patterns('tjrapid.eventapp.views',
+urlpatterns = patterns('eventapp.views',
 	url(r'^(?P<id>EV\d{4}-\d{4})/$','event', name='event'),
 	url(r'^(?P<eventid>EV\d{4}-\d{4})/(?P<id>ER\d{4}-\d{4})/$','entry', name='entry'),
 	url(r'^(?P<eventid>EV\d{4}-\d{4})/(?P<id>ER\d{4}-\d{4})/pdf/$','entry_pdf', name='entry-pdf'),

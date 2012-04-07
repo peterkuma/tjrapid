@@ -1,0 +1,8 @@
+{% extends "eventapp/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Page temporarily unavailable" %}{% endblock %}
+
+{% block content %}
+<h3>{% trans "Page temporarily unavailable" %}</h3>
+<p>{{ error }}</p>
+{% endblock %}

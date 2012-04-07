@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
+
+from django.contrib import admin
 
 from models import *
-from django.contrib import admin
 
 class MemberAdmin(admin.ModelAdmin):
 	list_display = ('surname','first_name','category','email')
@@ -22,4 +19,3 @@ class CompetitionAdmin(admin.ModelAdmin):
 
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Competition, CompetitionAdmin)
-

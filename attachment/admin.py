@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
 # Copyright (c) 2012 Peter Kuma
-# All rights reserved.
-#
+
+from django.contrib import admin
 
 from models import *
-from django.contrib import admin
 
 class AttachmentAdmin(admin.ModelAdmin):
 	list_display = ('__unicode__', 'content_type', 'object_id', 'content_object')

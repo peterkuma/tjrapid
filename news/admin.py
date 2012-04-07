@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 #
-# $Id$
-#
-# Copyright (c) 2010 Peter Kuma
-# All rights reserved.
-#
+# Copyright (c) 2010-2012 Peter Kuma
 
-from models import *
 from django.contrib import admin
 from django.contrib.contenttypes.generic import GenericTabularInline
-from tjrapid.attachment.models import Attachment
+
+from attachment.models import Attachment
+from models import *
 
 class AttachmentInline(GenericTabularInline):
 	model = Attachment
@@ -28,4 +25,3 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
-
