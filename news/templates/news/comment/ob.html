@@ -31,7 +31,7 @@ window.addEvent('domready', function() {
 				<div class="comment-info">
 					{{ reply.sender|escape }}, {{ reply.posted|date:"j F Y H:i" }}
 				</div>
-				<div class="comment-body">{{ reply.message|escape|linebreaks|urlize }}</div>
+				<div class="comment-body">{{ reply.message|escape|urlize|linebreaks }}</div>
 			</div>
 		</div>
 	{% endif %}
@@ -42,7 +42,7 @@ window.addEvent('domready', function() {
 				<div class="comment-info">
 					{{ comment.sender|escape }}, {% now "j F Y H:i" %}
 				</div>
-				<div class="comment-body">{{ comment.message|escape|linebreaks|urlize }}</div>
+				<div class="comment-body">{{ comment.message|escape|urlize|linebreaks }}</div>
 			</div>
 		</div>
 	{% endif %}

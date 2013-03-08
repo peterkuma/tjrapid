@@ -16,7 +16,7 @@
 						<h5>{{ o.comment.subject|escape }}</h5>
 						<div class="comment-info">{{ o.comment.sender|escape }},
 							{{ o.comment.posted|date:"j F Y H:i" }}</div>
-						<div class="comment-body">{{ o.comment.message|escape|linebreaks|urlize }}</div>
+						<div class="comment-body">{{ o.comment.message|escape|urlize|linebreaks }}</div>
 						<div class="comment-footer"><a href="comment/{{ o.comment.id }}/">{% trans "Reply" %}</a></div>
 					</div>
 				</div>
