@@ -9,32 +9,50 @@
 	{% for c in competitions_upcoming %}
 		<div class="box">
 			<span class="title">{{ c.title|escape }}</span>
-			<span class="subtitle">{{ c.start_date|date:"j F Y" }}{% if c.end_date %}-{{ c.end_date|date:"j F Y" }}{% endif %}</span>
+			<span class="subtitle">{{ c.start_date|date:"DATE_FORMAT" }}{% if c.end_date %}-{{ c.end_date|date:"DATE_FORMAT" }}{% endif %}</span>
 			<dl style="font-size: 80%">
 				{% if c.location %}<dt>{% trans "Location" %}:</dt><dd>{{ c.location|escape }}</dd>{% endif %}
 			</dl>
 			<ul class="compact">
-                                {% if c.specification %}<li><img src="{% static "ob/img/x-office-document.png" %}" /><a href="{{ c.specification }}">{% trans "Specification" %}</a></li>{% endif %}
-                                {% if c.directives %}<li><img src="{% static "ob/img/x-office-document.png" %}" /><a href="{{ c.directives }}">{% trans "Directives" %}</a></li>{% endif %}
-                                {% if c.results %}<li><img src="{% static "ob/img/text-x-generic.png" %}" /><a href="{{ c.results }}">{% trans "Results" %}</a></li>{% endif %}
-                                {% if c.photos %}<li><img src="{% static "ob/img/image-x-generic.png" %}" /><a href="{{ c.photos }}">{% trans "Photos" %}</a></li>{% endif %}
+				{% if c.specification %}
+					<li>
+						<img src="{% static "ob/img/x-office-document.png" %}" />
+						<a href="{{ c.specification }}">{% trans "Specification" %}</a>
+					</li>
+				{% endif %}
+				{% if c.directives %}
+					<li>
+						<img src="{% static "ob/img/x-office-document.png" %}" />
+						<a href="{{ c.directives }}">{% trans "Directives" %}</a>
+					</li>
+				{% endif %}
+				{% if c.results %}
+					<li>
+						<img src="{% static "ob/img/text-x-generic.png" %}" />
+						<a href="{{ c.results }}">{% trans "Results" %}</a>
+					</li>
+				{% endif %}
 			</ul>
-
 		</div>
+        <hr />
 	{% endfor %}
-	<hr />
 	<table class="standard">
-		<tr><th>{% trans "Title" %}</th><th>{% trans "Start date" %}</th><th>{% trans "End date" %}</th><th>{% trans "Location" %}</th><th>{% trans "Specification" %}</th><th>{% trans "Directives" %}</th><th>{% trans "Results" %}</th><th>{% trans "Photos" %}</th></tr>
+		<tr>
+			<th>{% trans "Title" %}</th>
+			<th>{% trans "Date" %}</th>
+			<th>{% trans "Location" %}</th>
+			<th>{% trans "Specification" %}</th>
+			<th>{% trans "Directives" %}</th>
+			<th>{% trans "Results" %}</th>
+		</tr>
 		{% for c in competitions_past %}
 			<tr>
 				<td>{{ c.title|escape }}</td>
-				<td>{{ c.start_date|date:"j F Y" }}</td>
-				<td>{% if c.end_date %}{{ c.end_date|date:"j F Y" }}{% endif %}</td>
+				<td>{{ c.start_date|date:"DATE_FORMAT" }}{% if c.end_date %}—{{ c.end_date|date:"DATE_FORMAT" }}{% endif %}</td>
 				<td>{{ c.location }}</td>
-                                <td style="text-align: center">{% if c.specification %}<a href="{{ c.specification }}"><img src="{% static "ob/img/x-office-document.png" %}" /></a>{% endif %}</td>
-                                <td style="text-align: center">{% if c.directives %}<a href="{{ c.directives }}"><img src="{% static "ob/img/x-office-document.png" %}" /></a>{% endif %}</td>
-                                <td style="text-align: center">{% if c.results %}<a href="{{ c.results }}"><img src="{% static "ob/img/text-x-generic.png" %}" /></a>{% endif %}</td>
-                                <td style="text-align: center">{% if c.photos %}<a href="{{ c.photos }}"><img src="{% static "ob/img/image-x-generic.png" %}" /></a>{% endif %}</td>
+				<td style="text-align: center">{% if c.specification %}<a href="{{ c.specification }}"><img src="{% static "ob/img/x-office-document.png" %}" /></a>{% endif %}</td>
+				<td style="text-align: center">{% if c.directives %}<a href="{{ c.directives }}"><img src="{% static "ob/img/x-office-document.png" %}" /></a>{% endif %}</td>
+				<td style="text-align: center">{% if c.results %}<a href="{{ c.results }}"><img src="{% static "ob/img/text-x-generic.png" %}" /></a>{% endif %}</td>
 			</tr>
 		{% endfor %}
 	</table>
