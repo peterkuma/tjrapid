@@ -28,10 +28,6 @@ class Member(models.Model):
 		verbose_name = _('member')
 		verbose_name_plural = _('members')
 
-	class Admin:
-		list_display = ('surname','first_name','category','email')
-		search_fields = ('first_name','surname')
-		list_filter = ('category',)
 
 class Competition(models.Model):
 	title = models.CharField(_('title'),max_length=100)
@@ -83,8 +79,3 @@ class Competition(models.Model):
 		ordering = ('-start_date',)
 		verbose_name = _('competition')
 		verbose_name_plural = _('competitions')
-
-	class Admin:
-		list_display = ('title','start_date','end_date')
-		search_fields = ('title','location')
-		list_filter = ('start_date','location')
