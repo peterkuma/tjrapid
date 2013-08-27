@@ -28,7 +28,7 @@ class PageAdmin(admin.ModelAdmin):
 	inlines = (AttachmentInline,)
 
 	fieldsets = (
-		(None, {'fields': ('title', 'name', 'category', 'content')}),
+		(None, {'fields': ('title', 'name', 'category', 'markup', 'content')}),
 		(_('Advanced options'), {
 			'classes': ('collapse',),
 			'fields': ('style',)

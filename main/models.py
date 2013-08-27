@@ -9,6 +9,14 @@ from django.contrib.contenttypes.generic import GenericRelation
 from django.conf import settings
 from attachment.models import Attachment
 
+from django.contrib.markup.templatetags.markup import markdown, textile
+
+MARKUP_CHOICES = (
+	('markdown', 'Markdown'),
+	('textile', 'Textile'),
+	('html', 'HTML'),
+)
+
 class Language(models.Model):
 	code = models.CharField(_('code'),unique=True,
 		max_length=20,
@@ -69,7 +77,14 @@ class Page(models.Model):
 		help_text=_('Short name that will appear in the URL'),
 	)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
-	content = models.TextField(_('content'),blank=True,help_text=_('Text formatted in <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.'))
+	markup = models.CharField(
+		_('markup'),
+		max_length=50,
+		choices=MARKUP_CHOICES,
+		default='markdown',
+		help_text=_('Documentation: <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>')
+	)
+	content = models.TextField(_('content'),blank=True,help_text=_('Attachments (below) can be referenced in links and images by their file name.'))
 	created = models.DateTimeField(_('created'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	attachments = GenericRelation(Attachment)
@@ -83,6 +98,11 @@ class Page(models.Model):
 			return self.category.path()
 		else:
 			return '%s%s/' % (self.category.path(), self.name)
+
+	def content_html(self):
+		if self.markup == 'markdown': return markdown(self.content)
+		elif self.markup == 'textile': return textile(self.content)
+		else: return self.content
 
 	path.short_description = _('path')
 

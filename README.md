@@ -31,6 +31,7 @@ Installation
         pip install BeautifulSoup
         pip install reportlab
         pip install textile
+        pip install markdown
         pip install psycopg2 # For posgresql support (optional).
 
 3. Clone the tjrapid repository:

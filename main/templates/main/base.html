@@ -57,7 +57,7 @@
 				{% endblock %}
 				{% block content %}
 					<h3>{{ page.title|escape }}</h3>
-					{{ page.content|textile }}
+					{{ page.content_html }}
 				{% endblock %}
 				<div id="footer">
 					<div style="color: grey; margin: 2px">{% if page.modified %}{% trans "Last updated" %}: {{ page.modified|date:"j F Y" }}{% endif %}</div>
