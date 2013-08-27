@@ -10,6 +10,12 @@
 
 {% block nav-global %}{% endblock %}
 
-{% block extrastyle %}
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base-overlay.css' %}" />
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom.css' %}" />
+{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% static 'admin/js/jquery-1.10.2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.autosize.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/custom.js' %}"></script>
 {% endblock %}

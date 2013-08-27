@@ -84,7 +84,7 @@ class Page(models.Model):
 		default='markdown',
 		help_text=_('Documentation: <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>')
 	)
-	content = models.TextField(_('content'),blank=True,help_text=_('Attachments (below) can be referenced in links and images by their file name.'))
+	content = models.TextField(_('content'),blank=True,help_text=_('Attachments (below) can be referenced as if available locally.'))
 	created = models.DateTimeField(_('created'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	attachments = GenericRelation(Attachment)

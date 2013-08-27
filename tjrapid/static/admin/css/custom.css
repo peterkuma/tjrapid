@@ -23,5 +23,14 @@
 }
 
 .vLargeTextField {
-	height: 200px;
+	width: auto !important;
+	height: 5em;
+	font-family: monospace !important;
+	font-size: 8pt;
+	border: none;
+	padding: 1em 10em;
+	position: relative;
+	top: -1em;
+	left: -10em;
+	background: transparent;
 }
