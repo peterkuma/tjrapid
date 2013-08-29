@@ -22,6 +22,9 @@ class Attachment(Model):
 		else:
 			return u'Attachment object'
 
+	def get_absolute_url(self):
+		return self.file.url
+
 	class Meta:
 		verbose_name = _('attachment')
 		verbose_name_plural = _('attachments')

@@ -3,15 +3,11 @@
 # Copyright (c) 2007-2012 Peter Kuma
 
 from django.contrib import admin
-from django.contrib.contenttypes.generic import GenericTabularInline
 from django.utils.translation import ugettext as _
 
 from models import *
 from attachment.models import Attachment
-
-class AttachmentInline(GenericTabularInline):
-	model = Attachment
-	extra = 2
+from attachment.forms import AttachmentInline
 
 class LanguageAdmin(admin.ModelAdmin):
 	pass

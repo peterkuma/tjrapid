@@ -1,0 +1,25 @@
+.attachment-inline .inline-related {
+    padding: 1em;
+}
+
+.attachment-inline .inline-related a {
+
+}
+
+.attachment-inline .inline-related .delete {
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    background: url('/static/admin/img/icon_deletelink.gif') center center no-repeat;
+    vertical-align: middle;
+    display: none;
+    cursor: pointer;
+}
+
+.attachment-inline .inline-related:hover .delete {
+    display: inline-block;
+}
+
+.attachment-inline .attach {
+    margin: 1em;
+}
