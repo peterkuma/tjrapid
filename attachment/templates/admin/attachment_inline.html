@@ -13,7 +13,7 @@
   {% endcomment %}
   {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
 
-
+{% comment %}
   {% if inline_admin_form.original %}
     <div class="inline-related">
       <a href="{{ inline_admin_form.original.get_absolute_url }}">{{ inline_admin_form.original }}</a>
@@ -21,8 +21,8 @@
       <!-- <input type="file" name="{{ inline_admin_form.form.prefix }}-file" style="display: none" /> -->
     </div>
   {% endif %}
+{% endcomment %}
 
-{% comment %}
   {% for fieldset in inline_admin_form %}
 <fieldset class="module aligned {{ fieldset.classes }}">
     {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
@@ -54,7 +54,6 @@
     {% endfor %}
 </fieldset>
   {% endfor %}
-{% endcomment %}
 
   {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
   {{ inline_admin_form.fk_field.field }}

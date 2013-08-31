@@ -1,12 +1,12 @@
-.attachment-inline .inline-related {
+.attachment-inline .attachment {
     padding: 1em;
 }
 
-.attachment-inline .inline-related a {
+.attachment-inline .attachment a {
 
 }
 
-.attachment-inline .inline-related .delete {
+.attachment-inline .attachment .delete {
     width: 10px;
     height: 10px;
     padding: 1px;
@@ -16,10 +16,26 @@
     cursor: pointer;
 }
 
-.attachment-inline .inline-related:hover .delete {
+.attachment-inline .attachment:hover .delete {
     display: inline-block;
+    margin: 0 0.2em;
 }
 
 .attachment-inline .attach {
     margin: 1em;
+}
+
+.attachment-inline .error .message:before {
+    display: block;
+    width: 16px;
+    height: 16px;
+    padding: 1px;
+    background: url('../img/icon_error.gif') no-repeat center center;
+}
+
+.attachment-inline .note {
+    color: #0169c9;
+    font-weight: bold;
+    background: #d3eaff;
+    padding: 1em;
 }

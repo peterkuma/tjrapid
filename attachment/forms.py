@@ -12,6 +12,9 @@ class AttachmentInline(GenericInlineModelAdmin):
     @property
     def media(self):
         return forms.Media(
-            js=[static('admin/js/attachment_inline.js')],
+            js=[
+                static('admin/js/d3.v3.min.js'),
+                static('admin/js/attachment_inline.js'),
+            ],
             css={'screen': [static('admin/css/attachment_inline.css')]},
         )

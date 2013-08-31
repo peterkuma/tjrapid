@@ -8,6 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import *
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.generic import GenericForeignKey
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
 class Attachment(Model):
 	content_type = ForeignKey(ContentType, verbose_name=_('content type'))
@@ -28,3 +30,8 @@ class Attachment(Model):
 	class Meta:
 		verbose_name = _('attachment')
 		verbose_name_plural = _('attachments')
+
+
+@receiver(pre_delete, sender=Attachment)
+def attachment_delete(sender, instance, **kwargs):
+    instance.file.delete(False)
