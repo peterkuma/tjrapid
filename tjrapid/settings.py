@@ -28,7 +28,7 @@ DATABASES = {
 }
 
 # Local time zone for this installation. Choices can be found here:
-# http:http://localhost:8000/admin/attachment/attachment///en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # On Unix systems, a value of None will cause Django to use the same
 # timezone as the operating system.
@@ -137,7 +137,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.markup',
-    'attachment',
+    'django_attach',
+    'lib',
     'main',
     'ob',
     'news',

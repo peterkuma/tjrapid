@@ -3,14 +3,8 @@
 # Copyright (c) 2010-2012 Peter Kuma
 
 from django.contrib import admin
-from django.contrib.contenttypes.generic import GenericTabularInline
-
-from attachment.models import Attachment
+from django_attach.forms import AttachmentInline
 from models import *
-
-class AttachmentInline(GenericTabularInline):
-	model = Attachment
-	extra = 2
 
 class ArticleAdmin(admin.ModelAdmin):
 	list_display = ('title','author','published','category')

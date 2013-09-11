@@ -33,6 +33,7 @@ Installation
         pip install textile
         pip install markdown
         pip install psycopg2 # For posgresql support (optional).
+        pip install django-attach
 
 3. Clone the tjrapid repository:
 

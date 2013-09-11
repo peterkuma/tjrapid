@@ -6,8 +6,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext as _
 
 from models import *
-from attachment.models import Attachment
-from attachment.forms import AttachmentInline
+from django_attach.forms import AttachmentInline
 
 class LanguageAdmin(admin.ModelAdmin):
 	pass
