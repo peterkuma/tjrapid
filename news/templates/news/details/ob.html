@@ -5,8 +5,8 @@
 {% block content %}
 	<h3>{{ article.title|escape }}</h3>
 	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
-	{% if article.head %}<p>{{ article.head|textile }}</p>{% endif %}
-	<p>{{ article.body|textile }}</p>
+	{% if article.head %}<p>{{ article.head_html }}</p>{% endif %}
+	<p>{{ article.body_html }}</p>
 	{% if comments %}
 		<h4>{% trans "Comments" %}</h4>
 		<div class="comments">

@@ -6,14 +6,37 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
 
-from attachment.models import Attachment
+from django_attach.models import Attachment
 from main.models import *
+
+
+MARKUP_CHOICES = (
+	('markdown', 'Markdown'),
+	('textile', 'Textile'),
+	('html', 'HTML'),
+)
+
 
 class Article(models.Model):
 	title = models.CharField(_('title'),max_length=100)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
-	head = models.TextField(_('head'),blank=True,help_text=_('Text formatted in <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.'))
-	body = models.TextField(_('body'),blank=True,help_text=_('Text formatted in <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>. Attachments can be referenced in links and images by their file name. HTML is allowed.'))
+	markup = models.CharField(
+		_('markup'),
+		max_length=50,
+		choices=MARKUP_CHOICES,
+		default='markdown',
+		help_text=_('Documentation: <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>')
+	)
+	head = models.TextField(
+		_('head'),
+		blank=True,
+		help_text=_('Add files and images below')
+	)
+	body = models.TextField(
+		_('body'),
+		blank=True,
+		help_text=_('Add files and images below')
+	)
 	author = models.CharField(_('author'),max_length=100)
 	published = models.DateTimeField(_('published'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
@@ -29,6 +52,16 @@ class Article(models.Model):
 
 	def __unicode__(self):
 		return u'%s -- %s' % (self.category,self.title)
+
+	def head_html(self):
+		if self.markup == 'markdown': return markdown(self.head)
+		elif self.markup == 'textile': return textile(self.head)
+		else: return self.head
+
+	def body_html(self):
+		if self.markup == 'markdown': return markdown(self.body)
+		elif self.markup == 'textile': return textile(self.body)
+		else: return self.body
 
 	class Meta:
 		get_latest_by = 'published'

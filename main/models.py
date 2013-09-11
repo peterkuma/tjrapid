@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
 
 from django.conf import settings
-from attachment.models import Attachment
+from django_attach.models import Attachment
 
 from django.contrib.markup.templatetags.markup import markdown, textile
 
@@ -84,7 +84,7 @@ class Page(models.Model):
 		default='markdown',
 		help_text=_('Documentation: <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>')
 	)
-	content = models.TextField(_('content'),blank=True,help_text=_('Attachments (below) can be referenced as if available locally.'))
+	content = models.TextField(_('content'),blank=True,help_text=_('Add files and images below'))
 	created = models.DateTimeField(_('created'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	attachments = GenericRelation(Attachment)
