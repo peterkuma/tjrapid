@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load markup %}
+{% load baseurl %}
 
 {% block header-title %}
 	<div id="header-title">
@@ -12,6 +13,6 @@
 
 {% block menu %}
 	<div id="menu-hadzana" class="menu">
-		{{ category.menu|textile }}
+		{{ category.menu_html|baseurl:category.get_absolute_url }}
 	</div>
 {% endblock %}

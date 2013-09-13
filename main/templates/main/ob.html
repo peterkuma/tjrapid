@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load markup %}
 {% load staticfiles %}
+{% load baseurl %}
 
 {% block title %}{{ block.super }}{% endblock %}
 
@@ -32,6 +33,6 @@
 
 {% block menu %}
 	<div id="menu-ob" class="menu">
-		{{ category.menu|textile }}
+		{{ category.menu_html|baseurl:category.get_absolute_url }}
 	</div>
 {% endblock %}

@@ -43,6 +43,13 @@ class Category(models.Model):
 	)
 	language = models.ForeignKey(Language,verbose_name=_('language'))
 	template_name = models.CharField(_('template name'),max_length=100)
+	markup = models.CharField(
+		_('markup'),
+		max_length=50,
+		choices=MARKUP_CHOICES,
+		default='markdown',
+		help_text=_('Documentation: <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>')
+	)
 	menu = models.TextField(_('menu'),blank=True)
 	attachments = GenericRelation(Attachment)
 
@@ -59,6 +66,11 @@ class Category(models.Model):
 
 	def path(self):
 		return self.get_absolute_url()
+
+	def menu_html(self):
+		if self.markup == 'markdown': return markdown(self.menu)
+		elif self.markup == 'textile': return textile(self.menu)
+		else: return self.menu
 
 	path.short_description = _('path')
 
