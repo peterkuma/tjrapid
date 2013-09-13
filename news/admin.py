@@ -10,7 +10,7 @@ class ArticleAdmin(admin.ModelAdmin):
 	list_display = ('title','author','published','category')
 	search_fields = ('title','author','head','body')
 	list_filter = ('author','category')
-	fields = ('title', 'author', 'category', 'head', 'body')
+	fields = ('title', 'author', 'category', 'markup', 'head', 'body')
 	inlines = (AttachmentInline,)
 
 class CommentAdmin(admin.ModelAdmin):
