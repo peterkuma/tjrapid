@@ -5,6 +5,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
+from django.utils.safestring import mark_safe
 
 from django_attach.models import Attachment
 from main.models import *
@@ -54,16 +55,14 @@ class Article(models.Model):
 		return u'%s -- %s' % (self.category,self.title)
 
 	def head_html(self):
-		if self.markup == 'markdown': return markdown(self.head)
-		elif self.markup == 'textile': return textile(self.head)
-		else: return self.head
-	head_html.allow_tags = True
+		if self.markup == 'markdown': return mark_safe(markdown(self.head))
+		elif self.markup == 'textile': return mark_safe(textile(self.head))
+		else: return mark_safe(self.head)
 
 	def body_html(self):
-		if self.markup == 'markdown': return markdown(self.body)
-		elif self.markup == 'textile': return textile(self.body)
-		else: return self.body
-	body_html.allow_tags = True
+		if self.markup == 'markdown': return mark_safe(markdown(self.body))
+		elif self.markup == 'textile': return mark_safe(textile(self.body))
+		else: return mark_safe(self.body)
 
 	class Meta:
 		get_latest_by = 'published'

@@ -5,17 +5,18 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
-
+from django.utils.safestring import mark_safe
+from django.contrib.markup.templatetags.markup import markdown, textile
 from django.conf import settings
 from django_attach.models import Attachment
 
-from django.contrib.markup.templatetags.markup import markdown, textile
 
 MARKUP_CHOICES = (
 	('markdown', 'Markdown'),
 	('textile', 'Textile'),
 	('html', 'HTML'),
 )
+
 
 class Language(models.Model):
 	code = models.CharField(_('code'),unique=True,
@@ -68,10 +69,9 @@ class Category(models.Model):
 		return self.get_absolute_url()
 
 	def menu_html(self):
-		if self.markup == 'markdown': return markdown(self.menu)
-		elif self.markup == 'textile': return textile(self.menu)
-		else: return self.menu
-	menu_html.allow_tags = True
+		if self.markup == 'markdown': return mark_safe(markdown(self.menu))
+		elif self.markup == 'textile': return mark_safe(textile(self.menu))
+		else: return mark_safe(self.menu)
 
 	path.short_description = _('path')
 
@@ -113,10 +113,9 @@ class Page(models.Model):
 			return '%s%s/' % (self.category.path(), self.name)
 
 	def content_html(self):
-		if self.markup == 'markdown': return markdown(self.content)
-		elif self.markup == 'textile': return textile(self.content)
-		else: return self.content
-	content_html.allow_tags = True
+		if self.markup == 'markdown': return mark_safe(markdown(self.content))
+		elif self.markup == 'textile': return mark_safe(textile(self.content))
+		else: return mark_safe(self.content)
 
 	path.short_description = _('path')
 
