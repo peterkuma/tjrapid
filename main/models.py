@@ -71,6 +71,7 @@ class Category(models.Model):
 		if self.markup == 'markdown': return markdown(self.menu)
 		elif self.markup == 'textile': return textile(self.menu)
 		else: return self.menu
+	menu_html.allow_tags = True
 
 	path.short_description = _('path')
 
@@ -115,6 +116,7 @@ class Page(models.Model):
 		if self.markup == 'markdown': return markdown(self.content)
 		elif self.markup == 'textile': return textile(self.content)
 		else: return self.content
+	content_html.allow_tags = True
 
 	path.short_description = _('path')
 

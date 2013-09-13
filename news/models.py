@@ -57,11 +57,13 @@ class Article(models.Model):
 		if self.markup == 'markdown': return markdown(self.head)
 		elif self.markup == 'textile': return textile(self.head)
 		else: return self.head
+	head_html.allow_tags = True
 
 	def body_html(self):
 		if self.markup == 'markdown': return markdown(self.body)
 		elif self.markup == 'textile': return textile(self.body)
 		else: return self.body
+	body_html.allow_tags = True
 
 	class Meta:
 		get_latest_by = 'published'
