@@ -25,8 +25,12 @@
 	background-color: #ededed;
 	margin: 10px 0;
 }
-.article h4 {
+.article .title {
 	margin: 5px 0;
+}
+.article .title a {
+	color: inherit;
+	text-decoration: inherit;
 }
 .article-info {
 	color: #001800;
