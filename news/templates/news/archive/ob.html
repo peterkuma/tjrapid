@@ -14,24 +14,33 @@
 	</h3>
 	{% for a in articles.object_list %}
 		<div class="article">
-			<h4 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h4>
-			<div class="article-info">{{ a.author|escape }}, {{ a.published|date:"j F Y" }}</div>
-			{% if a.head %}
-				<p>{{ a.head_html|baseurl:a.get_absolute_url }}</p>
-				<div class="article-footer">
-					{% if a.body %}<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a> | {% endif %}
-			{% else %}
-				<p>{{ a.body_html|baseurl:a.get_absolute_url }}</p>
-				<div class="article-footer">
-			{% endif %}
-			{% if a.comment_set.count %}
-				<a href="{{ a.get_absolute_url }}">
-{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}
-				</a>
-			{% else %}
-				<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
-			{% endif %}
-			</div>
+			<article>
+				<header>
+					<h4 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h4>
+				</header>
+				{% if a.head %}
+					<p>{{ a.head_html|baseurl:a.get_absolute_url }}</p>
+				{% endif %}
+				{% if not a.head %}
+					<p>{{ a.body_html|baseurl:a.get_absolute_url }}</p>
+				{% endif %}
+			</article>
+			<footer>
+				<div class="author">{{ a.author|escape }}</div>
+				<div class="date">{{ a.published|date:"j F Y" }}</div>
+				<div class="misc-links">
+					{% if a.head and a.body %}
+						<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a> |
+					{% endif %}
+					{% if a.comment_set.count %}
+						<a href="{{ a.get_absolute_url }}">
+		{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}
+						</a>
+					{% else %}
+						<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
+					{% endif %}
+				</div>
+			</footer>
 		</div>
 	{% endfor %}
 	<div class="pagination">
