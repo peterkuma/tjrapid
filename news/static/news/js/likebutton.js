@@ -15,9 +15,11 @@ function likebutton(el, url) {
         dropdown.className = 'dropdown';
         dropdown.style.top = button.offsetHeight + 5 + "px";
         add('facebook', '<iframe src="//www.facebook.com/plugins/like.php?href='+encodeURIComponent(url)+'&amp;height=20&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>');
-        document.addEventListener('mousedown', function(evt) {
-            hide();
-        }, false);
+        window.setTimeout(function() {
+            document.addEventListener('mousedown', function(evt) {
+                hide();
+            }, false);
+        }, 0);
         toggle();
     }
 
@@ -32,7 +34,7 @@ function likebutton(el, url) {
     }
 
     function toggle() {
-        if (dropdown.parentNode == el)
+        if (dropdown.parentNode === el)
             el.removeChild(dropdown);
         else
             el.appendChild(dropdown);
