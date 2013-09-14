@@ -14,7 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
 	inlines = (AttachmentInline,)
 
 class CommentAdmin(admin.ModelAdmin):
-	list_display = ('subject','sender','article','posted',)
+	list_display = ('subject','sender','article','ip','useragent','posted',)
 	search_fields = ('subject','message','article','sender')
 
 admin.site.register(Article, ArticleAdmin)
