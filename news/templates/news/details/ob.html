@@ -11,10 +11,10 @@
 	<meta property="og:site_name" content="TJ Rapid" />
 	<meta property="article:published_time" content="{{ article.published|date:"c" }}" />
 	{% if article.head %}
-		<meta property="article:description" content="{{ article.head_html|striptags|truncatewords:40 }}" />
+		<meta property="og:description" content="{{ article.head_html|striptags|truncatewords:40 }}" />
 	{% endif %}
 	{% if article.body and not article.head %}
-		<meta property="article:description" content="{{ article.body_html|striptags|truncatewords:40 }}" />
+		<meta property="og:description" content="{{ article.body_html|striptags|truncatewords:40 }}" />
 	{% endif %}
 	<meta property="article:author" content="{{ article.author }}" />
 {% endblock %}
