@@ -48,7 +48,7 @@
 	white-space: nowrap;
 }
 
-.article .like > button:hover {
+.article .like > .button:hover {
 	text-decoration: underline;
 }
 
