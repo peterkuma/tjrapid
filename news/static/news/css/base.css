@@ -31,6 +31,44 @@
 	background-color: #ededed;
 }
 
+.article .like {
+	float: right;
+	position: relative;
+}
+
+.article .like > .button {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #888;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	white-space: nowrap;
+}
+
+.article .like > button:hover {
+	text-decoration: underline;
+}
+
+.article .like .dropdown {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	box-shadow: 1px 1px rgba(0,0,0,0.3);
+}
+
+.article .like iframe {
+	display: block;
+}
+
+.article .like .dropdown .item {
+	padding: 0.6em;
+}
+
 .article header {
 	margin: 0.5em 0;
 }

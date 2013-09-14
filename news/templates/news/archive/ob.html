@@ -6,6 +6,7 @@
 {% block head %}
 	{{ block.super }}
 	<link rel="alternate" title="RSS" href="rss/" type="application/rss+xml" />
+	<script src="{% static "news/js/likebutton.js" %}" charset="utf-8"></script>
 {% endblock %}
 {% block content %}
 	<h3>
@@ -16,6 +17,7 @@
 		<div class="article">
 			<article>
 				<header>
+					<div class="like" onclick="likebutton(this,'http://tjrapid.sk{{ a.get_absolute_url|escapejs }}')"><div class="button">Like | ★</div></div>
 					<h4 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h4>
 				</header>
 				{% if a.head %}
