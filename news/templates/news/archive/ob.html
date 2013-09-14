@@ -17,7 +17,7 @@
 		<div class="article">
 			<article>
 				<header>
-					<div class="like" onclick="likebutton(this,'http://tjrapid.sk{{ a.get_absolute_url|escapejs }}')"><div class="button">Like | ★</div></div>
+					<div class="like" onmousedown="likebutton(this,'http://tjrapid.sk{{ a.get_absolute_url|escapejs }}')"><div class="button">Like | ★</div></div>
 					<h4 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h4>
 				</header>
 				{% if a.head %}
