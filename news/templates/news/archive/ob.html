@@ -37,7 +37,9 @@
 		{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}
 						</a>
 					{% else %}
-						<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
+						{% if a.comments_enabled %}
+							<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
+						{% endif %}
 					{% endif %}
 				</div>
 			</footer>

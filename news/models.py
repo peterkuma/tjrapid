@@ -2,6 +2,8 @@
 #
 # Copyright (c) 2007-2012 Peter Kuma
 
+from datetime import timedelta, datetime
+from django.utils import timezone
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.generic import GenericRelation
@@ -42,6 +44,12 @@ class Article(models.Model):
 	published = models.DateTimeField(_('published'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	attachments = GenericRelation(Attachment)
+	close_comments_after = models.IntegerField(
+		_('close comments after (days)'),
+		default=90,
+		blank=True,
+		null=True,
+	)
 
 	def get_absolute_url(self):
 		return '%snews/article/%s/' % (self.category.get_absolute_url(), self.id)
@@ -63,6 +71,12 @@ class Article(models.Model):
 		if self.markup == 'markdown': return mark_safe(markdown(self.body))
 		elif self.markup == 'textile': return mark_safe(textile(self.body))
 		else: return mark_safe(self.body)
+
+	def comments_enabled(self):
+		if self.close_comments_after is None:
+			return True
+		else:
+			return self.published + timedelta(self.close_comments_after) > timezone.now()
 
 	class Meta:
 		get_latest_by = 'published'
