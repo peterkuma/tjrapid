@@ -4,6 +4,7 @@
 {% load static %}
 
 {% block head %}
+	{{ block.super }}
 	<meta property="og:title" content="{{ article.title }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="http://tjrapid.sk{{ article.get_absolute_url }}" />
