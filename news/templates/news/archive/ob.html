@@ -9,8 +9,8 @@
 {% endblock %}
 {% block content %}
 	<h3>
-		{% trans "News" %}
-                <a href="rss/"><img src="{% static "news/img/feed-icon-14x14.png" %}" alt="RSS feed" /></a>
+		<a href="{{ category.get_absolute_url }}news/">{% trans "News" %}</a>
+		<a href="rss/"><img src="{% static "news/img/feed-icon-14x14.png" %}" alt="RSS feed" /></a>
 	</h3>
 	{% for a in articles.object_list %}
 		<div class="article">

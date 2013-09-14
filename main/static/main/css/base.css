@@ -10,6 +10,16 @@ img {
 ul {
 	list-style-type: square;
 }
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 h3 {
 	font-size: 1.8em;
 	margin: 15px 0 15px 0;
