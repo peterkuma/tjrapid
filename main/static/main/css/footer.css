@@ -1,0 +1,36 @@
+.container > footer {
+    background: #ddd;
+}
+
+.container.wide > footer {
+    background: none;
+}
+
+.container.wide > footer .content {
+    margin-left: 0;
+}
+
+.container > footer .content {
+    background: #eee;
+    margin-left: 145px;
+    padding: 2em;
+}
+
+.container > footer .title {
+    font-size: 180%;
+}
+
+.container > footer .maintained-by {
+    margin-top: 2em;
+    font-size: 12px;
+    color: #333;
+}
+
+.container > footer .map {
+    float: right;
+    border: 1px solid #aaa;
+}
+
+.container > footer .map img {
+    display: block;
+}

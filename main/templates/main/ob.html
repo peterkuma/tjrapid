@@ -32,7 +32,7 @@
 {% block content %}{{ block.super }}{% endblock %}
 
 {% block menu %}
-	<div id="menu-ob" class="menu">
+	<nav class="nav-ob">
 		{{ category.menu_html|baseurl:category.get_absolute_url }}
-	</div>
+	</nav>
 {% endblock %}

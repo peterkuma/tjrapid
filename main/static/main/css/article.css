@@ -1,0 +1,38 @@
+.container > .main > article {
+    margin-left: 145px;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em 2em 1em;
+    min-height: 700px;
+}
+
+.container.wide > .main > article {
+    margin-left: 0;
+    min-height: 0;
+}
+
+.container > .content-wide {
+    font-size: 16px;
+    padding: 0 20px 20px 20px;
+    background: url("../img/bg.png") repeat-x;
+}
+
+.container > .main > article table.standard {
+    border: 1px solid silver;
+    border-collapse: collapse;
+    background: white;
+}
+
+.container > .main > article table.standard th {
+    text-align: left;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid black;
+    padding: 3px 5px;
+}
+
+.container > .main > article table.standard td {
+    text-align: left;
+    border-top: 1px solid #f4f4f4;
+    border-right: dashed 1px silver;
+    padding: 3px 5px;
+}

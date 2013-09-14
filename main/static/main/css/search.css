@@ -1,0 +1,22 @@
+.container > .main > .search {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    width: 180px;
+}
+
+.container > .main > .search input {
+    display: block;
+    float: left;
+    border: 1px solid silver;
+    padding: 0.2em;
+    margin: 0 0.5em;
+}
+
+.container > .main > .search button {
+    display: block;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}

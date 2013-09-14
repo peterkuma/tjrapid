@@ -1,0 +1,37 @@
+.container > .main > nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 145px;
+    background: #9acd32;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.container > .main > nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container > .main > nav li {
+    padding: 4px 10px;
+}
+
+.container > .main > nav a {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.container > .main > nav a:hover {
+    text-decoration: underline;
+}
+
+.container > .main > .nav-ob { background-image: url("../img/menu-ob.png"); background-repeat: no-repeat; }
+.container > .main > .nav-hadzana { background-image: url("../img/menu-hadzana.png"); background-repeat: no-repeat; }
+.container > .main > .nav-karate { background-image: url("../img/menu-karate.png"); background-repeat: no-repeat; }
+.container > .main > .nav-turistika { background-image: url("../img/menu-turistika.png"); background-repeat: no-repeat; }
+.container > .main > .nav-gymnastika { background-image: url("../img/menu-gymnastika.png"); background-repeat: no-repeat; }
+.container > .main > .nav-cyklo { background-image: url("../img/menu-cyklo.png"); background-repeat: no-repeat; }

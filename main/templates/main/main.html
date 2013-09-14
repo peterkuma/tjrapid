@@ -6,8 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="{% static "main/css/main.css" %}" />
 {% endblock %}
 
+{% block wide %}wide{% endblock %}
+
 {% block main %}
-	<div id="content-wide">
-		{{ page.content_html }}
-	</div>
+    <section class="main">
+    	<article>
+    		{{ page.content_html }}
+    	</article>
+    </section>
 {% endblock %}
