@@ -111,7 +111,9 @@ def comment(request,category,lang=settings.LANGUAGE_CODE,id=None,reply_id=None):
 				reply = reply,
 				subject = f.cleaned_data['subject'],
 				message = f.cleaned_data['message'],
-				sender = f.cleaned_data['sender']
+				sender = f.cleaned_data['sender'],
+				ip = request.META.get('REMOTE_ADDR '),
+				useragent = request.META.get('HTTP_USER_AGENT'),
 			)
 			if request.POST.has_key('send'):
 				comment.save()

@@ -78,6 +78,8 @@ class Comment(models.Model):
 	message = models.TextField(_('content'))
 	sender = models.CharField(_('sender'),max_length=100)
 	posted = models.DateTimeField(_('posted'),auto_now_add=True)
+	ip = models.GenericIPAddressField(_('IP address'),blank=True,null=True)
+	useragent = models.CharField(_('user agent'),max_length=100,blank=True)
 
 	def get_absolute_url(self):
 		return '%snews/%s/' % (self.article.get_absolute_url(),self.id)
