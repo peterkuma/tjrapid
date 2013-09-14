@@ -7,7 +7,7 @@
 	<meta property="og:title" content="{{ article.title }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="http://tjrapid.sk{{ article.get_absolute_url }}" />
-	<meta property="og:image" content="{% static "main/img/tjrapid.png" %}" />
+	<meta property="og:image" content="http://tjrapid.sk{% static "main/img/tjrapid.png" %}" />
 	<meta property="og:site_name" content="TJ Rapid" />
 	<meta property="article:published_time" content="{{ article.published|date:"c" }}" />
 	{% if article.head %}
