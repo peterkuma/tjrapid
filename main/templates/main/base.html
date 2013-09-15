@@ -65,7 +65,7 @@
 			{% endblock %}
 			<footer>
 				<div class="content">
-					<a class="map" href="http://a.tiles.mapbox.com/v3/peterkuma.map-jo5q9011/page.html"><img src="http://a.tiles.mapbox.com/v3/peterkuma.map-jo5q9011/17.175562977790833,48.14843247659438,17/350x180.png" /></a>
+					<a class="map" href="http://a.tiles.mapbox.com/v3/peterkuma.map-jo5q9011/page.html"><img src="http://a.tiles.mapbox.com/v3/peterkuma.map-jo5q9011/17.175562977790833,48.14843247659438,17/350x140.png" /></a>
 					<div class="title">TJ Rapid</div>
 					<p class="address">
 						Hrachová 4<br />
@@ -73,7 +73,10 @@
 						tel/fax: +421 2 4329 4689<br />
 						<a href="mailto:tjrapid&#64;tjrapid.sk">tjrapid<span>&#64;</span>tjrapid.sk</a>
 					</p>
-					<p class="maintained-by">{% trans "Site maintained by" %} <a href="mailto:peter.kuma&#64;tjrapid.sk">Peter Kuma</a></p>
+					<p class="maintained-by">
+						<a href="https://djangoproject.com"><img class="django" alt="django" src="{% static "main/img/django.png" %}" /></a>
+						{% trans "Site maintained by" %} <a href="mailto:peter.kuma&#64;tjrapid.sk">Peter Kuma</a>
+					</p>
 				</div>
 			</footer>
 		</div>
