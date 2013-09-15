@@ -26,6 +26,7 @@
 				{% if not a.head %}
 					<p>{{ a.body_html|baseurl:a.get_absolute_url }}</p>
 				{% endif %}
+				<div style="clear: both"></div>
 			</article>
 			<footer>
 				<div class="author">{{ a.author|escape }}</div>
