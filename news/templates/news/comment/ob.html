@@ -21,7 +21,7 @@ window.addEvent('domready', function() {
 
 {% block content %}
 	<h3>{{ article.title|escape }}</h3>
-	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
+	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"DATE_FORMAT" }}</div>
 	{% if article.head %}<p>{{ article.head_html|baseurl:article.get_absolute_url }}</p>{% endif %}
 	<p>{{ article.body_html|baseurl:article.get_absolute_url }}</p>
 	<h4>{% trans "Comments" %}</h4>
@@ -30,7 +30,7 @@ window.addEvent('domready', function() {
 			<div class="comment">
 				<h5>{{ reply.subject }}</h5>
 				<div class="comment-info">
-					{{ reply.sender|escape }}, {{ reply.posted|date:"j F Y H:i" }}
+					{{ reply.sender|escape }}, {{ reply.posted }}
 				</div>
 				<div class="comment-body">{{ reply.message|escape|urlize|linebreaks }}</div>
 			</div>

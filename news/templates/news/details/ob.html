@@ -22,7 +22,7 @@
 
 {% block content %}
 	<h3>{{ article.title|escape }}</h3>
-	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"j F Y" }}</div>
+	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"DATE_FORMAT" }}</div>
 	{% if article.head %}<p>{{ article.head_html }}</p>{% endif %}
 	<p>{{ article.body_html }}</p>
 	{% if comments %}
@@ -38,7 +38,7 @@
 					<div class="comment comment-level-{{ o.level }}">
 						<h5>{{ o.comment.subject|escape }}</h5>
 						<div class="comment-info">{{ o.comment.sender|escape }},
-							{{ o.comment.posted|date:"j F Y H:i" }}</div>
+							{{ o.comment.posted }}</div>
 						<div class="comment-body">{{ o.comment.message|escape|urlize|linebreaks }}</div>
 						{% if article.comments_enabled %}
 							<div class="comment-footer"><a href="comment/{{ o.comment.id }}/">{% trans "Reply" %}</a></div>

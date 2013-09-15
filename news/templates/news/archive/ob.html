@@ -30,7 +30,7 @@
 			</article>
 			<footer>
 				<div class="author">{{ a.author|escape }}</div>
-				<div class="date">{{ a.published|date:"j F Y" }}</div>
+				<div class="date">{{ a.published|date:"DATE_FORMAT" }}</div>
 				<div class="misc-links">
 					{% if a.head and a.body %}
 						<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a>
