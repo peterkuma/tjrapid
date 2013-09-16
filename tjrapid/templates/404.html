@@ -1,12 +1,8 @@
-{% extends "main/base.html" %}
+{% extends "error.html" %}
 
-{% block main %}
-	<div id="content-wide">
-		<h3>Stránka neexistuje / Page not found</h3>
-		<p>Požadovaná stránka nebola nájdená.</p>
-		<p>Requested page could not be found.</p>
-		<div id="footer">
-			Sekretariát: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689
-		</div>
-	</div>
+{% block title %}Stránka nebola nájdená{% endblock %}
+
+{% block content %}
+    <p>Stránka nebola nájdená</p>
+    <p>Page not found</p>
 {% endblock %}
