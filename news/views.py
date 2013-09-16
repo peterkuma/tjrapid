@@ -5,7 +5,8 @@
 import os
 from datetime import date
 
-from django.http import Http404, HttpResponseForbidden
+from django.http import Http404
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
@@ -90,7 +91,7 @@ def comment(request,category,lang=settings.LANGUAGE_CODE,id=None,reply_id=None):
 		raise Http404
 
 	if not a.comments_enabled():
-		return HttpResponseForbidden()
+		raise PermissionDenied()
 
 	try:
 		reply = Comment.objects.get(id=reply_id)
