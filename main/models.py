@@ -2,13 +2,17 @@
 #
 # Copyright (c) 2007-2012 Peter Kuma
 
+import os
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.generic import GenericRelation
 from django.utils.safestring import mark_safe
 from django.contrib.markup.templatetags.markup import markdown, textile
 from django.conf import settings
+from django.utils.translation import get_language
 from django_attach.models import Attachment
+from linguo.models import MultilingualModel
+from linguo.managers import MultilingualManager
 
 
 MARKUP_CHOICES = (
@@ -18,23 +22,7 @@ MARKUP_CHOICES = (
 )
 
 
-class Language(models.Model):
-	code = models.CharField(_('code'),unique=True,
-		max_length=20,
-		help_text=_('All choices can be found here: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes')
-	)
-	name = models.CharField(_('name'),max_length=100)
-
-	def __unicode__(self):
-		return self.name
-
-	class Meta:
-		ordering = ['code']
-		verbose_name = _('language')
-		verbose_name_plural = _('languages')
-
-
-class Category(models.Model):
+class Category(MultilingualModel):
 	title = models.CharField(_('title'),max_length=100)
 	name = models.SlugField(
 		_('name'),
@@ -42,7 +30,6 @@ class Category(models.Model):
 #		prepopulate_from=('title',),
 		help_text=_('Short name that will appear in the URL'),
 	)
-	language = models.ForeignKey(Language,verbose_name=_('language'))
 	template_name = models.CharField(_('template name'),max_length=100)
 	markup = models.CharField(
 		_('markup'),
@@ -55,15 +42,14 @@ class Category(models.Model):
 	attachments = GenericRelation(Attachment)
 
 	def __unicode__(self):
-		return '%s (%s)' % (self.title,self.language.code)
+		return self.title
 
 	def get_absolute_url(self):
-		path = '/'
-		if self.language.code != settings.LANGUAGE_CODE:
-			path += self.language.code+'/'
-		if self.name != '':
-			path += self.name+'/'
-		return path
+		lang = get_language()
+		if lang == settings.LANGUAGE_CODE:
+			return os.path.join('/', self.name+'/')
+		else:
+			return os.path.join('/', lang, self.name+'/')
 
 	def path(self):
 		return self.get_absolute_url()
@@ -79,9 +65,10 @@ class Category(models.Model):
 		ordering = ['title']
 		verbose_name = _('category')
 		verbose_name_plural = _('categories')
+		translate = ('title', 'name', 'menu')
 
 
-class Page(models.Model):
+class Page(MultilingualModel):
 	title = models.CharField(_('title'),max_length=100)
 	name = models.SlugField(
 		_('name'),
@@ -119,9 +106,12 @@ class Page(models.Model):
 
 	path.short_description = _('path')
 
+	objects = MultilingualManager()
+
 	class Meta:
 		get_latest_by = 'modified',
 		ordering = ('category','name')
 		unique_together = (('name','category'),)
 		verbose_name = _('page')
 		verbose_name_plural = _('pages')
+		translate = ('title', 'name', 'content')

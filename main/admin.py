@@ -4,26 +4,40 @@
 
 from django.contrib import admin
 from django.utils.translation import ugettext as _
-
-from models import *
 from django_attach.forms import AttachmentInline
+from linguo.forms import MultilingualModelForm
 
-class LanguageAdmin(admin.ModelAdmin):
-	pass
+from main.models import *
+
 
 class CategoryAdmin(admin.ModelAdmin):
-	list_display = ('title','path','language')
-	list_filter = ('language',)
+	list_display = ('title','path')
 	inlines = (AttachmentInline,)
 
+
+class PageAdminForm(MultilingualModelForm):
+    class Meta:
+        model = Page
+
+
 class PageAdmin(admin.ModelAdmin):
+	form = PageAdminForm
 	list_display = ('title','category','path')
 	search_fields = ('name','title')
 	list_filter = ('category',)
 	inlines = (AttachmentInline,)
 
 	fieldsets = (
-		(None, {'fields': ('title', 'name', 'category', 'markup', 'content')}),
+		(None, { 'fields': (
+				'title',
+				'title_en',
+				'name',
+				'name_en',
+				'category',
+				'markup',
+				'content',
+				'content_en',
+		)}),
 		(_('Advanced options'), {
 			'classes': ('collapse',),
 			'fields': ('style',)
@@ -31,6 +45,5 @@ class PageAdmin(admin.ModelAdmin):
 	)
 
 
-admin.site.register(Language, LanguageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)

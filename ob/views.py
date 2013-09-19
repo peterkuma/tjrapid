@@ -34,9 +34,6 @@ def members(request, category_name):
 	members_w = Member.objects.filter(category__startswith='W')
 	category = Category.objects.get(name=category_name)
 
-	translation.activate(category.language.code)
-	request.LANGUAGE_CODE = translation.get_language()
-
 	return render_to_response(
 		'ob/members.html', {
 			'members_m': members_m,

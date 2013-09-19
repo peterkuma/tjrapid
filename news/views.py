@@ -10,7 +10,6 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils import translation
 from django import forms
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
@@ -20,11 +19,8 @@ from django.conf import settings
 from main.models import *
 from models import *
 
-def archive(request,category,lang=settings.LANGUAGE_CODE,page=None):
-	translation.activate(lang)
-	request.LANGUAGE_CODE = translation.get_language()
-
-	c = Category.objects.get(language__code=lang,name=category)
+def archive(request, category, page=None):
+	c = Category.objects.get(name=category)
 	a = Article.objects.filter(category=c)
 	p = Paginator(a, 6)
 
@@ -41,12 +37,9 @@ def archive(request,category,lang=settings.LANGUAGE_CODE,page=None):
 		RequestContext(request)
 	)
 
-def details(request,category,lang=settings.LANGUAGE_CODE,id=None):
-	translation.activate(lang)
-	request.LANGUAGE_CODE = translation.get_language()
-
+def details(request, category,id=None):
 	try:
-		c = Category.objects.get(language__code=lang,name=category)
+		c = Category.objects.get(name=category)
 		a = Article.objects.get(category=c,id=id)
 	except ObjectDoesNotExist:
 		raise Http404
@@ -72,9 +65,9 @@ def details(request,category,lang=settings.LANGUAGE_CODE,id=None):
 		RequestContext(request)
 	)
 
-def attachment(request,category,lang=settings.LANGUAGE_CODE,id=None,attachment=None):
+def attachment(request,category,id=None,attachment=None):
 	try:
-		c = Category.objects.get(language__code=lang,name=category)
+		c = Category.objects.get(name=category)
 		article = Article.objects.get(category=c,id=id)
 		for a in article.attachments.all():
 			if os.path.basename(a.file.name) == attachment:
@@ -83,9 +76,9 @@ def attachment(request,category,lang=settings.LANGUAGE_CODE,id=None,attachment=N
 		raise Http404
 	raise Http404
 
-def comment(request,category,lang=settings.LANGUAGE_CODE,id=None,reply_id=None):
+def comment(request,category,id=None,reply_id=None):
 	try:
-		c = Category.objects.get(language__code=lang,name=category)
+		c = Category.objects.get(name=category)
 		a = Article.objects.get(category=c,id=id)
 	except ObjectDoesNotExist:
 		raise Http404
