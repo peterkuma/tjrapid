@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-14 14:00+0200\n"
+"POT-Creation-Date: 2013-09-20 13:57+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -160,8 +160,8 @@ msgstr "požičiať"
 msgid "present"
 msgstr "vyplený"
 
-#: eventapp/models.py:45 main/models.py:38 main/models.py:85 news/models.py:24
-#: ob/models.py:33
+#: eventapp/models.py:45 main/models.py:26 main/models.py:74 news/models.py:24
+#: ob/models.py:46
 msgid "title"
 msgstr "názov"
 
@@ -181,7 +181,7 @@ msgstr "deň otvorenia"
 msgid "close date"
 msgstr "deň uzatvorenia"
 
-#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:18
+#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:31
 msgid "e-mail"
 msgstr "e-mail"
 
@@ -190,11 +190,11 @@ msgid "number of laps"
 msgstr "počet etáp"
 
 #: eventapp/models.py:64 eventapp/models.py:69 eventapp/models.py:89
-#: eventapp/models.py:122
+#: eventapp/models.py:122 ob/models.py:98
 msgid "event"
 msgstr "preteky"
 
-#: eventapp/models.py:65
+#: eventapp/models.py:65 ob/models.py:99
 msgid "events"
 msgstr "preteky"
 
@@ -206,7 +206,7 @@ msgstr "popis"
 msgid "classes"
 msgstr "kategórie"
 
-#: eventapp/models.py:72 ob/models.py:40
+#: eventapp/models.py:72 ob/models.py:52
 msgid "start date"
 msgstr "začiatok"
 
@@ -235,12 +235,12 @@ msgid "class fees"
 msgstr "štartovné"
 
 #: eventapp/models.py:91 eventapp/models.py:168 eventapp/models.py:219
-#: main/models.py:101
+#: main/models.py:90
 msgid "created"
 msgstr "vytvorené"
 
 #: eventapp/models.py:92 eventapp/models.py:169 eventapp/models.py:220
-#: main/models.py:102 news/models.py:45
+#: main/models.py:91 news/models.py:45
 msgid "modified"
 msgstr "upravené"
 
@@ -277,11 +277,11 @@ msgstr "%(label)s (%(price)s € za noc)"
 msgid "accommodation"
 msgstr "ubytovanie"
 
-#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:15
+#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:28
 msgid "first name"
 msgstr "krstné meno"
 
-#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:16
+#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:29
 msgid "surname"
 msgstr "priezvisko"
 
@@ -667,47 +667,27 @@ msgid ""
 msgstr ""
 "Identifikačné číslo prihlášky bolo odoslané na <strong>%(email)s</strong>."
 
-#: main/admin.py:27
+#: main/admin.py:41
 msgid "Advanced options"
 msgstr "Pokročilé nastavenia"
 
-#: main/models.py:22
-msgid "code"
-msgstr "kód"
-
-#: main/models.py:24
-msgid ""
-"All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
-"dirlang.html#langcodes"
-msgstr ""
-"Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
-"dirlang.html#langcodes"
-
-#: main/models.py:26 main/models.py:40 main/models.py:87 ob/models.py:35
+#: main/models.py:28 main/models.py:76 ob/models.py:48
 msgid "name"
 msgstr "meno"
 
-#: main/models.py:33 main/models.py:45
-msgid "language"
-msgstr "jazyk"
-
-#: main/models.py:34
-msgid "languages"
-msgstr "jazyky"
-
-#: main/models.py:43 main/models.py:90 ob/models.py:38
+#: main/models.py:31 main/models.py:79 ob/models.py:50
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
-#: main/models.py:46
+#: main/models.py:33
 msgid "template name"
 msgstr "meno šablóny"
 
-#: main/models.py:48 main/models.py:94 news/models.py:27
+#: main/models.py:35 main/models.py:83 news/models.py:27 ob/models.py:57
 msgid "markup"
 msgstr "markup"
 
-#: main/models.py:52 main/models.py:98 news/models.py:31
+#: main/models.py:39 main/models.py:87 news/models.py:31 ob/models.py:61
 msgid ""
 "Documentation: <a href=\"https://en.wikipedia.org/wiki/Markdown\">Markdown</"
 "a>, <a href=\"http://en.wikipedia.org/wiki/Textile_"
@@ -717,48 +697,49 @@ msgstr ""
 "a>, <a href=\"http://en.wikipedia.org/wiki/Textile_"
 "(markup_language)\">Textile</a>"
 
-#: main/models.py:54
+#: main/models.py:41
 msgid "menu"
 msgstr "menu"
 
-#: main/models.py:76 main/models.py:120 news/models.py:60 news/models.py:104
+#: main/models.py:62 main/models.py:109 news/models.py:60 news/models.py:104
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:80 main/models.py:92 news/models.py:25 ob/models.py:17
-#: ob/models.py:43
+#: main/models.py:68 main/models.py:81 news/models.py:25 ob/models.py:30
+#: ob/models.py:55
 msgid "category"
 msgstr "kategória"
 
-#: main/models.py:81
+#: main/models.py:69
 msgid "categories"
 msgstr "kategórie"
 
-#: main/models.py:100 news/models.py:92
+#: main/models.py:89 news/models.py:92
 msgid "content"
 msgstr "obsah"
 
-#: main/models.py:100 news/models.py:36 news/models.py:41
+#: main/models.py:89 news/models.py:36 news/models.py:41 ob/models.py:66
+#: ob/models.py:71
 msgid "Add files and images below"
 msgstr "Súbory a obrázky sa dajú pridať nižšie"
 
-#: main/models.py:104
+#: main/models.py:93
 msgid "style"
 msgstr "Štýl"
 
-#: main/models.py:104
+#: main/models.py:93
 msgid "Cascading Style Sheets"
 msgstr "Kaskádové štýly (CSS)"
 
-#: main/models.py:126
+#: main/models.py:117
 msgid "page"
 msgstr "stránka"
 
-#: main/models.py:127
+#: main/models.py:118
 msgid "pages"
 msgstr "stránky"
 
-#: main/templates/main/base.html:76
+#: main/templates/main/base.html:78
 msgid "Site maintained by"
 msgstr "Stránku spravuje"
 
@@ -766,11 +747,11 @@ msgstr "Stránku spravuje"
 msgid "Orienteering club"
 msgstr "Oddiel orientačného behu"
 
-#: news/models.py:34
+#: news/models.py:34 ob/models.py:64
 msgid "head"
 msgstr "hlavička"
 
-#: news/models.py:39
+#: news/models.py:39 ob/models.py:69
 msgid "body"
 msgstr "telo"
 
@@ -826,27 +807,27 @@ msgstr "komentár"
 msgid "comments"
 msgstr "komentáre"
 
-#: news/views.py:103
+#: news/views.py:97
 msgid "Subject"
 msgstr "Predmet"
 
-#: news/views.py:105
+#: news/views.py:99
 msgid "Sender"
 msgstr "Odosielateľ"
 
-#: news/views.py:106
+#: news/views.py:100
 msgid "Message"
 msgstr "Správa"
 
-#: news/templates/news/base.html:5 news/templates/news/archive/ob.html:12
+#: news/templates/news/base.html:5 news/templates/news/archive/ob.html:13
 msgid "News"
 msgstr "Novinky"
 
-#: news/templates/news/archive/ob.html:33
+#: news/templates/news/archive/ob.html:36
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: news/templates/news/archive/ob.html:38
+#: news/templates/news/archive/ob.html:41
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -854,21 +835,21 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: news/templates/news/archive/ob.html:43
-#: news/templates/news/details/ob.html:34
+#: news/templates/news/archive/ob.html:46
+#: news/templates/news/details/ob.html:52
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
-#: news/templates/news/archive/ob.html:53
+#: news/templates/news/archive/ob.html:56
 msgid "Next"
 msgstr "Ďalšie"
 
-#: news/templates/news/archive/ob.html:58
+#: news/templates/news/archive/ob.html:61
 msgid "Previous"
 msgstr "Predchádzajúce"
 
 #: news/templates/news/comment/ob.html:27
-#: news/templates/news/details/ob.html:12
+#: news/templates/news/details/ob.html:30
 msgid "Comments"
 msgstr "Komentáre"
 
@@ -880,77 +861,48 @@ msgstr "Náhľad komentára"
 msgid "Send comment"
 msgstr "Poslať komentár"
 
-#: news/templates/news/details/ob.html:14
+#: news/templates/news/details/ob.html:32
 msgid "(closed)"
 msgstr "(uzatvorené)"
 
-#: news/templates/news/details/ob.html:26
+#: news/templates/news/details/ob.html:44
 msgid "Reply"
 msgstr "Odpovedať"
 
-#: ob/models.py:28
+#: ob/models.py:41
 msgid "member"
 msgstr "člen"
 
-#: ob/models.py:29
+#: ob/models.py:42
 msgid "members"
 msgstr "členovia"
 
-#: ob/models.py:41
+#: ob/models.py:53
 msgid "end date"
 msgstr "koniec"
 
-#: ob/models.py:42
+#: ob/models.py:54
 msgid "location"
 msgstr "miesto"
 
-#: ob/models.py:59 ob/models.py:66 ob/models.py:73 ob/models.py:81
-msgid "competitions"
-msgstr "preteky"
+#: ob/models.py:74
+msgid "GeoJSON"
+msgstr "GeoJSON"
 
-#: ob/models.py:59
-msgid "specification"
-msgstr "rozpis"
+#: ob/models.py:76
+msgid ""
+"Map features. Properties <strong>name</strong> and <strong>description</"
+"strong> are shown in popups. Use <a href=\"http://geojson.io\">geojson.io</"
+"a> &amp; copy content of \"&lt;/&gt; JSON\"."
+msgstr ""
 
-#: ob/models.py:66
-msgid "results"
-msgstr "vysledky"
+#: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:18
+msgid "Events"
+msgstr "Preteky"
 
-#: ob/models.py:73
-msgid "directives"
-msgstr "pokyny"
-
-#: ob/models.py:80
-msgid "competition"
-msgstr "preteky"
-
-#: ob/templates/ob/competitions.html:4 ob/templates/ob/competitions.html:7
-msgid "Our competitions"
-msgstr "Naše preteky"
-
-#: ob/templates/ob/competitions.html:14 ob/templates/ob/competitions.html:43
-msgid "Location"
-msgstr "Miesto"
-
-#: ob/templates/ob/competitions.html:20 ob/templates/ob/competitions.html:44
-msgid "Specification"
-msgstr "Rozpis"
-
-#: ob/templates/ob/competitions.html:26 ob/templates/ob/competitions.html:45
-msgid "Directives"
-msgstr "Pokyny"
-
-#: ob/templates/ob/competitions.html:32 ob/templates/ob/competitions.html:46
-msgid "Results"
-msgstr "Výsledky"
-
-#: ob/templates/ob/competitions.html:41
-msgid "Title"
-msgstr "Názov"
-
-#: ob/templates/ob/competitions.html:42
-msgid "Date"
-msgstr "Dátum"
+#: ob/templates/ob/events.html:50
+msgid "More information"
+msgstr "Viac informácií"
 
 #: ob/templates/ob/members.html:3 ob/templates/ob/members.html.py:6
 msgid "Members"
@@ -960,6 +912,14 @@ msgstr "Členovia"
 msgid "Category"
 msgstr "Kategória"
 
+#: tjrapid/settings.py:46
+msgid "Slovak"
+msgstr "Slovensky"
+
+#: tjrapid/settings.py:47
+msgid "English"
+msgstr "Anglicky"
+
 #: tjrapid/templates/admin/base_site.html:5
 msgid "Django site admin"
 msgstr "Administrácia Django"
@@ -967,6 +927,58 @@ msgstr "Administrácia Django"
 #: tjrapid/templates/admin/base_site.html:8
 msgid "TJ Rapid"
 msgstr "TJ Rapid"
+
+#~ msgid "code"
+#~ msgstr "kód"
+
+#~ msgid ""
+#~ "All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
+#~ "dirlang.html#langcodes"
+#~ msgstr ""
+#~ "Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
+#~ "dirlang.html#langcodes"
+
+#~ msgid "language"
+#~ msgstr "jazyk"
+
+#~ msgid "languages"
+#~ msgstr "jazyky"
+
+#~ msgid "competitions"
+#~ msgstr "preteky"
+
+#~ msgid "specification"
+#~ msgstr "rozpis"
+
+#~ msgid "results"
+#~ msgstr "vysledky"
+
+#~ msgid "directives"
+#~ msgstr "pokyny"
+
+#~ msgid "competition"
+#~ msgstr "preteky"
+
+#~ msgid "Our competitions"
+#~ msgstr "Naše preteky"
+
+#~ msgid "Location"
+#~ msgstr "Miesto"
+
+#~ msgid "Specification"
+#~ msgstr "Rozpis"
+
+#~ msgid "Directives"
+#~ msgstr "Pokyny"
+
+#~ msgid "Results"
+#~ msgstr "Výsledky"
+
+#~ msgid "Title"
+#~ msgstr "Názov"
+
+#~ msgid "Date"
+#~ msgstr "Dátum"
 
 #~ msgid "content type"
 #~ msgstr "typ objektu"
