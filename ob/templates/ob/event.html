@@ -1,0 +1,51 @@
+{% extends "main/ob.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "ob/css/event.css" %}" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block content %}
+    <h3>{{ event.title }}</h3>
+  
+    {% if event.geojson %}
+        <a href="{{ event.name }}/">
+            <div class="map" id="map-{{ event.pk }}"></div>
+        </a>
+        <script>
+var map = L.map('map-{{ event.pk }}', {
+    zoomControl: false,
+    attributionControl: false,
+    // dragging: false,
+    // touchZoom: false,
+    // doubleClickZoom: false,
+    // scrollWheelZoom: false,
+    // boxZoom: false,
+    // tap: false
+}).setView([48.214, 17.146], 14);
+
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>',
+}).addTo(map);
+
+var data = JSON.parse('{{ event.geojson|escapejs }}');
+L.geoJson(data, {
+    onEachFeature: function(feature, layer) {
+        layer.bindPopup(feature.properties.description);
+    }
+}).addTo(map);
+        </script>
+    {% endif %}
+    <div class="date">{{ event.start_date|date:"DATE_FORMAT" }}{% if event.end_date %}—{{ event.end_date|date:"DATE_FORMAT" }}{% endif %}</div>
+    <div class="location">{{ event.location }}</div>
+    <div class="content">
+        {{ event.head_html }}
+        {{ event.body_html }}
+    </div>
+{% endblock %}

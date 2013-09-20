@@ -1,0 +1,12 @@
+.date {
+    font-size: 150%;
+    color: #555;
+    margin: -0.2em 0 0.2em 0;
+}
+
+.location {
+    font-size: 120%;
+    font-weight: bold;
+    color: #555;
+    margin: 0.2em 0;
+}

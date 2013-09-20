@@ -1,33 +1,47 @@
 # -*- coding: utf-8 -*-
-#
-# Copyright (c) 2007-2012 Peter Kuma
-
-from datetime import datetime
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import translation
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 from main.models import *
-from models import *
+from ob.models import *
 
-def competitions(request, category_name):
-	competitions = Competition.objects.all()
-	competitions_upcoming = filter(lambda c: c.is_upcoming(), competitions)
-	competitions_past = filter(lambda c: not c.is_upcoming(), competitions)
-	category = Category.objects.get(name=category_name)
 
-	translation.activate(category.language.code)
-	request.LANGUAGE_CODE = translation.get_language()
-
+def events(request, category_name):
+	category = get_object_or_404(Category, name=category_name)
+	events = Event.objects.filter(category=category)
 	return render_to_response(
-		'ob/competitions.html', {
-			'competitions_upcoming': competitions_upcoming,
-			'competitions_past': competitions_past,
+		'ob/events.html', {
+			'events': events,
 			'category': category,
 		},
 		RequestContext(request)
 	)
+
+
+def event(request, name, category_name):
+	category = get_object_or_404(Category, name=category_name)
+	event = get_object_or_404(Event, category=category, name=name)
+	return render_to_response(
+		'ob/event.html', {
+			'event': event,
+			'category': category,
+		},
+		RequestContext(request)
+	)
+
+
+def attachment(request, category_name, event_name, name):
+	category = get_object_or_404(Category, name=category_name)
+	event = get_object_or_404(Event, category=category, name=event_name)
+	for a in event.attachments.all():
+		if os.path.basename(a.file.name) == name:
+			return HttpResponseRedirect(a.file.url)
+	raise Http404	
+
 
 def members(request, category_name):
 	members_m = Member.objects.filter(category__startswith='M')
