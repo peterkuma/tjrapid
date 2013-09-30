@@ -38,3 +38,7 @@
     float: right;
     border: 1px solid #aaa;
 }
+
+.event .map img {
+    display: block;
+}

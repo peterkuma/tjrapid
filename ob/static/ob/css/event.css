@@ -10,3 +10,14 @@
     color: #555;
     margin: 0.2em 0;
 }
+
+.map {
+    width: 300px;
+    height: 200px;
+    float: right;
+    border: 1px solid #aaa;
+}
+
+.map img {
+    display: block;
+}

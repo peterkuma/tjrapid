@@ -7,39 +7,19 @@
 {% block head %}
 	{{ block.super }}
 	<link rel="stylesheet" type="text/css" href="{% static "ob/css/events.css" %}" />
-	{% comment %}
-    <!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js" charset="utf-8"></script>-->
-    {% endcomment %}
 {% endblock %}
 
 {% block content %}
 	<h3>{% trans "Events" %}</h3>
 	{% for event in events %}
 		<div class="event">
-			{% comment %}
-			{% if event.geojson %}
-				<div class="map" id="map-{{ event.pk }}"></div>
-		        <script>
-var map = L.map('map-{{ event.pk }}', {
-	zoomControl: false,
-	attributionControl: false,
-}).setView([48.214, 17.146], 14);
-
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 18,
-	attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>',
-}).addTo(map);
-
-var data = JSON.parse('{{ event.geojson|escapejs }}');
-L.geoJson(data, {
-    onEachFeature: function(feature, layer) {
-        layer.bindPopup(feature.properties.description);
-    }
-}).addTo(map);
-		        </script>
-		    {% endif %}
-		    {% endcomment %}
+			{% if event.mapbox_mapid %}
+				<div class="map">
+					<a href="{{ event.map_link }}">
+						<img src="{{ event.map_image_default }}" />
+					</a>
+				</div>
+			{% endif %}
 			<div class="title"><a href="{{ event.name }}/">{{ event.title }}</a></div>
 			<div class="date">{{ event.start_date|date:"DATE_FORMAT" }} ({{ event.start_date|date:"l" }}){% if event.end_date %}–{{ event.end_date|date:"DATE_FORMAT" }} ({{ event.end_date|date:"l" }}){% endif %}</div>
 			<div class="location">{{ event.location }}</div>
