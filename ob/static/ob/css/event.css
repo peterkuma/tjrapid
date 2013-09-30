@@ -1,23 +1,23 @@
-.date {
+.main > article .date {
     font-size: 150%;
     color: #555;
     margin: -0.2em 0 0.2em 0;
 }
 
-.location {
+.main > article .location {
     font-size: 120%;
     font-weight: bold;
     color: #555;
     margin: 0.2em 0;
 }
 
-.map {
+.main > article .map {
     width: 300px;
     height: 200px;
     float: right;
     border: 1px solid #aaa;
 }
 
-.map img {
+.main > article .map img {
     display: block;
 }
