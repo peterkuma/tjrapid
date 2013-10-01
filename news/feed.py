@@ -9,12 +9,13 @@ from django.utils.translation import ugettext as _
 from django.contrib.markup.templatetags import markup
 
 from main.models import Category
-from models import Article
+from news.models import Article
+
 
 class NewsFeed(Feed):
-    def get_object(self, request, category, title):
-        self.title = title
-        return get_object_or_404(Category, name=category)
+    def get_object(self, request, category_name):
+        self.title = _('Orienteering Club TJ Rapid')
+        return get_object_or_404(Category, name=category_name)
 
     def link(self, obj):
         return '%snews' % obj.get_absolute_url()
@@ -35,4 +36,4 @@ class NewsFeed(Feed):
         return item.published
 
     def items(self, obj):
-        return Article.objects.filter(category=obj)
+        return Article.objects.filter(category=obj).exclude(title='')

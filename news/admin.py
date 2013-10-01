@@ -4,18 +4,28 @@
 
 from django.contrib import admin
 from django_attach.forms import AttachmentInline
-from models import *
+from linguo.forms import MultilingualModelForm
+
+from news.models import *
+
+
+class ArticleAdminForm(MultilingualModelForm):
+    class Meta:
+        model = Article
+
 
 class ArticleAdmin(admin.ModelAdmin):
-	list_display = ('title','author','published','category')
-	search_fields = ('title','author','head','body')
-	list_filter = ('author','category')
-	fields = ('title', 'author', 'category', 'close_comments_after', 'markup', 'head', 'body')
-	inlines = (AttachmentInline,)
+    form = ArticleAdminForm
+    list_display = ('title','author','published','category')
+    search_fields = ('title','author','head','body')
+    list_filter = ('author','category')
+    inlines = (AttachmentInline,)
+
 
 class CommentAdmin(admin.ModelAdmin):
-	list_display = ('subject','sender','article','ip','useragent','posted',)
-	search_fields = ('subject','message','article','sender')
+    list_display = ('subject','sender','article','ip','useragent','posted',)
+    search_fields = ('subject','message','article','sender')
+
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)

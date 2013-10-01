@@ -15,33 +15,35 @@ from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 
 from main.models import *
-from models import *
+from news.models import *
 
-def archive(request, category, page=None):
-	c = Category.objects.get(name=category)
-	a = Article.objects.filter(category=c)
-	p = Paginator(a, 6)
+
+def archive(request, category_name, page=None):
+	c = get_object_or_404(Category, name=category_name)
+	articles_all = Article.objects.filter(category=c).exclude(title='')
+	p = Paginator(articles_all, 6)
 
 	try:
 		articles = p.page(page if page else 1)
 	except (EmptyPage, InvalidPage):
 		articles = p.page(1)
 
-	return render_to_response(
-		'news/archive/'+c.template_name, {
+	return render_to_response('news/archive/' + c.template_name, {
 			'category': c,
 			'articles': articles,
 		},
 		RequestContext(request)
 	)
 
-def details(request, category,id=None):
-	try:
-		c = Category.objects.get(name=category)
-		a = Article.objects.get(category=c,id=id)
-	except ObjectDoesNotExist:
+
+def detail(request, category_name, id=None):
+	c = get_object_or_404(Category, name=category_name)
+	a = get_object_or_404(Article, pk=id, category=c)
+
+	if a.title == '':
 		raise Http404
 
 	def comments_recur(objects,reply=None,level=0):
@@ -56,8 +58,7 @@ def details(request, category,id=None):
 
 	comments = comments_recur(Comment.objects.filter(article=a))
 
-	return render_to_response(
-		'news/details/'+c.template_name, {
+	return render_to_response('news/details/' + c.template_name, {
 			'category': c,
 			'article': a,
 			'comments': comments,
@@ -65,22 +66,24 @@ def details(request, category,id=None):
 		RequestContext(request)
 	)
 
-def attachment(request,category,id=None,attachment=None):
-	try:
-		c = Category.objects.get(name=category)
-		article = Article.objects.get(category=c,id=id)
-		for a in article.attachments.all():
-			if os.path.basename(a.file.name) == attachment:
-				return HttpResponseRedirect(a.file.url)
-	except ObjectDoesNotExist:
+
+def attachment(request, category_name, id, name):
+	article = get_object_or_404(Article, pk=id, category__name=category_name)
+
+	if article.title == '':
 		raise Http404
+
+	for a in article.attachments.all():
+		if os.path.basename(a.file.name) == name:
+			return HttpResponseRedirect(a.file.url)
 	raise Http404
 
-def comment(request,category,id=None,reply_id=None):
-	try:
-		c = Category.objects.get(name=category)
-		a = Article.objects.get(category=c,id=id)
-	except ObjectDoesNotExist:
+
+def comment(request, category_name, id, reply_id=None):
+	c = get_object_or_404(Category, name=category_name)
+	a = get_object_or_404(Article, pk=id, category=c)
+
+	if a.title == '':
 		raise Http404
 
 	if not a.comments_enabled():

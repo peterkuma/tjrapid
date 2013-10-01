@@ -5,13 +5,17 @@
 from datetime import timedelta, datetime
 from django.utils import timezone
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.generic import GenericRelation
 from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse
+from django.utils.translation import get_language
 
+from linguo.models import MultilingualModel
+from linguo.managers import MultilingualManager
 from django_attach.models import Attachment
-from main.models import *
 
+from main.models import *
 
 MARKUP_CHOICES = (
 	('markdown', 'Markdown'),
@@ -20,8 +24,8 @@ MARKUP_CHOICES = (
 )
 
 
-class Article(models.Model):
-	title = models.CharField(_('title'),max_length=100)
+class Article(MultilingualModel):
+	title = models.CharField(_('title'), max_length=100, blank=True)
 	category = models.ForeignKey(Category,verbose_name=_('category'))
 	markup = models.CharField(
 		_('markup'),
@@ -52,7 +56,11 @@ class Article(models.Model):
 	)
 
 	def get_absolute_url(self):
-		return '%snews/article/%s/' % (self.category.get_absolute_url(), self.id)
+		lang = get_language()
+		return reverse('news-%s:detail' % lang, kwargs={
+			'category_name': self.category.name,
+			'id': self.id
+		})
 
 	def path(self):
 		return self.get_absolute_url()
@@ -78,11 +86,14 @@ class Article(models.Model):
 		else:
 			return self.published + timedelta(self.close_comments_after) > timezone.now()
 
+	objects = MultilingualManager()
+
 	class Meta:
 		get_latest_by = 'published'
 		ordering = ('-published',)
 		verbose_name = _('article')
 		verbose_name_plural = _('articles')
+		translate = ('title', 'head', 'body')
 
 
 class Comment(models.Model):
