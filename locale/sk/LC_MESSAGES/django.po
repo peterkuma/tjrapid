@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-20 13:57+0200\n"
+"POT-Creation-Date: 2013-10-01 18:03+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -160,8 +160,8 @@ msgstr "požičiať"
 msgid "present"
 msgstr "vyplený"
 
-#: eventapp/models.py:45 main/models.py:26 main/models.py:74 news/models.py:24
-#: ob/models.py:46
+#: eventapp/models.py:45 main/models.py:26 main/models.py:72 news/models.py:28
+#: ob/models.py:49
 msgid "title"
 msgstr "názov"
 
@@ -181,7 +181,7 @@ msgstr "deň otvorenia"
 msgid "close date"
 msgstr "deň uzatvorenia"
 
-#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:31
+#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:34
 msgid "e-mail"
 msgstr "e-mail"
 
@@ -190,11 +190,11 @@ msgid "number of laps"
 msgstr "počet etáp"
 
 #: eventapp/models.py:64 eventapp/models.py:69 eventapp/models.py:89
-#: eventapp/models.py:122 ob/models.py:98
+#: eventapp/models.py:122 ob/models.py:169
 msgid "event"
 msgstr "preteky"
 
-#: eventapp/models.py:65 ob/models.py:99
+#: eventapp/models.py:65 ob/models.py:170
 msgid "events"
 msgstr "preteky"
 
@@ -206,7 +206,7 @@ msgstr "popis"
 msgid "classes"
 msgstr "kategórie"
 
-#: eventapp/models.py:72 ob/models.py:52
+#: eventapp/models.py:72 ob/models.py:55
 msgid "start date"
 msgstr "začiatok"
 
@@ -235,12 +235,12 @@ msgid "class fees"
 msgstr "štartovné"
 
 #: eventapp/models.py:91 eventapp/models.py:168 eventapp/models.py:219
-#: main/models.py:90
+#: main/models.py:88 ob/models.py:84
 msgid "created"
 msgstr "vytvorené"
 
 #: eventapp/models.py:92 eventapp/models.py:169 eventapp/models.py:220
-#: main/models.py:91 news/models.py:45
+#: main/models.py:89 news/models.py:49 ob/models.py:85
 msgid "modified"
 msgstr "upravené"
 
@@ -277,11 +277,11 @@ msgstr "%(label)s (%(price)s € za noc)"
 msgid "accommodation"
 msgstr "ubytovanie"
 
-#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:28
+#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:31
 msgid "first name"
 msgstr "krstné meno"
 
-#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:29
+#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:32
 msgid "surname"
 msgstr "priezvisko"
 
@@ -671,11 +671,11 @@ msgstr ""
 msgid "Advanced options"
 msgstr "Pokročilé nastavenia"
 
-#: main/models.py:28 main/models.py:76 ob/models.py:48
+#: main/models.py:28 main/models.py:74 ob/models.py:51
 msgid "name"
 msgstr "meno"
 
-#: main/models.py:31 main/models.py:79 ob/models.py:50
+#: main/models.py:31 main/models.py:77 ob/models.py:53
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
@@ -683,11 +683,11 @@ msgstr "Krátke meno, ktoré sa zobrazí v URL"
 msgid "template name"
 msgstr "meno šablóny"
 
-#: main/models.py:35 main/models.py:83 news/models.py:27 ob/models.py:57
+#: main/models.py:35 main/models.py:81 news/models.py:31 ob/models.py:67
 msgid "markup"
 msgstr "markup"
 
-#: main/models.py:39 main/models.py:87 news/models.py:31 ob/models.py:61
+#: main/models.py:39 main/models.py:85 news/models.py:35 ob/models.py:71
 msgid ""
 "Documentation: <a href=\"https://en.wikipedia.org/wiki/Markdown\">Markdown</"
 "a>, <a href=\"http://en.wikipedia.org/wiki/Textile_"
@@ -701,41 +701,41 @@ msgstr ""
 msgid "menu"
 msgstr "menu"
 
-#: main/models.py:62 main/models.py:109 news/models.py:60 news/models.py:104
+#: main/models.py:62 main/models.py:107 news/models.py:68 news/models.py:115
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:68 main/models.py:81 news/models.py:25 ob/models.py:30
-#: ob/models.py:55
+#: main/models.py:66 main/models.py:79 news/models.py:29 ob/models.py:33
+#: ob/models.py:65
 msgid "category"
 msgstr "kategória"
 
-#: main/models.py:69
+#: main/models.py:67
 msgid "categories"
 msgstr "kategórie"
 
-#: main/models.py:89 news/models.py:92
+#: main/models.py:87 news/models.py:103
 msgid "content"
 msgstr "obsah"
 
-#: main/models.py:89 news/models.py:36 news/models.py:41 ob/models.py:66
-#: ob/models.py:71
+#: main/models.py:87 news/models.py:40 news/models.py:45 ob/models.py:76
+#: ob/models.py:81
 msgid "Add files and images below"
 msgstr "Súbory a obrázky sa dajú pridať nižšie"
 
-#: main/models.py:93
+#: main/models.py:91
 msgid "style"
 msgstr "Štýl"
 
-#: main/models.py:93
+#: main/models.py:91
 msgid "Cascading Style Sheets"
 msgstr "Kaskádové štýly (CSS)"
 
-#: main/models.py:117
+#: main/models.py:115
 msgid "page"
 msgstr "stránka"
 
-#: main/models.py:118
+#: main/models.py:116
 msgid "pages"
 msgstr "stránky"
 
@@ -747,75 +747,79 @@ msgstr "Stránku spravuje"
 msgid "Orienteering club"
 msgstr "Oddiel orientačného behu"
 
-#: news/models.py:34 ob/models.py:64
+#: news/feed.py:17
+msgid "Orienteering Club TJ Rapid"
+msgstr "Oddiel orientačného behu TJ Rapid"
+
+#: news/models.py:38 ob/models.py:74
 msgid "head"
 msgstr "hlavička"
 
-#: news/models.py:39 ob/models.py:69
+#: news/models.py:43 ob/models.py:79
 msgid "body"
 msgstr "telo"
 
-#: news/models.py:43
+#: news/models.py:47
 msgid "author"
 msgstr "autor"
 
-#: news/models.py:44
+#: news/models.py:48
 msgid "published"
 msgstr "publikované"
 
-#: news/models.py:48
+#: news/models.py:52
 msgid "close comments after (days)"
 msgstr "uzatvoriť komentáre po (dni)"
 
-#: news/models.py:84 news/models.py:90
+#: news/models.py:94 news/models.py:101
 msgid "article"
 msgstr "článok"
 
-#: news/models.py:85
+#: news/models.py:95
 msgid "articles"
 msgstr "články"
 
-#: news/models.py:89
+#: news/models.py:100
 msgid "subject"
 msgstr "subjekt"
 
-#: news/models.py:91
+#: news/models.py:102
 msgid "reply to"
 msgstr "odpoveď na"
 
-#: news/models.py:93
+#: news/models.py:104
 msgid "sender"
 msgstr "odosielateľ"
 
-#: news/models.py:94
+#: news/models.py:105
 msgid "posted"
 msgstr "odoslané"
 
-#: news/models.py:95
+#: news/models.py:106
 msgid "IP address"
 msgstr "IP adresa"
 
-#: news/models.py:96
+#: news/models.py:107
 msgid "user agent"
 msgstr "prehliadač"
 
-#: news/models.py:120
+#: news/models.py:131
 msgid "comment"
 msgstr "komentár"
 
-#: news/models.py:121
+#: news/models.py:132
 msgid "comments"
 msgstr "komentáre"
 
-#: news/views.py:97
+#: news/views.py:100
 msgid "Subject"
 msgstr "Predmet"
 
-#: news/views.py:99
+#: news/views.py:102
 msgid "Sender"
 msgstr "Odosielateľ"
 
-#: news/views.py:100
+#: news/views.py:103
 msgid "Message"
 msgstr "Správa"
 
@@ -869,38 +873,42 @@ msgstr "(uzatvorené)"
 msgid "Reply"
 msgstr "Odpovedať"
 
-#: ob/models.py:41
+#: ob/models.py:44
 msgid "member"
 msgstr "člen"
 
-#: ob/models.py:42
+#: ob/models.py:45
 msgid "members"
 msgstr "členovia"
 
-#: ob/models.py:53
+#: ob/models.py:56
 msgid "end date"
 msgstr "koniec"
 
-#: ob/models.py:54
+#: ob/models.py:57
 msgid "location"
 msgstr "miesto"
 
-#: ob/models.py:74
-msgid "GeoJSON"
-msgstr "GeoJSON"
+#: ob/models.py:59
+msgid "MaxBox Map ID"
+msgstr "MapBox Map ID"
 
-#: ob/models.py:76
+#: ob/models.py:63
 msgid ""
-"Map features. Properties <strong>name</strong> and <strong>description</"
-"strong> are shown in popups. Use <a href=\"http://geojson.io\">geojson.io</"
-"a> &amp; copy content of \"&lt;/&gt; JSON\"."
+"Map ID in format <strong>&lt;username&gt;.map-&lt;id&gt;</strong>. To obtain "
+"Map ID, create a new map on <a href=\"http://www.mapbox.com/\">MapBox</a>, "
+"click <strong>Publish</strong> and select <strong>Mobile</strong>."
 msgstr ""
+"Map ID vo formáte <strong>&lt;užívateľ&gt;.map-&lt;id&gt;</strong>."
+"Map ID získate vytvorením novej mapy na "
+"<a href=\"http://www.mapbox.com/\">MapBox</a>, "
+"stlačením <strong>Publish</strong> a výberom <strong>Mobile</strong>."
 
-#: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:18
+#: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:13
 msgid "Events"
 msgstr "Preteky"
 
-#: ob/templates/ob/events.html:50
+#: ob/templates/ob/events.html:28
 msgid "More information"
 msgstr "Viac informácií"
 
@@ -927,104 +935,3 @@ msgstr "Administrácia Django"
 #: tjrapid/templates/admin/base_site.html:8
 msgid "TJ Rapid"
 msgstr "TJ Rapid"
-
-#~ msgid "code"
-#~ msgstr "kód"
-
-#~ msgid ""
-#~ "All choices can be found here: http://www.w3.org/TR/REC-html40/struct/"
-#~ "dirlang.html#langcodes"
-#~ msgstr ""
-#~ "Všetky možnosti sa dajú nájsť tu: http://www.w3.org/TR/REC-html40/struct/"
-#~ "dirlang.html#langcodes"
-
-#~ msgid "language"
-#~ msgstr "jazyk"
-
-#~ msgid "languages"
-#~ msgstr "jazyky"
-
-#~ msgid "competitions"
-#~ msgstr "preteky"
-
-#~ msgid "specification"
-#~ msgstr "rozpis"
-
-#~ msgid "results"
-#~ msgstr "vysledky"
-
-#~ msgid "directives"
-#~ msgstr "pokyny"
-
-#~ msgid "competition"
-#~ msgstr "preteky"
-
-#~ msgid "Our competitions"
-#~ msgstr "Naše preteky"
-
-#~ msgid "Location"
-#~ msgstr "Miesto"
-
-#~ msgid "Specification"
-#~ msgstr "Rozpis"
-
-#~ msgid "Directives"
-#~ msgstr "Pokyny"
-
-#~ msgid "Results"
-#~ msgstr "Výsledky"
-
-#~ msgid "Title"
-#~ msgstr "Názov"
-
-#~ msgid "Date"
-#~ msgstr "Dátum"
-
-#~ msgid "content type"
-#~ msgstr "typ objektu"
-
-#~ msgid "object ID"
-#~ msgstr "ID objektu"
-
-#~ msgid "file"
-#~ msgstr "súbor"
-
-#~ msgid "attachment"
-#~ msgstr "príloha"
-
-#~ msgid "attachments"
-#~ msgstr "prílohy"
-
-#~ msgid ""
-#~ "Text formatted in <a href=\"http://en.wikipedia.org/wiki/Textile_"
-#~ "(markup_language)\">Textile</a>. Attachments can be referenced in links "
-#~ "and images by their file name. HTML is allowed."
-#~ msgstr ""
-#~ "Text je formátovaný v <a href=\"http://en.wikipedia.org/wiki/Textile_"
-#~ "(markup_language)\">Textile</a>. Prílohy môžu byť referencované z odkazov "
-#~ "a obrázkov ich menom. HTML je povolené."
-
-#~ msgid "Last updated"
-#~ msgstr "Posledná úprava"
-
-#~ msgid "Office: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
-#~ msgstr ""
-#~ "Sekretariát: Hrachová 4, 821 02 Bratislava, tel/fax: ++421-02-4329 4689"
-
-#~ msgid "Administrator"
-#~ msgstr "Administrátor"
-
-#~ msgid "Powered by Django"
-#~ msgstr "Powered by Django"
-
-#~ msgid "Photos"
-#~ msgstr "Fotky"
-
-#~ msgid "Start date"
-#~ msgstr "Začiatok"
-
-#~ msgid "End date"
-#~ msgstr "Koniec"
-
-#~ msgid "report.csv"
-#~ msgstr "vypis.csv"
