@@ -26,12 +26,12 @@
 	{% if article.head %}<p>{{ article.head_html }}</p>{% endif %}
 	<p>{{ article.body_html }}</p>
 	{% if comments %}
-		<h4>
+		<h2>
 			{% trans "Comments" %}
 			{% if not article.comments_enabled %}
 				{% trans "(closed)" %}
 			{% endif %}
-		</h4>
+		</h2>
 		<div class="comments">
 			{% for o in comments %}
 				<div class="comment-wrapper">
