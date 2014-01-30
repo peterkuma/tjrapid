@@ -39,7 +39,6 @@ class PageAdmin(admin.ModelAdmin):
 				'content_en',
 		)}),
 		(_('Advanced options'), {
-			'classes': ('collapse',),
 			'fields': ('style',)
 		}),
 	)
