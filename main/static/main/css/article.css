@@ -1,38 +1,105 @@
-.container > .main > article {
-    margin-left: 145px;
-    top: 0;
-    right: 0;
-    padding: 0.5em 1em 2em 1em;
-    min-height: 700px;
-}
-
-.container.wide > .main > article {
-    margin-left: 0;
-    min-height: 0;
-}
-
-.container > .content-wide {
-    font-size: 16px;
-    padding: 0 20px 20px 20px;
-    background: url("../img/bg.png") repeat-x;
-}
-
-.container > .main > article table.standard {
+article .table {
     border: 1px solid silver;
     border-collapse: collapse;
     background: white;
 }
 
-.container > .main > article table.standard th {
+article .table th {
     text-align: left;
     background-color: #f8f8f8;
     border-bottom: 1px solid black;
     padding: 3px 5px;
 }
 
-.container > .main > article table.standard td {
+article .table td {
     text-align: left;
     border-top: 1px solid #f4f4f4;
     border-right: dashed 1px silver;
     padding: 3px 5px;
+}
+
+article figure {    
+    border: 1px solid #ccc;
+    padding: 7px;
+    margin: 5px;
+    background-color: white;
+    float: right;
+    clear: right;
+}
+
+article figure.left {
+    float: left;
+    clear: left;
+}
+
+article figure.inline {
+    float: none;
+    display: inline-block;
+}
+
+article figure img {
+    display: block;
+}
+
+article .pic-right {
+    border: 1px solid #ccc;
+    padding: 7px;
+    margin: 5px 0 5px 10px;
+    background-color: white;
+    float: right;
+    line-height: 0;
+}
+
+article .pic-left {
+    border: 1px solid #ccc;
+    padding: 7px;
+    margin: 5px 10px 5px 0;
+    background-color: white;
+    float: left;
+    line-height: 0;
+}
+
+article .box {
+    background: #eec73e;
+    padding: 5px;
+    clear: both;
+}
+
+article .box .title {
+    display: block;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0 0 4px 0;
+}
+
+article .box .subtitle {
+    display: block;
+}
+
+article ul.compact {
+    margin: 4px 0;
+    padding: 0;
+}
+
+article ul.compact li {
+    display: inline;
+    list-style: none;
+    margin-right: 10px;
+}
+
+article ul.compact img {
+    margin-right: 5px;
+    vertical-align: text-top;
+}
+
+article .table-sortable th {
+    cursor: pointer;
+}
+
+article .table-th-sort {
+    background: url("../../img/sort.png") no-repeat right center;
+}
+
+article .table-th-sort-rev {
+    background: url("../../img/sort-rev.png") no-repeat right center;
 }

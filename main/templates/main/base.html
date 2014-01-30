@@ -9,6 +9,11 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="icon" href="{% static "main/img/tjrapid.ico" %}" type="image/ico">
 		<link rel="stylesheet" type="text/css" href="{% static "main/css/base.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/nav.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/search.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/article.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/header.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/footer.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "picture-slider/picture-slider.css" %}" />
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" />
 		<script src="{% static "mootools/mootools.js" %}"></script>
@@ -18,8 +23,8 @@
 		{% block head %}{% endblock %}
 	</head>
 	<body>
-		<div class="container {% block wide %}{% endblock %}">
-			<header>
+		<div class="container">
+			<header class="header">
 				{% block header-title %}
 					<div id="header-title-main">
 						<a href="/">
@@ -33,38 +38,10 @@
 					</div>
 				{% endblock %}
 			</header>
-			{% block main %}
-			<section class="main">
-				{% block menu %}{% endblock %}
-				<div class="search">
-					<form action="http://www.google.com/search" method="get">
-						<input type="hidden" name="as_sitesearch" value="www.tjrapid.sk" />
-						<input type="text" name="as_q" size="15" />
-						<button action="submit" name="search"><img src="{% static "main/img/search.png" %}" /></button>
-					</form>
-				</div>
-				<article>
-				{% block location %}
-					{% if location %}
-						<div id="location">
-							{% for o in location %}
-								{% if forloop.first %}
-									<a href="{{ o.url }}">{{ o.name }}</a>
-								{% else %}
-									&rsaquo; <a href="{{ o.url }}">{{ o.name }}</a>
-								{% endif %}
-							{% endfor %}
-						</div>
-					{% endif %}
-				{% endblock %}
-				{% block content %}
-					<h3>{{ page.title|escape }}</h3>
-					{{ page.content_html }}
-				{% endblock %}
-				</article>
-			</section>
-			{% endblock %}
-			<footer>
+			<div class="main">
+				{% block main %}{% endblock %}
+			</div>
+			<footer class="footer">
 				<div class="content">
 					<a class="map" href="http://a.tiles.mapbox.com/v3/peterkuma.map-jo5q9011/page.html"><img src="{% static "main/img/map.png" %}" /></a>
 					<div class="title">TJ Rapid</div>

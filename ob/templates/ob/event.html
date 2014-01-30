@@ -9,13 +9,13 @@
 {% endblock %}
 
 {% block content %}
-    <h3>{{ event.title }}</h3>
+    <h1>{{ event.title }}</h1>
     {% if event.mapbox_mapid %}
-        <div class="map">
+        <figure>
             <a href="{{ event.map_link }}">
                 <img src="{{ event.map_image_default }}" />
             </a>
-        </div>
+        </figure>
     {% endif %}
     <div class="date">{{ event.start_date|date:"DATE_FORMAT" }}{% if event.end_date %}—{{ event.end_date|date:"DATE_FORMAT" }}{% endif %}</div>
     <div class="location">{{ event.location }}</div>

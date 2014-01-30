@@ -1,0 +1,100 @@
+.header {
+    background: url("../img/header.png") repeat-x;
+    height: 142px;
+}
+
+#header-title {
+    background: url("../img/header-title.png") no-repeat;
+    height:142px;
+    width: 550px;
+}
+#header-title a {
+    display: block;
+    height:142px;
+    width: 550px;
+    position: absolute;
+    text-decoration: none;
+}
+#header-title h2 {
+    color: #ffd700;
+    font-size: 16pt;
+    position: absolute;
+    top: 25px;
+    left: 165px;
+}
+#header-title h1 {
+    font-size: 18pt;
+    color: #daa520;
+    position: absolute;
+    top: 60px;
+    left: 165px;
+}
+#header-title-main {
+    background: url("../img/header-title.png") no-repeat;
+    height:142px;
+    width: 550px;
+}
+#header-title-main a {
+    display: block;
+    height:142px;
+    width: 550px;
+    position: absolute;
+    text-decoration: none;
+}
+#header-title-main h2 {
+    color: #ffd700;
+    font-size: 16pt;
+    position: absolute;
+    top: 25px;
+    left: 165px;
+}
+#header-title-main h1 {
+    font-size: 26pt;
+    color: #daa520;
+    position: absolute;
+    top: 45px;
+    left: 195px;
+}
+#header-lang {
+    font-size: 14px;
+}
+#header-lang li {
+    list-style: none;
+    display: inline;
+}
+#header-lang img {
+    margin: 0 5px;
+    border: none;
+}
+#header-lang a {
+    color: white;
+    text-decoration: none;
+}
+#header-lang a:hover {
+    text-decoration: underline;
+}
+#header-extra {
+    height: 142px;
+    width: 90px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#header-extra-ob {
+    background: url("../img/header-extra-ob.png") no-repeat right;
+    height: 142px;
+    width: 330px;
+    text-align: right;
+    padding-right: 235px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#header-extra-gymnastika {
+    background: url("../img/header-extra-gymnastika.jpg") no-repeat right;
+    height: 142px;
+    width: 330px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}

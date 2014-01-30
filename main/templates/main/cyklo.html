@@ -1,18 +1,11 @@
-{% extends "main/base.html" %}
+{% extends "main/club.html" %}
 {% load markup %}
 {% load baseurl %}
 
-{% block header-title %}
-	<div id="header-title">
-		<a href="/">
-			<h2>TJ Rapid</h2>
-			<h1>Oddiel cyklistiky</h1>
-		</a>
-	</div>
-{% endblock %}
+{% block club-title %}Oddiel cyklistiky{% endblock %}
 
 {% block menu %}
-	<nav class="nav-cyklo">
+	<nav class="cyklistika">
 		{{ category.menu_html|baseurl:category.get_absolute_url }}
 	</nav>
 {% endblock %}

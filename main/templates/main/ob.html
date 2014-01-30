@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "main/club.html" %}
 {% load i18n %}
 {% load markup %}
 {% load staticfiles %}
@@ -6,14 +6,7 @@
 
 {% block title %}{{ block.super }}{% endblock %}
 
-{% block header-title %}
-	<div id="header-title">
-		<a href="/">
-			<h2>TJ Rapid</h2>
-			<h1>{% trans "Orienteering club" %}</h1>
-		</a>
-	</div>
-{% endblock %}
+{% block club-title %}{% trans "Orienteering club" %}{% endblock %}
 
 {% block header-extra %}
 	<div id="header-extra-ob">
@@ -29,10 +22,8 @@
 	</div>
 {% endblock %}
 
-{% block content %}{{ block.super }}{% endblock %}
-
 {% block menu %}
-	<nav class="nav-ob">
+	<nav class="orientacny-beh">
 		{{ category.menu_html|baseurl:category.get_absolute_url }}
 	</nav>
 {% endblock %}

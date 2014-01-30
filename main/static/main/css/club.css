@@ -1,0 +1,62 @@
+.main > .content {
+    margin-left: 145px;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em 2em 1em;
+    min-height: 700px;
+}
+
+.footer > .content {
+    margin-left: 145px;
+}
+
+.main > nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 145px;
+    background: #97c339;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.main > nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main > nav li {
+    padding: 4px 10px;
+}
+
+.main > nav a {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.main > nav a:hover {
+    text-decoration: underline;
+}
+
+.main > nav.orientacny-beh {
+    background-image: url("../img/menu-ob.png");
+    background-repeat: no-repeat;
+}
+
+.main > nav.karate {
+    background-image: url("../img/menu-karate.png");
+    background-repeat: no-repeat;
+}
+
+.main > nav.moderna-gymnastika {
+    background-image: url("../img/menu-gymnastika.png");
+    background-repeat: no-repeat;
+}
+
+.main > nav.cyklistika {
+    background-image: url("../img/menu-cyklo.png");
+    background-repeat: no-repeat;
+}

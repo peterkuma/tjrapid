@@ -1,0 +1,56 @@
+.main > article {
+    width: 70%;
+    margin: 2.5em auto;
+    text-align: justify;
+}
+
+.main > article h1 {
+    text-align: center;
+}
+
+.clubs {
+    background: #b0d467;
+    height: 145px;
+    font-size: 120%;
+    text-align: center;
+    box-shadow: inset 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.clubs ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.clubs li {
+    float: left;
+    margin: 15px 25px;
+    min-width: 100px;
+}
+
+.clubs li:hover {
+    background: url("../img/spotlight.png") no-repeat center -20px;
+}
+
+.clubs li a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: 85px 15px 10px 15px;
+}
+
+.clubs li.cyklistika a {
+    background: url("../img/cyklo.png") no-repeat center 15px;
+}
+
+.clubs li.karate a {
+    background: url("../img/karate.png") no-repeat center 15px;
+}
+
+.clubs li.moderna-gymnastika a {
+    background: url("../img/gymnastika.png") no-repeat center 15px;
+}
+
+.clubs li.orientacny-beh a {
+    background: url("../img/ob.png") no-repeat center 15px;
+}

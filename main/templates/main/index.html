@@ -1,0 +1,23 @@
+{% extends "main/barebones.html" %}
+{% load i18n %}
+{% load markup %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "main/css/index.css" %}" />
+{% endblock %}
+
+{% block main %}
+    <article>
+        {{ page.content_html }}
+    </article>
+    <nav class="clubs">
+        <ul>
+            <li class="cyklistika"><a href="/cyklo/">Cyklistika</a></li>
+            <li class="karate"><a href="/karate/">Karate</a></li>
+            <li class="moderna-gymnastika"><a href="/gymnastika/">Moderná gymnastika</a></li>
+            <li class="orientacny-beh"><a href="/ob/news/">Orientačný beh</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+ 

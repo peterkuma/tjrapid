@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+{% load i18n %}
+{% load markup %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "main/css/club.css" %}" />
+{% endblock %}
+
+{% block header-title %}
+    <div id="header-title">
+        <a href="/">
+            <h2>TJ Rapid</h2>
+            <h1>{% block club-title %}{% endblock %}</h1>
+        </a>
+    </div>
+{% endblock %}
+
+{% block main %}
+    {% block menu %}{% endblock %}
+    <div class="search">
+        <form action="http://www.google.com/search" method="get">
+            <input type="hidden" name="as_sitesearch" value="www.tjrapid.sk" />
+            <input type="text" name="as_q" size="15" />
+            <button action="submit" name="search"><img src="{% static "main/img/search.png" %}" /></button>
+        </form>
+    </div>
+    <div class="content">
+        <article>
+            {% block content %}
+                <h1>{{ page.title|escape }}</h1>
+                {{ page.content_html }}
+            {% endblock %}
+        </article>
+    </div>
+{% endblock %}

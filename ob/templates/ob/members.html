@@ -3,29 +3,27 @@
 {% block title %}{% trans "Members" %}{% endblock %}
 
 {% block content %}
-	<h3 style="clear: both">{% trans "Members" %}</h3>
+	<h1 style="clear: both">{% trans "Members" %}</h1>
 
-<table><tr valign="top"><td>
-	<table class="standard">
-		<tr><th>{% trans "Name" %}</th><th>{% trans "Category" %}</th></tr>
-		{% for m in members_m %}
-			{% if m.email %}
-				<tr><td><a href="mailto:{{ m.email_special }}">{{ m.first_name|escape }} {{ m.surname|escape }}</a></td><td>{{ m.category|escape }}</td></tr>
-			{% else %}
-				<tr><td>{{ m.first_name|escape }} {{ m.surname|escape }}</td><td>{{ m.category|escape }}</td></tr>
-			{% endif %}
-		{% endfor %}
-	</table>
-</td><td>
-	<table class="standard">
-		<tr><th>{% trans "Name" %}</th><th>{% trans "Category" %}</th></tr>
-		{% for m in members_w %}
-			{% if m.email %}
-				<tr><td><a href="mailto:{{ m.email_special }}">{{ m.first_name|escape }} {{ m.surname|escape }}</a></td><td>{{ m.category|escape }}</td></tr>
-			{% else %}
-				<tr><td>{{ m.first_name|escape }} {{ m.surname|escape }}</td><td>{{ m.category|escape }}</td></tr>
-			{% endif %}
-		{% endfor %}
-	</table>
-</td></tr></table>
+
+<table class="table" style="float: left; margin-right: 1em">
+	<tr><th>{% trans "Name" %}</th><th>{% trans "Category" %}</th></tr>
+	{% for m in members_m %}
+		{% if m.email %}
+			<tr><td><a href="mailto:{{ m.email_special }}">{{ m.first_name|escape }} {{ m.surname|escape }}</a></td><td>{{ m.category|escape }}</td></tr>
+		{% else %}
+			<tr><td>{{ m.first_name|escape }} {{ m.surname|escape }}</td><td>{{ m.category|escape }}</td></tr>
+		{% endif %}
+	{% endfor %}
+</table>
+<table class="table">
+	<tr><th>{% trans "Name" %}</th><th>{% trans "Category" %}</th></tr>
+	{% for m in members_w %}
+		{% if m.email %}
+			<tr><td><a href="mailto:{{ m.email_special }}">{{ m.first_name|escape }} {{ m.surname|escape }}</a></td><td>{{ m.category|escape }}</td></tr>
+		{% else %}
+			<tr><td>{{ m.first_name|escape }} {{ m.surname|escape }}</td><td>{{ m.category|escape }}</td></tr>
+		{% endif %}
+	{% endfor %}
+</table>
 {% endblock %}

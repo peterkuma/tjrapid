@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content %}
-	<h3>{{ article.title|escape }}</h3>
+	<h1>{{ article.title|escape }}</h1>
 	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"DATE_FORMAT" }}</div>
 	{% if article.head %}<p>{{ article.head_html }}</p>{% endif %}
 	<p>{{ article.body_html }}</p>

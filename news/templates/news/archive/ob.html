@@ -9,16 +9,16 @@
 	<script src="{% static "news/js/likebutton.js" %}" charset="utf-8"></script>
 {% endblock %}
 {% block content %}
-	<h3>
+	<h1>
 		<a href="{{ category.get_absolute_url }}news/">{% trans "News" %}</a>
 		<a href="rss/"><img src="{% static "news/img/feed-icon-14x14.png" %}" alt="RSS feed" /></a>
-	</h3>
+	</h1>
 	{% for a in articles.object_list %}
 		<div class="article">
 			<article>
 				<header>
 					<div class="like" onmousedown="likebutton(this,'http://tjrapid.sk{{ a.get_absolute_url|escapejs }}')"><div class="button">Like | ★</div></div>
-					<h4 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h4>
+					<h1 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h1>
 				</header>
 				{% if a.head %}
 					<p>{{ a.head_html|baseurl:a.get_absolute_url }}</p>
