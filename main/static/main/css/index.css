@@ -1,10 +1,11 @@
 .main > article {
-    width: 70%;
+    max-width: 700px;
     margin: 2.5em auto;
     text-align: justify;
 }
 
 .main > article h1 {
+    font-size: 220%;
     text-align: center;
 }
 
@@ -20,6 +21,7 @@
     list-style: none;
     display: inline-block;
     margin: 0 auto;
+    padding: 0;
 }
 
 .clubs li {
