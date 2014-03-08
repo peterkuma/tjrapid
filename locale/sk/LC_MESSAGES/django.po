@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-01 18:03+0200\n"
+"POT-Creation-Date: 2014-03-08 20:16+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -419,7 +419,7 @@ msgid "There are not as many places available in the accommodation selected."
 msgstr "Nie je dostatok voľných miest na vybranom ubytovaní."
 
 #: eventapp/views.py:401 eventapp/templates/eventapp/entry.html:46
-#: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:21
+#: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:20
 msgid "Name"
 msgstr "Meno"
 
@@ -739,11 +739,11 @@ msgstr "stránka"
 msgid "pages"
 msgstr "stránky"
 
-#: main/templates/main/base.html:78
+#: main/templates/main/base.html:56
 msgid "Site maintained by"
 msgstr "Stránku spravuje"
 
-#: main/templates/main/ob.html:13
+#: main/templates/main/ob.html:9
 msgid "Orienteering club"
 msgstr "Oddiel orientačného behu"
 
@@ -823,11 +823,11 @@ msgstr "Odosielateľ"
 msgid "Message"
 msgstr "Správa"
 
-#: news/templates/news/base.html:5 news/templates/news/archive/ob.html:13
+#: news/templates/news/base.html:5 news/templates/news/archive/ob.html:14
 msgid "News"
 msgstr "Novinky"
 
-#: news/templates/news/archive/ob.html:36
+#: news/templates/news/archive/ob.html:38
 msgid "Read more"
 msgstr "Čítať ďalej"
 
@@ -839,21 +839,21 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: news/templates/news/archive/ob.html:46
-#: news/templates/news/details/ob.html:52
+#: news/templates/news/archive/ob.html:44
+#: news/templates/news/details/ob.html:55
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
-#: news/templates/news/archive/ob.html:56
+#: news/templates/news/archive/ob.html:54
 msgid "Next"
 msgstr "Ďalšie"
 
-#: news/templates/news/archive/ob.html:61
+#: news/templates/news/archive/ob.html:59
 msgid "Previous"
 msgstr "Predchádzajúce"
 
 #: news/templates/news/comment/ob.html:27
-#: news/templates/news/details/ob.html:30
+#: news/templates/news/details/ob.html:33
 msgid "Comments"
 msgstr "Komentáre"
 
@@ -865,11 +865,11 @@ msgstr "Náhľad komentára"
 msgid "Send comment"
 msgstr "Poslať komentár"
 
-#: news/templates/news/details/ob.html:32
+#: news/templates/news/details/ob.html:35
 msgid "(closed)"
 msgstr "(uzatvorené)"
 
-#: news/templates/news/details/ob.html:44
+#: news/templates/news/details/ob.html:47
 msgid "Reply"
 msgstr "Odpovedať"
 
@@ -899,10 +899,9 @@ msgid ""
 "Map ID, create a new map on <a href=\"http://www.mapbox.com/\">MapBox</a>, "
 "click <strong>Publish</strong> and select <strong>Mobile</strong>."
 msgstr ""
-"Map ID vo formáte <strong>&lt;užívateľ&gt;.map-&lt;id&gt;</strong>."
-"Map ID získate vytvorením novej mapy na "
-"<a href=\"http://www.mapbox.com/\">MapBox</a>, "
-"stlačením <strong>Publish</strong> a výberom <strong>Mobile</strong>."
+"Map ID vo formáte <strong>&lt;užívateľ&gt;.map-&lt;id&gt;</strong>.Map ID "
+"získate vytvorením novej mapy na <a href=\"http://www.mapbox.com/\">MapBox</"
+"a>, stlačením <strong>Publish</strong> a výberom <strong>Mobile</strong>."
 
 #: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:13
 msgid "Events"
@@ -916,7 +915,7 @@ msgstr "Viac informácií"
 msgid "Members"
 msgstr "Členovia"
 
-#: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:21
+#: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:20
 msgid "Category"
 msgstr "Kategória"
 
@@ -927,6 +926,10 @@ msgstr "Slovensky"
 #: tjrapid/settings.py:47
 msgid "English"
 msgstr "Anglicky"
+
+#: tjrapid/templates/share-buttons.html:6
+msgid "Share via"
+msgstr "Zdielať cez"
 
 #: tjrapid/templates/admin/base_site.html:5
 msgid "Django site admin"
