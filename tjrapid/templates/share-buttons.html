@@ -7,13 +7,13 @@
     <a class="share-mail" href="mailto:?subject={{ title|urlencode }}&amp;body=http://tjrapid.sk{{ url|urlencode }}">
         <img src="{% static "img/share-buttons/mail.svg" %}" alt="E-mail" />
     </a>
-    <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://tjrapid.sk{{ url|urlencode }}">
+    <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://tjrapid.sk{{ url|urlencode }}" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;">
         <img src="{% static "img/share-buttons/facebook.svg" %}" alt="Facebook" />
     </a>
-    <a class="share-googleplus" href="https://plus.google.com/share?url={{ title|urlencode }}%20http://tjrapid.sk{{ url|urlencode }}">
+    <a class="share-googleplus" href="https://plus.google.com/share?url={{ title|urlencode }}%20http://tjrapid.sk{{ url|urlencode }}" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
         <img src="{% static "img/share-buttons/google_plus.svg" %}" alt="Google Plus" />
     </a>
-    <a class="share-twitter" href="http://twitter.com/home?status={{ title|urlencode }}%20http://tjrapid.sk{{ url|urlencode }}">
+    <a class="share-twitter" href="http://twitter.com/home?status={{ title|urlencode }}%20http://tjrapid.sk{{ url|urlencode }}" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=600');return false;">
         <img src="{% static "img/share-buttons/twitter.svg" %}" alt="Twitter" />
     </a>
 </div>
