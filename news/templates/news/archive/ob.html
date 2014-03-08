@@ -41,8 +41,7 @@
 						| <a href="{{ a.get_absolute_url }}">{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}</a>
 					{% else %}
 						{% if a.comments_enabled %}
-							{% if a.head and a.body %}|{% endif %}
-							<a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
+							| <a href="{{ a.get_absolute_url }}comment/">{% trans "Add new comment" %}</a>
 						{% endif %}
 					{% endif %}
 				</div>
