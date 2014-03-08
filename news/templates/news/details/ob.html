@@ -18,6 +18,7 @@
 		<meta property="og:description" content="{{ article.body_html|striptags|truncatewords:40 }}" />
 	{% endif %}
 	<meta property="article:author" content="{{ article.author }}" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/share-buttons.css" %}" />
 {% endblock %}
 
 {% block content %}
@@ -25,6 +26,8 @@
 	<div class="article-info">{{ article.author|escape }}, {{ article.published|date:"DATE_FORMAT" }}</div>
 	{% if article.head %}<p>{{ article.head_html }}</p>{% endif %}
 	<p>{{ article.body_html }}</p>
+	<br />
+	{% include "share-buttons.html" with title=article.title url=article.get_absolute_url %}
 	{% if comments %}
 		<h2>
 			{% trans "Comments" %}

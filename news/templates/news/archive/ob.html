@@ -6,6 +6,7 @@
 {% block head %}
 	{{ block.super }}
 	<link rel="alternate" title="RSS" href="rss/" type="application/rss+xml" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/share-buttons.css" %}" />
 	<script src="{% static "news/js/likebutton.js" %}" charset="utf-8"></script>
 {% endblock %}
 {% block content %}
@@ -32,14 +33,12 @@
 				<div class="author">{{ a.author|escape }}</div>
 				<div class="date">{{ a.published|date:"DATE_FORMAT" }}</div>
 				<div class="misc-links">
+					{% include "share-buttons.html" with title=a.title url=a.get_absolute_url %}
 					{% if a.head and a.body %}
-						<a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a>
+						| <a href="{{ a.get_absolute_url }}">{% trans "Read more" %}</a>
 					{% endif %}
 					{% if a.comment_set.count %}
-						{% if a.head and a.body %}|{% endif %}
-						<a href="{{ a.get_absolute_url }}">
-		{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}
-						</a>
+						| <a href="{{ a.get_absolute_url }}">{% blocktrans count a.comment_set.count as count %}{{ count }} comment{% plural %}{{ count }} comments{% endblocktrans %}</a>
 					{% else %}
 						{% if a.comments_enabled %}
 							{% if a.head and a.body %}|{% endif %}
