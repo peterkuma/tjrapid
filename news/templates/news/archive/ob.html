@@ -12,7 +12,10 @@
 {% block content %}
 	<h1>
 		<a href="{{ category.get_absolute_url }}news/">{% trans "News" %}</a>
-		<a href="rss/"><img src="{% static "news/img/feed-icon-14x14.png" %}" alt="RSS feed" /></a>
+		<a class="news-subscribe" href="{{ category.get_absolute_url }}news/rss/">
+			<div class="rss-icon"><img src="{% static "news/img/rss.svg" %}" alt="RSS" /></div>
+			{% trans "News feed" %}
+		</a>
 	</h1>
 	{% for a in articles.object_list %}
 		<div class="article">

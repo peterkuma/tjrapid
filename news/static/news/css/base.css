@@ -159,3 +159,32 @@
 .comment-form .buttons {
 	margin: 10px 0;
 }
+
+.news-subscribe {
+	display: inline-block;
+	vertical-align: bottom;
+	background-color: #ededed;
+	padding: 0.5em 0.7em;
+	color: #333;
+	text-decoration: inherit;
+	font-size: 11pt;
+	font-weight: normal;
+}
+
+.news-subscribe .rss-icon {
+	display: inline-block;
+	background-color: #bbb;
+	border-radius: 0.2em;
+	vertical-align: bottom;
+	margin-right: 0.2em;
+	transition: background 0.2s;
+}
+
+.news-subscribe:hover .rss-icon {
+	background-color: #f39035;
+}
+
+.news-subscribe .rss-icon img {
+	display: block;
+	height: 1.2em;
+}
