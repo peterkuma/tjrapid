@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-08 20:16+0100\n"
+"POT-Creation-Date: 2014-03-09 14:37+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -827,11 +827,15 @@ msgstr "Správa"
 msgid "News"
 msgstr "Novinky"
 
-#: news/templates/news/archive/ob.html:38
+#: news/templates/news/archive/ob.html:18
+msgid "News feed"
+msgstr "Odoberanie noviniek"
+
+#: news/templates/news/archive/ob.html:41
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: news/templates/news/archive/ob.html:41
+#: news/templates/news/archive/ob.html:44
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -839,16 +843,16 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: news/templates/news/archive/ob.html:44
+#: news/templates/news/archive/ob.html:47
 #: news/templates/news/details/ob.html:55
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
-#: news/templates/news/archive/ob.html:54
+#: news/templates/news/archive/ob.html:57
 msgid "Next"
 msgstr "Ďalšie"
 
-#: news/templates/news/archive/ob.html:59
+#: news/templates/news/archive/ob.html:62
 msgid "Previous"
 msgstr "Predchádzajúce"
 
