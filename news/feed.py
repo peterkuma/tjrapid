@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.contrib.markup.templatetags import markup
+from django.template.defaultfilters import truncatewords, striptags
 
 from main.models import Category
 from news.models import Article
@@ -27,7 +28,10 @@ class NewsFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return None
+        if item.head:
+            return truncatewords(striptags(item.head_html()), 40)
+        else:
+            return truncatewords(striptags(item.body_html()), 40)
 
     def item_author(self, item):
         return item.author
