@@ -5,6 +5,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
+from django.views.generic import RedirectView
 
 from news.feed import NewsFeed
 
@@ -34,6 +35,8 @@ urlpatterns += patterns('',
 	url(r'^(?P<lang>en)/(?P<category_name>orienteering)/events/$', 'ob.views.events'),
 	url(r'^(?P<lang>en)/(?P<category_name>orienteering)/events/(?P<name>[^/]+)/$', 'ob.views.event'),
 	url(r'^(?P<lang>en)/(?P<category_name>orienteering)/events/(?P<event_name>[^/]+)/(?P<name>[^/]+)$', 'ob.views.attachment'),
+	url(r'^(?P<category_name>ob)/$', RedirectView.as_view(url='/ob/news/')),
+	url(r'^en/(?P<category_name>orienteering)/$', RedirectView.as_view(url='/en/orienteering/news/')),
 	url(r'^(?P<category_name>ob)/news/', include('news.urls', namespace='news-sk', app_name='news')),
 	url(r'^en/(?P<category_name>orienteering)/news/', include('news.urls', namespace='news-en', app_name='news'), kwargs={'lang': 'en'}),
 	(r'^ob/prihlaska/', include('eventapp.urls', namespace='eventapp-sk', app_name='eventapp'), dict(category='ob', namespace='eventapp-sk')),
