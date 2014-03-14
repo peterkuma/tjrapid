@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
-from main.models import Page
+from main.models import Category, Page
 
 
 def page(request, category_name, name):
@@ -25,11 +25,18 @@ def page(request, category_name, name):
 
 
 def attachment(request, category_name, page_name, name):
+	if page_name == '':
+		c = get_object_or_404(Category, name=category_name)
+		for a in c.attachments.all():
+			if os.path.basename(a.file.name) == name:
+				return HttpResponseRedirect(a.file.url)
+
 	p = get_object_or_404(Page,
 		category__name=category_name,
 		name=page_name
 	)
-	for a in p.attachments.all() | p.category.attachments.all():
+
+	for a in p.attachments.all():
 		if os.path.basename(a.file.name) == name:
 			return HttpResponseRedirect(a.file.url)
 	raise Http404
