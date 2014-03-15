@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-09 14:37+0100\n"
+"POT-Creation-Date: 2014-03-15 12:41+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -747,7 +747,7 @@ msgstr "Stránku spravuje"
 msgid "Orienteering club"
 msgstr "Oddiel orientačného behu"
 
-#: news/feed.py:17
+#: news/feed.py:44
 msgid "Orienteering Club TJ Rapid"
 msgstr "Oddiel orientačného behu TJ Rapid"
 
@@ -827,7 +827,27 @@ msgstr "Správa"
 msgid "News"
 msgstr "Novinky"
 
-#: news/templates/news/archive/ob.html:18
+#: news/templates/news/feed.xsl:37
+msgid "RSS Feed"
+msgstr "RSS kanál"
+
+#: news/templates/news/feed.xsl:40
+msgid ""
+"\n"
+"This is an RSS feed. Your browser does not seem to support RSS\n"
+"feeds, but you can use one of these popular clients:\n"
+"            "
+msgstr ""
+"\n"
+"Toto je RSS kanál. Zdá sa, že Váš prehliadač nepodporuje RSS,\n"
+"ale môžete použit jeden z týchto populárnych klientov:\n"
+"            "
+
+#: news/templates/news/feed.xsl:50
+msgid "Copy the address above to the client of your choice."
+msgstr "Zkopírujte adresu uvedenú vyššie do zvoleného klienta."
+
+#: news/templates/news/archive/ob.html:17
 msgid "News feed"
 msgstr "Odoberanie noviniek"
 
@@ -844,7 +864,7 @@ msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
 #: news/templates/news/archive/ob.html:47
-#: news/templates/news/details/ob.html:55
+#: news/templates/news/details/ob.html:60
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
@@ -858,6 +878,7 @@ msgstr "Predchádzajúce"
 
 #: news/templates/news/comment/ob.html:27
 #: news/templates/news/details/ob.html:33
+#: news/templates/news/details/ob.html:38
 msgid "Comments"
 msgstr "Komentáre"
 
@@ -869,11 +890,11 @@ msgstr "Náhľad komentára"
 msgid "Send comment"
 msgstr "Poslať komentár"
 
-#: news/templates/news/details/ob.html:35
+#: news/templates/news/details/ob.html:40
 msgid "(closed)"
 msgstr "(uzatvorené)"
 
-#: news/templates/news/details/ob.html:47
+#: news/templates/news/details/ob.html:52
 msgid "Reply"
 msgstr "Odpovedať"
 
