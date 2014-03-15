@@ -1,0 +1,45 @@
+body {
+    background: #eee;
+    font-size: 18pt;
+    color: #888;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #0169c9;
+    text-decoration: inherit;
+    font-size: 1.1em;
+}
+
+p {
+    margin: 1.3em 0;
+}
+
+h1 {
+    margin: 0.5em;
+    font-size: 36pt;
+    font-weight: normal;
+    color: #aaa;
+    text-align: center;
+}
+
+h1 a {
+    display: inline-block;
+    width: 300px;
+    padding-top: 200px;
+    padding-bottom: 0.4em;
+    background: url("../img/tjrapid-grayscale.png") no-repeat center 0.4em;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.container {
+    width: 800px;
+    text-align: center;
+    margin: 2em auto;
+}
