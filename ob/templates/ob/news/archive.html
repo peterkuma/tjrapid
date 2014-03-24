@@ -1,0 +1,38 @@
+{% extends "news/archive/ob.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load markup %}
+{% load baseurl %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "ob/css/news.css" %}" />
+{% endblock %}
+
+{% block content_extra %}
+    {% if events %}
+        <aside class="events">
+            <div class="events-header">
+                <a class="title" href="{{ events_url }}">{% trans "Events" %}</a>
+                <a class="more" href="{{ events_url }}">{% trans "More" %}</a>
+            </div>
+            <div class="events-container">
+                {% for event in events %}
+                    <div class="event">
+                        <div class="content">
+                            <div class="title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
+                            <div class="date">{{ event.start_date|date:"DATE_FORMAT" }} ({{ event.start_date|date:"l" }}){% if event.end_date %}–{{ event.end_date|date:"DATE_FORMAT" }} ({{ event.end_date|date:"l" }}){% endif %}</div>
+                            <div class="location">{{ event.location }}</div>
+                            <div class="descr">{{ event.head_html|baseurl:event.get_absolute_url }}</div>
+                        </div>
+                    </div>
+                    {% if event.mapbox_mapid %}
+                        <a class="event-map" href="{{ event.map_link }}" style="background-image: url('{{ event.map_image_large }}')"></a>
+                    {% else %}
+                        <div class="event-map"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </aside>
+    {% endif %}
+{% endblock %}

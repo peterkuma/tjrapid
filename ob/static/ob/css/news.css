@@ -1,0 +1,74 @@
+.events {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 1em 0;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+    position: relative;
+    overflow: auto;
+}
+
+.events > .events-header {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+}
+
+.events > .events-header .title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.events > .events-header .more {
+    float: right;
+    margin: 0.2em 0;
+}
+
+.events-container {
+    display: table;
+    width: 100%;
+}
+
+.event {
+    display: table-cell;
+    border-left: 1px solid #eee;
+}
+
+.event:first-child {
+    border-left: none;
+}
+
+.event .content {
+    margin: 10px 10px;
+}
+
+.event .title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.event .title a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.event .date {
+    color: #555;
+}
+
+.event .location {
+    font-weight: bold;
+    color: #555;
+}
+
+.event .date,
+.event .location {
+    margin: 0.2em 0;
+}
+
+.event-map {
+    display: table-cell;
+    width: 200px;
+    border-left: 1px solid #eee;
+    background-position: center center;
+}

@@ -16,6 +16,8 @@ from django.contrib.contenttypes.generic import GenericRelation
 from django_attach.models import Attachment
 from linguo.models import MultilingualModel
 from linguo.managers import MultilingualManager
+from django.core.urlresolvers import reverse
+from django.utils.translation import get_language
 
 from main.models import Category
 
@@ -83,6 +85,13 @@ class Event(MultilingualModel):
 	attachments = GenericRelation(Attachment)
 	created = models.DateTimeField(_('created'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
+
+	def get_absolute_url(self):
+		return reverse('ob.views.event', kwargs={
+			'lang': get_language(),
+			'category_name': Category.objects.get(name_en='orienteering').name,
+			'name': self.name,
+		})
 
 	def head_html(self):
 		if self.markup == 'markdown': return mark_safe(markdown(self.head))
@@ -157,6 +166,9 @@ class Event(MultilingualModel):
 
 	def map_image_default(self):
 		return self.map_image(300, 200)
+
+	def map_image_large(self):
+		return self.map_image(500, 500)
 
 	def map_link(self):
 		if self.mapbox_mapid is None: return None
