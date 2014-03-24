@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-15 12:41+0100\n"
+"POT-Creation-Date: 2014-03-24 14:57+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -161,7 +161,7 @@ msgid "present"
 msgstr "vyplený"
 
 #: eventapp/models.py:45 main/models.py:26 main/models.py:72 news/models.py:28
-#: ob/models.py:49
+#: ob/models.py:51
 msgid "title"
 msgstr "názov"
 
@@ -181,7 +181,7 @@ msgstr "deň otvorenia"
 msgid "close date"
 msgstr "deň uzatvorenia"
 
-#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:34
+#: eventapp/models.py:50 eventapp/models.py:90 ob/models.py:36
 msgid "e-mail"
 msgstr "e-mail"
 
@@ -190,11 +190,11 @@ msgid "number of laps"
 msgstr "počet etáp"
 
 #: eventapp/models.py:64 eventapp/models.py:69 eventapp/models.py:89
-#: eventapp/models.py:122 ob/models.py:169
+#: eventapp/models.py:122 ob/models.py:181
 msgid "event"
 msgstr "preteky"
 
-#: eventapp/models.py:65 ob/models.py:170
+#: eventapp/models.py:65 ob/models.py:182
 msgid "events"
 msgstr "preteky"
 
@@ -206,7 +206,7 @@ msgstr "popis"
 msgid "classes"
 msgstr "kategórie"
 
-#: eventapp/models.py:72 ob/models.py:55
+#: eventapp/models.py:72 ob/models.py:57
 msgid "start date"
 msgstr "začiatok"
 
@@ -235,12 +235,12 @@ msgid "class fees"
 msgstr "štartovné"
 
 #: eventapp/models.py:91 eventapp/models.py:168 eventapp/models.py:219
-#: main/models.py:88 ob/models.py:84
+#: main/models.py:88 ob/models.py:86
 msgid "created"
 msgstr "vytvorené"
 
 #: eventapp/models.py:92 eventapp/models.py:169 eventapp/models.py:220
-#: main/models.py:89 news/models.py:49 ob/models.py:85
+#: main/models.py:89 news/models.py:49 ob/models.py:87
 msgid "modified"
 msgstr "upravené"
 
@@ -277,11 +277,11 @@ msgstr "%(label)s (%(price)s € za noc)"
 msgid "accommodation"
 msgstr "ubytovanie"
 
-#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:31
+#: eventapp/models.py:153 eventapp/models.py:214 ob/models.py:33
 msgid "first name"
 msgstr "krstné meno"
 
-#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:32
+#: eventapp/models.py:154 eventapp/models.py:215 ob/models.py:34
 msgid "surname"
 msgstr "priezvisko"
 
@@ -671,11 +671,11 @@ msgstr ""
 msgid "Advanced options"
 msgstr "Pokročilé nastavenia"
 
-#: main/models.py:28 main/models.py:74 ob/models.py:51
+#: main/models.py:28 main/models.py:74 ob/models.py:53
 msgid "name"
 msgstr "meno"
 
-#: main/models.py:31 main/models.py:77 ob/models.py:53
+#: main/models.py:31 main/models.py:77 ob/models.py:55
 msgid "Short name that will appear in the URL"
 msgstr "Krátke meno, ktoré sa zobrazí v URL"
 
@@ -683,11 +683,11 @@ msgstr "Krátke meno, ktoré sa zobrazí v URL"
 msgid "template name"
 msgstr "meno šablóny"
 
-#: main/models.py:35 main/models.py:81 news/models.py:31 ob/models.py:67
+#: main/models.py:35 main/models.py:81 news/models.py:31 ob/models.py:69
 msgid "markup"
 msgstr "markup"
 
-#: main/models.py:39 main/models.py:85 news/models.py:35 ob/models.py:71
+#: main/models.py:39 main/models.py:85 news/models.py:35 ob/models.py:73
 msgid ""
 "Documentation: <a href=\"https://en.wikipedia.org/wiki/Markdown\">Markdown</"
 "a>, <a href=\"http://en.wikipedia.org/wiki/Textile_"
@@ -705,8 +705,8 @@ msgstr "menu"
 msgid "path"
 msgstr "cesta"
 
-#: main/models.py:66 main/models.py:79 news/models.py:29 ob/models.py:33
-#: ob/models.py:65
+#: main/models.py:66 main/models.py:79 news/models.py:29 ob/models.py:35
+#: ob/models.py:67
 msgid "category"
 msgstr "kategória"
 
@@ -718,8 +718,8 @@ msgstr "kategórie"
 msgid "content"
 msgstr "obsah"
 
-#: main/models.py:87 news/models.py:40 news/models.py:45 ob/models.py:76
-#: ob/models.py:81
+#: main/models.py:87 news/models.py:40 news/models.py:45 ob/models.py:78
+#: ob/models.py:83
 msgid "Add files and images below"
 msgstr "Súbory a obrázky sa dajú pridať nižšie"
 
@@ -747,15 +747,27 @@ msgstr "Stránku spravuje"
 msgid "Orienteering club"
 msgstr "Oddiel orientačného behu"
 
+#: news/app.py:128
+msgid "Subject"
+msgstr "Predmet"
+
+#: news/app.py:130
+msgid "Sender"
+msgstr "Odosielateľ"
+
+#: news/app.py:131
+msgid "Message"
+msgstr "Správa"
+
 #: news/feed.py:44
 msgid "Orienteering Club TJ Rapid"
 msgstr "Oddiel orientačného behu TJ Rapid"
 
-#: news/models.py:38 ob/models.py:74
+#: news/models.py:38 ob/models.py:76
 msgid "head"
 msgstr "hlavička"
 
-#: news/models.py:43 ob/models.py:79
+#: news/models.py:43 ob/models.py:81
 msgid "body"
 msgstr "telo"
 
@@ -811,18 +823,6 @@ msgstr "komentár"
 msgid "comments"
 msgstr "komentáre"
 
-#: news/views.py:100
-msgid "Subject"
-msgstr "Predmet"
-
-#: news/views.py:102
-msgid "Sender"
-msgstr "Odosielateľ"
-
-#: news/views.py:103
-msgid "Message"
-msgstr "Správa"
-
 #: news/templates/news/base.html:5 news/templates/news/archive/ob.html:14
 msgid "News"
 msgstr "Novinky"
@@ -851,11 +851,11 @@ msgstr "Zkopírujte adresu uvedenú vyššie do zvoleného klienta."
 msgid "News feed"
 msgstr "Odoberanie noviniek"
 
-#: news/templates/news/archive/ob.html:41
+#: news/templates/news/archive/ob.html:42
 msgid "Read more"
 msgstr "Čítať ďalej"
 
-#: news/templates/news/archive/ob.html:44
+#: news/templates/news/archive/ob.html:45
 #, python-format
 msgid "%(count)s comment"
 msgid_plural "%(count)s comments"
@@ -863,16 +863,16 @@ msgstr[0] "%(count)s komentár"
 msgstr[1] "%(count)s komentáre"
 msgstr[2] "%(count)s komentárov"
 
-#: news/templates/news/archive/ob.html:47
+#: news/templates/news/archive/ob.html:48
 #: news/templates/news/details/ob.html:60
 msgid "Add new comment"
 msgstr "Napísať komentár"
 
-#: news/templates/news/archive/ob.html:57
+#: news/templates/news/archive/ob.html:58
 msgid "Next"
 msgstr "Ďalšie"
 
-#: news/templates/news/archive/ob.html:62
+#: news/templates/news/archive/ob.html:63
 msgid "Previous"
 msgstr "Predchádzajúce"
 
@@ -898,27 +898,27 @@ msgstr "(uzatvorené)"
 msgid "Reply"
 msgstr "Odpovedať"
 
-#: ob/models.py:44
+#: ob/models.py:46
 msgid "member"
 msgstr "člen"
 
-#: ob/models.py:45
+#: ob/models.py:47
 msgid "members"
 msgstr "členovia"
 
-#: ob/models.py:56
+#: ob/models.py:58
 msgid "end date"
 msgstr "koniec"
 
-#: ob/models.py:57
+#: ob/models.py:59
 msgid "location"
 msgstr "miesto"
 
-#: ob/models.py:59
+#: ob/models.py:61
 msgid "MaxBox Map ID"
 msgstr "MapBox Map ID"
 
-#: ob/models.py:63
+#: ob/models.py:65
 msgid ""
 "Map ID in format <strong>&lt;username&gt;.map-&lt;id&gt;</strong>. To obtain "
 "Map ID, create a new map on <a href=\"http://www.mapbox.com/\">MapBox</a>, "
@@ -929,6 +929,7 @@ msgstr ""
 "a>, stlačením <strong>Publish</strong> a výberom <strong>Mobile</strong>."
 
 #: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:13
+#: ob/templates/ob/news/archive.html:16
 msgid "Events"
 msgstr "Preteky"
 
@@ -943,6 +944,10 @@ msgstr "Členovia"
 #: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:20
 msgid "Category"
 msgstr "Kategória"
+
+#: ob/templates/ob/news/archive.html:17
+msgid "More"
+msgstr "Ďalšie"
 
 #: tjrapid/settings.py:46
 msgid "Slovak"
