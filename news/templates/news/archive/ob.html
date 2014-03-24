@@ -17,6 +17,7 @@
 			{% trans "News feed" %}
 		</a>
 	</h1>
+	{% block content_extra %}{% endblock %}
 	{% for a in articles.object_list %}
 		<div class="article">
 			<article>
