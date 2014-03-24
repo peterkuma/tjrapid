@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-24 15:10+0100\n"
+"POT-Creation-Date: 2014-03-24 14:57+0100\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -929,6 +929,7 @@ msgstr ""
 "a>, stlačením <strong>Publish</strong> a výberom <strong>Mobile</strong>."
 
 #: ob/templates/ob/events.html:5 ob/templates/ob/events.html.py:13
+#: ob/templates/ob/news/archive.html:16
 msgid "Events"
 msgstr "Preteky"
 
@@ -943,10 +944,6 @@ msgstr "Členovia"
 #: ob/templates/ob/members.html:10 ob/templates/ob/members.html.py:20
 msgid "Category"
 msgstr "Kategória"
-
-#: ob/templates/ob/news/archive.html:16
-msgid "Latest Events"
-msgstr "Najbližšie preteky"
 
 #: ob/templates/ob/news/archive.html:17
 msgid "More"
