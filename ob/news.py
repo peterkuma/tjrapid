@@ -12,7 +12,11 @@ class OrienteeringNews(News):
         events = sorted(Event.objects.all(), key=lambda event:
             abs((event.start_date - date.today()).days)
         )[0:2]
-        
+
+        events = sorted(events, reverse=True, key=lambda event:
+            event.start_date
+        )
+
         name = Category.objects.get(name_en='orienteering').name
 
         response = super(OrienteeringNews, self).archive(request, *args, **kwargs)
