@@ -3,8 +3,7 @@
     border: 1px solid #ccc;
     margin: 1em 0;
     box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-    position: relative;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .events > .events-header {
@@ -31,6 +30,7 @@
 
 .event {
     display: table-cell;
+    width: 30%;
     border-left: 1px solid #eee;
 }
 
@@ -68,7 +68,8 @@
 
 .event-map {
     display: table-cell;
-    width: 160px;
+    width: 20%;
     border-left: 1px solid #eee;
+    background-repeat: no-repeat;
     background-position: center center;
 }
