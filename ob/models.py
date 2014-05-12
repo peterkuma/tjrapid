@@ -109,7 +109,7 @@ class Event(MultilingualModel):
 
 	def mapbox_map(self, mapid):
 		try:
-			response = urllib2.urlopen('http://api.tiles.mapbox.com/v3/%s.json' % self.mapbox_mapid)
+			response = urllib2.urlopen('https://api.tiles.mapbox.com/v3/%s.json' % self.mapbox_mapid)
 		except urllib2.URLError:
 			return None
 		content = response.read()
@@ -140,7 +140,7 @@ class Event(MultilingualModel):
 		# Contruct image url.
 		map = self.mapbox_map(self.mapbox_mapid)
 		center = map['center']
-		url = 'http://a.tiles.mapbox.com/v3/%s/%f,%f,%d/%dx%d.png' % (
+		url = 'https://a.tiles.mapbox.com/v3/%s/%f,%f,%d/%dx%d.png' % (
 			self.mapbox_mapid,
 			center[0],
 			center[1],
