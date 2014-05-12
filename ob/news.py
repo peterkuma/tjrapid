@@ -13,7 +13,7 @@ class OrienteeringNews(News):
             abs((event.start_date - date.today()).days)
         )[0:2]
 
-        events = sorted(events, reverse=True, key=lambda event:
+        events = sorted(events, key=lambda event:
             event.start_date
         )
 
