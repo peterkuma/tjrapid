@@ -27,7 +27,7 @@ Installation
 
 2. Install required python packages:
 
-        pip install django
+        pip install django==1.5.1
         pip install BeautifulSoup
         pip install reportlab
         pip install textile
