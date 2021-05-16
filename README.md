@@ -27,18 +27,11 @@ Installation
 
 2. Install required python packages:
 
-        pip install django==1.5.1
-        pip install BeautifulSoup
-        pip install reportlab
-        pip install textile
-        pip install markdown
-        pip install psycopg2 # For posgresql support (optional).
-        pip install django-linguo
-        pip install django-attach
+        pip install -r requirements.txt
 
 3. Clone the tjrapid repository:
 
-        git clone -b django1.4 git://github.com/peterkuma/tjrapid.git
+        git clone git://github.com/peterkuma/tjrapid.git
         cd trapid
 
 4. Customize the project settings:
