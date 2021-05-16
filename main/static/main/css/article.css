@@ -1,3 +1,7 @@
+article {
+    padding: 0 15px;
+}
+
 article h1:first-child {
     margin-top: 0.6em;
 }
@@ -6,6 +10,8 @@ article .table {
     border: 1px solid silver;
     border-collapse: collapse;
     background: white;
+    overflow: auto;
+    max-width: 100%;
 }
 
 article .table th {
@@ -22,13 +28,15 @@ article .table td {
     padding: 3px 5px;
 }
 
-article figure {    
+article figure {
     border: 1px solid #ccc;
     padding: 7px;
     margin: 5px;
     background-color: white;
     float: right;
     clear: right;
+    max-width: 100%;
+    position: relative;
 }
 
 article figure.left {
@@ -43,6 +51,7 @@ article figure.inline {
 
 article figure img {
     display: block;
+    max-width: 100%;
 }
 
 article .pic-right {

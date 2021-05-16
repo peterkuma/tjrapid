@@ -5,12 +5,16 @@
     width: 200px;
 }
 
+.main > .search form {
+    display: flex;
+}
+
 .main > .search input {
     display: block;
-    float: left;
     border: 1px solid silver;
     padding: 0.2em;
-    margin: 0 0.5em;
+    margin-right: 0.5em;
+    flex-grow: 1;
 }
 
 .main > .search button {
@@ -19,4 +23,12 @@
     border: none;
     margin: 0;
     padding: 0;
+}
+
+@media (max-width: 750px) {
+    .main > .search {
+        position: initial;
+        width: auto;
+        margin: 1em;
+    }
 }

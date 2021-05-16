@@ -24,13 +24,15 @@
 }
 
 .events-container {
-    display: table;
+    display: flex;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .event {
-    display: table-cell;
-    width: 30%;
+    flex-grow: 1;
+    min-width: 250px;
+    overflow: auto;
     border-left: 1px solid #eee;
 }
 
@@ -67,9 +69,12 @@
 }
 
 .event-map {
-    display: table-cell;
     width: 20%;
     border-left: 1px solid #eee;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.event iframe {
+    max-width: 100%;
 }

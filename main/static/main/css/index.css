@@ -56,3 +56,28 @@
 .clubs li.orientacny-beh a {
     background: url("../img/ob.png") no-repeat center 15px;
 }
+
+@media (max-width: 750px) {
+    .main > article {
+        margin: 1em auto;
+    }
+
+    .clubs {
+        height: 95px;
+        white-space: nowrap;
+        overflow: auto;
+        font-size: 90%;
+    }
+
+    .clubs li {
+        margin: 0;
+        display: inline-block;
+        float: initial;
+        min-width: initial;
+    }
+
+    .clubs li a {
+        background-size: 35px !important;
+        padding: 65px 2px 10px 2px;
+    }
+}

@@ -2,17 +2,16 @@
     background: url("../img/header.png") repeat-x;
     height: 142px;
 }
-
 #header-title {
     background: url("../img/header-title.png") no-repeat;
     height:142px;
-    width: 550px;
+    xwidth: 550px;
 }
 #header-title a {
     display: block;
     height:142px;
-    width: 550px;
-    position: absolute;
+    xwidth: 550px;
+    position: relative;
     text-decoration: none;
 }
 #header-title h2 {
@@ -32,13 +31,13 @@
 #header-title-main {
     background: url("../img/header-title.png") no-repeat;
     height:142px;
-    width: 550px;
+    xwidth: 550px;
 }
 #header-title-main a {
     display: block;
     height:142px;
-    width: 550px;
-    position: absolute;
+    xwidth: 550px;
+    position: relative;
     text-decoration: none;
 }
 #header-title-main h2 {
@@ -97,4 +96,49 @@
     position: absolute;
     right: 0;
     top: 0;
+}
+@media (max-width: 750px) {
+    .header {
+        height: 100px;
+        background-size: auto 100px;
+    }
+    #header-title {
+        height: 100px;
+        background-size: auto 100px;
+    }
+    #header-title a {
+        height: 100px;
+    }
+    #header-title h1 {
+        font-size: 12pt;
+        top: 40px;
+        left: 112px;
+    }
+    #header-title h2 {
+        font-size: 12pt;
+        top: 15px;
+        left: 112px;
+    }
+    #header-title-main {
+        height: 100px;
+        background-size: auto 100px;
+    }
+    #header-title-main a {
+        height: 100px;
+    }
+    #header-title-main h1 {
+        font-size: 16pt;
+        top: 40px;
+        left: 140px;
+    }
+    #header-title-main h2 {
+        font-size: 14pt;
+        top: 15px;
+        left: 115px;
+    }
+    #header-extra,
+    #header-extra-ob,
+    #header-extra-gymnastika {
+        display: none;
+    }
 }

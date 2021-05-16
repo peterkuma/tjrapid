@@ -60,3 +60,35 @@
     background-image: url("../img/menu-cyklo.png");
     background-repeat: no-repeat;
 }
+
+@media (max-width: 750px) {
+    .main > nav {
+        position: inherit;
+        width: 100%;
+        height: 40px;
+        overflow: auto;
+        white-space: nowrap;
+        background-image: none !important;
+    }
+
+    .main > nav > * {
+        display: none !important;
+    }
+
+    .main > nav > *:first-child {
+        display: block !important;
+    }
+
+    .main > nav li {
+        display: inline-block;
+    }
+
+    .main > .content {
+        margin-left: 0px;
+        padding: 0 0 1.5em 0;
+    }
+
+    .footer > .content {
+        margin-left: initial;
+    }
+}

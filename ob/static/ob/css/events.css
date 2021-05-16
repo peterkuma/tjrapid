@@ -42,3 +42,7 @@
 .event .map img {
     display: block;
 }
+
+.event iframe {
+    max-width: 100%;
+}

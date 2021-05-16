@@ -26,7 +26,9 @@
 }
 
 .footer .django {
+    display: block;
     float: right;
+    margin-bottom: 15px;
 }
 
 .footer .django img {
@@ -34,10 +36,22 @@
 }
 
 .footer .map {
+    display: block;
     float: right;
-    border: 1px solid #aaa;
+    margin-bottom: 15px;
 }
 
 .footer .map img {
     display: block;
+    border: 1px solid #aaa;
+    max-width: 100%;
+}
+
+@media (max-width: 750px) {
+    .footer .map {
+        float: inherit;
+    }
+    .footer .django {
+        float: inherit;
+    }
 }
