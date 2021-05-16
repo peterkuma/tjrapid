@@ -34,6 +34,7 @@
 .article .like {
 	float: right;
 	position: relative;
+	display: none;
 }
 
 .article .like > .button {
@@ -187,4 +188,11 @@
 .news-subscribe .rss-icon img {
 	display: block;
 	height: 1.2em;
+}
+
+@media (max-width: 750px) {
+	.article footer .misc-links {
+		float: initial;
+		margin-top: 5px;
+	}
 }

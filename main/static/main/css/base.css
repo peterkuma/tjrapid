@@ -77,3 +77,9 @@ form .errorlist {
 	background: url("../img/bg.png") repeat-x;
 	overflow: hidden;
 }
+
+@media (max-width: 1000px) {
+	.container {
+		border: 0;
+	}
+}
