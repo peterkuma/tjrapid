@@ -56,6 +56,8 @@
 }
 #header-lang {
     font-size: 14px;
+    padding-left: 0;
+    padding-right: 5px;
 }
 #header-lang li {
     list-style: none;
@@ -136,9 +138,15 @@
         top: 15px;
         left: 115px;
     }
+    #header-lang {
+        font-size: 12px;
+    }
     #header-extra,
     #header-extra-ob,
     #header-extra-gymnastika {
-        display: none;
+        background: none;
+        height: 100px;
+        width: 100px;
+        padding-right: initial;
     }
 }
