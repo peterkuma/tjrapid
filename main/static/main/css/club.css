@@ -62,6 +62,13 @@
     background-repeat: no-repeat;
 }
 
+.main > nav summary {
+    visibility: hidden;
+    margin: 5px 0;
+    text-align: center;
+    text-decoration: underline;
+}
+
 @media (max-width: 750px) {
     .main {
         display: initial;
@@ -70,23 +77,20 @@
     .main > nav {
         position: initial;
         width: 100%;
+        box-sizing: border-box;
         height: auto;
         background-image: none !important;
         font-size: 13px;
         padding: 8px 5px;
     }
 
-    .main > nav > * {
-        display: none !important;
-    }
-
-    .main > nav > *:first-child {
-        display: block !important;
-    }
-
     .main > nav li {
         display: inline-block;
         padding: 2px 4px;
+    }
+
+    .main > nav summary {
+        visibility: initial;
     }
 
     .main > .content {
