@@ -48,6 +48,10 @@
     max-width: 100%;
 }
 
+.footer .map iframe {
+    max-width: 100%;
+}
+
 @media (max-width: 750px) {
     .footer .map {
         float: inherit;
