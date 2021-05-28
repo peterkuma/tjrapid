@@ -51,7 +51,12 @@
     .footer .map {
         float: inherit;
     }
+
     .footer .django {
         float: inherit;
+    }
+
+    .footer .content {
+        padding: 1em;
     }
 }
