@@ -1,9 +1,13 @@
+.main {
+    display: flex;
+}
+
 .main > .content {
-    margin-left: 145px;
     top: 0;
     right: 0;
     padding: 0.5em 1em 2em 1em;
     min-height: 700px;
+    flex-grow: 1;
 }
 
 .footer > .content {
@@ -11,11 +15,8 @@
 }
 
 .main > nav {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
     width: 145px;
+    min-width: 145px;
     background: #97c339;
     padding-top: 10px;
     font-size: 14px;
@@ -62,8 +63,12 @@
 }
 
 @media (max-width: 750px) {
+    .main {
+        display: initial;
+    }
+
     .main > nav {
-        position: inherit;
+        position: initial;
         width: 100%;
         height: auto;
         background-image: none !important;
