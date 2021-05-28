@@ -122,4 +122,8 @@ article .table-th-sort-rev {
         display: inline-block;
         float: initial;
     }
+
+    article .table {
+        font-size: 75%;
+    }
 }
