@@ -4,19 +4,20 @@
 
 import os
 from datetime import date, datetime
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import json
 from django.utils import timezone
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-from django.contrib.markup.templatetags.markup import markdown, textile
+from markdown import markdown
+from textile import textile
 from django.utils.safestring import mark_safe
-from django.contrib.contenttypes.generic import GenericRelation
+from django.contrib.contenttypes.fields import GenericRelation
 from django_attach.models import Attachment
 from linguo.models import MultilingualModel
 from linguo.managers import MultilingualManager
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import get_language
 
 from main.models import Category
@@ -64,7 +65,10 @@ class Event(MultilingualModel):
 		null=True,
 		help_text=_('Map ID in format <strong>&lt;username&gt;.map-&lt;id&gt;</strong>. To obtain Map ID, create a new map on <a href="http://www.mapbox.com/">MapBox</a>, click <strong>Publish</strong> and select <strong>Mobile</strong>.')
 	)
-	category = models.ForeignKey(Category, verbose_name=_('category'))
+	category = models.ForeignKey(Category,
+		verbose_name=_('category'),
+		on_delete=models.CASCADE,
+	)
 	markup = models.CharField(
 		_('markup'),
 		max_length=50,
@@ -87,7 +91,8 @@ class Event(MultilingualModel):
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 
 	def get_absolute_url(self):
-		return reverse('ob.views.event', kwargs={
+		import ob.views
+		return reverse(ob.views.event, kwargs={
 			'lang': get_language(),
 			'category_name': Category.objects.get(name_en='orienteering').name,
 			'name': self.name,
@@ -109,8 +114,8 @@ class Event(MultilingualModel):
 
 	def mapbox_map(self, mapid):
 		try:
-			response = urllib2.urlopen('https://api.tiles.mapbox.com/v3/%s.json' % self.mapbox_mapid)
-		except urllib2.URLError:
+			response = urllib.request.urlopen('https://api.tiles.mapbox.com/v3/%s.json' % self.mapbox_mapid)
+		except urllib.error.URLError:
 			return None
 		content = response.read()
 		return json.loads(content) 
@@ -156,8 +161,8 @@ class Event(MultilingualModel):
 			pass
 		with open(filename, 'w') as f:
 			try:
-				response = urllib2.urlopen(url)
-			except urllib2.URLError:
+				response = urllib.request.urlopen(url)
+			except urllib.error.URLError:
 				return None
 			content = response.read()
 			f.write(content)

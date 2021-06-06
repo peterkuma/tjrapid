@@ -5,9 +5,10 @@
 import os
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.generic import GenericRelation
+from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.safestring import mark_safe
-from django.contrib.markup.templatetags.markup import markdown, textile
+from markdown import markdown
+from textile import textile
 from django.conf import settings
 from django.utils.translation import get_language
 from django_attach.models import Attachment
@@ -76,7 +77,10 @@ class Page(MultilingualModel):
 #		prepopulate_from=('title',),
 		help_text=_('Short name that will appear in the URL'),
 	)
-	category = models.ForeignKey(Category,verbose_name=_('category'))
+	category = models.ForeignKey(Category,
+		verbose_name=_('category'),
+		on_delete=models.CASCADE,
+	)
 	markup = models.CharField(
 		_('markup'),
 		max_length=50,

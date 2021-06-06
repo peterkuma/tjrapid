@@ -6,7 +6,6 @@ from django.contrib.syndication.views import Feed, FeedDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.utils.translation import ugettext as _
-from django.contrib.markup.templatetags import markup
 from django.template.defaultfilters import truncatewords, striptags
 from django.utils.feedgenerator import DefaultFeed
 

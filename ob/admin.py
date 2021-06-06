@@ -5,7 +5,7 @@
 from django.contrib import admin
 from django_attach.forms import AttachmentInline
 
-from models import *
+from .models import *
 
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('surname','first_name','category','email')

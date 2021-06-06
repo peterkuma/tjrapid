@@ -2,10 +2,11 @@ from __future__ import absolute_import
 from news.app import News
 from .models import Event
 from datetime import date
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import get_language
 from main.models import Category
 
+import ob.views
 
 class OrienteeringNews(News):
     def archive(self, request, *args, **kwargs):
@@ -23,7 +24,7 @@ class OrienteeringNews(News):
         response.template_name = 'ob/news/archive.html'
         response.context_data.update({
             'events': events,
-            'events_url': reverse('ob.views.events', kwargs={
+            'events_url': reverse(ob.views.events, kwargs={
                 'lang': get_language(),
                 'category_name': name,
             }),

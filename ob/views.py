@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.utils import translation
 from django.shortcuts import get_object_or_404
@@ -13,7 +13,7 @@ from ob.models import *
 def events(request, category_name):
 	category = get_object_or_404(Category, name=category_name)
 	events = Event.objects.filter(category=category)
-	return render_to_response(
+	return render(request,
 		'ob/events.html', {
 			'events': events,
 			'category': category,
@@ -25,7 +25,7 @@ def events(request, category_name):
 def event(request, name, category_name):
 	category = get_object_or_404(Category, name=category_name)
 	event = get_object_or_404(Event, category=category, name=name)
-	return render_to_response(
+	return render(request,
 		'ob/event.html', {
 			'event': event,
 			'category': category,
@@ -48,7 +48,7 @@ def members(request, category_name):
 	members_w = Member.objects.filter(category__startswith='W')
 	category = Category.objects.get(name=category_name)
 
-	return render_to_response(
+	return render(request,
 		'ob/members.html', {
 			'members_m': members_m,
 			'members_w': members_w,

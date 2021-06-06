@@ -12,6 +12,7 @@ from news.models import *
 class ArticleAdminForm(MultilingualModelForm):
     class Meta:
         model = Article
+        fields = '__all__'
 
 
 class ArticleAdmin(admin.ModelAdmin):

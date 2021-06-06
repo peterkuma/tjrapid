@@ -5,7 +5,7 @@
 import os
 
 from django.http import Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.utils import translation
 from django.http import HttpResponseRedirect
@@ -17,7 +17,7 @@ from main.models import Category, Page
 
 def page(request, category_name, name):
 	p = get_object_or_404(Page, category__name=category_name, name=name)
-	return render_to_response('main/' + p.category.template_name, {
+	return render(request, 'main/' + p.category.template_name, {
 					'page': p,
 					'category': p.category,
 					'style': p.style

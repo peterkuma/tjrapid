@@ -11,13 +11,13 @@ import socket
 import logging
 import unicodedata
 
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django import forms
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import *
 from django.template import Context, loader
 from django.core.mail import send_mail
@@ -25,8 +25,8 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core import serializers
 
-import urls
-from models import *
+from . import urls
+from .models import *
 
 def http500(request, error):
 	t = loader.get_template('eventapp/500.html')
@@ -74,7 +74,7 @@ def event(request, id, namespace=None, **kwargs):
 	if ev.open_date > datetime.date.today():
 		return http500(request,  _('The event will open on %s.' % ev.open_date))
 
-	if request.method == 'POST' and request.POST.has_key('newentry'):
+	if request.method == 'POST' and 'newentry' in request.POST:
 		newentry_form = NewEntryForm(dict(event=id, email=request.POST['email']))
 		if newentry_form.is_valid():
 			er = newentry_form.save(commit=False)
@@ -92,7 +92,7 @@ def event(request, id, namespace=None, **kwargs):
 					  unicodedata.normalize('NFKD', t.render(c)).encode('ascii', 'ignore'),
 					  unicodedata.normalize('NFKD', _('Event organiser <%s>') % ev.email).encode('ascii', 'ignore'),
 					  (er.email,))
-			except (socket.error, SMTPException), e:
+			except (socket.error, SMTPException) as e:
 				if (settings.DEBUG):
 					raise e
 				log = logging.getLogger('django')
@@ -104,7 +104,7 @@ def event(request, id, namespace=None, **kwargs):
 	else:
 		newentry_form = NewEntryForm()
 
-	if request.method == 'POST' and request.POST.has_key('existingentry'):
+	if request.method == 'POST' and 'existingentry' in request.POST:
 		existingentry_form = ExistingEntryForm(request.POST)
 		if existingentry_form.is_valid():
 			return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(
@@ -113,7 +113,7 @@ def event(request, id, namespace=None, **kwargs):
 	else:
 		existingentry_form = ExistingEntryForm()
 
-	if request.method == 'POST' and request.POST.has_key('recovery'):
+	if request.method == 'POST' and 'recovery' in request.POST:
 		recovery_form = RecoveryForm(request.POST)
 		if recovery_form.is_valid():
 			er = Entry.objects.get(event=ev, email=recovery_form.cleaned_data['email'])
@@ -130,21 +130,21 @@ def event(request, id, namespace=None, **kwargs):
 					  unicodedata.normalize('NFKD', t.render(c)).encode('ascii', 'ignore'),
 					  unicodedata.normalize('NFKD', _('Event organiser <%s>') % ev.email).encode('ascii', 'ignore'),
 					  (er.email,))
-			except (socket.error, SMTPException), e:
+			except (socket.error, SMTPException) as e:
 				if (settings.DEBUG):
 					raise e
 				log = logging.getLogger('django')
 				log.error('Failed to send mail: %s', e)
 				return http500(request, _('Failed to send mail.'))
 
-			return render_to_response('eventapp/recovery_response.html', {
+			return render(request, 'eventapp/recovery_response.html', {
 					'event': ev,
 					'email': recovery_form.cleaned_data['email'],
 				}, RequestContext(request))
 	else:
 		recovery_form = RecoveryForm()
 
-	return render_to_response('eventapp/event.html', {
+	return render(request, 'eventapp/event.html', {
 			'event': ev,
 			'newentry_form': newentry_form,
 			'existingentry_form': existingentry_form,
@@ -167,7 +167,7 @@ def entry(request, eventid, id, **kwargs):
 	for pa in participants:
 		total += pa.fees()
 
-	return render_to_response('eventapp/entry.html',  {
+	return render(request, 'eventapp/entry.html',  {
 			'event': ev,
 			'entry': er,
 			'participants': participants,
@@ -205,7 +205,7 @@ def list(request, eventid,  entryid=None, namespace=None, **kwargs):
 
 	participants = Participant.objects.filter(entry__event=ev)
 
-	return render_to_response('eventapp/list.html',  {
+	return render(request, 'eventapp/list.html',  {
 			'event': ev,
 			'entry': er,
 			'participants': participants,
@@ -227,7 +227,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	else:
 		pa = None
 
-	if request.POST.has_key('remove'):
+	if 'remove' in request.POST:
 		pa.delete()
 		return HttpResponseRedirect(reverse('eventapp:entry', kwargs=dict(eventid=ev.id, id=er.id), current_app=namespace))
 
@@ -245,14 +245,14 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			clsdict[c] = (classfee.fee, classfee.lapfee, classfee.lapsifee)
 	#if pa != None:
 	#	clsdict[pa.cls] = pa.entryfee
-	keys = clsdict.keys()
+	keys = list(clsdict.keys())
 	keys.sort()
 	clschoices = []
 	for k in keys:
 		if clsdict[k][1] != None and clsdict[k][0] != clsdict[k][1]:
-			clschoices.append((k, _(u'%(cls)s (%(fee)s € or %(lapfee)s € per lap)') % dict(cls=k, fee=clsdict[k][0], lapfee=clsdict[k][1])))
+			clschoices.append((k, _('%(cls)s (%(fee)s € or %(lapfee)s € per lap)') % dict(cls=k, fee=clsdict[k][0], lapfee=clsdict[k][1])))
 		else:
-			clschoices.append((k, _(u'%(cls)s (%(fee)s €)') % dict(cls=k,  fee=clsdict[k][0])))
+			clschoices.append((k, _('%(cls)s (%(fee)s €)') % dict(cls=k,  fee=clsdict[k][0])))
 
 	if ev.withsi:
 		exclude_si = []
@@ -264,10 +264,10 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 			label=Participant._meta.get_field('cls').verbose_name.capitalize(),
 			help_text=Participant._meta.get_field('cls').help_text
 		)
-		laps = forms.MultipleChoiceField(choices=zip(range(1,ev.laps+1),range(1,ev.laps+1)),
+		laps = forms.MultipleChoiceField(choices=list(zip(list(range(1,ev.laps+1)),list(range(1,ev.laps+1)))),
 			label=Participant._meta.get_field('laps').verbose_name.capitalize(),
 			widget=forms.CheckboxSelectMultiple(),
-			initial=range(1,ev.laps+1),
+			initial=list(range(1,ev.laps+1)),
 		)
 
 		class Meta:
@@ -295,7 +295,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 
 			return self.cleaned_data
 
-	if request.method == 'POST' and request.POST.has_key('commit'):
+	if request.method == 'POST' and 'commit' in request.POST:
 		form = ParticipantForm(request.POST, instance=pa)
 		simode = form.data.get('simode')
 		if form.is_valid():
@@ -338,7 +338,7 @@ def participant(request, eventid,  entryid,  id=None, namespace=None, **kwargs):
 	del form.fields['accommnights'].choices[0]
 	del form.fields['accommcount'].choices[0]
 
-	return render_to_response('eventapp/participant.html',  {
+	return render(request, 'eventapp/participant.html',  {
 			'event': ev,
 			'entry': er,
 			'participant': pa,
@@ -394,7 +394,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 	)
 
 	def truncate(s, n):
-		return u'%s…' % s[0:n-2] if len(s) > n else s
+		return '%s…' % s[0:n-2] if len(s) > n else s
 
 	def participants_table():
 		data = []
@@ -407,14 +407,14 @@ def entry_pdf(request, eventid, id, **kwargs):
 				pa.club,
 				pa.cls,
 				pa.laps,
-				unicode(pa.get_si_abbr()),
+				str(pa.get_si_abbr()),
 				truncate(pa.accomm.label, 20) if pa.accomm else '',
-				u'%s/%s/%s €' % (pa.entryfee, pa.sifee, pa.accommfee),
-				u'%s €' % pa.fees(),
+				'%s/%s/%s €' % (pa.entryfee, pa.sifee, pa.accommfee),
+				'%s €' % pa.fees(),
 			])
 			i = i + 1
-		extrafees = u'%s/%s/%s €' % (er.entryfees(), er.sifees(), er.accommfees())
-		data.append([_('Total'),'','','','','','',extrafees,u'%s €' % er.fees()])
+		extrafees = '%s/%s/%s €' % (er.entryfees(), er.sifees(), er.accommfees())
+		data.append([_('Total'),'','','','','','',extrafees,'%s €' % er.fees()])
 
 		last = len(data) - 1
 		tstyle = TableStyle()
@@ -434,23 +434,23 @@ def entry_pdf(request, eventid, id, **kwargs):
 	def firstpage(c, doc):
 		c.saveState()
 		c.setFont(bdfont, 10)
-		c.drawRightString(A4[0]-1.5*cm, 2*cm, unicode(doc.page))
+		c.drawRightString(A4[0]-1.5*cm, 2*cm, str(doc.page))
 		c.restoreState()
 
 	def nextpage(c, doc):
 		c.saveState()
 		c.setFont(itfont, 10)
-		c.drawString(1.5*cm, A4[1]-2*cm, unicode(ev))
+		c.drawString(1.5*cm, A4[1]-2*cm, str(ev))
 		c.setFont(font, 10)
 		c.drawCentredString(A4[0]/2, A4[1]-2*cm, _('Entry Statement'))
 		c.setFont(bdfont, 10)
-		c.drawRightString(A4[0]-1.5*cm, A4[1]-2*cm, unicode(doc.page))
+		c.drawRightString(A4[0]-1.5*cm, A4[1]-2*cm, str(doc.page))
 		c.setLineWidth(0.5)
 		c.line(1.4*cm, A4[1]-2.2*cm, A4[0]-1.4*cm, A4[1]-2.2*cm)
 		c.restoreState()
 
 	story = []
-	story.append(Paragraph(unicode(ev), heading2))
+	story.append(Paragraph(str(ev), heading2))
 	story.append(Paragraph(_('Entry Statement'), heading1))
 	from django.utils import formats
 	story.append(Paragraph(formats.date_format(issue_datetime, 'DATETIME_FORMAT'), normal))

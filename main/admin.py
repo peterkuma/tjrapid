@@ -18,6 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class PageAdminForm(MultilingualModelForm):
     class Meta:
         model = Page
+        fields = '__all__'
 
 
 class PageAdmin(admin.ModelAdmin):

@@ -3,9 +3,12 @@
 # Copyright (c) 2010-2012 Peter Kuma
 
 from os import urandom
+import datetime
 
 from django.db.models import *
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
+from django.core.validators import validate_comma_separated_integer_list
 
 ACCOMMNIGHTS_CHOICES = (
 	(1,  _('1 night')),
@@ -56,9 +59,11 @@ class Event(Model):
 	def __unicode__(self):
 		return self.title
 
-	@permalink
 	def get_absolute_url(self):
-		return ('eventapp:event', (), dict(id=self.id))
+		return reverse('eventapp:event',
+			args=(),
+			kwargs=dict(id=self.id)
+		)
 
 	class Meta:
 		verbose_name = _('event')
@@ -66,7 +71,11 @@ class Event(Model):
 		ordering = ('open_date', )
 
 class ClassFee(Model):
-	event = ForeignKey('Event', db_column='eventid', verbose_name=_('event'))
+	event = ForeignKey('Event',
+		db_column='eventid',
+		verbose_name=_('event'),
+		on_delete=CASCADE,
+	)
 	label = CharField(_('label'), max_length=50)
 	classes = TextField(_('classes'))
 	start_date = DateField(_('start date'), blank=True, null=True)
@@ -86,7 +95,11 @@ class ClassFee(Model):
 
 class Entry(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('ER'), max_length=11)
-	event = ForeignKey('Event', db_column='eventid', verbose_name=_('event'))
+	event = ForeignKey('Event',
+		db_column='eventid',
+		verbose_name=_('event'),
+		on_delete=CASCADE,
+	)
 	email = EmailField(_('e-mail'))
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
@@ -94,9 +107,11 @@ class Entry(Model):
 	def __unicode__(self):
 		return self.id
 
-	@permalink
 	def get_absolute_url(self):
-		return ('eventapp:entry', (), dict(eventid=self.event.id, id=self.id))
+		return reverse('eventapp:entry',
+			args=(),
+			kwargs=dict(eventid=self.event.id, id=self.id)
+		)
 
 	def entryfees(self):
 		return Participant.objects.filter(entry=self).aggregate(Sum('entryfee'))['entryfee__sum']
@@ -119,7 +134,11 @@ class Entry(Model):
 
 class Accommodation(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('AC'), max_length=11)
-	event = ForeignKey('Event',  db_column='eventid', verbose_name=_('event'))
+	event = ForeignKey('Event',
+		db_column='eventid',
+		verbose_name=_('event'),
+		on_delete=CASCADE,
+	)
 	label = CharField(_('label'), max_length=50)
 	price = DecimalField(_('price'), max_digits=10, decimal_places=2, help_text='Price per night')
 	minnights = PositiveSmallIntegerField(_('minimum nights'), default=1)
@@ -149,16 +168,26 @@ class Accommodation(Model):
 
 class Participant(Model):
 	id = CharField(_('ID'), primary_key=True, default=lambda: genid('PA'), max_length=11)
-	entry = ForeignKey('Entry',  db_column='entryid', verbose_name=_('entry'))
+	entry = ForeignKey('Entry',
+		db_column='entryid',
+		verbose_name=_('entry'),
+		on_delete=CASCADE,
+	)
 	firstname = CharField(_('first name'), max_length=50)
 	surname = CharField(_('surname'), max_length=50)
 	club = CharField(_('club'), max_length=7,  help_text=_('Club and membership number, e.g. RBA1234. If registering as an individual, enter XXXyy, where yy is the year of birth, e.g. XXX80.'))
 	si = DecimalField(_('SI'), max_digits=9, decimal_places=0, blank=True, null=True)
 	simode = CharField(_('SI mode'),  max_length=1, choices=SIMODE_CHOICES, default='P', blank=True, null=True)
 	cls = CharField(_('class'), max_length=20)
-	laps = CommaSeparatedIntegerField(_('laps'), max_length=50,)
+	laps = CharField(_('laps'), max_length=50, validators=[validate_comma_separated_integer_list])
 	note = TextField(_('note'), blank=True)
-	accomm = ForeignKey('Accommodation', db_column='accomid', verbose_name=_('accommodation'), blank=True,  null=True)
+	accomm = ForeignKey('Accommodation',
+		db_column='accomid',
+		verbose_name=_('accommodation'),
+		blank=True,
+		null=True,
+		on_delete=CASCADE,
+	)
 	accommcount = PositiveSmallIntegerField(_('accommodation count'),  default=1, blank=True, null=True, choices=ACCOMMCOUNT_CHOICES)
 	accommnights = PositiveSmallIntegerField(_('accommodation nights'), default=1, blank=True, null=True, choices=ACCOMMNIGHTS_CHOICES)
 	accommnote = TextField(_('accommodation note'), blank=True)

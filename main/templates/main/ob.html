@@ -1,7 +1,7 @@
 {% extends "main/club.html" %}
 {% load i18n %}
 {% load markup %}
-{% load staticfiles %}
+{% load static %}
 {% load baseurl %}
 
 {% block title %}{{ block.super }}{% endblock %}
@@ -9,6 +9,7 @@
 {% block club-title %}{% trans "Orienteering club" %}{% endblock %}
 
 {% block header-extra %}
+	{% get_current_language as LANGUAGE_CODE %}
 	<div id="header-extra-ob">
 		{% ifequal LANGUAGE_CODE 'sk' %}
 			<ul id="header-lang">

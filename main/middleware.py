@@ -2,13 +2,19 @@
 #
 # Copyright (c) 2007-2012 Peter Kuma
 
-from django.shortcuts import render_to_response, get_object_or_404
 from django.utils import translation
 from django.conf import settings
 
-from models import *
+from .models import *
 
-class LanguageMiddleware(object):
+class LanguageMiddleware:
+	def __init__(self, get_response):
+		self.get_response = get_response
+
+	def __call__(self, request):
+		response = self.get_response(request)
+		return response
+
 	def process_view(self, request, view_func, view_args, view_kwargs):
 		lang = view_kwargs.get('lang', settings.LANGUAGE_CODE)
 		translation.activate(lang)

@@ -1,6 +1,6 @@
 {% extends "eventapp/base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% block title %}{% if participant %}{% trans "Participant" %} {{ participant.id }}{% else %}{% trans "New participant" %}{% endif %}{% endblock %}
 {% block head %}
 <script type="text/javascript" src="{% static "mootools/mootools-textarea-resizer.js" %}"></script>

@@ -7,7 +7,7 @@ from datetime import date
 
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django import forms
@@ -32,10 +32,10 @@ class News(object):
 
 	@property
 	def urls(self):
-		return self.get_urls(), self.app_name, self.name
+		return self.get_urls(), self.app_name
 
 	def get_urls(self):
-		from django.conf.urls import patterns, url, include
+		from django.urls import re_path, include
 		from functools import partial
 		from django.views.generic import TemplateView
 		from news.feed import NewsFeed
@@ -43,17 +43,18 @@ class News(object):
 		def wrap(f):
 			return f
 
-		return patterns('',
-			url(r'^$', wrap(self.archive)),
-			url(r'^(?P<page>\d+)?/$', wrap(self.archive), name='archive'),
-			url(r'^article/(?P<id>\d+)/$', wrap(self.detail), name='detail'),
-			url(r'^article/(?P<id>\d+)/(?P<name>[^/]+)$', wrap(self.attachment), name='attachment'),
-			url(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$', wrap(self.comment), name='comment'),
-			url(r'^rss/$', NewsFeed(), name='rss'),
-		    url(r'^rss/feed.xsl$', TemplateView.as_view(template_name='news/feed.xsl'))
-		)
+		return [
+			re_path(r'^$', wrap(self.archive)),
+			re_path(r'^(?P<page>\d+)?/$', wrap(self.archive), name='archive'),
+			re_path(r'^article/(?P<id>\d+)/$', wrap(self.detail), name='detail'),
+			re_path(r'^article/(?P<id>\d+)/(?P<name>[^/]+)$', wrap(self.attachment), name='attachment'),
+			re_path(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$', wrap(self.comment), name='comment'),
+			re_path(r'^rss/$', NewsFeed(), name='rss'),
+			re_path(r'^rss/feed.xsl$', TemplateView.as_view(template_name='news/feed.xsl'))
+		]
 
 	def archive(self, request, category_name, page=None):
+		from django.utils import translation
 		c = get_object_or_404(Category, name=category_name)
 		articles_all = Article.objects.filter(category=c).exclude(title='')
 		p = Paginator(articles_all, 6)
@@ -88,7 +89,7 @@ class News(object):
 
 		comments = comments_recur(Comment.objects.filter(article=a))
 
-		return render_to_response('news/details/' + c.template_name, {
+		return render_to_response(request, 'news/details/' + c.template_name, {
 				'category': c,
 				'article': a,
 				'comments': comments,
@@ -150,7 +151,7 @@ class News(object):
 		else:
 			f = CommentForm()
 
-		return render_to_response(
+		return render_to_response(request,
 			'news/comment/'+c.template_name, {
 				'category': c,
 				'article': a,

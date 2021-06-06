@@ -6,9 +6,9 @@ from datetime import timedelta, datetime
 from django.utils import timezone
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes.generic import GenericRelation
+from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import get_language
 
 from linguo.models import MultilingualModel
@@ -26,7 +26,10 @@ MARKUP_CHOICES = (
 
 class Article(MultilingualModel):
 	title = models.CharField(_('title'), max_length=100, blank=True)
-	category = models.ForeignKey(Category,verbose_name=_('category'))
+	category = models.ForeignKey(Category,
+		verbose_name=_('category'),
+		on_delete=models.CASCADE,
+	)
 	markup = models.CharField(
 		_('markup'),
 		max_length=50,
@@ -98,8 +101,16 @@ class Article(MultilingualModel):
 
 class Comment(models.Model):
 	subject = models.CharField(_('subject'),max_length=100)
-	article = models.ForeignKey(Article,verbose_name=_('article'))
-	reply = models.ForeignKey('self',verbose_name=_('reply to'),null=True,blank=True)
+	article = models.ForeignKey(Article,
+		verbose_name=_('article'),
+		on_delete=models.CASCADE,
+	)
+	reply = models.ForeignKey('self',
+		verbose_name=_('reply to'),
+		null=True,
+		blank=True,
+		on_delete=models.CASCADE,
+	)
 	message = models.TextField(_('content'))
 	sender = models.CharField(_('sender'),max_length=100)
 	posted = models.DateTimeField(_('posted'),auto_now_add=True)
