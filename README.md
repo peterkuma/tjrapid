@@ -12,22 +12,21 @@ Prerequisites
 
 Make sure you have these programs and packages installed:
 
-* Python 2.6 or newer (but less than 3.0)
+* Python 3
 * git
-* virtualenv
 
 Installation
 ------------
 
 1. Create a new python virtual environment, and activate it:
 
-        virtualenv --no-site-packages tjr
+        python3 -m venv tjr
         cd tjr
         . bin/activate
 
 2. Install required python packages:
 
-        pip install -r requirements.txt
+        pip3 install -r requirements.txt
 
 3. Clone the tjrapid repository:
 
@@ -42,7 +41,10 @@ Installation
 5. If you have a dump of the database, restore it as db/tjrapid.sqlite.
    Synchronize the database with Django models:
 
-        ./manage.py syncdb
+        ./manage.py makemigrations
+		./manage.py migrate
+		# or
+		./manage.py migrate --fake-initial
 
 6. Collect static files into the static directory:
 
