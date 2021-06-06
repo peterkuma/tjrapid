@@ -89,7 +89,7 @@ class News(object):
 
 		comments = comments_recur(Comment.objects.filter(article=a))
 
-		return render_to_response(request, 'news/details/' + c.template_name, {
+		return render(request, 'news/details/' + c.template_name, {
 				'category': c,
 				'article': a,
 				'comments': comments,
