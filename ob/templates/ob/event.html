@@ -1,6 +1,7 @@
 {% extends "main/ob.html" %}
 {% load i18n %}
 {% load static %}
+{% load map %}
 {% block title %}{{ event.title }}{% endblock %}
 
 {% block head %}
@@ -10,6 +11,9 @@
 
 {% block content %}
     <h1>{{ event.title }}</h1>
+    {% if event.latitude and event.longitude %}
+        <figure>{% map lat=event.latitude lon=event.longitude %}</figure>
+    {% endif %}
     {% if event.mapbox_mapid %}
         <figure>
             <a href="{{ event.map_link }}">

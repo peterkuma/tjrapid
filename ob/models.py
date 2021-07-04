@@ -58,6 +58,8 @@ class Event(MultilingualModel):
 	start_date = models.DateField(_('start date'))
 	end_date = models.DateField(_('end date'), null=True, blank=True)
 	location = models.CharField(_('location'), max_length=100)
+	latitude = models.FloatField(_('latitude'), null=True, blank=True)
+	longitude = models.FloatField(_('longitude'), null=True, blank=True)
 	mapbox_mapid = models.CharField(
 		_('MaxBox Map ID'),
 		max_length=100,

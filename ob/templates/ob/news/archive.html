@@ -3,6 +3,7 @@
 {% load static %}
 {% load markup %}
 {% load baseurl %}
+{% load map %}
 
 {% block head %}
     {{ block.super }}
@@ -25,10 +26,10 @@
                             <div class="location">{{ event.location }}</div>
                             <div class="descr">{{ event.head_html|baseurl:event.get_absolute_url }}</div>
                         </div>
+                        {% if event.longitude and event.latitude %}
+                            <div class="event-map">{% map lon=event.longitude lat=event.latitude %}</div>
+                        {% endif %}
                     </div>
-                    {% if event.mapbox_mapid %}
-                        <a class="event-map" href="{{ event.map_link }}" style="background-image: url('{{ event.map_image_large }}')"></a>
-                    {% endif %}
                 {% endfor %}
             </div>
         </aside>
