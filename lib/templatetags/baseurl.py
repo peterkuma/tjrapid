@@ -14,7 +14,7 @@ def baseurl(html, base):
     def isabs(url):
         return url.startswith('/') or absurl.match(url)
 
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, 'html.parser')
 
     for link in soup.findAll('a', href=True):
         if not isabs(link['href']):
