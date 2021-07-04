@@ -17,13 +17,6 @@
 			{% if event.latitude and event.longitude %}
 				<div class="map">{% map lat=event.latitude lon=event.longitude %}</div>
 			{% endif %}
-			{% if event.mapbox_mapid %}
-				<div class="map">
-					<a href="{{ event.map_link }}">
-						<img src="{{ event.map_image_default }}" />
-					</a>
-				</div>
-			{% endif %}
 			<div class="title"><a href="{{ event.name }}/">{{ event.title }}</a></div>
 			<div class="date">{{ event.start_date|date:"DATE_FORMAT" }} ({{ event.start_date|date:"l" }}){% if event.end_date %}–{{ event.end_date|date:"DATE_FORMAT" }} ({{ event.end_date|date:"l" }}){% endif %}</div>
 			<div class="location">{{ event.location }}</div>

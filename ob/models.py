@@ -60,13 +60,6 @@ class Event(MultilingualModel):
 	location = models.CharField(_('location'), max_length=100)
 	latitude = models.FloatField(_('latitude'), null=True, blank=True)
 	longitude = models.FloatField(_('longitude'), null=True, blank=True)
-	mapbox_mapid = models.CharField(
-		_('MaxBox Map ID'),
-		max_length=100,
-		blank=True,
-		null=True,
-		help_text=_('Map ID in format <strong>&lt;username&gt;.map-&lt;id&gt;</strong>. To obtain Map ID, create a new map on <a href="http://www.mapbox.com/">MapBox</a>, click <strong>Publish</strong> and select <strong>Mobile</strong>.')
-	)
 	category = models.ForeignKey(Category,
 		verbose_name=_('category'),
 		on_delete=models.CASCADE,
@@ -113,73 +106,6 @@ class Event(MultilingualModel):
 	def is_upcoming(self):
 		return self.end_date is None and self.start_date >= date.today() or \
 			   self.end_date is not None and self.end_date >= date.today()
-
-	def mapbox_map(self, mapid):
-		try:
-			response = urllib.request.urlopen('https://api.tiles.mapbox.com/v3/%s.json' % self.mapbox_mapid)
-		except urllib.error.URLError:
-			return None
-		content = response.read()
-		return json.loads(content) 
-
-	def map_image(self, width, height):
-		
-		if self.mapbox_mapid is None: return None
-		
-		path = 'ob/event/map/%s/%dx%d.png' % (
-				self.mapbox_mapid,
-				width,
-				height
-		)
-
-		filename = os.path.join(settings.MEDIA_ROOT, path)
-		try:
-			try:
-				modified = datetime.utcfromtimestamp(os.path.getmtime(filename))
-				modified = modified.replace(tzinfo=timezone.utc)
-				if modified >= self.modified:
-					return os.path.join(settings.MEDIA_URL, path)
-			except os.error:
-				pass
-		except Exception as e:
-			return e
-		
-		# Contruct image url.
-		map = self.mapbox_map(self.mapbox_mapid)
-		center = map['center']
-		url = 'https://a.tiles.mapbox.com/v3/%s/%f,%f,%d/%dx%d.png' % (
-			self.mapbox_mapid,
-			center[0],
-			center[1],
-			center[2],
-			width,
-			height
-		)
-
-		# Cache image.
-		try:
-			os.makedirs(os.path.dirname(filename))
-		except os.error:
-			pass
-		with open(filename, 'w') as f:
-			try:
-				response = urllib.request.urlopen(url)
-			except urllib.error.URLError:
-				return None
-			content = response.read()
-			f.write(content)
-
-		return os.path.join(settings.MEDIA_URL, path)
-
-	def map_image_default(self):
-		return self.map_image(300, 200)
-
-	def map_image_large(self):
-		return self.map_image(500, 500)
-
-	def map_link(self):
-		if self.mapbox_mapid is None: return None
-		return 'http://a.tiles.mapbox.com/v3/%s/page.html' % self.mapbox_mapid
 
 	objects = MultilingualManager()
 
