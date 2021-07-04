@@ -12,7 +12,7 @@
 {% block content %}
     <h1>{{ event.title }}</h1>
     {% if event.latitude and event.longitude %}
-        <figure>{% map lat=event.latitude lon=event.longitude %}</figure>
+        <div class="map">{% map lat=event.latitude lon=event.longitude %}</div>
     {% endif %}
     <div class="date">{{ event.start_date|date:"DATE_FORMAT" }}{% if event.end_date %}—{{ event.end_date|date:"DATE_FORMAT" }}{% endif %}</div>
     <div class="location">{{ event.location }}</div>
