@@ -14,8 +14,9 @@ class OrienteeringNews(News):
             abs((event.start_date - date.today()).days)
         )[0:2]
 
-        events = sorted(events, key=lambda event:
-            event.start_date
+        events = sorted(events,
+            key=lambda event: event.start_date,
+            reverse=True
         )
 
         name = Category.objects.get(name_en='orienteering').name
