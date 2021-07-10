@@ -20,11 +20,13 @@ from django.template.response import TemplateResponse
 
 from main.models import *
 from news.models import *
+from news.feed import NewsFeed
 
 
 class News(object):
 	app_name = 'news'
 	name = 'news'
+	news_feed = NewsFeed
 
 	def __init__(self, name=None):
 		if name is not None:
@@ -38,7 +40,6 @@ class News(object):
 		from django.urls import re_path, include
 		from functools import partial
 		from django.views.generic import TemplateView
-		from news.feed import NewsFeed
 
 		def wrap(f):
 			return f
@@ -49,7 +50,7 @@ class News(object):
 			re_path(r'^article/(?P<id>\d+)/$', wrap(self.detail), name='detail'),
 			re_path(r'^article/(?P<id>\d+)/(?P<name>[^/]+)$', wrap(self.attachment), name='attachment'),
 			re_path(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$', wrap(self.comment), name='comment'),
-			re_path(r'^rss/$', NewsFeed(), name='rss'),
+			re_path(r'^rss/$', self.news_feed(), name='rss'),
 			re_path(r'^rss/feed.xsl$', TemplateView.as_view(template_name='news/feed.xsl'))
 		]
 

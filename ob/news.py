@@ -7,8 +7,11 @@ from django.utils.translation import get_language
 from main.models import Category
 
 import ob.views
+from ob.feed import OrienteeringNewsFeed
 
 class OrienteeringNews(News):
+    news_feed = OrienteeringNewsFeed
+
     def archive(self, request, *args, **kwargs):
         events = sorted(Event.objects.all(), key=lambda event:
             abs((event.start_date - date.today()).days)
