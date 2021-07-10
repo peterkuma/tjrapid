@@ -42,7 +42,7 @@
 
 .event .content {
     margin: 10px 10px;
-    flex-grow: 1;
+    width: 65%;
 }
 
 .event .title {
@@ -74,12 +74,13 @@
     overflow: hidden;
     min-width: 150px;
     min-height: 180px;
+    width: 35%;
 }
 
-.event-map iframe {
+.event-map > div {
     border: none !important;
 }
 
-.event iframe {
+.event .event-map > div {
     max-width: 100%;
 }

@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load markup %}
 {% load static %}
+{% load map %}
 <!DOCTYPE html>
 
 <html>
@@ -15,10 +16,13 @@
 		<link rel="stylesheet" type="text/css" href="{% static "main/css/header.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "main/css/footer.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "picture-slider/picture-slider.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "leaflet/leaflet.css" %}" />
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" />
 		<script src="{% static "mootools/mootools.js" %}"></script>
 		<script src="{% static "mootools/mootools-more.js" %}"></script>
 		<script src="{% static "picture-slider/picture-slider.js" %}"></script>
+		<script src="{% static "leaflet/leaflet.js" %}"></script>
+
 		{% if style %}<style type="text/css">{{ style|safe }}</style>{% endif %}
 		{% block head %}{% endblock %}
 	</head>
@@ -43,7 +47,7 @@
 			</div>
 			<footer class="footer">
 				<div class="content">
-<div class="map"><iframe width="350" height="140" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=17.174350619316105%2C48.14726557490542%2C17.17799842357636%2C48.149312858186406&amp;layer=mapnik&amp;marker=48.14828922675453%2C17.176174521446228" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=48.14829&amp;mlon=17.17617#map=18/48.14829/17.17617&amp">{% trans "View larger map" %}</a></small></div>
+					<div class="map" style="width: 350px; height: 140px">{% map lon=17.176174521446228 lat=48.14828922675453 %}</div>
 					<div class="title">TJ Rapid</div>
 					<p class="address">
 						Hrachová 4<br />
