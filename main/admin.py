@@ -35,6 +35,7 @@ class PageAdmin(admin.ModelAdmin):
 				'name',
 				'name_en',
 				'category',
+				'redirect',
 				'markup',
 				'content',
 				'content_en',

@@ -10,13 +10,18 @@ from django.template import RequestContext
 from django.utils import translation
 from django.http import HttpResponseRedirect
 from django.conf import settings
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from main.models import Category, Page
 
 
 def page(request, category_name, name):
 	p = get_object_or_404(Page, category__name=category_name, name=name)
+	if p.redirect and ( \
+		p.redirect.startswith('http://') or \
+		p.redirect.startswith('https://') \
+	):
+		return redirect(p.redirect)
 	return render(request, 'main/' + p.category.template_name, {
 					'page': p,
 					'category': p.category,

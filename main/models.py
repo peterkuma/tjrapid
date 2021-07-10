@@ -93,6 +93,7 @@ class Page(MultilingualModel):
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 	attachments = GenericRelation(Attachment)
 	style = models.TextField(_('style'),blank=True,help_text=_('Cascading Style Sheets'))
+	redirect = models.URLField(_('redirect'),blank=True,help_text=_('Redirect to an external site instead of showing the page content. Must be an absolute URL beginning with http:// or https://.'))
 
 	def __unicode__(self):
 		return u'%s -- %s' % (self.category.title, self.title)
