@@ -19,7 +19,7 @@ L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
 }}).addTo(map);
 L.marker([{lat}, {lon}]).addTo(map);
 </script></div>
-<div style="position: absolute; top: 0; right: 0; z-index: 1000; background: #ffffffaa; padding: 2px 4px"><small><a style="text-decoration: none" href="https://www.openstreetmap.org/?mlat={lat}&amp;mlon={lon}#map={zoom}/{lat}/{lon}&amp">View larger map</a></small></div></div>'''.format(
+<div style="position: absolute; top: 0; right: 0; z-index: 1000; background: #ffffffaa; padding: 2px 4px"><small><a style="text-decoration: none" href="https://www.openstreetmap.org/?mlat={lat}&amp;mlon={lon}#map={zoom}/{lat}/{lon}">View larger map</a></small></div></div>'''.format(
         lon=('%.15f' % lon),
         lat=('%.15f' % lat),
         zoom=zoom,
