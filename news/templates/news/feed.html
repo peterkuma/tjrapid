@@ -1,0 +1,35 @@
+{% load i18n %}
+        <html>
+            <head>
+                <title>RSS Feed</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <link rel="stylesheet" href="/static/css/simple.css" type="text/css" />
+                <link rel="stylesheet" href="/static/news/css/feed.css" type="text/css" />
+                <script type="text/javascript">
+function select(el) {
+    var selection = window.getSelection();     
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    selection.removeAllRanges();
+    selection.addRange(range);
+}
+                </script>
+            </head>
+            <body>
+                <div class="container">
+                    <h1><a href="http://tjrapid.sk">TJ Rapid</a></h1>
+                    <h2>{% trans "RSS Feed" %}</h2>
+                    <p><div class="url" onclick="select(this)">{{ link }}</div></p>
+                    <p>
+                        {% blocktrans %}
+                        You can subscribe to this RSS news feed with the link above
+                        using an RSS reader such as:
+                        {% endblocktrans %}
+                    </p>
+                    <ul class="clients-list">
+                        <li><a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a></li>
+                        <li><a href="https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp?hl=en">Chrome RSS Feed Reader</a></li>
+                    </ul>
+                </div>
+            </body>
+        </html>

@@ -51,7 +51,7 @@ class News(object):
 			re_path(r'^article/(?P<id>\d+)/(?P<name>[^/]+)$', wrap(self.attachment), name='attachment'),
 			re_path(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$', wrap(self.comment), name='comment'),
 			re_path(r'^rss/$', self.news_feed(), name='rss'),
-			re_path(r'^rss/feed.xsl$', TemplateView.as_view(template_name='news/feed.xsl'))
+			re_path(r'^rss/feed/$', self.news_feed().feed, name='feed')
 		]
 
 	def archive(self, request, category_name, page=None):

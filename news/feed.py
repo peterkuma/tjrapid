@@ -2,42 +2,31 @@
 #
 # Copyright (c) 2010-2012 Peter Kuma
 
-from django.contrib.syndication.views import Feed, FeedDoesNotExist
+from django.contrib.syndication.views import Feed, FeedDoesNotExist, add_domain
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import truncatewords, striptags
 from django.utils.feedgenerator import DefaultFeed
+from django.shortcuts import render
+from django.contrib.sites.shortcuts import get_current_site
 
 from main.models import Category
 from news.models import Article
 
 
-class CustomFeedGenerator(DefaultFeed):
-    mime_type = 'application/xml'
-
-    # Adapted from utils/feedgenerator.py.
-    # See also https://code.djangoproject.com/ticket/12978.
-    def write(self, outfile, encoding):
-        from django.utils.xmlutils import SimplerXMLGenerator
-        from django.templatetags.static import static
-
-        handler = SimplerXMLGenerator(outfile, encoding)
-        handler.startDocument()
-
-        # Custom stylesheet
-        handler.processingInstruction('xml-stylesheet', 'type="text/xsl" href="feed.xsl"')
-        
-        handler.startElement("rss", self.rss_attributes())
-        handler.startElement("channel", self.root_attributes())
-        self.add_root_elements(handler)
-        self.write_items(handler)
-        self.endChannelElement(handler)
-        handler.endElement("rss")
-
-
 class NewsFeed(Feed):
-    feed_type=CustomFeedGenerator
+    def feed(self, request, category_name):
+        c = get_object_or_404(Category, name=category_name)
+        current_site = get_current_site(request)
+        link = add_domain(
+            current_site.domain,
+            self.link(c) + '/rss/',
+            request.is_secure()
+        )
+        return render(request, 'news/feed.html', {
+            'link': link,
+        })
 
     def get_object(self, request, category_name):
         self.title = _('Orienteering Club TJ Rapid')

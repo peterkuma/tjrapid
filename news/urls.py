@@ -17,5 +17,5 @@ urlpatterns = patterns('news.views',
 	url(r'^article/(?P<id>\d+)/(?P<name>[^/]+)$', 'attachment', name='attachment'),
 	url(r'^article/(?P<id>\d+)/comment/(?P<reply_id>\d+)?/?$', 'comment', name='comment'),
 	url(r'^rss/$', NewsFeed(), name='rss'),
-    url(r'^rss/feed.xsl$', TemplateView.as_view(template_name='news/feed.xsl'))
+	url(r'^rss/feed/$', NewsFeed().feed, name='feed')
 )
