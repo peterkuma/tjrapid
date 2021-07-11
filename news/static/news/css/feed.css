@@ -3,7 +3,6 @@
     display: inline-block;
     color: #555;
     padding: 0.3em 0.5em;
-    font-size: 1.3em;
     border-radius: 0.1em;
 }
 
@@ -13,5 +12,5 @@
 
 .clients-list li {
     display: inline-block;
-    margin: 0 1em;
+    margin: 0.3em 1em;
 }
