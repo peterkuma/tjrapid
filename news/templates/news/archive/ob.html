@@ -26,10 +26,10 @@
 					<h1 class="title"><a href="{{ a.get_absolute_url }}">{{ a.title|escape }}</a></h1>
 				</header>
 				{% if a.head %}
-					<p>{{ a.head_html|baseurl:a.get_absolute_url }}</p>
+					<div>{{ a.head_html|baseurl:a.get_absolute_url }}</div>
 				{% endif %}
 				{% if not a.head %}
-					<p>{{ a.body_html|baseurl:a.get_absolute_url }}</p>
+					<div>{{ a.body_html|baseurl:a.get_absolute_url }}</div>
 				{% endif %}
 				<div style="clear: both"></div>
 			</article>
