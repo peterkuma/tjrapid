@@ -1,0 +1,14 @@
+{% load l10n %}
+{% load i18n %}
+<div style="position: relative; width: 100%; height: 100%; border: 1px solid #aaa">
+<div style="width: 100%; height: 100%"><script>
+var el = document.getElementsByTagName('script');
+el = el[el.length - 1].parentNode;
+var map = L.map(el).setView([{{lat|unlocalize}}, {{lon|unlocalize}}], {{zoom}});
+map.attributionControl.setPrefix('');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '{% blocktrans %}&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors{% endblocktrans %}',
+}).addTo(map);
+L.marker([{{lat|unlocalize}}, {{lon|unlocalize}}]).addTo(map);
+</script></div>
+<div style="position: absolute; top: 0; right: 0; z-index: 1000; background: #ffffffaa; padding: 2px 4px"><small><a style="text-decoration: none" href="https://www.openstreetmap.org/?mlat={{lat|unlocalize}}&amp;mlon={{lon|unlocalize}}#map={{zoom}}/{{lat|unlocalize}}/{{lon|unlocalize}}">{% trans "View larger map" %}</a></small></div></div>
