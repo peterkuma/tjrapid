@@ -5,7 +5,7 @@
 {% load baseurl %}
 {% block head %}
 	{{ block.super }}
-	<link rel="alternate" title="RSS" href="rss/" type="application/rss+xml" />
+	<link rel="alternate" title="RSS" href="{{ category.get_absolute_url }}news/rss/" type="application/rss+xml" />
 	<link rel="stylesheet" type="text/css" href="{% static "css/share-buttons.css" %}" />
 	<script src="{% static "news/js/likebutton.js" %}" charset="utf-8"></script>
 {% endblock %}
@@ -13,7 +13,7 @@
 	<h1>
 		<a href="{{ category.get_absolute_url }}news/">{% trans "News" %}</a>
 		<a class="news-subscribe" href="{{ category.get_absolute_url }}news/rss/">
-			<div class="rss-icon"><img src="{% static "news/img/rss.svg" %}" alt="RSS" /></div>
+			<span class="rss-icon"><img src="{% static "news/img/rss.svg" %}" alt="RSS" /></span>
 			{% trans "News feed" %}
 		</a>
 	</h1>
