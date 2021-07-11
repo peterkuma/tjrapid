@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-11 11:28+0200\n"
+"POT-Creation-Date: 2021-07-11 16:36+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -1372,14 +1372,12 @@ msgstr "príloha"
 #: env/lib/python2.7/site-packages/django_attach/models.py:29
 #: env2/lib/python2.7/site-packages/django_attach/models.py:29
 #: env3/lib/python3.7/site-packages/django_attach/models.py:29
-#| msgid "comments"
 msgid "attachments"
 msgstr "prílohy"
 
 #: env/lib/python2.7/site-packages/django_attach/models.py:33
 #: env2/lib/python2.7/site-packages/django_attach/models.py:33
 #: env3/lib/python3.7/site-packages/django_attach/models.py:33
-#| msgid "content"
 msgid "content type"
 msgstr "typ obsahu"
 
@@ -1584,7 +1582,6 @@ msgid "%(verbose_name)s (%(language)s)"
 msgstr ""
 
 #: env3/lib/python3.7/site-packages/django/contrib/messages/apps.py:7
-#| msgid "Message"
 msgid "Messages"
 msgstr "Správy"
 
@@ -1597,7 +1594,6 @@ msgid "Static Files"
 msgstr "Statické súbory"
 
 #: env3/lib/python3.7/site-packages/django/contrib/syndication/apps.py:7
-#| msgid "location"
 msgid "Syndication"
 msgstr "Syndikácia"
 
@@ -2056,7 +2052,7 @@ msgid "Empty list and “%(class_name)s.allow_empty” is False."
 msgstr ""
 
 #: env3/lib/python3.7/site-packages/django/views/static.py:42
-#| msgid "Entry %s does not exist."
+#, python-format
 msgid "“%(path)s” does not exist"
 msgstr "Cesta %(path)s neexistuje."
 
@@ -2746,6 +2742,18 @@ msgstr "V tejto prihláške nie sú žiadni pretekári."
 msgid "entry-statement.pdf"
 msgstr "vypis-prihlasky.pdf"
 
+#: lib/templates/map.html:10
+msgid ""
+"&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> "
+"contributors"
+msgstr ""
+"&copy; prispievatelia "
+"<a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> "
+
+#: lib/templates/map.html:14
+msgid "View larger map"
+msgstr "Zobraziť väčšiu mapu"
+
 #: main/admin.py:43
 msgid "Advanced options"
 msgstr "Pokročilé nastavenia"
@@ -2811,7 +2819,6 @@ msgid "Cascading Style Sheets"
 msgstr "Kaskádové štýly (CSS)"
 
 #: main/models.py:96
-#| msgid "directory"
 msgid "redirect"
 msgstr "presmerovanie"
 
@@ -2820,8 +2827,8 @@ msgid ""
 "Redirect to an external site instead of showing the page content. Must be an "
 "absolute URL beginning with http:// or https://."
 msgstr ""
-"Presmerovanie na externú stránku namiesto zobrazenia obsahu stránky. "
-"Musí byť absolútna adresa začínajúca s http:// alebo https://."
+"Presmerovanie na externú stránku namiesto zobrazenia obsahu stránky. Musí "
+"byť absolútna adresa začínajúca s http:// alebo https://."
 
 #: main/models.py:120
 msgid "page"
