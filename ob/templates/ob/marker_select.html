@@ -1,14 +1,5 @@
-<select name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>{% for group_name, group_choices, group_index in widget.optgroups %}{% if group_name %}
+<select class="select2-osm" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>{% for group_name, group_choices, group_index in widget.optgroups %}{% if group_name %}
   <optgroup label="{{ group_name }}">{% endif %}{% for option in group_choices %}
   {% include option.template_name with widget=option %}{% endfor %}{% if group_name %}
   </optgroup>{% endif %}{% endfor %}                                            
 </select>
-<script>
-  var el = document.getElementsByTagName('script');
-  el = el[el.length - 1].previousElementSibling;
-  fn = function(state) {
-    if (!state.id) { return state.text; };
-    return $('<span><img src="/static/osm/' + state.element.value + '.svg" style="width: 1em; height: 1em" /\> ' + state.text + '</span>');
-  }
-  $(el).select2({templateResult: fn, templateSelection: fn})
-</script>
