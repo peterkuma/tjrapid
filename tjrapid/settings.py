@@ -168,8 +168,8 @@ INSTALLED_APPS = (
 )
 
 APP_LIST = (
-    ('auth', ('User', 'Group')),
     ('main', ('Page', 'Category')),
+    ('auth', ('User', 'Group')),
     ('ob', ('Event', 'Member')),
     ('news', ('Article', 'Comment')),
     ('eventapp', ('Event', 'ClassFee', 'Accommodation', 'Participant', 'Entry', 'Directory')),
