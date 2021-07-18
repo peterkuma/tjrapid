@@ -156,14 +156,25 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    #'django.contrib.admin',
+    'tjrapid.apps.CustomAdminConfig',
     'django.contrib.admindocs',
     'django_attach',
     'lib',
-    'main',
-    'ob',
-    'news',
-    'eventapp',
+    'main.apps.MainAppConfig',
+    'ob.apps.ObAppConfig',
+    'news.apps.NewsAppConfig',
+    'eventapp.apps.EventAppConfig',
+)
+
+APP_LIST = (
+    ('auth', ('User', 'Group')),
+    ('main', ('Page', 'Category')),
+    ('ob', ('Event', 'Member')),
+    ('news', ('Article', 'Comment')),
+    ('eventapp', ('Event', 'ClassFee', 'Accommodation', 'Participant', 'Entry', 'Directory')),
+    ('django_attach', ('Attachment', 'Temporary')),
+    ('sites', ('Site',)),
 )
 
 # A sample logging configuration. The only tangible logging
