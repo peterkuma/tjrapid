@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-18 14:10+0200\n"
+"POT-Creation-Date: 2021-07-18 19:13+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -2101,6 +2101,10 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
+#: env3/lib/python3.7/site-packages/django_attach/apps.py:8
+msgid "Django Attach"
+msgstr "Prílohy"
+
 #: eventapp/admin_views.py:28 eventapp/models.py:47 eventapp/models.py:97
 #: eventapp/models.py:136 eventapp/models.py:170
 msgid "ID"
@@ -2168,6 +2172,10 @@ msgstr "Poplatok za čip"
 #: eventapp/admin_views.py:43 eventapp/views.py:401
 msgid "Fees"
 msgstr "Poplatky"
+
+#: eventapp/apps.py:7
+msgid "Event application"
+msgstr "Prihlasovanie na preteky"
 
 #: eventapp/models.py:14
 msgid "1 night"
@@ -2758,6 +2766,10 @@ msgstr "Zobraziť väčšiu mapu"
 msgid "Advanced options"
 msgstr "Pokročilé nastavenia"
 
+#: main/apps.py:7
+msgid "Main application"
+msgstr "Hlavná aplikácia"
+
 #: main/models.py:29 main/models.py:75 ob/models.py:297
 msgid "name"
 msgstr "meno"
@@ -2858,6 +2870,11 @@ msgstr "Odosielateľ"
 msgid "Message"
 msgstr "Správa"
 
+#: news/apps.py:7 news/templates/news/archive/ob.html:14
+#: news/templates/news/base.html:5
+msgid "News"
+msgstr "Novinky"
+
 #: news/feed.py:32
 msgid "Orienteering Club TJ Rapid"
 msgstr "Oddiel orientačného behu TJ Rapid"
@@ -2917,10 +2934,6 @@ msgstr "komentár"
 #: news/models.py:143
 msgid "comments"
 msgstr "komentáre"
-
-#: news/templates/news/archive/ob.html:14 news/templates/news/base.html:5
-msgid "News"
-msgstr "Novinky"
 
 #: news/templates/news/archive/ob.html:17
 msgid "News feed"
@@ -2984,6 +2997,10 @@ msgstr ""
 "Môžete sa zapísať k odberu tohto RSS kanála pomocou adresy vyššie a RSS "
 "klienta ako:"
 
+#: ob/apps.py:7
+msgid "Orienteering"
+msgstr "Orientačný beh"
+
 #: ob/models.py:290
 msgid "member"
 msgstr "člen"
@@ -3013,7 +3030,6 @@ msgid "map zoom"
 msgstr "mierka mapy"
 
 #: ob/models.py:379
-#| msgid "markup"
 msgid "marker"
 msgstr "značka"
 
