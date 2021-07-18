@@ -10,7 +10,7 @@ class EventAdmin(admin.ModelAdmin):
 	list_display = ('id', 'title', 'open_date', 'close_date')
 
 class AccommodationAdmin(admin.ModelAdmin):
-	list_display = ('id', 'event', '__unicode__', 'capacity')
+	list_display = ('id', 'event', '__str__', 'capacity')
 	list_filter = ('event',)
 
 class ClassFeeAdmin(admin.ModelAdmin):

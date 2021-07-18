@@ -31,7 +31,7 @@
 	<form method="post" action="">
 		{% csrf_token %}
 		{{ existingentry_form.id.errors }}
-		{{ existingentry_form.id.label_tag }}: {{ existingentry_form.id }} <input type="submit" name="existingentry" value="{% trans "Go to entry" %}" />
+		{{ existingentry_form.id.label_tag }} {{ existingentry_form.id }} <input type="submit" name="existingentry" value="{% trans "Go to entry" %}" />
 	</form>
 	<h4>{% trans "Forgot your entry identification code?" %}</h4>
 	<p>
@@ -40,6 +40,6 @@
 	<form method="post" action="">
 		{% csrf_token %}
 		{{ recovery_form.email.errors }}
-		{{ recovery_form.email.label_tag }}: {{ recovery_form.email }} <input type="submit" name="recovery" value="{% trans "Send me my entry ID" %}" />
+		{{ recovery_form.email.label_tag }} {{ recovery_form.email }} <input type="submit" name="recovery" value="{% trans "Send me my entry ID" %}" />
 	</form>
 {% endblock %}

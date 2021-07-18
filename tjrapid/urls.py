@@ -43,8 +43,8 @@ urlpatterns += [
 	re_path(r'^en/(?P<category_name>orienteering)/$', RedirectView.as_view(url='/en/orienteering/news/')),
 	re_path(r'^(?P<category_name>ob)/news/', include(OrienteeringNews('news-sk').urls, namespace='news-sk')),
 	re_path(r'^en/(?P<category_name>orienteering)/news/', include(OrienteeringNews('news-en').urls, namespace='news-en'), kwargs={'lang': 'en'}),
-	re_path(r'^ob/prihlaska/', include(('eventapp.urls', 'eventapp'), namespace='eventapp-sk'), kwargs=dict(category='ob', namespace='eventapp-sk')),
-	re_path(r'^en/orienteering/entry/', include(('eventapp.urls', 'eventapp'), namespace='eventapp-en'), kwargs=dict(category='orienteering', namespace='eventapp-en')),
+	re_path(r'^ob/prihlaska/', include(('eventapp.urls', 'eventapp'), namespace='eventapp-sk'), kwargs=dict(category_name='ob', lang='sk', namespace='eventapp-sk')),
+	re_path(r'^en/orienteering/entry/', include(('eventapp.urls', 'eventapp'), namespace='eventapp-en'), kwargs=dict(category_name='orienteering', lang='en', namespace='eventapp-en')),
 	re_path(r'^(?P<lang>en)/', include(('main.urls', 'main'), namespace='main-en'), kwargs={'lang': 'en'}),
 	re_path(r'', include(('main.urls', 'main'), namespace='main-sk')),
 ]

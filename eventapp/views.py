@@ -30,8 +30,7 @@ from .models import *
 
 def http500(request, error):
 	t = loader.get_template('eventapp/500.html')
-	c = RequestContext(request, {'error': error})
-	return HttpResponseServerError(t.render(c))
+	return HttpResponseServerError(t.render({'error': error}, request))
 
 def event(request, id, namespace=None, **kwargs):
 	ev = get_object_or_404(Event, pk=id)
@@ -460,7 +459,7 @@ def entry_pdf(request, eventid, id, **kwargs):
 	else:
 		story.append(Paragraph(_('There are no participants in this entry.'), normal))
 
-	response = HttpResponse(mimetype='application/pdf')
+	response = HttpResponse(content_type='application/pdf')
 	response['Content-Disposition'] = 'attachment; filename=%s' % _('entry-statement.pdf')
 	doc = SimpleDocTemplate(response,
 				pagesize=A4,

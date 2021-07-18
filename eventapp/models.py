@@ -56,7 +56,7 @@ class Event(Model):
 	def is_open(self):
 		return self.open_date <= datetime.date.today() and self.close_date >= datetime.date.today()
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.title
 
 	def get_absolute_url(self):
@@ -84,7 +84,7 @@ class ClassFee(Model):
 	lapfee = DecimalField(_('lap fee'), max_digits=10, decimal_places=2, blank=True, null=True)
 	lapsifee =  DecimalField(_('lap SI fee'), max_digits=10, decimal_places=2, blank=True, null=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.label
 
 	class Meta:
@@ -104,7 +104,7 @@ class Entry(Model):
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.id
 
 	def get_absolute_url(self):
@@ -145,7 +145,7 @@ class Accommodation(Model):
 	maxnights = PositiveSmallIntegerField(_('maximum nights'))
 	capacity = PositiveSmallIntegerField(_('capacity'),  blank=True,  null=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return _(u'%(label)s (%(price)s € per night)') % dict(label=self.label,  price=self.price)
 
 	def free(self):
@@ -197,7 +197,7 @@ class Participant(Model):
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.id
 
 	def fees(self):
@@ -248,7 +248,7 @@ class Directory(Model):
 	created = DateTimeField(_('created'),auto_now_add=True)
 	modified = DateTimeField(_('modified'),auto_now=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.firstname + " " + self.surname
 
 	class Meta:

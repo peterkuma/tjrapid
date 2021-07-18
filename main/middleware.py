@@ -21,3 +21,8 @@ class LanguageMiddleware:
 		request.LANGUAGE_CODE = translation.get_language()
 		try: del view_kwargs['lang']
 		except KeyError: pass
+		if 'category_name' in view_kwargs:
+			try:
+				request.category = Category.objects.get(name=view_kwargs['category_name'])
+			except:
+				request.category = None
