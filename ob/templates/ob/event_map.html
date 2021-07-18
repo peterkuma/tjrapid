@@ -1,0 +1,16 @@
+{% load static %}
+{% load map %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TJ Rapid</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{% static "ob/css/event_map.css" %}" />
+        <link rel="stylesheet" type="text/css" href="{% static "ob/leaflet/leaflet.css" %}" />
+        <link rel="stylesheet" type="text/css" href="{% static "leaflet/leaflet.css" %}" />
+		<script src="{% static "leaflet/leaflet.js" %}"></script>
+    </head>
+    <body>
+        <div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom points=event.mappoint_set.all larger_map_link=False %}</div>
+    </body>
+</html>

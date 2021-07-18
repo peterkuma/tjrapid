@@ -1,7 +1,9 @@
 {% load l10n %}
 {% load i18n %}
+{% load static %}
 <div style="position: relative; width: 100%; height: 100%; border: 1px solid #aaa">
-<div style="width: 100%; height: 100%"><script>
+<div style="width: 100%; height: 100%">
+<script>
 var el = document.getElementsByTagName('script');
 el = el[el.length - 1].parentNode;
 var map = L.map(el).setView([{{lat|unlocalize}}, {{lon|unlocalize}}], {{zoom}});
@@ -10,5 +12,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '{% blocktrans %}&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors{% endblocktrans %}',
 }).addTo(map);
 L.marker([{{lat|unlocalize}}, {{lon|unlocalize}}]).addTo(map);
-</script></div>
-<div style="position: absolute; top: 0; right: 0; z-index: 1000; background: #ffffffaa; padding: 2px 4px"><small><a style="text-decoration: none" href="https://www.openstreetmap.org/?mlat={{lat|unlocalize}}&amp;mlon={{lon|unlocalize}}#map={{zoom}}/{{lat|unlocalize}}/{{lon|unlocalize}}">{% trans "View larger map" %}</a></small></div></div>
+{% for point in points %}
+var icon = L.icon({
+    iconUrl: '{% static "osm/" %}{{ point.marker }}.svg',
+    shadowUrl: '{% static "map/marker-icon-plain.svg" %}',
+    iconSize: [14, 14],
+    shadowSize: [25, 40],
+    iconAnchor: [14/2, 35],
+    shadowAnchor: [25/2, 40],
+    popupAnchor: [0, -40]
+});
+L.marker([{{point.latitude|unlocalize}}, {{point.longitude|unlocalize}}], {icon: icon}).addTo(map).bindPopup('{{ point.title }}');
+{% endfor %}
+</script>
+</div>
+{% if larger_map_link %}
+<div style="position: absolute; top: 0; right: 0; z-index: 1000; background: #ffffffaa; padding: 2px 4px">
+<small>
+<a style="text-decoration: none" href="{{ larger_map_link }}">{% trans "View larger map" %}</a>
+</small>
+</div>
+{% endif %}
+</div>

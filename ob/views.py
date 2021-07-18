@@ -22,6 +22,18 @@ def events(request, category_name):
 	)
 
 
+def event_map(request, name, category_name):
+	category = get_object_or_404(Category, name=category_name)
+	event = get_object_or_404(Event, category=category, name=name)
+	return render(request,
+		'ob/event_map.html', {
+			'event': event,
+			'category': category,
+		},
+		RequestContext(request)
+	)
+
+
 def event(request, name, category_name):
 	category = get_object_or_404(Category, name=category_name)
 	event = get_object_or_404(Event, category=category, name=name)
