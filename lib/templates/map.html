@@ -11,7 +11,10 @@ map.attributionControl.setPrefix('');
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '{% blocktrans %}&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors{% endblocktrans %}',
 }).addTo(map);
-L.marker([{{lat|unlocalize}}, {{lon|unlocalize}}]).addTo(map);
+var marker = L.marker([{{lat|unlocalize}}, {{lon|unlocalize}}]).addTo(map);
+{% if title %}
+marker.bindPopup('{{ title }}');
+{% endif %}
 {% for point in points %}
 var icon = L.icon({
     iconUrl: '{% static "osm/" %}{{ point.marker }}.svg',

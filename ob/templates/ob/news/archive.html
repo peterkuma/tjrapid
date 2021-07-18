@@ -27,7 +27,8 @@
                             <div class="descr">{{ event.head_html|baseurl:event.get_absolute_url }}</div>
                         </div>
                         {% if event.longitude and event.latitude %}
-                            <div class="event-map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
+                            {% translate "Event centre" as map_point_title %}
+                            <div class="event-map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom title=map_point_title points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
                         {% endif %}
                     </div>
                 {% endfor %}

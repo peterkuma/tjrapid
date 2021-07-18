@@ -15,7 +15,8 @@
 	{% for event in events %}
 		<div class="event">
 			{% if event.latitude and event.longitude %}
-				<div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
+				{% translate "Event centre" as map_point_title %}
+				<div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom title=map_point_title points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
 			{% endif %}
 			<div class="title"><a href="{{ event.name }}/">{{ event.title }}</a></div>
 			<div class="date">{{ event.start_date|date:"DATE_FORMAT" }} ({{ event.start_date|date:"l" }}){% if event.end_date %}–{{ event.end_date|date:"DATE_FORMAT" }} ({{ event.end_date|date:"l" }}){% endif %}</div>

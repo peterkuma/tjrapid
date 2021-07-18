@@ -11,7 +11,8 @@
 
 {% block content %}
     {% if event.latitude and event.longitude %}
-        <div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
+	{% translate "Event centre" as map_point_title %}
+        <div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom title=map_point_title points=event.mappoint_set.all larger_map_link=event.larger_map_link %}</div>
     {% endif %}
     <h1>{{ event.title }}</h1>
     <div class="date">{{ event.start_date|date:"DATE_FORMAT" }}{% if event.end_date %}—{{ event.end_date|date:"DATE_FORMAT" }}{% endif %}</div>

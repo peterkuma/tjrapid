@@ -1,5 +1,6 @@
 {% load static %}
 {% load map %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,6 +12,7 @@
 		<script src="{% static "leaflet/leaflet.js" %}"></script>
     </head>
     <body>
-        <div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom points=event.mappoint_set.all larger_map_link=False %}</div>
+	{% translate "Event centre" as map_point_title %}
+        <div class="map">{% map lat=event.latitude lon=event.longitude zoom=event.map_zoom title=map_point_title points=event.mappoint_set.all larger_map_link=False %}</div>
     </body>
 </html>
