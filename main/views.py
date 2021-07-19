@@ -22,10 +22,12 @@ def page(request, category_name, name):
 		p.redirect.startswith('https://') \
 	):
 		return redirect(p.redirect)
+	categories = Category.objects.all()
 	return render(request, 'main/' + p.category.template_name, {
 					'page': p,
 					'category': p.category,
-					'style': p.style
+					'style': p.style,
+					'categories': categories,
 	}, RequestContext(request))
 
 

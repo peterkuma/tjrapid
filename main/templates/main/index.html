@@ -12,11 +12,12 @@
         {{ page.content_html }}
     </article>
     <nav class="clubs">
-        <ul>
-            <li class="cyklistika"><a href="/cyklo/">Cyklistika</a></li>
-            <li class="karate"><a href="/karate/">Karate</a></li>
-            <li class="moderna-gymnastika"><a href="/gymnastika/">Moderná gymnastika</a></li>
-            <li class="orientacny-beh"><a href="/ob/">Orientačný beh</a></li>
-        </ul>
+    {% for category in categories %}
+    	{% if category.name != '' %}
+		<ul>
+		    <li class="{{ category.name_en }}"><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+		</ul>
+	{% endif %}
+    {% endfor %}
     </nav>
 {% endblock %}

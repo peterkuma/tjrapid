@@ -38,7 +38,17 @@
 					</div>
 				{% endblock %}
 				{% block header-extra %}
-					<div id="header-extra">
+					<div id="header-extra" class="header-extra-{{ category.name_en }}">
+						{% get_current_language as LANGUAGE_CODE %}
+						{% ifequal LANGUAGE_CODE 'sk' %}
+							<ul id="header-lang">
+								<li><a href="/en/">English</a><img src="{% static "main/img/header-en.png" %}" /></li>
+							</ul>
+						{% else %}
+							<ul id="header-lang">
+								<li><a href="/">Slovensky</a><img src="{% static "main/img/header-sk.png" %}" /></li>
+							</ul>
+						{% endifequal %}
 					</div>
 				{% endblock %}
 			</header>

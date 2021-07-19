@@ -41,7 +41,7 @@
     padding: 85px 15px 10px 15px;
 }
 
-.clubs li.cyklistika a {
+.clubs li.cycling a {
     background: url("../img/cyklo.png") no-repeat center 15px;
 }
 
@@ -49,11 +49,11 @@
     background: url("../img/karate.png") no-repeat center 15px;
 }
 
-.clubs li.moderna-gymnastika a {
+.clubs li.modern-gymnastics a {
     background: url("../img/gymnastika.png") no-repeat center 15px;
 }
 
-.clubs li.orientacny-beh a {
+.clubs li.orienteering a {
     background: url("../img/ob.png") no-repeat center 15px;
 }
 

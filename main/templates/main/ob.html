@@ -8,21 +8,6 @@
 
 {% block club-title %}{% trans "Orienteering club" %}{% endblock %}
 
-{% block header-extra %}
-	{% get_current_language as LANGUAGE_CODE %}
-	<div id="header-extra-ob">
-		{% ifequal LANGUAGE_CODE 'sk' %}
-			<ul id="header-lang">
-				<li><a href="/en/orienteering/">English</a><img src="{% static "main/img/header-en.png" %}" /></li>
-			</ul>
-		{% else %}
-			<ul id="header-lang">
-				<li><a href="/ob/">Slovensky</a><img src="{% static "main/img/header-sk.png" %}" /></li>
-			</ul>
-		{% endifequal %}
-	</div>
-{% endblock %}
-
 {% block menu %}
 	<nav class="orientacny-beh">
 		{{ category.menu_html|baseurl:category.get_absolute_url }}

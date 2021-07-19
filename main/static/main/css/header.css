@@ -76,12 +76,13 @@
 }
 #header-extra {
     height: 142px;
-    width: 90px;
+    width: 100px;
     position: absolute;
     right: 0;
     top: 0;
+    text-align: right;
 }
-#header-extra-ob {
+.header-extra-orienteering {
     background: url("../img/header-extra-ob.png") no-repeat right;
     height: 142px;
     width: 330px;
@@ -91,7 +92,7 @@
     right: 0;
     top: 0;
 }
-#header-extra-gymnastika {
+.header-extra-modern-gymnastics {
     background: url("../img/header-extra-gymnastika.jpg") no-repeat right;
     height: 142px;
     width: 330px;
