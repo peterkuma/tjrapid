@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-18 19:13+0200\n"
+"POT-Creation-Date: 2021-07-19 09:55+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -2119,17 +2119,17 @@ msgid "Surname"
 msgstr "Priezvisko"
 
 #: eventapp/admin_views.py:31 eventapp/templates/eventapp/entry.html:48
-#: eventapp/templates/eventapp/list.html:46 eventapp/views.py:401
+#: eventapp/templates/eventapp/list.html:46 eventapp/views.py:400
 msgid "Class"
 msgstr "Kategória"
 
 #: eventapp/admin_views.py:32 eventapp/templates/eventapp/entry.html:47
-#: eventapp/templates/eventapp/list.html:45 eventapp/views.py:401
+#: eventapp/templates/eventapp/list.html:45 eventapp/views.py:400
 msgid "Club"
 msgstr "Klub"
 
 #: eventapp/admin_views.py:33 eventapp/models.py:179 eventapp/models.py:246
-#: eventapp/templates/eventapp/entry.html:50 eventapp/views.py:401
+#: eventapp/templates/eventapp/entry.html:50 eventapp/views.py:400
 msgid "SI"
 msgstr "SI"
 
@@ -2169,7 +2169,7 @@ msgstr "Poplatok za ubytovanie"
 msgid "SI fee"
 msgstr "Poplatok za čip"
 
-#: eventapp/admin_views.py:43 eventapp/views.py:401
+#: eventapp/admin_views.py:43 eventapp/views.py:400
 msgid "Fees"
 msgstr "Poplatky"
 
@@ -2481,21 +2481,21 @@ msgstr "Odstrániť vybraných"
 msgid "Perform"
 msgstr "Vykonaj"
 
-#: eventapp/templates/eventapp/entry.html:46 eventapp/views.py:401
+#: eventapp/templates/eventapp/entry.html:46 eventapp/views.py:400
 #: ob/templates/ob/members.html:10 ob/templates/ob/members.html:20
 msgid "Name"
 msgstr "Meno"
 
 #: eventapp/templates/eventapp/entry.html:49
-#: eventapp/templates/eventapp/list.html:47 eventapp/views.py:401
+#: eventapp/templates/eventapp/list.html:47 eventapp/views.py:400
 msgid "Laps"
 msgstr "Etapy"
 
-#: eventapp/templates/eventapp/entry.html:51 eventapp/views.py:401
+#: eventapp/templates/eventapp/entry.html:51 eventapp/views.py:400
 msgid "Accomm."
 msgstr "Ubyt."
 
-#: eventapp/templates/eventapp/entry.html:53 eventapp/views.py:401
+#: eventapp/templates/eventapp/entry.html:53 eventapp/views.py:400
 msgid "Entry/SI/Accomm. fee"
 msgstr "Popl. za št./SI/ubyt."
 
@@ -2504,7 +2504,7 @@ msgid "Entry/Accomm. fee"
 msgstr "Popl. za št./ubyt."
 
 #: eventapp/templates/eventapp/entry.html:57
-#: eventapp/templates/eventapp/entry.html:84 eventapp/views.py:417
+#: eventapp/templates/eventapp/entry.html:84 eventapp/views.py:416
 msgid "Total"
 msgstr "Celkom"
 
@@ -2663,7 +2663,7 @@ msgid "Your entry identification code is %(id)s."
 msgstr "Váš identifikačný kód prihlášky je %(id)s."
 
 #: eventapp/templates/eventapp/recovery_response.html:3
-#: eventapp/templates/eventapp/recovery_response.html:5 eventapp/views.py:129
+#: eventapp/templates/eventapp/recovery_response.html:5 eventapp/views.py:128
 msgid "Entry identification code recovery"
 msgstr "Pripomienka identifikačného kódu prihlášky"
 
@@ -2674,7 +2674,7 @@ msgid ""
 msgstr ""
 "Identifikačné číslo prihlášky bolo odoslané na <strong>%(email)s</strong>."
 
-#: eventapp/views.py:47
+#: eventapp/views.py:46
 msgid ""
 "An entry with this e-mail already exists. Please use the link from the "
 "message you have received, or use the form below to recover your entry "
@@ -2684,69 +2684,69 @@ msgstr ""
 "správy, ktorú ste dostali, alebo formulár uvedený nižšie ak ste túto správu "
 "vymazali alebo nedostali."
 
-#: eventapp/views.py:51
+#: eventapp/views.py:50
 msgid "Entry identification code"
 msgstr "Identifikačný kód prihlášky"
 
-#: eventapp/views.py:58
+#: eventapp/views.py:57
 #, python-format
 msgid "Entry %s does not exist."
 msgstr "Prihláška %s neexistuje."
 
-#: eventapp/views.py:69
+#: eventapp/views.py:68
 msgid "No matching entry found."
 msgstr "Taká prihĺáška nebola nájdená."
 
-#: eventapp/views.py:75 eventapp/views.py:186 eventapp/views.py:223
+#: eventapp/views.py:74 eventapp/views.py:185 eventapp/views.py:222
 #, python-format
 msgid "The event will open on %s."
 msgstr "Prihlasovanie na tieto preteky bude zahájené %s"
 
-#: eventapp/views.py:91
+#: eventapp/views.py:90
 msgid "New entry information"
 msgstr "Informácie o novej prihláške"
 
-#: eventapp/views.py:93 eventapp/views.py:131
+#: eventapp/views.py:92 eventapp/views.py:130
 #, python-format
 msgid "Event organiser <%s>"
 msgstr "Organizátor preteku <%s>"
 
-#: eventapp/views.py:100 eventapp/views.py:138
+#: eventapp/views.py:99 eventapp/views.py:137
 msgid "Failed to send mail."
 msgstr "Nepodarilo sa odoslať mail."
 
-#: eventapp/views.py:184 eventapp/views.py:221
+#: eventapp/views.py:183 eventapp/views.py:220
 #, python-format
 msgid "The event was closed on %s."
 msgstr "Prihlasovanie na tieto preteky bolo uzavreté %s."
 
-#: eventapp/views.py:253
+#: eventapp/views.py:252
 #, python-format
 msgid "%(cls)s (%(fee)s € or %(lapfee)s € per lap)"
 msgstr "%(cls)s (%(fee)s € alebo %(lapfee)s € za etapu)"
 
-#: eventapp/views.py:255
+#: eventapp/views.py:254
 #, python-format
 msgid "%(cls)s (%(fee)s €)"
 msgstr "%(cls)s (%(fee)s €)"
 
-#: eventapp/views.py:285
+#: eventapp/views.py:284
 msgid "The SI number is invalid."
 msgstr "Neplatné SI číslo."
 
-#: eventapp/views.py:293
+#: eventapp/views.py:292
 msgid "There are not as many places available in the accommodation selected."
 msgstr "Nie je dostatok voľných miest na vybranom ubytovaní."
 
-#: eventapp/views.py:445 eventapp/views.py:454 eventapp/views.py:467
+#: eventapp/views.py:444 eventapp/views.py:453 eventapp/views.py:466
 msgid "Entry Statement"
 msgstr "Výpis prihlášky"
 
-#: eventapp/views.py:461
+#: eventapp/views.py:460
 msgid "There are no participants in this entry."
 msgstr "V tejto prihláške nie sú žiadni pretekári."
 
-#: eventapp/views.py:464
+#: eventapp/views.py:463
 msgid "entry-statement.pdf"
 msgstr "vypis-prihlasky.pdf"
 
@@ -2850,7 +2850,11 @@ msgstr "stránka"
 msgid "pages"
 msgstr "stránky"
 
-#: main/templates/main/base.html:60
+#: main/templates/main/base.html:35
+msgid "Sports association"
+msgstr "Telovýchovná jednota"
+
+#: main/templates/main/base.html:70
 msgid "Site maintained by"
 msgstr "Stránku spravuje"
 
