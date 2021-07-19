@@ -1,5 +1,9 @@
+.main {
+    padding: 0 2em;
+}
+
 .main > article {
-    max-width: 900px;
+    max-width: 950px;
     margin: 2em auto;
     text-align: justify;
 }
@@ -58,6 +62,10 @@
 }
 
 @media (max-width: 750px) {
+    .main {
+        padding: 0 1em;
+    }
+
     .main > article {
         margin: 1em auto;
     }

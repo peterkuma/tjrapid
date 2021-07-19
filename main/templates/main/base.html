@@ -29,47 +29,52 @@
 	<body>
 		<div class="container">
 			<header class="header">
-				{% block header-title %}
-					<div id="header-title-main">
-						<a href="/">
-							<h2>{% trans "Sports association" %}</h2>
-							<h1>Rapid Bratislava</h1>
-						</a>
-					</div>
-				{% endblock %}
-				{% block header-extra %}
-					<div id="header-extra" class="header-extra-{{ category.name_en }}">
-						{% get_current_language as LANGUAGE_CODE %}
-						{% ifequal LANGUAGE_CODE 'sk' %}
-							<ul id="header-lang">
-								<li><a href="/en/">English</a><img src="{% static "main/img/header-en.png" %}" /></li>
-							</ul>
-						{% else %}
-							<ul id="header-lang">
-								<li><a href="/">Slovensky</a><img src="{% static "main/img/header-sk.png" %}" /></li>
-							</ul>
-						{% endifequal %}
-					</div>
-				{% endblock %}
+				<div class="content">
+					{% block header-title %}
+						<div id="header-title-main">
+							<a href="/">
+								<h2>{% trans "Sports association" %}</h2>
+								<h1>Rapid Bratislava</h1>
+							</a>
+						</div>
+					{% endblock %}
+					{% block header-extra %}
+						<div id="header-extra" class="header-extra-{{ category.name_en }}">
+							{% get_current_language as LANGUAGE_CODE %}
+							{% ifequal LANGUAGE_CODE 'sk' %}
+								<ul id="header-lang">
+									<li><a href="/en/">English</a><img src="{% static "main/img/header-en.png" %}" /></li>
+								</ul>
+							{% else %}
+								<ul id="header-lang">
+									<li><a href="/">Slovensky</a><img src="{% static "main/img/header-sk.png" %}" /></li>
+								</ul>
+							{% endifequal %}
+						</div>
+					{% endblock %}
+				</div>
 			</header>
 			<div class="main">
 				{% block main %}{% endblock %}
 			</div>
+			{% block post-main %}{% endblock %}
 			<footer class="footer">
 				<div class="content">
-					<div class="map">{% map lon=17.176174521446228 lat=48.14828922675453 title="TJ Rapid, Hrachová 4, Bratislava" %}</div>
-					<div class="title">TJ Rapid</div>
-					<p class="address">
-						Hrachová 4<br />
-						821 02 Bratislava<br />
-						tel/fax: +421 2 4329 4689<br />
-						<a href="mailto:tjrapid&#64;tjrapid.sk">tjrapid<span>&#64;</span>tjrapid.sk</a>
-					</p>
-					<p class="maintained-by">
-						<a href="https://djangoproject.com"><img class="django" alt="django" src="{% static "main/img/django.png" %}" /></a>
-						{% trans "Site maintained by" %} <a href="mailto:mikulas.sabo&#64;gmail.com">Mikuláš Šabo</a> |
-						Design &amp; code <a href="https://github.com/peterkuma">Peter Kuma</a>
-					</p>
+					<div class="inside">
+						<div class="map">{% map lon=17.176174521446228 lat=48.14828922675453 title="TJ Rapid, Hrachová 4, Bratislava" %}</div>
+						<div class="title">TJ Rapid</div>
+						<p class="address">
+							Hrachová 4<br />
+							821 02 Bratislava<br />
+							tel/fax: +421 2 4329 4689<br />
+							<a href="mailto:tjrapid&#64;tjrapid.sk">tjrapid<span>&#64;</span>tjrapid.sk</a>
+						</p>
+						<p class="maintained-by">
+							<a href="https://djangoproject.com"><img class="django" alt="django" src="{% static "main/img/django.png" %}" /></a>
+							{% trans "Site maintained by" %} <a href="mailto:mikulas.sabo&#64;gmail.com">Mikuláš Šabo</a> |
+							Design &amp; code <a href="https://github.com/peterkuma">Peter Kuma</a>
+						</p>
+					</div>
 				</div>
 			</footer>
 		</div>

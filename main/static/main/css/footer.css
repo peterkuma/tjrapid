@@ -1,6 +1,11 @@
 .footer {
     clear: both;
-    background: #ddd;
+    background: #eee;
+}
+
+.footer .content {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .container.wide > footer {
@@ -11,9 +16,8 @@
     margin-left: 0;
 }
 
-.footer .content {
-    background: #eee;
-    padding: 2em;
+.footer .inside {
+    padding: 1.5em;
 }
 
 .footer .title {
@@ -55,7 +59,7 @@
         float: inherit;
     }
 
-    .footer .content {
+    .footer .inside {
         padding: 1em;
     }
 }

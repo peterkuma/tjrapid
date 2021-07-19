@@ -2,15 +2,18 @@
     background: url("../img/header.png") repeat-x;
     height: 142px;
 }
+.header .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
 #header-title {
-    background: url("../img/header-title.png") no-repeat;
-    height:142px;
-    xwidth: 550px;
+    background: url("../img/header-title-club.png") no-repeat;
+    height: 142px;
 }
 #header-title a {
     display: block;
-    height:142px;
-    xwidth: 550px;
+    height: 142px;
     position: relative;
     text-decoration: none;
 }

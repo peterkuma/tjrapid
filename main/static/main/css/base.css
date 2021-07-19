@@ -3,6 +3,7 @@ body {
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	font-size: 15px;
 	line-height: 1.4;
+	background: url("../img/bg.png") repeat-x;
 }
 img {
 	border: none;
@@ -65,18 +66,15 @@ form .errorlist {
 }
 
 .container {
-	max-width: 1000px;
 	margin: 0 auto;
 	position: relative;
-	border-left: 1px silver solid;
-	border-right: 1px silver solid;
-	border-bottom: 1px silver solid;
 }
 
 .main {
 	position: relative;
-	background: url("../img/bg.png") repeat-x;
 	overflow: hidden;
+	max-width: 1100px;
+	margin: 0 auto;
 }
 
 @media (max-width: 1000px) {

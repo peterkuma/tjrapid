@@ -5,13 +5,23 @@
 .main > .content {
     top: 0;
     right: 0;
-    padding: 0.5em 1em 2em 1em;
+    padding: 0.5em 1.5em 2em 1.5em;
     min-height: 700px;
     flex-grow: 1;
 }
 
-.footer > .content {
+.header .content {
+    max-width: 1100px;
+}
+
+.footer .content {
+    background: #ddd;
+    max-width: 1100px;
+}
+
+.footer .inside {
     margin-left: 145px;
+    background: #eee;
 }
 
 .main > nav {
@@ -95,10 +105,10 @@
 
     .main > .content {
         margin-left: 0px;
-        padding: 0 0 1.5em 0;
+        padding: 0 1em 1.5em 1em;
     }
 
-    .footer > .content {
+    .footer .inside {
         margin-left: initial;
     }
 }
