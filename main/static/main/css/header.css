@@ -14,6 +14,7 @@
     position: relative;
 }
 #header-title {
+    background: url("../img/header-title-club.png") no-repeat;
     height: 142px;
 }
 #header-title a {
