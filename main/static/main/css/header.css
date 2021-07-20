@@ -63,28 +63,22 @@
     left: 195px;
 }
 #header-lang {
-    font-size: 14px;
-    padding-left: 0;
-    padding-right: 5px;
-}
-#header-lang li {
-    list-style: none;
-    display: inline;
-}
-#header-lang img {
-    margin: 0 5px;
-    border: none;
+    font-size: 12pt;
+    color: white;
+    margin-top: 10px;
+    margin-right: 5px;
 }
 #header-lang a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 #header-lang a:hover {
     text-decoration: underline;
 }
 #header-extra {
     height: 142px;
-    width: 100px;
+    width: 220px;
     position: absolute;
     right: 0;
     top: 0;
@@ -155,13 +149,14 @@
     }
     #header-lang {
         font-size: 12px;
+        margin-top: 5px;
     }
     #header-extra,
     #header-extra-ob,
     #header-extra-gymnastika {
         background: none;
         height: 100px;
-        width: 100px;
+        width: 200px;
         padding-right: initial;
     }
 }
