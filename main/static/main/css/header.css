@@ -6,7 +6,7 @@
     width: 100px;
     position: absolute;
     top: 18px;
-    left: 24px;
+    left: 32px;
 }
 .header .content {
     max-width: 1000px;
@@ -28,14 +28,14 @@
     font-size: 18pt;
     position: absolute;
     top: 18px;
-    left: 160px;
+    left: 180px;
 }
 #header-title h1 {
     font-size: 20pt;
     color: #daa520;
     position: absolute;
     top: 52px;
-    left: 160px;
+    left: 180px;
 }
 #header-title-main {
     height:142px;
@@ -63,7 +63,7 @@
     left: 150px;
 }
 #header-lang {
-    font-size: 12pt;
+    font-size: 15px;
     color: white;
     margin-top: 10px;
     margin-right: 5px;
@@ -111,7 +111,7 @@
         width: 70px;
         position: absolute;
         top: 13px;
-        left: 17px;
+        left: 23px;
     }
     #header-title {
         height: 100px;
@@ -123,12 +123,12 @@
     #header-title h1 {
         font-size: 12pt;
         top: 40px;
-        left: 112px;
+        left: 127px;
     }
     #header-title h2 {
         font-size: 12pt;
         top: 15px;
-        left: 112px;
+        left: 127px;
     }
     #header-title-main {
         height: 100px;
