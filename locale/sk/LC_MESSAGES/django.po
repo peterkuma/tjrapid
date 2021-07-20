@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 09:55+0200\n"
+"POT-Creation-Date: 2021-07-20 09:28+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -2850,13 +2850,17 @@ msgstr "stránka"
 msgid "pages"
 msgstr "stránky"
 
-#: main/templates/main/base.html:35
+#: main/templates/main/base.html:36
 msgid "Sports association"
 msgstr "Telovýchovná jednota"
 
-#: main/templates/main/base.html:70
+#: main/templates/main/base.html:74
 msgid "Site maintained by"
 msgstr "Stránku spravuje"
+
+#: main/templates/main/cyklo.html:6
+msgid "Cycling club"
+msgstr "Oddiel cyklistiky"
 
 #: main/templates/main/ob.html:9
 msgid "Orienteering club"
