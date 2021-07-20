@@ -38,13 +38,12 @@
     float: right;
     margin: 0 0 1em 1em;
 }
-}
 
 @media (max-width: 750px) {
     .event .map {
-        float: initial;
+        float: none;
         width: 100%;
-        margin-bottom: 15px;
+        margin: 0 0 15px 0;
     }
 }
 

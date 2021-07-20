@@ -24,7 +24,8 @@ article .map img {
 
 @media (max-width: 750px) {
     article .map {
-        float: initial;
+        float: none;
         width: 100%;
+        margin: 0;
     }
 }
