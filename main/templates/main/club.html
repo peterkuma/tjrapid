@@ -21,8 +21,8 @@
     <div class="search">
         <form action="https://www.google.com/search" method="get">
             <input type="hidden" name="as_sitesearch" value="www.tjrapid.sk" />
-            <input type="text" name="as_q" size="15" />
-            <button type="submit" name="search"><img src="{% static "main/img/search.png" %}" /></button>
+            <input type="text" name="as_q" size="15" placeholder="{% trans "Search" %}" />
+            <button type="submit" name="search"><img src="{% static "main/img/search.png" %}" alt="Search" /></button>
         </form>
     </div>
     <div class="content">

@@ -25,6 +25,10 @@
     padding: 0;
 }
 
+.main > .search button img {
+    width: 22px;
+}
+
 @media (max-width: 750px) {
     .main > .search {
         position: initial;
