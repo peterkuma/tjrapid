@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-21 12:31+0200\n"
+"POT-Creation-Date: 2021-07-21 17:51+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -2854,9 +2854,27 @@ msgstr "stránky"
 msgid "Sports association"
 msgstr "Telovýchovná jednota"
 
-#: main/templates/main/base.html:73
-msgid "Site maintained by"
-msgstr "Stránku spravuje"
+#: main/templates/main/base.html:72
+msgid ""
+"Website maintained by <a href=\"mailto:mikulas.sabo&#64;gmail.com\">Mikuláš "
+"Šabo</a>. Design and code <a href=\"https://github.com/peterkuma\">Peter "
+"Kuma</a>."
+msgstr ""
+"Stránku spravuje <a href=\"mailto:mikulas.sabo&#64;gmail.com\">Mikuláš Šabo</"
+"a>. Design a kód <a href=\"https://github.com/peterkuma\">Peter Kuma</a>."
+
+#: main/templates/main/base.html:75
+msgid ""
+"This website uses open source software <a href=\"https://www.djangoproject."
+"com/\">Django</a>, <a href=\"https://python.org\">Python</a>, <a href="
+"\"https://www.postgresql.org\">PostgreSQL</a>, <a href=\"https://nginx.org"
+"\">NGINX</a> and <a href=\"https://www.debian.org\">Debian GNU/Linux</a>."
+msgstr ""
+"Táto stránka používa open source software <a href=\"https://www."
+"djangoproject.com/\">Django</a>, <a href=\"https://python.org\">Python</a>, "
+"<a href=\"https://www.postgresql.org\">PostgreSQL</a>, <a href=\"https://"
+"nginx.org\">NGINX</a> a <a href=\"https://www.debian.org\">Debian GNU/Linux</"
+"a>."
 
 #: main/templates/main/club.html:24
 msgid "Search"
@@ -3098,6 +3116,9 @@ msgstr "TJ Rapid"
 #: tjrapid/templates/share-buttons.html:6
 msgid "Share via"
 msgstr "Zdielať cez"
+
+#~ msgid "Site maintained by"
+#~ msgstr "Stránku spravuje"
 
 #~ msgid ""
 #~ "\n"

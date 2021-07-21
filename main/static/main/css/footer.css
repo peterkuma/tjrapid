@@ -24,21 +24,16 @@
     font-size: 180%;
 }
 
-.footer .maintained-by {
-    margin: 3em 0 0 0;
+.footer .maintained-by,
+.footer .attribution {
+    margin: 0.5em 0;
     font-size: 14px;
     color: #333;
     clear: both;
 }
 
-.footer .django {
-    display: block;
-    float: right;
-    margin-bottom: 15px;
-}
-
-.footer .django img {
-    display: block;
+.footer .maintained-by {
+    margin-top: 1.5em;
 }
 
 .footer .map {
@@ -53,10 +48,6 @@
     .footer .map {
         float: inherit;
         width: 100%;
-    }
-
-    .footer .django {
-        float: inherit;
     }
 
     .footer .inside {
