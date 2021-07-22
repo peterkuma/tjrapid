@@ -12,7 +12,7 @@
 .main > .search input {
     display: block;
     border: 1px solid silver;
-    padding: 0.2em;
+    padding: 0.2em 0.4em;
     margin-right: 0.5em;
     flex-grow: 1;
 }
