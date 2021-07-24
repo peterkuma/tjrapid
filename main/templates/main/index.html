@@ -16,10 +16,10 @@
     <nav class="clubs">
         <ul>
         {% for category in categories %}
-        	{% if category.name != '' %}
+            {% if category.name != '' %}
                 <li class="{{ category.name_en }}"><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-	    {% endif %}
+            {% endif %}
         {% endfor %}
-		</ul>
+        </ul>
     </nav>
 {% endblock %}
