@@ -14,7 +14,7 @@
 		<a href="{{ category.get_absolute_url }}news/">{% trans "News" %}</a>
 		<a class="news-subscribe" href="{{ category.get_absolute_url }}news/rss/feed/">
 			<span class="rss-icon"><img src="{% static "news/img/rss.svg" %}" alt="RSS" /></span>
-			{% trans "News feed" %}
+			{% trans "News feed (RSS)" %}
 		</a>
 	</h1>
 	{% block content_extra %}{% endblock %}
