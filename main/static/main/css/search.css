@@ -12,9 +12,10 @@
 .main > .search input {
     display: block;
     border: 1px solid silver;
-    padding: 0.2em 0.4em;
+    padding: 0.3em 0.5em;
     margin-right: 0.5em;
     flex-grow: 1;
+    font-family: inherit;
 }
 
 .main > .search button {
@@ -29,7 +30,7 @@
     width: 22px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     .main > .search {
         position: initial;
         width: auto;

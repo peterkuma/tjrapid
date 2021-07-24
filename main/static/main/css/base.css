@@ -83,7 +83,7 @@ form .errorlist {
 	}
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 	body {
 		font-size: 14px;
 	}

@@ -113,7 +113,7 @@ article .table-th-sort-rev {
     background: url("../../img/sort-rev.png") no-repeat right center;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     article figure {
         display: inline-block;
         float: initial;

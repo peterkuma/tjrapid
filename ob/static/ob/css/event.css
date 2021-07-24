@@ -22,7 +22,7 @@ article .map img {
     display: block;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     article .map {
         float: none;
         width: 100%;

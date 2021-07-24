@@ -2,12 +2,6 @@
     background: url("../img/header.png") repeat-x;
     height: 142px;
 }
-.header .logo {
-    width: 100px;
-    position: absolute;
-    top: 18px;
-    left: 32px;
-}
 .header .content {
     max-width: 1000px;
     margin: 0 auto;
@@ -22,6 +16,9 @@
     height: 142px;
     position: relative;
     text-decoration: none;
+    white-space: nowrap;
+    background: url("../img/logo.png") 32px center no-repeat;
+    background-size: 100px;
 }
 #header-title h2 {
     color: #ffd700;
@@ -38,15 +35,18 @@
     left: 180px;
 }
 #header-title-main {
-    height:142px;
-    xwidth: 550px;
+    height: 142px;
 }
 #header-title-main a {
     display: block;
-    height:142px;
-    xwidth: 550px;
+    height: 142px;
+    width: 500px;
     position: relative;
     text-decoration: none;
+    white-space: nowrap;
+    margin: 0 auto;
+    background: url("../img/logo.png") 32px center no-repeat;
+    background-size: 100px;
 }
 #header-title-main h2 {
     color: #ffd700;
@@ -102,16 +102,10 @@
     right: 0;
     top: 0;
 }
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     .header {
         height: 100px;
         background-size: auto 100px;
-    }
-    .header .logo {
-        width: 70px;
-        position: absolute;
-        top: 13px;
-        left: 23px;
     }
     #header-title {
         height: 100px;
@@ -119,6 +113,8 @@
     }
     #header-title a {
         height: 100px;
+        background: url("../img/logo.png") 23px center no-repeat;
+        background-size: 70px;
     }
     #header-title h1 {
         font-size: 12pt;
@@ -135,7 +131,11 @@
         background-size: auto 100px;
     }
     #header-title-main a {
+        width: 350px;
         height: 100px;
+        margin: 0;
+        background: url("../img/logo.png") 23px center no-repeat;
+        background-size: 70px;
     }
     #header-title-main h1 {
         font-size: 16pt;

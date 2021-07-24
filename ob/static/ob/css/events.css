@@ -39,7 +39,7 @@
     margin: 0 0 1em 1em;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     .event .map {
         float: none;
         width: 100%;

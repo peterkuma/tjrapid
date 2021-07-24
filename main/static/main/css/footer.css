@@ -44,7 +44,7 @@
     height: 140px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     .footer .map {
         float: inherit;
         width: 100%;
