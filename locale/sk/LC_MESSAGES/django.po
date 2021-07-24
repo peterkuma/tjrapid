@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tjrapid 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-21 17:51+0200\n"
+"POT-Creation-Date: 2021-07-24 11:27+0200\n"
 "PO-Revision-Date: 2007-11-22 22:57+0000\n"
 "Last-Translator: Peter Kuma <peterkuma@centrum.sk>\n"
 "Language-Team: English <en@li.org>\n"
@@ -2966,8 +2966,8 @@ msgid "comments"
 msgstr "komentáre"
 
 #: news/templates/news/archive/ob.html:17
-msgid "News feed"
-msgstr "Odoberanie noviniek"
+msgid "News feed (RSS)"
+msgstr "Odoberanie noviniek (RSS)"
 
 #: news/templates/news/archive/ob.html:42
 msgid "Read more"
