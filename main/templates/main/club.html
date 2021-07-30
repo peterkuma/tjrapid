@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load markup %}
 {% load static %}
+{% get_current_language as lang %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static "main/css/club.css" %}" />
@@ -9,7 +10,11 @@
 
 {% block header-title %}
     <div id="header-title">
-        <a href="/">
+    {% ifequal lang 'sk' %}
+    <a href="/">
+    {% else %}
+    <a href="/en/">
+    {% endifequal %}
             <h2>TJ Rapid</h2>
             <h1>{% block club-title %}{% endblock %}</h1>
         </a>

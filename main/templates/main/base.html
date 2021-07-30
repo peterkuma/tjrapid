@@ -2,6 +2,7 @@
 {% load markup %}
 {% load static %}
 {% load map %}
+{% get_current_language as lang %}
 <!DOCTYPE html>
 
 <html>
@@ -32,7 +33,11 @@
 				<div class="content">
 					{% block header-title %}
 						<div id="header-title-main">
+							{% ifequal lang 'sk' %}
 							<a href="/">
+							{% else %}
+							<a href="/en/">
+							{% endifequal %}	
 								<h2>{% trans "Sports association" %}</h2>
 								<h1>Rapid Bratislava</h1>
 							</a>
@@ -41,8 +46,7 @@
 					{% block header-extra %}
 						<div id="header-extra" class="header-extra-{{ category.name_en }}">
 							<div id="header-lang">
-								{% get_current_language as LANGUAGE_CODE %}
-								{% ifequal LANGUAGE_CODE 'sk' %}
+								{% ifequal lang 'sk' %}
 									Change language to <a href="/en/">English</a>
 								{% else %}
 									Zmeniť jazyk na <a href="/">Slovensky</a>
