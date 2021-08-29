@@ -28,6 +28,7 @@ elif settings.SERVE_STATIC:
 urlpatterns += [
 	re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	re_path(r'^admin/eventapp/', include('eventapp.admin_urls')),
+	re_path(r'^admin/django_attach/', include('django_attach.urls')),
 	re_path(r'^admin/', admin.site.urls),
 	re_path(r'^ob/clenovia/$',ob.views.members,kwargs=dict(category_name='ob')),
 	re_path(r'^(?P<lang>en)/orienteering/members/$',ob.views.members, kwargs=dict(category_name='orienteering')),
