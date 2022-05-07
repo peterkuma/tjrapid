@@ -332,6 +332,9 @@ class Event(MultilingualModel):
 	created = models.DateTimeField(_('created'),auto_now_add=True)
 	modified = models.DateTimeField(_('modified'),auto_now=True)
 
+	def __str__(self):
+		return self.title
+
 	def get_absolute_url(self):
 		import ob.views
 		return reverse(ob.views.event, kwargs={
@@ -388,6 +391,9 @@ class MapPoint(MultilingualModel):
 	)
 
 	objects = MultilingualManager()
+
+	def __str__(self):
+		return self.title
 
 	class Meta:
 		verbose_name = _('map point')
