@@ -30,20 +30,30 @@ def page(request, category_name, name):
 					'categories': categories,
 	}, RequestContext(request))
 
-
 def attachment(request, category_name, page_name, name):
+	def redirect_or_404():
+		if not request.path.endswith('/'):
+			return HttpResponseRedirect(request.path + '/')
+		raise Http404
+		
 	if page_name == '':
-		c = get_object_or_404(Category, name=category_name)
+		try:
+			c = Category.objects.get(name=category_name)
+		except Category.DoesNotExist:
+			return redirect_or_404()
 		for a in c.attachments.all():
 			if os.path.basename(a.file.name) == name:
 				return HttpResponseRedirect(a.file.url)
 
-	p = get_object_or_404(Page,
-		category__name=category_name,
-		name=page_name
-	)
+	try:
+		p = Page.objects.get(
+			category__name=category_name,
+			name=page_name
+		)
+	except Page.DoesNotExist:
+		return redirect_or_404()
 
 	for a in p.attachments.all():
 		if os.path.basename(a.file.name) == name:
 			return HttpResponseRedirect(a.file.url)
-	raise Http404
+	return redirect_or_404()
