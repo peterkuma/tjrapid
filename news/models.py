@@ -70,8 +70,8 @@ class Article(MultilingualModel):
 
 	path.short_description = _("path")
 
-	def __unicode__(self):
-		return u'%s -- %s' % (self.category,self.title)
+	def __str__(self):
+		return '%s -- %s' % (self.category,self.title)
 
 	def head_html(self):
 		if self.markup == 'markdown': return mark_safe(markdown(self.head))
@@ -130,8 +130,8 @@ class Comment(models.Model):
 			return self.reply.level
 		return 0
 
-	def __unicode__(self):
-		return u'%s -- %s (%s)' % (self.article,self.subject,self.posted.strftime('%Y-%m-%d %H:%M'))
+	def __str__(self):
+		return '%s -- %s (%s)' % (self.article,self.subject,self.posted.strftime('%Y-%m-%d %H:%M'))
 
 	def get_absolute_url(self):
 		return self.article.get_absolute_url()

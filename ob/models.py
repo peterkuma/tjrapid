@@ -279,7 +279,7 @@ class Member(models.Model):
 	category = models.CharField(_('category'), max_length=5)
 	email = models.EmailField(_('e-mail'), blank=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return '%s %s' % (self.first_name, self.surname)
 
 	def email_special(self):
