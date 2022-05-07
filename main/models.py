@@ -96,7 +96,7 @@ class Page(MultilingualModel):
 	redirect = models.URLField(_('redirect'),blank=True,help_text=_('Redirect to an external site instead of showing the page content. Must be an absolute URL beginning with http:// or https://.'))
 
 	def __str__(self):
-		return '%s -- %s' % (self.category.title, self.title)
+		return '%s – %s' % (self.category.title, self.title)
 
 	def path(self):
 		if(self.name == ''):
