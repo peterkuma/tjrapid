@@ -1,4 +1,4 @@
-Django==3.2.20
+Django==3.2.21
 psycopg2==2.8.6
 Markdown==3.3.4
 textile==4.0.1
