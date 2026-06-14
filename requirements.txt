@@ -1,6 +1,7 @@
 Django==3.2.25
-psycopg2==2.8.6
-Markdown==3.3.4
+legacy-cgi==2.6.4
+psycopg2==2.9.12
+Markdown==3.10.2
 textile==4.0.1
 beautifulsoup4==4.9.3
 reportlab==3.5.67
